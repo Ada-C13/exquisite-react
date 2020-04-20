@@ -14,7 +14,6 @@ const PlayerSubmissionForm = (props) => {
 
   const [player, nextPlayer] = useState(1);
 
-
   const onInput = (event) => {
     const newSentence = {
       ...sentence,
@@ -26,8 +25,6 @@ const PlayerSubmissionForm = (props) => {
   const onSentenceSubmit = (event) => {
     event.preventDefault();
 
-    
-  
     props.callbackSentenceObject(sentence);
 
     setSentence({

@@ -8,7 +8,7 @@ const Game = () => {
 
     const [currentSentence, changeSentence] = useState('');
 
-    let allSentences = [];
+    const [allSentences, addSentence] = useState([]);
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -18,9 +18,14 @@ const Game = () => {
       }
     }).join(" ");
 
+
+
   const displayRecentSubmission = (sentence) => {
     const newSentence = Object.values(sentence).join(' ');
     changeSentence(newSentence);
+
+    const newSentenceList = [...allSentences];
+    newSentenceList.push(newSentence);
   }
 
   return (

@@ -3,8 +3,13 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
+  const onRevealThePoem = (event) => {
+    event.preventDefault();
+    
+  }
+
   return (
-    <div className="FinalPoem" onClick={}>
+    <div className="FinalPoem" onSubmit={onRevealThePoem}>
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
 
