@@ -5,13 +5,23 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+
+    const [currentSentence, changeSentence] = useState('');
+
+    let allSentences = [];
+
+    const exampleFormat = FIELDS.map((field) => {
+      if (field.key) {
+        return field.placeholder;
+      } else {
+        return field;
+      }
+    }).join(" ");
+
+  const displayRecentSubmission = (sentence) => {
+    const newSentence = Object.values(sentence).join(' ');
+    changeSentence(newSentence);
+  }
 
   return (
     <div className="Game">
@@ -25,9 +35,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission sentence={currentSentence}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm callbackSentenceObject={displayRecentSubmission}/>
 
       <FinalPoem />
 

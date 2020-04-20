@@ -4,7 +4,7 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
 
   return (
-    <div className="FinalPoem">
+    <div className="FinalPoem" onClick={}>
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
 
