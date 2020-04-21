@@ -25,9 +25,13 @@ const Game = () => {
     setPlayer(player + 1);
   }
 
-  // helper function to return last array index
-
-  console.log(poemList);
+  // const showLastPoem = (poemList) => {
+  //   if (poemList !== []) {
+  //     return poemList[poemList.length-1];
+  //   } else {
+  //     return "No poem to show";
+  //   }
+  // }
 
   return (
     <div className="Game">
@@ -41,11 +45,13 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission lastPoem={poemList[poemList.length-1]}/>
+      { poemList.length > 0 &&
+         <RecentSubmission lastPoem={poemList[poemList.length-1]}/>
+      }
 
       <PlayerSubmissionForm player={player} onSubmitCallback={addPoem}/>
 
-      <FinalPoem />
+      <FinalPoem poemList={poemList}/>
 
     </div>
   );
