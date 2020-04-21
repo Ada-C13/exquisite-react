@@ -13,15 +13,18 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [formFields, setFormFields] = useState({
-    adj1: '',
-    noun1: '',
-    adv: '',
-    verb: '',
-    adj2: '',
-    noun2: '',
-  })
-  
+  const initialFormState = () => {
+    return {
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: '',
+    }
+  }
+
+  const [formFields, setFormFields] = useState(initialFormState)
   const [lastSubmit, setLastSubmit] = useState()
   const [allSubmissions, setAllSubmissions] = useState([])
   const [showPoem, setShowPoem] = useState(false)
@@ -52,7 +55,6 @@ const Game = () => {
     setLastSubmit(sentence);
     setAllSubmissions([...allSubmissions, sentence])
     setPlayerNum(playerNum + 1)
-    console.log(playerNum)
   }
 
   const onShowPoem = (event) => {
