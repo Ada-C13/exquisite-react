@@ -109,16 +109,8 @@ const PlayerSubmissionForm = (props) => {
 }
 
 PlayerSubmissionForm.propTypes = {
-  theOne: PropTypes.string.isRequired,
-  adjectiveOne: PropTypes.string.isRequired,
-  nounOne: PropTypes.string.isRequired,
-  adverbOne: PropTypes.string.isRequired,
-  verb: PropTypes.string.isRequired,
-  theTwo: PropTypes.string.isRequired,
-  adjectiveTwo: PropTypes.string.isRequired,
-  nounTwo: PropTypes.string.isRequired,
-  period: PropTypes.string.isRequired
+  onFormSubmit: PropTypes.func.isRequired,
+  playerNumber: PropTypes.number.isRequired
 };
-
 
 export default PlayerSubmissionForm;

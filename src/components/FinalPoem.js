@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
   const [showPoem, setShowPoem] = useState(false); // Track showing final poem.
@@ -34,5 +35,10 @@ const FinalPoem = (props) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  submittedLines: PropTypes.array.isRequired,
+  isGameFinished: PropTypes.func.isRequired
+};
 
 export default FinalPoem;
