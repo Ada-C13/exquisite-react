@@ -15,7 +15,12 @@ const Game = () => {
     console.log(updatedPoem);
     setPoem(updatedPoem);
     setCurrentPlayer(currentPlayer + 1);
+    console.log(generatePoem);
   };
+
+  const generatePoem = poem.map((line) => {
+    return "The " + line.adj1 + " " + line.noun1 + " " + line.adv + " " + line.verb + " the " + line.adj2 + " " + line.noun2 + "."
+  });
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
