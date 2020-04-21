@@ -4,6 +4,14 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+const savedLines = [];
+let playerNumber = 1;
+
+const saveLine = (submittedLine) => {
+  console.log(submittedLine);
+  playerNumber++;
+};
+
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -27,7 +35,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onFormSubmit={saveLine} playerNumber={playerNumber} />
 
       <FinalPoem />
 
