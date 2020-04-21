@@ -5,8 +5,18 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const exampleFormat = FIELDS.map((field) => {
+    if (field.key) {
+      return field.placeholder;
+    } else {
+      return field;
+    }
+  }).join(" ");
+
   const [poem, setPoem] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [inProgress, setInProgress] = useState("yes");
 
   const addPoemLine = (poemLine) => {
     const updatedPoem = [...poem];
@@ -19,13 +29,26 @@ const Game = () => {
     return "The " + line.adj1 + " " + line.noun1 + " " + line.adv + " " + line.verb + " the " + line.adj2 + " " + line.noun2 + "."
   });
 
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+  const displayFinalPoem = () => {
+    setInProgress("no");
+  }
+
+  let gameInProgress = (
+    <div>
+      <RecentSubmission
+  
+      />
+
+      <PlayerSubmissionForm 
+      onSubmitCallback={addPoemLine}
+      currentPlayer={currentPlayer}
+      />
+    </div>
+  )
+
+  if (inProgress === "no") {
+    gameInProgress = null;
+  }
 
   return (
     <div className="Game">
@@ -39,17 +62,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission
-        
-      />
-
-      <PlayerSubmissionForm 
-        onSubmitCallback={addPoemLine}
-        currentPlayer={currentPlayer}
-      />
+      {gameInProgress}
 
       <FinalPoem 
         poem={generatePoem}
+        onClickCallback={displayFinalPoem}
       />
 
     </div>
