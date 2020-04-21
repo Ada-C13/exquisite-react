@@ -6,7 +6,7 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const [savedLines, setSavedLines] = useState([]);
-  const [newestLine, setNewestLine] = useState();
+  const [newestLine, setNewestLine] = useState('');
   let playerNumber = 1;
 
   const saveLine = (submittedLine) => {
@@ -40,7 +40,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission newestLine={ newestLine } />
+      {newestLine !== '' &&
+        <RecentSubmission newestLine={ newestLine } />
+      }
 
       <PlayerSubmissionForm onFormSubmit={ saveLine } playerNumber={ playerNumber } />
 
