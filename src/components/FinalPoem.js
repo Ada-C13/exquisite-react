@@ -12,11 +12,15 @@ const FinalPoem = (props) => {
     );
   });
 
-  const onClickShowPoem = () => { setShowPoem(true) };
+  const onClickShowPoem = () => { 
+    setShowPoem(true);
+    
+    props.isGameFinished(true);
+  };
 
   return (
     <div className="FinalPoem">
-      {showPoem === true &&
+      {showPoem === true && // Only show poem if button clicked.
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
             { formattedLines }

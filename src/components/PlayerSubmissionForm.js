@@ -11,7 +11,8 @@ const PlayerSubmissionForm = (props) => {
     verb: '',
     theTwo: 'the',
     adjectiveTwo: '',
-    nounTwo: ''
+    nounTwo: '',
+    period: '.'
   });
 
   // Update a specific field.
@@ -36,7 +37,8 @@ const PlayerSubmissionForm = (props) => {
       verb: '',
       theTwo: 'the',
       adjectiveTwo: '',
-      nounTwo: ''
+      nounTwo: '',
+      period: '.'
     });
   };
 
@@ -94,6 +96,7 @@ const PlayerSubmissionForm = (props) => {
             onChange={ updateField } 
             className={`PlayerSubmissionFormt__input ${formFields.nounTwo === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
           />
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
