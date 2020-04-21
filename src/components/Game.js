@@ -53,8 +53,6 @@ const Game = () => {
   
         <RecentSubmission sentence={ currentSentence }/>
   
-        {/* <PlayerSubmissionForm callbackSentenceObject={ displayRecentSubmission }/> */}
-  
         <FinalPoem  setAllSentences={ changeShowPoem } poemLines={poem} />
   
       </div>
@@ -77,7 +75,7 @@ const Game = () => {
 
       <RecentSubmission sentence={ currentSentence }/>
 
-      <PlayerSubmissionForm callbackSentenceObject={ displayRecentSubmission }/>
+      <PlayerSubmissionForm callbackSentenceObject={ displayRecentSubmission } fields={FIELDS}/>
 
       <FinalPoem  setAllSentences={ changeShowPoem } poemLines={poem} />
 
