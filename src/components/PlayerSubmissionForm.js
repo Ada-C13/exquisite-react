@@ -1,42 +1,109 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
+
+  // formFields useState hook
+  const [formFields, setFormFields ] = useState({
+    adj1: '',
+    noun1: '',
+    adv: '',
+    verb: '',
+    adj2: '',
+    noun2: ''
+  });
+
+  const onInputChange = (event) => {
+    const newFormFields = {
+      ...formFields,
+    };
+
+    newFormFields[event.target.name] = event.target.value;
+    setFormFields(newFormFields);
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    
+    const formFieldsArray = Object.values(formFields);
+
+    if (!formFieldsArray.includes('')) {
+      console.log('Form submitted!');
+
+      props.onSubmitCallback(formFields);
+      // Send data back up to App
+      // props.onSubmitCallback(user);
+      // clears the fields
+
+      setFormFields({
+        adj1: '',
+        noun1: '',
+        adv: '',
+        verb: '',
+        adj2: '',
+        noun2: ''
+      });
+    }
+
+  }
+
+  // event handlers for form
+  // validation function
+  // props
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form 
+        className="PlayerSubmissionForm__form" 
+        onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The
-          {
-            // Put your form inputs here... We've put in one below as an example
           <input
+            name="adj1"
             placeholder="adjective"
-            type="text" />
-          }
-          { <input
+            type="text"
+            onChange={onInputChange}
+            value={formFields.adj1}
+            />
+          <input
+            name="noun1"
             placeholder="noun"
-            type="text" />
-          }
-          { <input
+            type="text"
+            onChange={onInputChange}
+            value={formFields.noun1}
+            />
+          <input
+            name="adv"
             placeholder="adverb"
-            type="text" />
-          }
-          { <input
+            type="text"
+            onChange={onInputChange} 
+            value={formFields.adv}
+            />
+          <input
+            name="verb"
             placeholder="verb"
-            type="text" />
-          }
+            type="text" 
+            onChange={onInputChange}
+            value={formFields.verb}
+            />
           the
-          { <input
+          <input
+            name="adj2"
             placeholder="adjective"
-            type="text" />
-          }
-          { <input
+            type="text"
+            onChange={onInputChange}
+            value={formFields.adj2}
+            />
+          <input
+            name="noun2"
             placeholder="noun"
-            type="text" />
-          }
+            type="text" 
+            onChange={onInputChange}
+            value={formFields.noun2}
+            />
           .
         </div>
 
