@@ -15,7 +15,6 @@ const PlayerSubmissionForm = (props) => {
 
 
   const onInputChange = (event) => {
-    // console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     // Duplicate formFields into new object
     const newFormFields = {
       ...formFields,
@@ -27,16 +26,17 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
+    console.log('on form submit', onFormSubmit)
     if (formFields.adj1 !== '' && 
     formFields.noun1 !== '' && 
     formFields.adv !==  '' &&  
     formFields.verb !== '' && 
     formFields.adj2 !== '' && 
     formFields.noun2 !== '') {
+      console.log('form field are not empty')
       // Send that data back up to App
       props.onSubmitCallback(formFields)
-
+      console.log('setFormFields')
       // Clear the fields
       setFormFields({
         adj1: '',
@@ -65,43 +65,44 @@ const PlayerSubmissionForm = (props) => {
             // Put your form inputs here... We've put in one below as an example
           }
           {props.fields[0]} 
+          {console.log('PlayerSubmissionForm render props', props)}
           <input
             name="adj1"
             placeholder={props.fields[1].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.adj1.value}/>
+            value={formFields.adj1}/>
           <input
             name="noun1"
             placeholder={props.fields[2].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.noun1.value}/>
+            value={formFields.noun1}/>
           <input
             name="adv"
             placeholder={props.fields[3].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.adv.value}/>
+            value={formFields.adv}/>
           <input
             name="verb"
             placeholder={props.fields[4].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.verb.value}/>
+            value={formFields.verb}/>
           {props.fields[5]} 
           <input
             name="adj2"
             placeholder={props.fields[6].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.adj2.value}/>
+            value={formFields.adj2}/>
           <input
             name="noun2"
             placeholder={props.fields[7].placeholder}
             type="text" 
             onChange={onInputChange}
-            value={formFields.noun2.value}/>
+            value={formFields.noun2}/>
             {props.fields[8]} 
         </div>
 
