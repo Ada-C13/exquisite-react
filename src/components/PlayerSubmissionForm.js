@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = ({ onChangeHandler, onSubmitForm }) => {
-
-  return (
+const PlayerSubmissionForm = ({ showForm, onChangeHandler, onSubmitForm }) => {
+  
+  return showForm ? (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
@@ -63,7 +63,7 @@ const PlayerSubmissionForm = ({ onChangeHandler, onSubmitForm }) => {
         </div>
       </form>
     </div>
-  );
+  ) : null;
 }
 
 

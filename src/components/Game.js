@@ -25,6 +25,7 @@ const Game = () => {
   const [lastSubmit, setLastSubmit] = useState()
   const [allSubmissions, setAllSubmissions] = useState([])
   const [showPoem, setShowPoem] = useState(false)
+  const [showForm, setForm] = useState(true)
 
   const onChangeHandler = (event) => {
     setFormFields({
@@ -53,6 +54,7 @@ const Game = () => {
 
   const onShowPoem = (event) => {
     setShowPoem(true)
+    setForm(false)
   }
 
   return (
@@ -74,6 +76,7 @@ const Game = () => {
       <PlayerSubmissionForm 
         onChangeHandler={onChangeHandler}
         onSubmitForm={onSubmitForm}
+        showForm={showForm}
       />
 
       <FinalPoem 
