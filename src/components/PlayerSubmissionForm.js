@@ -2,12 +2,12 @@ import React from 'react';
 import './PlayerSubmissionForm.css';
 import SubmissionField from './SubmissionField';
 
-const generateFields = (fields, onChangeHandler) => {
+const generateFields = (fields, formFields, onChangeHandler) => {
   const inputFields = fields.map(field => 
     field.key ? 
     <SubmissionField 
       key={field.key}
-      className="PlayerSubmissionFormt__input--invalid"
+      className={formFields[field.key] === '' ? "PlayerSubmissionFormt__input--invalid" : null}
       name={field.key} 
       placeholder={field.placeholder} 
       type="text" 
@@ -16,7 +16,6 @@ const generateFields = (fields, onChangeHandler) => {
     :
     field
   )
-  console.log(inputFields)
   return inputFields
 }
 
@@ -27,7 +26,7 @@ const PlayerSubmissionForm = ({ playerNum,
                                 onChangeHandler, 
                                 onSubmitForm }) => {
 
-  const testFields = generateFields(fields, onChangeHandler)
+  const testFields = generateFields(fields, formFields, onChangeHandler)
   
   return showForm ? (
     <div className="PlayerSubmissionForm">
