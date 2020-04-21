@@ -35,6 +35,7 @@ const PlayerSubmissionForm = (props) => {
         adjective2: '',
         noun2: '',
       })
+      
     nextPlayer(player+1);
   }
 

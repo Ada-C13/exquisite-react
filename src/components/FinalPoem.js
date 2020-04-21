@@ -4,17 +4,16 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
 
   
-
   const onRevealThePoem = (event) => {
     event.preventDefault();
-    props.displayNow(true);
+    props.setAllSentences(true);
   }
-
+  
   return (
-    <div className="FinalPoem" onSubmit={onRevealThePoem}>
+    <div className="FinalPoem" onClick={onRevealThePoem}>
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        <p> {props.displayPoem}</p>
+        {props.poemLines} 
         </section>
 
       <div className="FinalPoem__reveal-btn-container">

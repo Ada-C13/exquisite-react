@@ -10,8 +10,9 @@ const Game = () => {
 
     const [allSentences, newSentences] = useState([]);
 
-    const [display, displayNow] = useState(false);
+    const [showPoem, changeShowPoem] = useState(false);
 
+  
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
         return field.placeholder;
@@ -21,52 +22,26 @@ const Game = () => {
     }).join(" ");
 
 
-  const displayRecentSubmission = (sentence) => {
-    const newSentence = Object.values(sentence).join(' ');
-    changeSentence(newSentence);
-    const newSentenceList = [...allSentences];
-    newSentenceList.push(newSentence);
-    newSentences(newSentenceList);
-  }
+    const displayRecentSubmission = (sentence) => {
 
-  const displayPoem = () => {
-    return allSentences; 
-  }
+      const newSentence = Object.values(sentence).join(' ');
+      changeSentence(newSentence);
+      const newSentenceList = [...allSentences];
+      newSentenceList.push(newSentence);
+      newSentences(newSentenceList);
+
+    }
 
  
-
-  
-    if(display){
-     
-
-      return (
-        <div className="Game">
-          <h2>Game</h2>
-
-          <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
-
-          <p>Please follow the following format for your poetry submission:</p>
-
-          <p className="Game__format-example">
-            { exampleFormat }
-          </p>
-
-          <RecentSubmission sentence={currentSentence}/>
-
-          <PlayerSubmissionForm callbackSentenceObject={displayRecentSubmission}/>
-
-
-          <FinalPoem displayPoem={displayPoem()} />
-
-          
-
-        </div>
-      );
     
-    }else{
+    let poem = '';
+    if(showPoem === true){
+      poem = allSentences.join('');
+    } 
 
-      return (
-      
+    
+    
+    return (
       <div className="Game">
       <h2>Game</h2>
 
@@ -78,15 +53,37 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission sentence={currentSentence}/>
+      <RecentSubmission sentence={ currentSentence }/>
 
-      <PlayerSubmissionForm callbackSentenceObject={displayRecentSubmission}/>
+      <PlayerSubmissionForm callbackSentenceObject={ displayRecentSubmission }/>
 
-      <FinalPoem displayPoem='' />
+      <FinalPoem  setAllSentences={ changeShowPoem } poemLines={poem} />
 
-    </div>)
+    </div>
+    );
+    
 
-    }
+    // return (
+    //   <div className="Game">
+    //     <h2>Game</h2>
+
+    //     <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
+
+    //     <p>Please follow the following format for your poetry submission:</p>
+
+    //     <p className="Game__format-example">
+    //       { exampleFormat }
+    //     </p>
+
+    //     <RecentSubmission sentence={ currentSentence }/>
+
+    //     <PlayerSubmissionForm callbackSentenceObject={displayRecentSubmission}/>
+
+    //     <FinalPoem  setAllSentences={ changeShowPoem } poemLines=''/>
+
+    //   </div>
+    // );
+  
   
 }
 
