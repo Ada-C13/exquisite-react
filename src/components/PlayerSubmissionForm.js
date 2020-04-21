@@ -4,11 +4,11 @@ import './PlayerSubmissionForm.css';
 const PlayerSubmissionForm = (props) => {
 
   const [sentence, setSentence] = useState({
-    adjective1: '',
+    adj1: '',
     noun1: '', 
-    adverb1: '', 
-    verb1: '', 
-    adjective2: '',
+    adv: '', 
+    verb: '', 
+    adj2: '',
     noun2: '',
   });
 
@@ -28,16 +28,17 @@ const PlayerSubmissionForm = (props) => {
     props.callbackSentenceObject(sentence);
     //sets current sentence to empty string 
     setSentence({
-        adjective1: '',
+        adj1: '',
         noun1: '', 
-        adverb1: '', 
-        verb1: '', 
-        adjective2: '',
+        adv: '', 
+        verb: '', 
+        adj2: '',
         noun2: '',
       })
       
     nextPlayer(player+1);
   }
+
   // used for empty input fields 
   const isEmpty = (name) => {
     return name === '';
@@ -51,12 +52,15 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
    
-        {props.fields.map((field) => {
-        return (
-          <div key={`${player}`}>
-           <input name={`$field.key`} placeholder= {`$placeholder`} type="text" value={`$field.key`} onChange={onInput} className={isEmpty(`$key`) ? "empty" : "filled"}/>
-          </div>
-        )
+        {props.fields.map((field, i) => {
+          if (field.key){
+            console.log(sentence[`${field.key}`]);
+            return (
+                <input key={`${i}`} name={`${field.key}`} placeholder= {`${field.placeholder}`} type="text" value={sentence[`${field.key}`]} onChange={onInput} className={isEmpty(sentence[`${field.key}`]) ? "empty" : "filled"}/>
+            );
+          }else{
+            return field;
+          }
         
         })}
 

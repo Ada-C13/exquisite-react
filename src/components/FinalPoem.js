@@ -13,7 +13,15 @@ const FinalPoem = (props) => {
     <div className="FinalPoem" onClick={onRevealThePoem}>
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        {props.poemLines} 
+
+        {props.poemLines.map((line, i) => {
+          return (
+            <div key={`${i}`}> 
+              <p> {line} </p>
+            </div>
+          );
+        })} 
+        
         </section>
 
       <div className="FinalPoem__reveal-btn-container">

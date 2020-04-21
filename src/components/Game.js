@@ -34,10 +34,10 @@ const Game = () => {
 
  
     //poem equals empty string until FinalPoem calls back changeShowPoem to display the poem
-    let poem = '';
+    let poem = [];
     
     if(showPoem === true){
-      poem = allSentences.join('');
+      poem = allSentences;
 
       return (
         <div className="Game">
@@ -59,7 +59,6 @@ const Game = () => {
       );
     } 
 
-    
     
     return (
       <div className="Game">
