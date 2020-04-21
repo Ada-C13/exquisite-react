@@ -32,10 +32,12 @@ const Game = () => {
   const [playerNum, setPlayerNum] = useState(1)
 
   const onChangeHandler = (event) => {
+    console.log("here")
     setFormFields({
       ...formFields,
       [event.target.name]: event.target.value
     })
+    console.log(formFields)
   }
 
   const onSubmitForm = (event) => {
@@ -79,6 +81,7 @@ const Game = () => {
       />
 
       <PlayerSubmissionForm 
+        fields={FIELDS}
         playerNum={playerNum}
         formFields={formFields}
         onChangeHandler={onChangeHandler}
