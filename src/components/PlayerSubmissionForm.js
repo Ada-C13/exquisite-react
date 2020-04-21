@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
+
+  
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
@@ -10,12 +13,42 @@ const PlayerSubmissionForm = () => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
+          The <input
+            name="adjective"
+            placeholder="adjective"
+            type="text"
+            value="adjective"
+            />
+            <input
+            name="noun"
+            placeholder="noun"
+            type="text"
+            value="noun"
+            />
+            <input
+            name="adverb"
+            placeholder="adverb"
+            type="text"
+            value="adverb"
+            />
+            <input
+            name="verb"
+            placeholder="verb"
+            type="text"
+            value="verb"
+            /> the
+            <input
+            name="adjective"
+            placeholder="adjective"
+            type="text"
+            value="adjective"
+            />
           <input
-            placeholder="hm..."
-            type="text" />
+            name="noun"
+            placeholder="noun"
+            type="text" 
+            value="noun"
+            />.
 
         </div>
 
