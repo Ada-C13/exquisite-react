@@ -3,7 +3,7 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
-import PropTypes from 'prop-types';
+
 
 
 const Game = () => {
@@ -115,9 +115,6 @@ const FIELDS = [
 ];
 
 
-Game.propTypes = {
 
-
-}
 
 export default Game;

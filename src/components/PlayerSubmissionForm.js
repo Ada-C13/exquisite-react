@@ -56,7 +56,6 @@ const PlayerSubmissionForm = (props) => {
    
         {props.fields.map((field, i) => {
           if (field.key){
-            console.log(sentence[`${field.key}`]);
             return (
                 <input key={`${i}`} name={`${field.key}`} placeholder= {`${field.placeholder}`} type="text" value={sentence[`${field.key}`]} onChange={onInput} className={isEmpty(sentence[`${field.key}`]) ? "empty" : "filled"}/>
             );
