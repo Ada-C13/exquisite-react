@@ -9,13 +9,10 @@ const Game = () => {
   const [currentPlayer, setCurrentPlayer] = useState(1);
 
   const addPoemLine = (poemLine) => {
-    console.log(poemLine);
     const updatedPoem = [...poem];
     updatedPoem.push(poemLine);
-    console.log(updatedPoem);
     setPoem(updatedPoem);
     setCurrentPlayer(currentPlayer + 1);
-    console.log(generatePoem);
   };
 
   const generatePoem = poem.map((line) => {
@@ -51,7 +48,9 @@ const Game = () => {
         currentPlayer={currentPlayer}
       />
 
-      <FinalPoem />
+      <FinalPoem 
+        poem={generatePoem}
+      />
 
     </div>
   );
