@@ -2,6 +2,11 @@
   line-height: 3rem;
 }
 
+
+input.empty{
+  background-color: rgb(241, 202, 208);
+}
+
 .PlayerSubmissionForm__form {
   margin: 2rem auto 3rem auto;
 }
