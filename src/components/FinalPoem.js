@@ -7,9 +7,9 @@ const FinalPoem = (props) => {
     return <p>{line}</p>
   });
 
-  const onButtonClick = () => {
-    props.onClickCallback();
-  }
+  // const onButtonClick = () => {
+  //   props.onClickCallback();
+  // }
 
   let poem = null;
   let button = (
@@ -18,7 +18,7 @@ const FinalPoem = (props) => {
         type="button" 
         value="We are finished: Reveal the Poem" 
         className="FinalPoem__reveal-btn"
-        onClick={onButtonClick} 
+        onClick={props.onClickCallback} 
       />
     </div>
   );
