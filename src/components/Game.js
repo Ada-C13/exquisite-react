@@ -5,6 +5,11 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  // start player count at 1
+  const [player, setPlayer] = useState(1);
+  const [poemList, setPoemList] = useState([]);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +17,17 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addPoem = poem => {
+    const newPoemList = [...poemList];
+    newPoemList.push(poem);
+    setPoemList(newPoemList);
+    setPlayer(player + 1);
+  }
+
+  // helper function to return last array index
+
+  console.log(poemList);
 
   return (
     <div className="Game">
@@ -25,9 +41,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission lastPoem={poemList[poemList.length-1]}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm player={player} onSubmitCallback={addPoem}/>
 
       <FinalPoem />
 

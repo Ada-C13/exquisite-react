@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
 
   const [formFields, setFormFields] = useState(
     {
@@ -12,30 +13,27 @@ const PlayerSubmissionForm = () => {
       adj2: "",
       noun2: ""
     }
-  )
-  const [player, setPlayer] = useState(1);
+  );
 
   const onInputChange = (e) => {
-    console.log(e);
-    console.log(e.target.name);
-    console.log(e.target.value);
 
     const newFormFields = {
       ...formFields,
-    }
+    };
     
     newFormFields[e.target.name] = e.target.value;
     setFormFields(newFormFields);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
 
-    console.log(e);
-    console.log(formFields);
-    
-    // increments count of player
-    setPlayer(player + 1);
+    event.preventDefault();
+
+    // console.log(event);
+    // console.log(formFields);
+
+    //send data back up to Game if all is well, add validations here
+    props.onSubmitCallback(formFields);
     
     // clears all fields for next player's input
     setFormFields({
@@ -50,55 +48,63 @@ const PlayerSubmissionForm = () => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{player}</h3>
+      <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form
+        className="PlayerSubmissionForm__form"
+        onSubmit={handleSubmit}
+      >
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
           <p>The</p>
 
           <input
+            name="adj1"
             placeholder="adjective"
             type="text"
-            // why value not showing updated field when typing?
-            // value={formFields.adj1} 
+            value={formFields.adj1} 
             onChange={onInputChange}
           />
 
           <input
+            name="noun1"
             placeholder="noun"
             type="text"
-            // value={formFields.noun1} 
+            value={formFields.noun1} 
             onChange={onInputChange}
           />
 
           <input
+            name="adv"
             placeholder="adverb"
             type="text"
-            // value={formFields.adv} 
+            value={formFields.adv} 
             onChange={onInputChange}
           />
 
           <input
+            name="verb"
             placeholder="verb"
             type="text"
-            // value={formFields.verb} 
+            value={formFields.verb} 
             onChange={onInputChange}
           />
 
           <p>the</p>
           <input
+            name="adj2"
             placeholder="adjective"
             type="text"
-            // value={formFields.adj2} 
+            value={formFields.adj2} 
             onChange={onInputChange}
           />
 
           <input
+            name="noun2"
             placeholder="noun"
             type="text"
-            // value={formFields.noun2} 
+            value={formFields.noun2} 
             onChange={onInputChange}
           />
           <p>.</p>
@@ -119,5 +125,9 @@ const PlayerSubmissionForm = () => {
   );
 }
 
+
+PlayerSubmissionForm.propTypes = {
+  onSubmitCallback: PropTypes.func.isRequired,
+};
 
 export default PlayerSubmissionForm;
