@@ -13,6 +13,15 @@ const Game = () => {
     }
   }).join(" ");
 
+  // state for player turn tracking and full poem tracking
+  // player is initialized at 1
+  // poem is initialized as an empty array; objects can get shoved in there in the callback func
+  const [player, setPlayer] = useState(1)
+  const [poem, fullPoem] = useState([])
+
+
+
+  
   return (
     <div className="Game">
       <h2>Game</h2>
