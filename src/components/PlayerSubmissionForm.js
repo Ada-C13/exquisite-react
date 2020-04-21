@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = (props) => {
+const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
 
   // formFields useState hook
   const [formFields, setFormFields ] = useState({
@@ -31,7 +31,7 @@ const PlayerSubmissionForm = (props) => {
     if (!formFieldsArray.includes('')) {
       console.log('Form submitted!');
 
-      props.onSubmitCallback(formFields);
+      onSubmitCallback(formFields);
       // Send data back up to App
       // props.onSubmitCallback(user);
       // clears the fields
@@ -54,7 +54,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{currentPlayerId}</h3>
 
       <form 
         className="PlayerSubmissionForm__form" 
