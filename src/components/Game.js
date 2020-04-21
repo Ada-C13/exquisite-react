@@ -48,7 +48,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {newestLine !== '' && gameCompletion === false  &&
+      {newestLine !== '' && gameCompletion === false &&
         <RecentSubmission newestLine={ newestLine } />
       }
 
@@ -60,7 +60,6 @@ const Game = () => {
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",

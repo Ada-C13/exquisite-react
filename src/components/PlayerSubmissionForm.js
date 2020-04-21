@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
 
@@ -106,6 +107,18 @@ const PlayerSubmissionForm = (props) => {
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  theOne: PropTypes.string.isRequired,
+  adjectiveOne: PropTypes.string.isRequired,
+  nounOne: PropTypes.string.isRequired,
+  adverbOne: PropTypes.string.isRequired,
+  verb: PropTypes.string.isRequired,
+  theTwo: PropTypes.string.isRequired,
+  adjectiveTwo: PropTypes.string.isRequired,
+  nounTwo: PropTypes.string.isRequired,
+  period: PropTypes.string.isRequired
+};
 
 
 export default PlayerSubmissionForm;

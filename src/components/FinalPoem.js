@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-  const [showPoem, setShowPoem] = useState(false);
+  const [showPoem, setShowPoem] = useState(false); // Track showing final poem.
 
   const formattedLines = props.submittedLines.map((line) => {
     return(
@@ -12,8 +12,9 @@ const FinalPoem = (props) => {
     );
   });
 
+  // Handle button click.
   const onClickShowPoem = () => { 
-    setShowPoem(true);
+    setShowPoem(true); 
     
     props.isGameFinished(true);
   };
