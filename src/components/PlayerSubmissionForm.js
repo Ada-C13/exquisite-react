@@ -2,19 +2,33 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
-  
+
   const [submission,setSubmission] = useState({
     adjective:'',
     noun:'',
-    adjective:'',
+    adjective2:'',
     adverb:'',
     verb:'',
     noun2:'',
-  })
+  });
+
+  const onSubmit =(event) => {
+    event.preventDefault();
+    setSubmission({
+      ...submission,
+      adjective:event.target.adjective.value,
+      noun:event.target.noun.value,
+      adjective2:event.target.adjective2.value,
+      adverb:event.target.adverb.value,
+      verb:event.target.verb.value,
+      noun2:event.target.noun2.value,
+    });
+    console.log(submission)
+  };
 
 
   return (
-    <div className="PlayerSubmissionForm">
+    <div className="PlayerSubmissionForm" onSubmit={onSubmit}>
       <h3>Player Submission Form for Player #{  }</h3>
 
       <form className="PlayerSubmissionForm__form" >
