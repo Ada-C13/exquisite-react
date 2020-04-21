@@ -74,6 +74,7 @@ const Game = () => {
       />
 
       <PlayerSubmissionForm 
+        formFields={formFields}
         onChangeHandler={onChangeHandler}
         onSubmitForm={onSubmitForm}
         showForm={showForm}

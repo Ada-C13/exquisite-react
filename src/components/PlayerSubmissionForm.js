@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = ({ showForm, onChangeHandler, onSubmitForm }) => {
+const PlayerSubmissionForm = ({ formFields, showForm, onChangeHandler, onSubmitForm }) => {
   
   return showForm ? (
     <div className="PlayerSubmissionForm">
@@ -21,32 +21,38 @@ const PlayerSubmissionForm = ({ showForm, onChangeHandler, onSubmitForm }) => {
 
           The 
           <input 
+            className={formFields.adj1 === '' ?"PlayerSubmissionFormt__input--invalid" : null}
             name="adj1" 
             placeholder="adjective" 
             type="text" 
             onChange={onChangeHandler}/>
-          <input 
+          <input
+            className={formFields.noun1 === '' ?"PlayerSubmissionFormt__input--invalid" : null} 
             name="noun1" 
             placeholder="noun" 
             type="text" 
             onChange={onChangeHandler}/>
           <input 
+            className={formFields.adv === '' ?"PlayerSubmissionFormt__input--invalid" : null}
             name="adv" 
             placeholder="adverb" 
             type="text" 
             onChange={onChangeHandler}/>
           <input 
+            className={formFields.verb === '' ?"PlayerSubmissionFormt__input--invalid" : null}
             name="verb" 
             placeholder="verb" 
             type="text" 
             onChange={onChangeHandler}/>
           the 
           <input 
+            className={formFields.adj2 === '' ?"PlayerSubmissionFormt__input--invalid" : null}
             name="adj2" 
             placeholder="adjective"
             type="text" 
             onChange={onChangeHandler}/>
           <input 
+            className={formFields.noun2 === '' ?"PlayerSubmissionFormt__input--invalid" : null}
             name="noun2" 
             placeholder="noun" 
             type="text" 
