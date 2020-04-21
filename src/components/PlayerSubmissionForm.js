@@ -4,21 +4,19 @@ import './PlayerSubmissionForm.css';
 const PlayerSubmissionForm = (props) => {
 
   const [formFields, setFormFields] = useState({
+    theOne: 'The',
     adjectiveOne: '',
     nounOne: '',
     adverbOne: '',
     verb: '',
+    theTwo: 'the',
     adjectiveTwo: '',
     nounTwo: ''
   });
 
   const updateField = (event) => {
-    const newFormFields = {
-      ...formFields,
-    }
-  
+    const newFormFields = {...formFields};
     newFormFields[event.target.name] = event.target.value;
-    console.log(newFormFields);
     setFormFields(newFormFields);
   };
 
@@ -29,10 +27,12 @@ const PlayerSubmissionForm = (props) => {
     
     // Reset fields.
     setFormFields({
+      theOne: 'The',
       adjectiveOne: '',
       nounOne: '',
       adverbOne: '',
       verb: '',
+      theTwo: 'the',
       adjectiveTwo: '',
       nounTwo: ''
     });

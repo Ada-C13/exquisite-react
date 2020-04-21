@@ -8,8 +8,10 @@ const savedLines = [];
 let playerNumber = 1;
 
 const saveLine = (submittedLine) => {
-  console.log(submittedLine);
-  playerNumber++;
+  savedLines.push( Object.values(submittedLine).join(' ') ); // Save line.
+  playerNumber++; // Update player number.
+
+  console.log(savedLines);
 };
 
 const Game = () => {
