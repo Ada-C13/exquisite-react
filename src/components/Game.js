@@ -66,6 +66,7 @@ const Game = () => {
 
       <FinalPoem 
         poem={generatePoem}
+        inProgress={inProgress}
         onClickCallback={displayFinalPoem}
       />
 

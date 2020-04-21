@@ -11,6 +11,20 @@ const FinalPoem = (props) => {
     props.onClickCallback();
   }
 
+  let button = (
+    <div className="FinalPoem__reveal-btn-container">
+      <input 
+        type="button" 
+        value="We are finished: Reveal the Poem" 
+        className="FinalPoem__reveal-btn"
+        onClick={onButtonClick} 
+      />
+    </div>
+  );
+
+  if (props.inProgress === "no") {
+    button = null;
+  }
 
   return (
     <div className="FinalPoem">
@@ -19,14 +33,7 @@ const FinalPoem = (props) => {
 
       </section>
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input 
-          type="button" 
-          value="We are finished: Reveal the Poem" 
-          className="FinalPoem__reveal-btn"
-          onClick={onButtonClick} 
-        />
-      </div>
+      {button}
 
       <div>
         {poemLines}
