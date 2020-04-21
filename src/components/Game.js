@@ -13,6 +13,27 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [formFields, setFormFields] = useState({
+    adjectiveOne: '',
+    nounOne: '',
+    adverb: '',
+    adjectiveTwo: '',
+    nounTwo: '',
+  })
+
+  const onChangeHandler = (event) => {
+    setFormFields({
+      ...formFields,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    console.log(formFields)
+    return formFields
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +48,10 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+        onChangeHandler={onChangeHandler}
+        onSubmitForm={onSubmitForm}
+      />
 
       <FinalPoem />
 
