@@ -11,6 +11,7 @@ const PlayerSubmissionForm = (props) => {
     nounTwo: ''
   })
 
+
   const onInputChange = (event) => {
     console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newWordFields = {
@@ -19,25 +20,35 @@ const PlayerSubmissionForm = (props) => {
     newWordFields[event.target.name] = event.target.value;
     setWordFields(newWordFields);
   }
-
+//Submit line
   const onFormSubmit = (event) => {
     event.preventDefault(); 
 
-    props.submitPlayerLine(wordFields);
 
-    setWordFields({
-      adjOne: '',
-      nounOne: '',
-      adverb: '',
-      verb: '',
-      adjTwo: '',
-      nounTwo: ''
-    });
+    if(wordFields.adjOne !== ''){
+      console.log("Word Fields: " + wordFields)
+      console.log("Player Submission Player Number: " + props.playerNumber)
+      props.submitPlayerLine(wordFields);
+
+      
+      setWordFields({
+        adjOne: '',
+        nounOne: '',
+        adverb: '',
+        verb: '',
+        adjTwo: '',
+        nounTwo: ''
+      })
+    }
   };
+
+  
+  
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      //TO DO -- playerNumber++ NOT WORKING 
+      <h3>Player Submission Form for Player #{props.playerNumber}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
@@ -46,10 +57,12 @@ const PlayerSubmissionForm = (props) => {
           {
             // Put your form inputs here... We've put in one below as an example
           }
+          The
           <input type="text" placeholder="adjective" name="adjOne" value={wordFields.adjOne} onChange={onInputChange}/>
           <input type="text" placeholder="noun" name="nounOne" value={wordFields.nounOne} onChange={onInputChange}/>
           <input type="text" placeholder="adverb" name="adverb" value={wordFields.adverb} onChange={onInputChange}/>
           <input type="text" placeholder="verb" name="verb" value={wordFields.verb} onChange={onInputChange}/>
+          the
           <input type="text" placeholder="adjective" name="adjTwo" value={wordFields.adjTwo} onChange={onInputChange}/>
           <input type="text" placeholder="noun" name="nounTwo" value={wordFields.nounTwo} onChange={onInputChange}/>
 
