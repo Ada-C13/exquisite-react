@@ -4,17 +4,21 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
-const savedLines = [];
-let playerNumber = 1;
-
-const saveLine = (submittedLine) => {
-  savedLines.push( Object.values(submittedLine).join(' ') ); // Save line.
-  playerNumber++; // Update player number.
-
-  console.log(savedLines);
-};
-
 const Game = () => {
+  const [savedLines, setSavedLines] = useState([]);
+  let playerNumber = 1;
+
+  const saveLine = (submittedLine) => {
+    const newSavedLines = [...savedLines]; 
+
+    newSavedLines.push( Object.values(submittedLine).join(' ') ); // Save line to collection.
+    playerNumber++; // Update player number.
+
+    console.log(newSavedLines);
+
+    setSavedLines(newSavedLines); // Update lines.
+  };
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -37,9 +41,9 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm onFormSubmit={saveLine} playerNumber={playerNumber} />
+      <PlayerSubmissionForm onFormSubmit={ saveLine } playerNumber={ playerNumber } />
 
-      <FinalPoem />
+      <FinalPoem submittedLines={ savedLines } />
 
     </div>
   );

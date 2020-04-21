@@ -14,12 +14,14 @@ const PlayerSubmissionForm = (props) => {
     nounTwo: ''
   });
 
+  // Update a specific field.
   const updateField = (event) => {
     const newFormFields = {...formFields};
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
   };
 
+  // Submit a line.
   const updateLine = (event) => {
     event.preventDefault(); // Prevents form from trying to send to non-existent server.
 
