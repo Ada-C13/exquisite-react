@@ -2,7 +2,7 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-
+  console.log(props.poemList)
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
