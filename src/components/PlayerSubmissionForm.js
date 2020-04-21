@@ -47,13 +47,52 @@ const PlayerSubmissionForm = (props) => {
       <form className="PlayerSubmissionForm__form" onSubmit={ updateLine }>
         <div className="PlayerSubmissionForm__poem-inputs">
           The
-          <input name="adjectiveOne" value={ formFields.adjectiveOne } type="text" placeholder="adjective" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
-          <input name="nounOne" value={ formFields.nounOne } type="text" placeholder="noun" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
-          <input name="adverbOne" value={ formFields.adverbOne } type="text" placeholder="adverb" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
-          <input name="verb" value={ formFields.verb }  type="text" placeholder="verb" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
+          <input 
+            name="adjectiveOne" 
+            value={ formFields.adjectiveOne } 
+            type="text" 
+            placeholder="adjective" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
+          />
+          <input 
+            name="nounOne" value={ formFields.nounOne } 
+            type="text" 
+            placeholder="noun" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`} 
+          />
+          <input 
+            name="adverbOne" 
+            value={ formFields.adverbOne } 
+            type="text" 
+            placeholder="adverb" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`} 
+          />
+          <input 
+            name="verb" 
+            value={ formFields.verb } 
+            type="text" 
+            placeholder="verb" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
+          />
           the
-          <input name="adjectiveTwo" value={ formFields.adjectiveTwo } type="text" placeholder="adjective" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
-          <input name="nounTwo" value={ formFields.nounTwo } type="text" placeholder="noun" onChange={ updateField } className="PlayerSubmissionFormt__input--invalid" />
+          <input 
+            name="adjectiveTwo" 
+            value={ formFields.adjectiveTwo } 
+            type="text" placeholder="adjective" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
+          />
+          <input 
+            name="nounTwo" 
+            value={ formFields.nounTwo } 
+            type="text" placeholder="noun" 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
+          />
         </div>
 
         <div className="PlayerSubmissionForm__submit">
