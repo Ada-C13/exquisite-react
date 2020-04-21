@@ -14,12 +14,15 @@ const Game = () => {
   }).join(" ");
 
   const [formFields, setFormFields] = useState({
-    adjectiveOne: '',
-    nounOne: '',
-    adverb: '',
-    adjectiveTwo: '',
-    nounTwo: '',
+    adj1: '',
+    noun1: '',
+    adv: '',
+    verb: '',
+    adj2: '',
+    noun2: '',
   })
+  
+  const [curSubmit, setCurSubmit] = useState("")
 
   const onChangeHandler = (event) => {
     setFormFields({
@@ -30,8 +33,18 @@ const Game = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(formFields)
-    return formFields
+    setCurSubmit([
+      "The",
+      formFields.adj1,
+      formFields.noun1,
+      formFields.adv,
+      formFields.verb,
+      "the",
+      formFields.adj2,
+      formFields.noun2,
+      "."
+      ].join(" ")
+    )
   }
 
   return (

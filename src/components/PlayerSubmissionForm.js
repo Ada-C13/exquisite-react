@@ -21,17 +21,17 @@ const PlayerSubmissionForm = ({ onChangeHandler, onSubmitForm }) => {
 
           The 
           <input 
-            name="adjectiveOne" 
+            name="adj1" 
             placeholder="adjective" 
             type="text" 
             onChange={onChangeHandler}/>
           <input 
-            name="nounOne" 
+            name="noun1" 
             placeholder="noun" 
             type="text" 
             onChange={onChangeHandler}/>
           <input 
-            name="adverb" 
+            name="adv" 
             placeholder="adverb" 
             type="text" 
             onChange={onChangeHandler}/>
@@ -42,12 +42,12 @@ const PlayerSubmissionForm = ({ onChangeHandler, onSubmitForm }) => {
             onChange={onChangeHandler}/>
           the 
           <input 
-            name="adjectiveTwo" 
+            name="adj2" 
             placeholder="adjective"
             type="text" 
             onChange={onChangeHandler}/>
           <input 
-            name="nounTwo" 
+            name="noun2" 
             placeholder="noun" 
             type="text" 
             onChange={onChangeHandler}/>
