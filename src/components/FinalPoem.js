@@ -3,6 +3,10 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
+  const prettyFormat = props.allSubmissions.map (submission =>
+      <p key={submission}>{submission}</p>
+    )
+
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
@@ -12,7 +16,7 @@ const FinalPoem = (props) => {
 
       { props.showPoem ? 
         <div>
-        {props.allSubmissions}
+        {prettyFormat}
         </div>
         :
         <div className="FinalPoem__reveal-btn-container">

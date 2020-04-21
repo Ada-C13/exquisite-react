@@ -20,7 +20,3 @@ const App = () => {
 export default App;
 
 
-// As a player, I want to be able to see placeholder text in each text input that describes what kind of word I should fill in.
-
-// As a player who is going after the first player, I want to be able to have a cleared, reset form with no text in the input elements after the first player submitted, so that I can enter in my own submission easily.
-
