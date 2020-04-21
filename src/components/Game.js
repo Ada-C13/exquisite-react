@@ -13,6 +13,25 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [poems,setPoem] = useState({});
+
+  const addPoems = (poem) => {
+ 
+        setPoem({
+          ...poems, 
+          adj1:poem.adj1,
+          noun1:poem.noun1,
+        });
+    
+      console.log(poems);
+
+  };
+
+
+
+
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -23,11 +42,14 @@ const Game = () => {
 
       <p className="Game__format-example">
         { exampleFormat }
+        <br/>
+        {poems.adj1}
+        {poems.noun1}
       </p>
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onSubmitCallBack={addPoems}/>
 
       <FinalPoem />
 
@@ -63,7 +85,7 @@ const FIELDS = [
     key: 'noun2',
     placeholder: 'noun',
   },
-  ".",
+  "."
 ];
 
 export default Game;
