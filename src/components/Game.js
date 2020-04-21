@@ -21,17 +21,15 @@ const Game = () => {
       }
     }).join(" ");
 
-    // getting new sentence from playersubmissionform object and displays using change sentence method
+    // getting new sentence from playerSubmissionForm object passed and displays using change sentence method
     // then adds new sentence to the sentences array to later display for poem 
 
     const displayRecentSubmission = (sentence) => {
-
       const newSentence = Object.values(sentence).join(' ');
       changeSentence(newSentence);
       const newSentenceList = [...allSentences];
       newSentenceList.push(newSentence);
       newSentences(newSentenceList);
-
     }
 
  

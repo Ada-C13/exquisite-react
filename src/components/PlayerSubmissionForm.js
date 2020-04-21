@@ -12,9 +12,6 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   });
 
-
-  
-
   const [player, nextPlayer] = useState(1);
 
   const onInput = (event) => {
@@ -27,9 +24,9 @@ const PlayerSubmissionForm = (props) => {
 
   const onSentenceSubmit = (event) => {
     event.preventDefault();
-
+    //gets current sentence and passes back to Game
     props.callbackSentenceObject(sentence);
-
+    //sets current sentence to empty string 
     setSentence({
         adjective1: '',
         noun1: '', 
@@ -41,7 +38,7 @@ const PlayerSubmissionForm = (props) => {
       
     nextPlayer(player+1);
   }
-
+  // used for empty input fields 
   const isEmpty = (name) => {
     return name === '';
   }
@@ -54,9 +51,7 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
    
-          
         {props.fields.map((field) => {
-      
         return (
           <div key={`${player}`}>
            <input name={`$field.key`} placeholder= {`$placeholder`} type="text" value={`$field.key`} onChange={onInput} className={isEmpty(`$key`) ? "empty" : "filled"}/>
