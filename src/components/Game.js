@@ -45,9 +45,8 @@ const Game = () => {
       }
 
       <PlayerSubmissionForm onFormSubmit={ saveLine } playerNumber={ playerNumber } />
-
+      
       <FinalPoem submittedLines={ savedLines } />
-
     </div>
   );
 }
