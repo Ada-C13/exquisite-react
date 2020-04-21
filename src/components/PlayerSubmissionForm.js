@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = ({ formFields, showForm, onChangeHandler, onSubmitForm }) => {
+const PlayerSubmissionForm = ({ playerNum, 
+                                formFields, 
+                                showForm, 
+                                onChangeHandler, 
+                                onSubmitForm }) => {
   
   return showForm ? (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{playerNum}</h3>
 
       <form className="PlayerSubmissionForm__form" >
 

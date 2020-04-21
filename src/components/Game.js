@@ -26,6 +26,7 @@ const Game = () => {
   const [allSubmissions, setAllSubmissions] = useState([])
   const [showPoem, setShowPoem] = useState(false)
   const [showForm, setForm] = useState(true)
+  const [playerNum, setPlayerNum] = useState(1)
 
   const onChangeHandler = (event) => {
     setFormFields({
@@ -50,6 +51,8 @@ const Game = () => {
 
     setLastSubmit(sentence);
     setAllSubmissions([...allSubmissions, sentence])
+    setPlayerNum(playerNum + 1)
+    console.log(playerNum)
   }
 
   const onShowPoem = (event) => {
@@ -74,6 +77,7 @@ const Game = () => {
       />
 
       <PlayerSubmissionForm 
+        playerNum={playerNum}
         formFields={formFields}
         onChangeHandler={onChangeHandler}
         onSubmitForm={onSubmitForm}
