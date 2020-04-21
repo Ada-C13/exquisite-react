@@ -21,6 +21,8 @@ const Game = () => {
       }
     }).join(" ");
 
+    // getting new sentence from playersubmissionform object and displays using change sentence method
+    // then adds new sentence to the sentences array to later display for poem 
 
     const displayRecentSubmission = (sentence) => {
 
@@ -33,7 +35,7 @@ const Game = () => {
     }
 
  
-    
+    //poem equals empty string until FinalPoem calls back changeShowPoem to display the poem
     let poem = '';
     
     if(showPoem === true){

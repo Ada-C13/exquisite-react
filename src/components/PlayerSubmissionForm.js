@@ -46,25 +46,6 @@ const PlayerSubmissionForm = (props) => {
     return name === '';
   }
 
-  // const generateInputs= () => {
-    
-  //    fields.map((field) => {
-  //     if (field.key) {
-  //       return <input name={`$field.key`} placeholder= {`$placeholder`} type="text" value={`$field.key`} onChange={onInput} className={isEmpty(`$key`) ? "empty" : "filled"}/>;
-  //     } else {
-  //       return field;
-  //     }
-  //   })
-  // }
-
-
-
-
-  
-
-
-
-
   return (
     <div className="PlayerSubmissionForm" onSubmit={onSentenceSubmit}>
       <h3>Player Submission Form for Player #{player}</h3>
@@ -83,15 +64,6 @@ const PlayerSubmissionForm = (props) => {
         )
         
         })}
-          
-
-          
-          {/* The <input  name='adjective1' placeholder="adjective" type="text" value={sentence.adjective1} onChange={onInput} className={isEmpty(sentence.adjective1) ? "empty" : "filled"}/>
-          <input   name='noun1' placeholder="noun" type="text" value={sentence.noun1} onChange={onInput} className={isEmpty(sentence.noun1) ? "empty" : "filled"}/>
-          <input   name='adverb1' placeholder="adverb" type="text" value={sentence.adverb1} onChange={onInput} className={isEmpty(sentence.adverb1) ? "empty" : "filled"}/>
-          <input  name='verb1' placeholder="verb" type="text" value={sentence.verb1} onChange={onInput} className={isEmpty(sentence.verb1) ? "empty" : "filled"}/> the 
-          <input   name='adjective2' placeholder="adjective" type="text" value={sentence.adjective2} onChange={onInput} className={isEmpty(sentence.adjective2) ? "empty" : "filled"}/>
-          <input  name='noun2' placeholder="noun" type="text" value={sentence.noun2} onChange={onInput} className={isEmpty(sentence.noun2) ? "empty" : "filled"}/> */}
 
         </div>
 
