@@ -2,8 +2,16 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
-
   
+  const [submission,setSubmission] = useState({
+    adjective:'',
+    noun:'',
+    adjective:'',
+    adverb:'',
+    verb:'',
+    noun2:'',
+  })
+
 
   return (
     <div className="PlayerSubmissionForm">
@@ -38,13 +46,13 @@ const PlayerSubmissionForm = () => {
             value="verb"
             /> the
             <input
-            name="adjective"
+            name="adjective2"
             placeholder="adjective"
             type="text"
             value="adjective"
             />
           <input
-            name="noun"
+            name="noun2"
             placeholder="noun"
             type="text" 
             value="noun"
