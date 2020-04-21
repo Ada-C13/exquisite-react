@@ -13,6 +13,21 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [poemLine, addPoemLine] = useState('');
+
+  const addLine = (line) => {
+    //  Duplicate People List
+    let newPoemLine = poemLine;
+    Object.values(line).forEach((word) => {
+      newPoemLine += `${word} `
+    })
+    console.log('newPoemLine', newPoemLine)
+    //  Find the max id and add one
+
+    addPoemLine(newPoemLine);
+  };
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +42,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS}/>
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine}/>
 
       <FinalPoem />
 
