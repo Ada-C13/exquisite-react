@@ -3,6 +3,7 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
 
+  // created an emptyForm constant
   const emptyForm = {
     adj1:  '',
     noun1: '',
@@ -12,8 +13,11 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   };
 
+  // created the hook for formFields
   const [formFields, setFormFields] = useState(emptyForm);
 
+  // created onChange events for each
+  // field event.target.value calling event
   const onAdj1Change = (event) => {
     console.log(`Adj1 Field updated ${ event.target.value }`);
     setFormFields({
@@ -21,6 +25,7 @@ const PlayerSubmissionForm = (props) => {
       adj1: event.target.value,
     });
   };
+
   const onNoun1Change = (event) => {
     console.log(`Noun1 Field updated ${ event.target.value }`);
     setFormFields({
@@ -28,6 +33,7 @@ const PlayerSubmissionForm = (props) => {
       noun1: event.target.value,
     });
   };
+
   const onAdvChange = (event) => {
     console.log(`Adv Field updated ${ event.target.value }`);
     setFormFields({
@@ -35,6 +41,7 @@ const PlayerSubmissionForm = (props) => {
       adv: event.target.value,
     });
   };
+
   const onVerbChange = (event) => {
     console.log(`Verb Field updated ${ event.target.value }`);
     setFormFields({
@@ -42,6 +49,7 @@ const PlayerSubmissionForm = (props) => {
       verb: event.target.value,
     });
   };
+
   const onAdj2Change = (event) => {
     console.log(`Adj2 Field updated ${ event.target.value }`);
     setFormFields({
@@ -49,6 +57,7 @@ const PlayerSubmissionForm = (props) => {
       adj2: event.target.value,
     });
   };
+
   const onNoun2Change = (event) => {
     console.log(`Noun2 Field updated ${ event.target.value }`);
     setFormFields({
@@ -57,6 +66,7 @@ const PlayerSubmissionForm = (props) => {
     });
   };
 
+  // created onSubmit event for the form when user clicks submit
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(`Form submitted`);
@@ -66,17 +76,11 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.player}</h3>
+      <h3>Player Submission Form for Player # {props.player}</h3>
+      <form className="PlayerSubmissionForm__form" onSubmit={onSubmit}>
 
-      <form className="PlayerSubmissionForm__form" 
-            onSubmit={onSubmit}
-      >
-
+        {/* hard coded text input with events */}
         <div className="PlayerSubmissionForm__poem-inputs">
-
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           <p>The &nbsp;
           <input
             name="adj1"
@@ -85,6 +89,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder="adjective"
             type="text" />
           &nbsp;
+
           <input
             name="noun1"
             onChange={onNoun1Change}
@@ -92,6 +97,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder="noun"
             type="text" />
           &nbsp;
+
           <input
             name="adv"
             onChange={onAdvChange}
@@ -99,13 +105,17 @@ const PlayerSubmissionForm = (props) => {
             placeholder="adverb"
             type="text" />
           &nbsp;
+
           <input
             name="verb"
             onChange={onVerbChange}
             value={formFields.verb}
             placeholder="verb"
             type="text" />
-          &nbsp; the &nbsp;
+          &nbsp;
+
+          the &nbsp;
+
           <input
             name="adj2"
             onChange={onAdj2Change}
@@ -113,6 +123,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder="adjective"
             type="text" />
           &nbsp;
+
           <input
             name="noun2"
             onChange={onNoun2Change}
@@ -127,10 +138,10 @@ const PlayerSubmissionForm = (props) => {
         <div className="PlayerSubmissionForm__submit">
           <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
+
       </form>
     </div>
   );
 }
-
 
 export default PlayerSubmissionForm;
