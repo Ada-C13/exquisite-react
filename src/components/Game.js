@@ -13,20 +13,6 @@ const Game = () => {
     }
   }).join(" ");
 
-  // const [poemLine, addPoemLine] = useState('');
-
-  // const addLine = (line) => {
-  //   //  Duplicate People List
-  //   let newPoemLine = poemLine;
-  //   Object.values(line).forEach((word) => {
-  //     newPoemLine += `${word} `
-  //   })
-  //   console.log('newPoemLine', newPoemLine)
-  //   //  Find the max id and add one
-
-  //   addPoemLine(newPoemLine);
-  // };
-
   const [poem, setPoemArray] = useState([]);
 
   const addLine = (line) => {
@@ -39,7 +25,14 @@ const Game = () => {
     newPoem.push(newPoemLine);
     newPoemLine = '';
     setPoemArray(newPoem);
+    addPlayer()
   };
+  const [count, setCount] = useState(1);
+  
+  const addPlayer = () => {
+    setCount(count + 1)
+  };
+
 
 
   return (
@@ -56,7 +49,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine}/>
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine} count={count}/>
 
       <FinalPoem />
 

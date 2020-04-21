@@ -13,7 +13,6 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   });
 
-
   const onInputChange = (event) => {
     // Duplicate formFields into new object
     const newFormFields = {
@@ -45,11 +44,10 @@ const PlayerSubmissionForm = (props) => {
       })
     }
   };
-
   
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{props.count}</h3>
 
       <form 
       className="PlayerSubmissionForm__form"
