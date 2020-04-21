@@ -10,16 +10,14 @@ const Game = () => {
   let playerNumber = 1;
 
   const saveLine = (submittedLine) => {
-    const newSavedLines = [...savedLines]; 
+    const newSavedLines = [...savedLines];
     const newestLine = Object.values(submittedLine).join(' ');
 
     newSavedLines.push(newestLine); // Save line to collection.
     playerNumber++; // Update player number.
 
-    console.log(newSavedLines);
-
-    setNewestLine(newestLine);
-    setSavedLines(newSavedLines); // Update lines.
+    setNewestLine(newestLine); // Update most recently submitted line.
+    setSavedLines(newSavedLines); // Update lines submitted so far.
   };
 
   const exampleFormat = FIELDS.map((field) => {
