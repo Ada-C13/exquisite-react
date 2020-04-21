@@ -6,16 +6,19 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const [savedLines, setSavedLines] = useState([]);
+  const [newestLine, setNewestLine] = useState();
   let playerNumber = 1;
 
   const saveLine = (submittedLine) => {
     const newSavedLines = [...savedLines]; 
+    const newestLine = Object.values(submittedLine).join(' ');
 
-    newSavedLines.push( Object.values(submittedLine).join(' ') ); // Save line to collection.
+    newSavedLines.push(newestLine); // Save line to collection.
     playerNumber++; // Update player number.
 
     console.log(newSavedLines);
 
+    setNewestLine(newestLine);
     setSavedLines(newSavedLines); // Update lines.
   };
 
@@ -39,7 +42,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission newestLine={ newestLine } />
 
       <PlayerSubmissionForm onFormSubmit={ saveLine } playerNumber={ playerNumber } />
 
