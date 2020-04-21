@@ -22,7 +22,9 @@ const Game = () => {
     noun2: '',
   })
   
-  const [lastSubmit, setLastSubmit] = useState("")
+  const [lastSubmit, setLastSubmit] = useState()
+  const [allSubmissions, setAllSubmissions] = useState([])
+  const [showPoem, setShowPoem] = useState(false)
 
   const onChangeHandler = (event) => {
     setFormFields({
@@ -33,7 +35,7 @@ const Game = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    setLastSubmit([
+    const sentence = [
       "The",
       formFields.adj1,
       formFields.noun1,
@@ -44,7 +46,13 @@ const Game = () => {
       formFields.noun2,
       "."
       ].join(" ")
-    )
+
+    setLastSubmit(sentence);
+    setAllSubmissions([...allSubmissions, sentence])
+  }
+
+  const onShowPoem = (event) => {
+    setShowPoem(true)
   }
 
   return (
@@ -68,7 +76,11 @@ const Game = () => {
         onSubmitForm={onSubmitForm}
       />
 
-      <FinalPoem />
+      <FinalPoem 
+        allSubmissions={allSubmissions}
+        onShowPoem={onShowPoem}
+        showPoem={showPoem}
+      />
 
     </div>
   );
