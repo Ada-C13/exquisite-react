@@ -22,7 +22,7 @@ const Game = () => {
     noun2: '',
   })
   
-  const [curSubmit, setCurSubmit] = useState("")
+  const [lastSubmit, setLastSubmit] = useState("")
 
   const onChangeHandler = (event) => {
     setFormFields({
@@ -33,7 +33,7 @@ const Game = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    setCurSubmit([
+    setLastSubmit([
       "The",
       formFields.adj1,
       formFields.noun1,
@@ -59,7 +59,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission 
+        lastSubmission={lastSubmit}
+      />
 
       <PlayerSubmissionForm 
         onChangeHandler={onChangeHandler}
