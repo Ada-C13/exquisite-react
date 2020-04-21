@@ -26,17 +26,14 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    console.log('on form submit', onFormSubmit)
     if (formFields.adj1 !== '' && 
     formFields.noun1 !== '' && 
     formFields.adv !==  '' &&  
     formFields.verb !== '' && 
     formFields.adj2 !== '' && 
     formFields.noun2 !== '') {
-      console.log('form field are not empty')
       // Send that data back up to App
       props.onSubmitCallback(formFields)
-      console.log('setFormFields')
       // Clear the fields
       setFormFields({
         adj1: '',
@@ -65,7 +62,6 @@ const PlayerSubmissionForm = (props) => {
             // Put your form inputs here... We've put in one below as an example
           }
           {props.fields[0]} 
-          {console.log('PlayerSubmissionForm render props', props)}
           <input
             name="adj1"
             placeholder={props.fields[1].placeholder}

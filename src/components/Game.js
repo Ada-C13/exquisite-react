@@ -13,18 +13,32 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [poemLine, addPoemLine] = useState('');
+  // const [poemLine, addPoemLine] = useState('');
+
+  // const addLine = (line) => {
+  //   //  Duplicate People List
+  //   let newPoemLine = poemLine;
+  //   Object.values(line).forEach((word) => {
+  //     newPoemLine += `${word} `
+  //   })
+  //   console.log('newPoemLine', newPoemLine)
+  //   //  Find the max id and add one
+
+  //   addPoemLine(newPoemLine);
+  // };
+
+  const [poem, setPoemArray] = useState([]);
 
   const addLine = (line) => {
-    //  Duplicate People List
-    let newPoemLine = poemLine;
+    let newPoemLine = '';
     Object.values(line).forEach((word) => {
       newPoemLine += `${word} `
-    })
-    console.log('newPoemLine', newPoemLine)
-    //  Find the max id and add one
-
-    addPoemLine(newPoemLine);
+    });
+    //  Duplicate Poem Array
+    const newPoem = poem;
+    newPoem.push(newPoemLine);
+    newPoemLine = '';
+    setPoemArray(newPoem);
   };
 
 
