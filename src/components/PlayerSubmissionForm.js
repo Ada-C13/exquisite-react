@@ -19,21 +19,36 @@ const PlayerSubmissionForm = (props) => {
       ...line
     }
 
-    console.log(newLine);
-
     newLine[event.target.name] = event.target.value;
     setLine(newLine);
-
-    console.log(newLine)
   }
 
+  // this function is tracking ON SUBMIT - only when the form is submitted
+  // on submit, we want to:
+  // prevent default
+  // send data to Game through callback function
+  // reset inputs
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    
+    props.addLineCallback(line);
+
+    setLine({
+      adj1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
+    })
+  }
 
   return (
     <div className="PlayerSubmissionForm">
       
-      <h3>Player Submission Form for Player #{}</h3>
+      <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
 

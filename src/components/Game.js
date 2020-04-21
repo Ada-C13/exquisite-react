@@ -14,14 +14,23 @@ const Game = () => {
   }).join(" ");
 
   // state for player turn tracking and full poem tracking
-  // player is initialized at 1
+  // player is initialized at 1 - need to add some 
   // poem is initialized as an empty array; objects can get shoved in there in the callback func
   const [player, setPlayer] = useState(1)
-  const [poem, fullPoem] = useState([])
+  const [poems, setPoems] = useState([])
 
 
+  const addLine = (poem) => {
 
-  
+    const newPoemList = [...poems];
+
+    newPoemList.push(poem);
+
+    setPoems(newPoemList);
+    setPlayer(player + 1);
+  }
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -36,7 +45,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm player={player} addLineCallback={addLine} />
 
       <FinalPoem />
 
