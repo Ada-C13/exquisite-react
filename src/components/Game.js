@@ -3,6 +3,7 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
+import PropTypes from 'prop-types';
 
 
 const Game = () => {
@@ -51,8 +52,6 @@ const Game = () => {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
-  
-        <RecentSubmission sentence={ currentSentence }/>
   
         <FinalPoem  setAllSentences={ changeShowPoem } poemLines={poem} />
   
@@ -114,5 +113,11 @@ const FIELDS = [
   },
   ".",
 ];
+
+
+Game.propTypes = {
+
+
+}
 
 export default Game;
