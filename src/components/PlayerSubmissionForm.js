@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
+
 
 const PlayerSubmissionForm = (props) => {
 
@@ -35,7 +37,7 @@ const PlayerSubmissionForm = (props) => {
         adj2: '',
         noun2: '',
       })
-      
+      //sets player number 
     nextPlayer(player+1);
   }
 
@@ -65,7 +67,6 @@ const PlayerSubmissionForm = (props) => {
         })}
 
         </div>
-
         <div className="PlayerSubmissionForm__submit">
           <input type="submit" value="Submit Sentence" className="PlayerSubmissionForm__submit-btn" /> {/* this type is a 'submit type */}
         </div>
@@ -73,6 +74,11 @@ const PlayerSubmissionForm = (props) => {
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  callbackSentenceObject: PropTypes.func.isRequired,
+};
 
 
 export default PlayerSubmissionForm;

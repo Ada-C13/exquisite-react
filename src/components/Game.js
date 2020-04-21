@@ -4,6 +4,7 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+
 const Game = () => {
 
     const [currentSentence, changeSentence] = useState('');

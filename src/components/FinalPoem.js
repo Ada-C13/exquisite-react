@@ -1,5 +1,6 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
 
@@ -21,7 +22,7 @@ const FinalPoem = (props) => {
             </div>
           );
         })} 
-        
+
         </section>
 
       <div className="FinalPoem__reveal-btn-container">
@@ -29,6 +30,11 @@ const FinalPoem = (props) => {
       </div>
     </div>
   );
+}
+
+FinalPoem.propTypes = {
+  poemLines: PropTypes.array,
+  setAllSentences: PropTypes.func
 }
 
 export default FinalPoem;
