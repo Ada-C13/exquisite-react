@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PlayerSubmissionForm.css';
 import SubmissionField from './SubmissionField';
 
 const generateFields = (fields, onChangeHandler) => {
   const inputFields = fields.map(field => 
     field.key ? 
-     <SubmissionField 
+    <SubmissionField 
       key={field.key}
       className="PlayerSubmissionFormt__input--invalid"
       name={field.key} 
@@ -16,7 +16,7 @@ const generateFields = (fields, onChangeHandler) => {
     :
     field
   )
-
+  console.log(inputFields)
   return inputFields
 }
 
@@ -33,12 +33,10 @@ const PlayerSubmissionForm = ({ playerNum,
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{playerNum}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form id="testForm" className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
           {testFields}
-
         </div>
 
         <div className="PlayerSubmissionForm__submit">

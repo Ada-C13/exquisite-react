@@ -32,12 +32,10 @@ const Game = () => {
   const [playerNum, setPlayerNum] = useState(1)
 
   const onChangeHandler = (event) => {
-    console.log("here")
     setFormFields({
       ...formFields,
       [event.target.name]: event.target.value
     })
-    console.log(formFields)
   }
 
   const onSubmitForm = (event) => {
@@ -57,6 +55,8 @@ const Game = () => {
     setLastSubmit(sentence);
     setAllSubmissions([...allSubmissions, sentence])
     setPlayerNum(playerNum + 1)
+    setFormFields(initialFormState)
+    document.getElementById("testForm").reset()
   }
 
   const onShowPoem = (event) => {
