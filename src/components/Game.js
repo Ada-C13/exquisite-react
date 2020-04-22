@@ -29,8 +29,6 @@ const Game = () => {
     return "The " + line.adj1 + " " + line.noun1 + " " + line.adv + " " + line.verb + " the " + line.adj2 + " " + line.noun2 + "."
   });
 
-  // const lastPoemLine = "The " + props.lastLine.adj1 + " " + props.lastLine.noun1 + " " + props.lastLine.adv + " " + props.lastLine.verb + " the " + props.lastLine.adj2 + " " + props.lastLine.noun2 + ".";
-
   const displayFinalPoem = () => {
     setInProgress("no");
   }
@@ -72,11 +70,9 @@ const Game = () => {
         inProgress={inProgress}
         onClickCallback={displayFinalPoem}
       />
-
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",

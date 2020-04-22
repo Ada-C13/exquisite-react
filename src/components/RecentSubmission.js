@@ -2,15 +2,9 @@ import React from 'react';
 import './RecentSubmission.css';
 
 const RecentSubmission = (props) => {
-
-
   
-  // let lastPoemLine = null;
-  // if (props.player > 1) {
-  //   lastPoemLine = "The " + props.lastLine.adj1 + " " + props.lastLine.noun1 + " " + props.lastLine.adv + " " + props.lastLine.verb + " the " + props.lastLine.adj2 + " " + props.lastLine.noun2 + "."
-  // }
-
   let lastPoemLineBlock = null;
+  
   if (props.player > 1) {
     const lastPoemLine = "The " + props.lastLine.adj1 + " " + props.lastLine.noun1 + " " + props.lastLine.adv + " " + props.lastLine.verb + " the " + props.lastLine.adj2 + " " + props.lastLine.noun2 + "."
 

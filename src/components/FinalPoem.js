@@ -7,10 +7,6 @@ const FinalPoem = (props) => {
     return <p>{line}</p>
   });
 
-  // const onButtonClick = () => {
-  //   props.onClickCallback();
-  // }
-
   let poem = null;
   let button = (
     <div className="FinalPoem__reveal-btn-container">

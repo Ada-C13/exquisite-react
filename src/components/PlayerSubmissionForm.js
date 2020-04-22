@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
+  
   const [newPoemLine, setNewPoemLine] = useState({
     adj1: "",
     noun1: "",
@@ -9,7 +10,7 @@ const PlayerSubmissionForm = (props) => {
     verb: "",
     adj2: "",
     noun2: ""
-  })
+  });
 
   const onInputChange = (event) => {
     const updatedLine = {
@@ -90,22 +91,18 @@ const PlayerSubmissionForm = (props) => {
             onChange={onInputChange}
             className={newPoemLine.noun2 === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
-            
-
         </div>
 
         <div className="PlayerSubmissionForm__submit">
           <input
             type="submit"
             value="Submit Line"
-            className="PlayerSubmissionForm__submit-btn"
-            
+            className="PlayerSubmissionForm__submit-btn" 
           />
         </div>
       </form>
     </div>
   );
 }
-
 
 export default PlayerSubmissionForm;
