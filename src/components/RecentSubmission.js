@@ -5,7 +5,7 @@ const RecentSubmission = ({recentSentence}) => {
   
   console.log(recentSentence)
   const recentSubmission = 
-    "The" + recentSentence.adjOne + recentSentence.nounOne + recentSentence.nounOne + recentSentence.adverb + recentSentence.verb + "the"+ recentSentence.adjTwo + recentSentence.nounTwo + "."
+    "The " + recentSentence.adjOne + " " + recentSentence.nounOne + " " + recentSentence.nounOne + " " + recentSentence.adverb + " " + recentSentence.verb + " the "+ recentSentence.adjTwo + " " + recentSentence.nounTwo + "."
   
 
 
