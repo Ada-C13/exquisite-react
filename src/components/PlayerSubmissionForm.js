@@ -22,10 +22,6 @@ const PlayerSubmissionForm = (props) => {
 
   const onPoemLineSubmit = (event) => {
     event.preventDefault();
-    // if (
-    //   newPoemLine.adj1 !== "" &&
-    //   newPoemLine.noun1 !== ""
-    // ) 
     if (Object.values(newPoemLine).indexOf("") === -1) { 
       props.onSubmitCallback(newPoemLine);
       setNewPoemLine({
@@ -52,6 +48,7 @@ const PlayerSubmissionForm = (props) => {
             type="text"
             value={newPoemLine.adj1}
             onChange={onInputChange}
+            className={newPoemLine.adj1 === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
           <input
             name="noun1"
@@ -59,6 +56,7 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             value={newPoemLine.noun1}
             onChange={onInputChange}
+            className={newPoemLine.noun1 === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
           <input
             name="adv"
@@ -66,6 +64,7 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             value={newPoemLine.adv}
             onChange={onInputChange}
+            className={newPoemLine.adv === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
           <input
             name="verb"
@@ -73,6 +72,7 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             value={newPoemLine.verb}
             onChange={onInputChange}
+            className={newPoemLine.verb === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
           <input
             name="adj2"
@@ -80,6 +80,7 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             value={newPoemLine.adj2}
             onChange={onInputChange}
+            className={newPoemLine.adj2 === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
           <input
             name="noun2"
@@ -87,6 +88,7 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             value={newPoemLine.noun2}
             onChange={onInputChange}
+            className={newPoemLine.noun2 === "" ? "PlayerSubmissionForm__input--invalid" : ""}
           />
             
 
