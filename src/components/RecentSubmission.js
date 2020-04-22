@@ -11,10 +11,10 @@ const RecentSubmission = (props) => {
   })
 
   return (
-    <div className="RecentSubmission">
-      <h3>The Most Recent Submission</h3>
-      <p className="RecentSubmission__submission">{ mostRecent }</p>
-    </div>
+    props.displayRecent && <div className="RecentSubmission">
+    <h3>The Most Recent Submission</h3>
+    <p className="RecentSubmission__submission">{ mostRecent }</p>
+  </div>
   );
 }
 
