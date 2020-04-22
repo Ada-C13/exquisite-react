@@ -54,7 +54,7 @@ const Game = () => {
           {exampleFormat}
         </p>
 
-        <div>{poem.length > 0 && <RecentSubmission />}
+        <div>{poem.length > 0 && <RecentSubmission line={poem[poem.length-1]}/>}
         </div>
         
 
