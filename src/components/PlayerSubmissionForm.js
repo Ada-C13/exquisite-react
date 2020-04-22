@@ -11,6 +11,7 @@ const generateFields = (fields, formFields, onChangeHandler) => {
       name={field.key} 
       placeholder={field.placeholder} 
       type="text" 
+      value={formFields[field.key]}
       onChangeHandler={onChangeHandler}
     />
     :
@@ -25,15 +26,13 @@ const PlayerSubmissionForm = ({ playerNum,
                                 showForm, 
                                 onChangeHandler, 
                                 onSubmitForm }) => {
-
   const testFields = generateFields(fields, formFields, onChangeHandler)
 
-  // Turned off autocomplete because: https://stackoverflow.com/questions/11708092/detecting-browser-autofill/11710295#11710295
   return showForm ? (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{playerNum}</h3>
 
-      <form id="testForm" className="PlayerSubmissionForm__form" autoComplete="off">
+      <form id="testForm" className="PlayerSubmissionForm__form">
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {testFields}
