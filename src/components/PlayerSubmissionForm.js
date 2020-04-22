@@ -111,7 +111,7 @@ const PlayerSubmissionForm = (props) => {
 
 
   return (
-    props.displayPlayerForm ? PlayerSubmissionForm : null
+    props.displayPlayerForm && PlayerSubmissionForm
   );
 }
 

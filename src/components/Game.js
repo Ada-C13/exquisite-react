@@ -21,7 +21,7 @@ const Game = () => {
   const [displayFullPoem, setDisplayFullPoem] = useState(false);
   const [displayPlayerForm, setDisplayPlayerForm] = useState(true);
   const [recent, setRecent] = useState([])
-  const [displayRecent, setdisplayRecent] = useState(true);
+  const [displayRecent, setdisplayRecent] = useState(false);
   
 
   //callback function - this gets passed down to PlayerSubmission Form to use when the submit line button is clicked
@@ -34,6 +34,7 @@ const Game = () => {
     
     setPoems(newPoemList);
     setPlayer(player + 1);
+    setdisplayRecent(true);
     setRecent(recent);
   }
 
