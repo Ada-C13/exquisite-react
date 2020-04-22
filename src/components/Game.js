@@ -12,7 +12,7 @@ const Game = () => {
   const onSubmitFormClickCallback = (line) => {
     const newPoem = [...poem];
     const {adj1, noun1, adv, verb, adj2, noun2} = line;
-    newPoem.push(`The ${adj1} ${noun1} ${adv} ${verb} the ${adj2} ${noun2}`)
+    newPoem.push(`The ${adj1} ${noun1} ${adv} ${verb} the ${adj2} ${noun2}.`)
     // newPoem.push(Object.values(line).join(" "));
     setPoem(newPoem);
     console.log(newPoem);

@@ -11,6 +11,8 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   });
 
+  const {adj1, noun1, adv, verb, adj2, noun2} = line
+
   const onInputChange = (e) => {
     const newSubmission = {
       ...line,
@@ -24,12 +26,12 @@ const PlayerSubmissionForm = (props) => {
     event.preventDefault();
 
     if (
-      line.adj1 !== '' &&
-      line.noun1 !== '' &&
-      line.adv !== '' &&
-      line.verb !== '' &&
-      line.adj2 !== '' &&
-      line.noun2 !== ''
+      adj1 !== '' &&
+      noun1 !== '' &&
+      adv !== '' &&
+      verb !== '' &&
+      adj2 !== '' &&
+      noun2 !== ''
     ) {
       props.onClickCallback(line);
       console.log(line);
@@ -45,7 +47,9 @@ const PlayerSubmissionForm = (props) => {
     };
   };
 
-  
+  const inputDisplay = (name) => {
+    return (name !== "") ? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid";
+  }
 
   return (
     <div className="PlayerSubmissionForm">
@@ -55,42 +59,48 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input 
+            className={inputDisplay(adj1)}
             name="adj1"
             onChange={onInputChange}
             placeholder="adjective"
-            value={line.adj1}
+            value={adj1}
             type="text" />
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input 
+            className={inputDisplay(noun1)}
             name="noun1"
             onChange={onInputChange}
             placeholder="noun"
-            value={line.noun1}
+            value={noun1}
             type="text" />
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input
+            className={inputDisplay(adv)}
             name="adv"
             onChange={onInputChange}
             placeholder="adverb"
-            value={line.adv}
+            value={adv}
             type="text" />
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input
+            className={inputDisplay(verb)}
             name="verb"
             onChange={onInputChange}
             placeholder="verb"
-            value={line.verb}
+            value={verb}
             type="text" />
           the
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input
+            className={inputDisplay(adj2)}
             name="adj2"
             onChange={onInputChange}
             placeholder="adjective"
-            value={line.adj2}
+            value={adj2}
             type="text" />
-          <input className="PlayerSubmissionFormt__input--invalid"
+          <input
+            className={inputDisplay(noun2)}
             name="noun2"
             onChange={onInputChange}
             placeholder="noun"
-            value={line.noun2}
+            value={noun2}
             type="text" />
 
         </div>
