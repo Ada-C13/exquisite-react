@@ -9,6 +9,22 @@ const FinalPoem = (props) => {
     props.setFieldsPoem(true);
   }
 
+  function formatFields(fieldInput){
+    let fullPoem = '';
+    fieldInput = fieldInput.split(" ");
+  
+    for(let i =0; i < fieldInput.length; i++){
+      if(i === 0){
+        fullPoem += ("The " + fieldInput[i]);
+      }else if(i === 3){
+        fullPoem += (" " + fieldInput[i] + " the "); 
+      }else{
+        fullPoem += (" " + fieldInput[i]);
+      }
+    }
+    return fullPoem;
+  }
+
   return (
     <div className="FinalPoem" onClick={onDisplayPoem}>
       <section className="FinalPoem__poem">
@@ -17,7 +33,7 @@ const FinalPoem = (props) => {
         {props.poemLines.map((line, i) => {
           return(
             <div key={`${i}`}>
-              <p>{line}</p>
+              <p>{formatFields(line)}</p>
             </div>
           );
         })}

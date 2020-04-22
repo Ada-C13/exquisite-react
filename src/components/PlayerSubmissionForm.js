@@ -82,7 +82,7 @@ const PlayerSubmissionForm = (props) => {
 }
 
 PlayerSubmissionForm.propTypes = {
-  fields: PropTypes.object.isRequired,
+  fields: PropTypes.array.isRequired,
   onCallbackField: PropTypes.func.isRequired,
 };
 
