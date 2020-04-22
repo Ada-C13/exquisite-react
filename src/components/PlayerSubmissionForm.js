@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
 
-  // formFields useState hook
   const [formFields, setFormFields ] = useState({
     the1: "The",
     adj1: '',
@@ -16,6 +15,27 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
     noun2: ''
   });
 
+  const inputs = {
+    adj1: {
+      validation: /.+/,
+    },
+    noun1: {
+      validation: /.+/,
+    },
+    adv: {
+      validation: /.+/,
+    },
+    verb: {
+      validation: /.+/,
+    },
+    adj2: {
+      validation: /.+/,
+    },
+    noun2: {
+      validation: /.+/,
+    }
+  };
+
   const onInputChange = (event) => {
     const newFormFields = {
       ...formFields,
@@ -25,9 +45,9 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
     setFormFields(newFormFields);
   };
 
-  const textValidation = (data) => {
-    return (data !== '');
-  }
+  const fieldValid = fieldName => {
+    return inputs[fieldName].validation.test(formFields[fieldName]);
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -38,9 +58,6 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
       console.log('Form submitted!');
 
       onSubmitCallback(formFields);
-      // Send data back up to App
-      // props.onSubmitCallback(user);
-      // clears the fields
 
       setFormFields({
         the1: "The",
@@ -55,10 +72,6 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
     }
 
   }
-
-  // event handlers for form
-  // validation function
-  // props
 
   return (
     <div className="PlayerSubmissionForm">
@@ -75,7 +88,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="adjective"
             type="text"
             onChange={onInputChange}
-            className={textValidation(formFields.adj1) ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={fieldValid("adj1") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adj1}
             />
           <input
@@ -83,7 +96,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="noun"
             type="text"
             onChange={onInputChange}
-            className={textValidation(formFields.noun1) ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={fieldValid("noun1") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.noun1}
             />
           <input
@@ -91,7 +104,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="adverb"
             type="text"
             onChange={onInputChange}
-            className={textValidation(formFields.adv) ? "" : "PlayerSubmissionFormt__input--invalid"} 
+            className={fieldValid("adv") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adv}
             />
           <input
@@ -99,7 +112,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="verb"
             type="text" 
             onChange={onInputChange}
-            className={textValidation(formFields.verb) ? "" : "PlayerSubmissionFormt__input--invalid"} 
+            className={fieldValid("verb") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.verb}
             />
           the
@@ -108,7 +121,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="adjective"
             type="text"
             onChange={onInputChange}
-            className={textValidation(formFields.adj2) ? "" : "PlayerSubmissionFormt__input--invalid"} 
+            className={fieldValid("adj2") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adj2}
             />
           <input
@@ -116,7 +129,7 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
             placeholder="noun"
             type="text" 
             onChange={onInputChange}
-            className={textValidation(formFields.noun2) ? "" : "PlayerSubmissionFormt__input--invalid"} 
+            className={fieldValid("noun2") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.noun2}
             />
           .
