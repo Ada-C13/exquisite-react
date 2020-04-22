@@ -8,10 +8,7 @@ const Game = (props) => {
 
   const [savedLines, addSavedLines] = useState([]);
   const [newLine, setNewLine] = useState('');
-  // const [poemResult, setPoemResult] = useState(false);
   const [player, setPlayer] = useState(1);
-  // const [reveal, setReveal] = useState(false);
-  // const [reveal, setReveal] = useState(false);
   const [gameCompletion, setGameCompletion] = useState(false);
 
   const saveLine = (submittedLine) => {
@@ -28,6 +25,13 @@ const Game = (props) => {
   const isGameFinished = (status) => {
     setGameCompletion(status);
   };
+
+  const resetGame = () => {
+    setNewLine("");
+    addSavedLines([]);
+    setPlayer(1);
+    setGameCompletion(false);
+  }
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -49,10 +53,12 @@ const Game = (props) => {
         { exampleFormat }
       </p>
 
+      //REQ: Verify: The form to submit new lines is hidden
       {newLine !== '' && gameCompletion === false &&
         <RecentSubmission newLine={ newLine } />
       }
 
+      //REQ: Verify: The form to submit new lines is hidden
       {gameCompletion === false &&
       <PlayerSubmissionForm submitPlayerLine={saveLine} player={player}/>}
 
@@ -60,7 +66,7 @@ const Game = (props) => {
 
       {/* <input type="button">Reset Game</input> */}
       <div className="ResetGame-btn-container" >
-        <input type="button" value="Reset Game" className="ResetGame-btn" />
+        <input type="button" value="Reset Game" className="ResetGame-btn" onClick={resetGame}/>
       </div>
 
     </div>
