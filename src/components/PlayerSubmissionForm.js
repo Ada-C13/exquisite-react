@@ -18,6 +18,7 @@ const PlayerSubmissionForm = (props) => {
     const newWordFields = {
       ...wordFields,
     }
+
     newWordFields[event.target.name] = event.target.value;
     setWordFields(newWordFields);
   }
@@ -36,7 +37,7 @@ const PlayerSubmissionForm = (props) => {
     event.preventDefault(); 
 
     if(checkFields()){
-      console.log("Word Fields: " + wordFields)
+      // console.log("Word Fields: " + wordFields)
 
       props.submitPlayerLine(wordFields);
       
@@ -62,17 +63,57 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           The
-          <input type="text" placeholder="adjective" name="adjOne" value={wordFields.adjOne} onChange={onInputChange}/>
-          <input type="text" placeholder="noun" name="nounOne" value={wordFields.nounOne} onChange={onInputChange}/>
-          <input type="text" placeholder="adverb" name="adverb" value={wordFields.adverb} onChange={onInputChange}/>
-          <input type="text" placeholder="verb" name="verb" value={wordFields.verb} onChange={onInputChange}/>
+          <input 
+          //REQ: Verify: text inputs are light pink when they are blank
+            style={{ backgroundColor: wordFields.adjOne === '' ? '#E3AFDB' : '#AFE3BE'}} 
+            type="text" 
+            placeholder="adjective" 
+            name="adjOne" 
+            value={wordFields.adjOne} 
+            onChange={onInputChange}/>
+
+          <input 
+            style={{ backgroundColor: wordFields.nounOne === '' ? '#E3AFDB' : '#AFE3BE'}} 
+            type="text" 
+            placeholder="noun" 
+            name="nounOne" 
+            value={wordFields.nounOne} 
+            onChange={onInputChange}/>
+
+          <input 
+            style={{ backgroundColor: wordFields.adverb === '' ? '#E3AFDB' : '#AFE3BE'}} 
+            type="text" 
+            placeholder="adverb" 
+            name="adverb" 
+            value={wordFields.adverb} 
+            onChange={onInputChange}/>
+
+          <input
+            style={{ backgroundColor: wordFields.verb === '' ? '#E3AFDB' : '#AFE3BE'}}  
+            type="text" 
+            placeholder="verb" 
+            name="verb" 
+            value={wordFields.verb} 
+            onChange={onInputChange}/>
+
           the
-          <input type="text" placeholder="adjective" name="adjTwo" value={wordFields.adjTwo} onChange={onInputChange}/>
-          <input type="text" placeholder="noun" name="nounTwo" value={wordFields.nounTwo} onChange={onInputChange}/>
+
+          <input 
+            style={{ backgroundColor: wordFields.adjTwo === '' ? '#E3AFDB' : '#AFE3BE'}} 
+            type="text" 
+            placeholder="adjective" 
+            name="adjTwo" 
+            value={wordFields.adjTwo} 
+            onChange={onInputChange}/>
+
+          <input 
+            style={{ backgroundColor: wordFields.nounTwo === '' ? '#E3AFDB' : '#AFE3BE'}} 
+            type="text" 
+            placeholder="noun" 
+            name="nounTwo" 
+            value={wordFields.nounTwo} 
+            onChange={onInputChange}/>
 
         </div>
 

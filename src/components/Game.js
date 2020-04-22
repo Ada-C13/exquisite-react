@@ -11,6 +11,8 @@ const Game = (props) => {
   // const [poemResult, setPoemResult] = useState(false);
   const [player, setPlayer] = useState(1);
   // const [reveal, setReveal] = useState(false);
+  // const [reveal, setReveal] = useState(false);
+  const [gameCompletion, setGameCompletion] = useState(false);
 
   const saveLine = (submittedLine) => {
     const newSavedLines = [...savedLines]
@@ -21,6 +23,10 @@ const Game = (props) => {
     setNewLine(newestLine);//makes new line out of submission
     addSavedLines(newSavedLines);//update poem with submission
     setPlayer(player + 1);
+  };
+
+  const isGameFinished = (status) => {
+    setGameCompletion(status);
   };
 
   const exampleFormat = FIELDS.map((field) => {
@@ -43,11 +49,19 @@ const Game = (props) => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission newLine={newLine}/>
+      {newLine !== '' && gameCompletion === false &&
+        <RecentSubmission newLine={ newLine } />
+      }
 
-      <PlayerSubmissionForm submitPlayerLine={saveLine} player={player}/>
+      {gameCompletion === false &&
+      <PlayerSubmissionForm submitPlayerLine={saveLine} player={player}/>}
 
-      <FinalPoem savedLines={savedLines}/>
+      <FinalPoem savedLines={savedLines} isGameFinished={isGameFinished}/>
+
+      {/* <input type="button">Reset Game</input> */}
+      <div className="ResetGame-btn-container" >
+        <input type="button" value="Reset Game" className="ResetGame-btn" />
+      </div>
 
     </div>
   );

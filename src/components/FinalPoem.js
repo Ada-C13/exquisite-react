@@ -4,6 +4,7 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
   const [reveal, setReveal] = useState(false);
 
+  //REQ: Verify: The final poem shown has all 3 submitted lines, in the order submitted
   const FinalPoemComponents = props.savedLines.map((line, i) => {
     return (
       <p key={i}>
@@ -12,8 +13,10 @@ const FinalPoem = (props) => {
     );
     });
 
+  //REQ: Manual testing step: Clicking the Reveal the Poem button reveals the section with the header "Final Poem"
   const toReveal = () => {
     setReveal(true);
+    props.isGameFinished(true);
   }
 
   return (
