@@ -18,9 +18,9 @@ const Game = () => {
     }
   }).join(" ");
 
-  const showSubmittedField = (field) => {
+  const showSubmittedField = (fieldInput) => {
     
-    const newField = Object.values(field).join('');
+    const newField = Object.values(fieldInput).join(' ');
     setCurrentField(newField);
 
     const newFieldList = [...allFields];
@@ -28,10 +28,10 @@ const Game = () => {
     setAllFields(newFieldList);
   }
 
-  let poem = '';
+  let poem = [];
 
   if (displayPoem === true) {
-    poem = allFields.join('');
+    poem = allFields;
   
 
     return (
@@ -44,33 +44,33 @@ const Game = () => {
 
         <p className="Game__format-example">{ exampleFormat }</p>
 
-        <RecentSubmission field={ currentField }/>
+        <RecentSubmission fieldInput={ currentField }/>
 
         <FinalPoem setAllFields={ setDisplayPoem } poemLines={ poem }/>
 
       </div>
     );
-  };
+  }
 
   return (
     <div className="Game">
-        <h2>Game</h2>
+      <h2>Game</h2>
 
-        <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
+      <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
 
-        <p>Please follow the following format for your poetry submission:</p>
+      <p>Please follow the following format for your poetry submission:</p>
 
-        <p className="Game__format-example">{ exampleFormat }</p>
+      <p className="Game__format-example">{ exampleFormat }</p>
 
-        <RecentSubmission field={ currentField }/>
+      <RecentSubmission fieldInput={ currentField }/>
 
-        <PlayerSubmissionForm onCallbackField={ showSubmittedField }/>
+      <PlayerSubmissionForm onCallbackField={ showSubmittedField } fields={FIELDS}/>
 
-        <FinalPoem setAllFields={ setDisplayPoem } poemLines={ poem }/>
+      <FinalPoem setAllFields={ setDisplayPoem } poemLines={ poem }/>
 
-      </div>
+    </div>
   );
-};
+}
 
 const FIELDS = [
   "The",
