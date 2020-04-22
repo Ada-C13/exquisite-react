@@ -109,7 +109,7 @@ const Game = () => {
           { exampleFormat }
         </p>
   
-        <FinalPoem poems = {poems} onSubmitCallBack={finishPoem}/>
+        <FinalPoem poems = {poems} isFinished = {isFinish} onSubmitCallBack={finishPoem}/>
   
       </div>
     );
