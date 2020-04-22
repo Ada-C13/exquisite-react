@@ -1,14 +1,9 @@
 import React from 'react';
 import './FinalPoem.css';
 
-const FinalPoem = ({ poemList }) => {
-  // console.log("FinalPoem List as destructured props:");
-  // console.log(poemList);
-  // 0 -> obj
-  // 1 -> obj
+const FinalPoem = ({ poemList, onSubmitCallback, finalReveal }) => {
   
   const showWholePoem = poemList => {
-    
     return poemList.map((item, index) => {
       return (
           <p key={index}>
@@ -18,27 +13,30 @@ const FinalPoem = ({ poemList }) => {
     });
   }
 
-  // const onFinalPoemSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Submitted");
-  //   console.log(props);
-  // }
+  const onFinalPoemSubmit = () => {
+    onSubmitCallback();
+  }
   
   return (
+    // show section if final submit button has been clicked, else show submit button instead
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-          {showWholePoem(poemList)}
-      </section>
+      { finalReveal &&
+        <section className="FinalPoem__poem">
+          <h3>Final Poem</h3>
+            {showWholePoem(poemList)}
+        </section>
+      }
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input
-          type="button"
-          value="We are finished: Reveal the Poem"
-          className="FinalPoem__reveal-btn"
-          // onSubmit={onFinalPoemSubmit}
-        />
-      </div>
+      { !finalReveal && 
+        <div className="FinalPoem__reveal-btn-container">
+          <input
+            type="button"
+            value="We are finished: Reveal the Poem"
+            className="FinalPoem__reveal-btn"
+            onClick={onFinalPoemSubmit}
+          />
+        </div>
+      }
     </div>
   );
 }

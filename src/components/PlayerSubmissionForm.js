@@ -20,19 +20,18 @@ const PlayerSubmissionForm = (props) => {
     const newFormFields = {
       ...formFields,
     };
+
+    //validate for styles, not empty here
     
     newFormFields[e.target.name] = e.target.value;
     setFormFields(newFormFields);
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
+    // console.log("form FIELDS", formFields);
 
-    // console.log(event);
-    // console.log(formFields);
-
-    //send data back up to Game if all is well, add validations here
+    //send data back up to Game if all is well
     props.onSubmitCallback(formFields);
     
     // clears all fields for next player's input
@@ -50,13 +49,9 @@ const PlayerSubmissionForm = (props) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form
-        className="PlayerSubmissionForm__form"
-        onSubmit={handleSubmit}
-      >
+      <form className="PlayerSubmissionForm__form" onSubmit={handleSubmit} >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
           <p>The</p>
 
           <input
@@ -92,6 +87,7 @@ const PlayerSubmissionForm = (props) => {
           />
 
           <p>the</p>
+
           <input
             name="adj2"
             placeholder="adjective"
@@ -107,8 +103,8 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.noun2} 
             onChange={onInputChange}
           />
-          <p>.</p>
 
+          <p>.</p>
         </div>
 
         <div className="PlayerSubmissionForm__submit">
