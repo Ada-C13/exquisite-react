@@ -66,6 +66,16 @@ const PlayerSubmissionForm = (props) => {
     });
   };
 
+  const inputClass = (input) => {
+
+    if (input === ""){
+      return "PlayerSubmissionFormt__input--invalid";
+    } else {
+      return "PlayerSubmissionFormt__input--valid";
+    }
+
+  }
+
   // created onSubmit event for the form when user clicks submit
   const onSubmit = (event) => {
     event.preventDefault();
@@ -75,7 +85,7 @@ const PlayerSubmissionForm = (props) => {
   }
 
   if (props.isFinal){
-    
+
     return (
       <div className="PlayerSubmissionForm">
       </div>
@@ -93,6 +103,7 @@ const PlayerSubmissionForm = (props) => {
             <p>The &nbsp;
             <input
               name="adj1"
+              className={inputClass(formFields.adj1)}
               onChange={onAdj1Change}
               value={formFields.adj1}
               placeholder="adjective"
@@ -101,6 +112,7 @@ const PlayerSubmissionForm = (props) => {
 
             <input
               name="noun1"
+              className={inputClass(formFields.noun1)}
               onChange={onNoun1Change}
               value={formFields.noun1}
               placeholder="noun"
@@ -109,6 +121,7 @@ const PlayerSubmissionForm = (props) => {
 
             <input
               name="adv"
+              className={inputClass(formFields.adv)}
               onChange={onAdvChange}
               value={formFields.adv}
               placeholder="adverb"
@@ -117,6 +130,7 @@ const PlayerSubmissionForm = (props) => {
 
             <input
               name="verb"
+              className={inputClass(formFields.verb)}
               onChange={onVerbChange}
               value={formFields.verb}
               placeholder="verb"
@@ -127,6 +141,7 @@ const PlayerSubmissionForm = (props) => {
 
             <input
               name="adj2"
+              className={inputClass(formFields.adj2)}
               onChange={onAdj2Change}
               value={formFields.adj2}
               placeholder="adjective"
@@ -135,6 +150,7 @@ const PlayerSubmissionForm = (props) => {
 
             <input
               name="noun2"
+              className={inputClass(formFields.noun2)}
               onChange={onNoun2Change}
               value={formFields.noun2}
               placeholder="noun"
