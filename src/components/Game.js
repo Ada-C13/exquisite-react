@@ -62,7 +62,7 @@ const Game = () => {
 
       <PlayerSubmissionForm onSubmitCallBack={addPoems} onPlayer={playerNum}/>
 
-      <FinalPoem />
+      <FinalPoem poems = {poems}/>
 
     </div>
   );
