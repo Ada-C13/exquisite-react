@@ -22,15 +22,21 @@ const PlayerSubmissionForm = (props) => {
 
   const onPoemLineSubmit = (event) => {
     event.preventDefault();
-    props.onSubmitCallback(newPoemLine);
-    setNewPoemLine({
-      adj1: "",
-      noun1: "",
-      adv: "",
-      verb: "",
-      adj2: "",
-      noun2: ""
-    })
+    // if (
+    //   newPoemLine.adj1 !== "" &&
+    //   newPoemLine.noun1 !== ""
+    // ) 
+    if (Object.values(newPoemLine).indexOf("") === -1) { 
+      props.onSubmitCallback(newPoemLine);
+      setNewPoemLine({
+        adj1: "",
+        noun1: "",
+        adv: "",
+        verb: "",
+        adj2: "",
+        noun2: ""
+      })
+    }
   };
 
   return (
