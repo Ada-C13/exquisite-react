@@ -13,15 +13,13 @@ const Game = () => {
     }
   }).join(" ");
 
-  // state for player turn tracking and full poem tracking
-  // player is initialized at 1
-  // poem is initialized as an empty array; objects can get shoved in there in the callback func
+  // state for player, recent line, fullPoem, displays for all components
   const [player, setPlayer] = useState(1);
   const [poems, setPoems] = useState([]);
   const [displayFullPoem, setDisplayFullPoem] = useState(false);
   const [displayPlayerForm, setDisplayPlayerForm] = useState(true);
   const [recent, setRecent] = useState([])
-  const [displayRecent, setdisplayRecent] = useState(false);
+  const [displayRecent, setDisplayRecent] = useState(false);
   
 
   //callback function - this gets passed down to PlayerSubmission Form to use when the submit line button is clicked
@@ -34,16 +32,16 @@ const Game = () => {
     
     setPoems(newPoemList);
     setPlayer(player + 1);
-    setdisplayRecent(true);
+    setDisplayRecent(true);
     setRecent(recent);
   }
 
-  // toggles state to display the poem in FinalPoem
+  // toggles display states onClick of READY button
   const revealPoem = () => {
     if (poems.length >= 1) {
       setDisplayFullPoem(true);
       setDisplayPlayerForm(false);
-      setdisplayRecent(false);
+      setDisplayRecent(false);
     }
   }
 

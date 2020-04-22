@@ -10,6 +10,8 @@ const RecentSubmission = (props) => {
       return <p>{sentence}</p>; 
   })
 
+  // design pattern in React - if the props returns true, then the mostRecent submission renders
+  // the toggle switches in the onClickCallback in FinalPoem
   return (
     props.displayRecent && <div className="RecentSubmission">
     <h3>The Most Recent Submission</h3>
