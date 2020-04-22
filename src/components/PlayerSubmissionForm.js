@@ -3,10 +3,12 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
   const [wordFields, setWordFields] = useState({
+    theOne: 'The',
     adjOne: '',
     nounOne: '',
     adverb: '',
     verb: '',
+    theTwo: 'the',
     adjTwo: '',
     nounTwo: ''
   })

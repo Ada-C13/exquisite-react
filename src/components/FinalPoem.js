@@ -32,5 +32,5 @@ const FinalPoem = (props) => {
 
 export default FinalPoem;
 
-//TO DO: get final poem to reveal
-//TO DO: hide submission form when poem is revealed
+//TO DO: Add "the"s to wordFields
+//TO DO: lock submission form when poem is revealed
