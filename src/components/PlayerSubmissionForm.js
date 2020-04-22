@@ -74,74 +74,84 @@ const PlayerSubmissionForm = (props) => {
     setFormFields(emptyForm);
   }
 
-  return (
-    <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player # {props.player}</h3>
-      <form className="PlayerSubmissionForm__form" onSubmit={onSubmit}>
+  if (props.isFinal){
+    
+    return (
+      <div className="PlayerSubmissionForm">
+      </div>
+    )
 
-        {/* hard coded text input with events */}
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <p>The &nbsp;
-          <input
-            name="adj1"
-            onChange={onAdj1Change}
-            value={formFields.adj1}
-            placeholder="adjective"
-            type="text" />
-          &nbsp;
+  } else {
 
-          <input
-            name="noun1"
-            onChange={onNoun1Change}
-            value={formFields.noun1}
-            placeholder="noun"
-            type="text" />
-          &nbsp;
+    return (
+      <div className="PlayerSubmissionForm">
+        <h3>Player Submission Form for Player # {props.player}</h3>
+        <form className="PlayerSubmissionForm__form" onSubmit={onSubmit}>
 
-          <input
-            name="adv"
-            onChange={onAdvChange}
-            value={formFields.adv}
-            placeholder="adverb"
-            type="text" />
-          &nbsp;
+          {/* hard coded text input with events */}
+          <div className="PlayerSubmissionForm__poem-inputs">
+            <p>The &nbsp;
+            <input
+              name="adj1"
+              onChange={onAdj1Change}
+              value={formFields.adj1}
+              placeholder="adjective"
+              type="text" />
+            &nbsp;
 
-          <input
-            name="verb"
-            onChange={onVerbChange}
-            value={formFields.verb}
-            placeholder="verb"
-            type="text" />
-          &nbsp;
+            <input
+              name="noun1"
+              onChange={onNoun1Change}
+              value={formFields.noun1}
+              placeholder="noun"
+              type="text" />
+            &nbsp;
 
-          the &nbsp;
+            <input
+              name="adv"
+              onChange={onAdvChange}
+              value={formFields.adv}
+              placeholder="adverb"
+              type="text" />
+            &nbsp;
 
-          <input
-            name="adj2"
-            onChange={onAdj2Change}
-            value={formFields.adj2}
-            placeholder="adjective"
-            type="text" />
-          &nbsp;
+            <input
+              name="verb"
+              onChange={onVerbChange}
+              value={formFields.verb}
+              placeholder="verb"
+              type="text" />
+            &nbsp;
 
-          <input
-            name="noun2"
-            onChange={onNoun2Change}
-            value={formFields.noun2}
-            placeholder="noun"
-            type="text" />
-          </p>
+            the &nbsp;
 
-          {/* The adjective noun adverb verb the adjective noun. */}
-        </div>
+            <input
+              name="adj2"
+              onChange={onAdj2Change}
+              value={formFields.adj2}
+              placeholder="adjective"
+              type="text" />
+            &nbsp;
 
-        <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
-        </div>
+            <input
+              name="noun2"
+              onChange={onNoun2Change}
+              value={formFields.noun2}
+              placeholder="noun"
+              type="text" />
+            </p>
 
-      </form>
-    </div>
-  );
+            {/* The adjective noun adverb verb the adjective noun. */}
+          </div>
+
+          <div className="PlayerSubmissionForm__submit">
+            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+          </div>
+
+        </form>
+      </div>
+    );
+  }
 }
 
 export default PlayerSubmissionForm;
