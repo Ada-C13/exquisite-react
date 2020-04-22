@@ -18,10 +18,13 @@ const Game = () => {
     }
   }).join(" ");
 
+
+
   const addPoemPiece= (poem)=> {
     const newPoemPiece = [...poemPieces];
 
     console.log(poem)
+
     newPoemPiece.push({
       ...poem,
       adj1: poem.adj1,
@@ -32,9 +35,10 @@ const Game = () => {
       noun2: poem.noun2,
     });
 
-    setPoemPiece(newPoemPiece);
+    // const format = exampleFormat(newPoemPiece)
+    // console.log(format)
 
-    console.log(newPoemPiece);
+    setPoemPiece(newPoemPiece);
   }
 
   // console.log(poemPieces);
@@ -53,7 +57,7 @@ const Game = () => {
 
       <RecentSubmission poems={poemPiece}/>
 
-      <PlayerSubmissionForm onFormSubmitCallback={addPoemPiece} />
+      <PlayerSubmissionForm onFormSubmitCallback={addPoemPiece} fields={FIELDS} />
 
       <FinalPoem />
 
