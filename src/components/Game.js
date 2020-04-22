@@ -16,16 +16,8 @@ const Game = () => {
   const [poem, setPoemArray] = useState([]);
 
   const addLine = (line) => {
-    let newPoemLine = '';
-    Object.values(line).forEach((word) => {
-      newPoemLine += `${word} `
-    });
-    //  Duplicate Poem Array
-    const newPoem = poem;
-    newPoem.push(newPoemLine);
-    newPoemLine = '';
-    console.log('newPoem', newPoem);
-    setPoemArray(newPoem);
+    poem.push(Object.values(line).join(' '));
+    setPoemArray(poem);
     addPlayer()
   };
 
@@ -36,53 +28,48 @@ const Game = () => {
     setCount(count + 1)
   };
 
-  const [condition, setCondition] = useState(true);
+  const [revealPoem, setRevealPoem] = useState(false);
+
   const onFinalPoemClick = () => {
-    setCondition(false);
+    if (poem.length > 0) {
+    setRevealPoem(true);
+    };
   };
 
-  if (condition) {
+  const header = (
+    <div>
+      <h2>Game</h2>
+      <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
+      <p>Please follow the following format for your poetry submission:</p>
+      <p className="Game__format-example">
+        {exampleFormat}
+      </p>
+    </div>
+  );
+
+  const finalPoem = (
+    <FinalPoem poem={poem} onFinalPoemClick={onFinalPoemClick} revealPoem={revealPoem} />
+  );
+
+  if (revealPoem) {
     return (
       <div className="Game">
-        <h2>Game</h2>
-
-        <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
-
-        <p>Please follow the following format for your poetry submission:</p>
-
-        <p className="Game__format-example">
-          {exampleFormat}
-        </p>
-
-        <div>{poem.length > 0 && <RecentSubmission line={poem[poem.length-1]}/>}
-        </div>
-        
-
-        <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine} count={count} />
-
-        <FinalPoem poem={poem} onFinalPoemClick={onFinalPoemClick} condition={condition}/>
-
+        {header}
+        {finalPoem}
       </div>
     );
   } else {
     return (
       <div className="Game">
-        <h2>Game</h2>
-
-        <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
-
-        <p>Please follow the following format for your poetry submission:</p>
-
-        <p className="Game__format-example">
-          {exampleFormat}
-        </p>
-        <FinalPoem poem={poem} onFinalPoemClick={onFinalPoemClick} condition={condition}/>
-
+        {header}
+        <div>{poem.length > 0 && <RecentSubmission line={poem[poem.length - 1]} />}
+        </div>
+        <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine} count={count} />
+        {finalPoem}
       </div>
     );
   };
 };
-
 
 const FIELDS = [
   "The",
