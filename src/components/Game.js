@@ -45,7 +45,9 @@ const Game = () => {
         {/* { exampleFormat } */}
       </p>
 
-      <RecentSubmission poems={poemPiece}/>
+      <RecentSubmission 
+        poems={poemPiece}
+      />
 
       <PlayerSubmissionForm 
         onFormSubmitCallback={addPoemPiece} 
