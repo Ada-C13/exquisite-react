@@ -13,7 +13,7 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [poems, setPoems] = useState([])
+  const [poems, setPoems] = useState([{id: 0}])
   const createPoems = (poemsCreated) => {
     const newPoems = [...poems];
 
@@ -46,7 +46,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm addPoemCallback={createPoems}  />
+      <PlayerSubmissionForm  recentPoem={poems[poems.length - 1]} addPoemCallback={createPoems}  />
 
       <FinalPoem />
 

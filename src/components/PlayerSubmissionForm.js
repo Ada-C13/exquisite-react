@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
+  const [count, setCount] = useState(1)
   const [formFields, setFormFields] = useState({
     firstAdjective: '',
     firstNoun: '',
@@ -22,6 +23,7 @@ const PlayerSubmissionForm = (props) => {
   }
 
   const onFormSubmit = (event) => {
+    setCount(count + 1)
     event.preventDefault();
 
     props.addPoemCallback(formFields);
@@ -33,12 +35,12 @@ const PlayerSubmissionForm = (props) => {
       verb: '',
       secondAdjective: '',
       secondNoun: '',
-      id: 1,
+      id: props.recentPoem.id + 1
     });
   };
   return (
     <div className="PlayerSubmissionForm" >
-      <h3>Player Submission Form for Player #{formFields.id}</h3>
+      <h3>Player Submission Form for Player #{count}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
