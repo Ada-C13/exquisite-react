@@ -55,7 +55,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.adj1}
             onChange={onInputChange}
             name={Object.keys(lineFields)[0]}
-            placeholder={Object.keys(lineFields)[0]}
+            placeholder={'adjective'}
             type="text" 
             className={lineFields.adj1 === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
           
@@ -63,7 +63,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.noun1}
             onChange={onInputChange}
             name={Object.keys(lineFields)[1]}
-            placeholder={Object.keys(lineFields)[1]}
+            placeholder={'noun'}
             type="text" 
             className={lineFields.noun1 === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
 
@@ -71,7 +71,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.adverb}
             onChange={onInputChange}
             name={Object.keys(lineFields)[2]}
-            placeholder={Object.keys(lineFields)[2]}
+            placeholder={'adverb'}
             type="text" 
             className={lineFields.adverb === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
           
@@ -79,7 +79,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.verb}
             onChange={onInputChange}
             name={Object.keys(lineFields)[3]}
-            placeholder={Object.keys(lineFields)[3]}
+            placeholder={'verb'}
             type="text" 
             className={lineFields.verb === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
 
@@ -89,7 +89,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.adj2}
             onChange={onInputChange}
             name={Object.keys(lineFields)[4]}
-            placeholder={Object.keys(lineFields)[4]}
+            placeholder={'adjective'}
             type="text" 
             className={lineFields.adj2 === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
           
@@ -97,7 +97,7 @@ const PlayerSubmissionForm = (props) => {
             value = {lineFields.noun2}
             onChange={onInputChange}
             name={Object.keys(lineFields)[5]}
-            placeholder={Object.keys(lineFields)[5]}
+            placeholder={'noun'}
             type="text" 
             className={lineFields.noun2 === '' ? "PlayerSubmissionForm__poem-inputs-unfilled" : "PlayerSubmissionForm__poem-inputs-filled"}/>
 

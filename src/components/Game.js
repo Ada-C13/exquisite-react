@@ -55,7 +55,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      { gameOn && submissions.length >=1 ? <RecentSubmission /> : ""}
+      { gameOn && submissions.length >=1 ? <RecentSubmission mostRecentSub={submissions[submissions.length - 1]}/> : ""}
 
       {gameOn ? <PlayerSubmissionForm currentPlayer={currentPlayer} onSubmitCallback={updateSubmissions}/> : ""}
 
