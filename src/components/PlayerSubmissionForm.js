@@ -3,9 +3,22 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
   const [sentence, setSentene] = useState({
-    
+    adjOne: '',
+    nounOne: '',
+    adv: '',
+    verb: '',
+    adjTwo: '',
+    nounTwo: '',
   });
 
+  // all the onChange events are using this same event handler
+  const onInputChange = ((event) => {
+    const newInput = {
+      ...sentence,
+    }
+    newInput[event.target.name] = event.target.value
+    setSentene(newInput)
+  })
 
   return (
     <div className="PlayerSubmissionForm">
@@ -17,30 +30,54 @@ const PlayerSubmissionForm = () => {
           {
             // Put your form inputs here... We've put in one below as an example
           }
-          
+          The
           <input
+            name = 'adjOne'
             placeholder="adjective"
-            type="text" />
+            type="text" 
+            value={sentence.adjOne}
+            onChange={onInputChange}
+            />
 
           <input
-            placeholder="none"
-            type="text" />  
+            name = 'nounOne'
+            placeholder="noun"
+            type="text" 
+            value={sentence.nounOne}
+            onChange={onInputChange}
+            />  
 
           <input
+            name = 'adverb'
             placeholder="adverb"
-            type="text" />
+            type="text" 
+            value={sentence.adverb}
+            onChange={onInputChange}
+          />
 
           <input
+            name = 'verb'
             placeholder="verb"
-            type="text" />
+            type="text" 
+            value={sentence.verb}
+            onChange={onInputChange}
+          />
           the
           <input
-            placeholder="adjective..."
-            type="text" />
+            name = 'adjTwo'
+            placeholder="adjective"
+            type="text"
+            value={sentence.adjTwo}
+            onChange={onInputChange}
+          />
 
           <input
-            placeholder="none"
-            type="text" />
+            name = 'nounTwo'
+            placeholder="noun"
+            type="text" 
+            value={sentence.nounTwo}
+            onChange={onInputChange}
+          />
           .
         </div>
 
