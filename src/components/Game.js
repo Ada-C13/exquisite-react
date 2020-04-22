@@ -45,11 +45,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {sentenceList.length === 0 ? '' : <RecentSubmission  recentSentence={sentenceList[sentenceList.length-1]}/>}
 
       <PlayerSubmissionForm sentences={sentenceList} onFormSubmitCallBack={addSentences}/>
 
-      <FinalPoem />
+      <FinalPoem sentences={sentenceList}/>
 
     </div>
   );
