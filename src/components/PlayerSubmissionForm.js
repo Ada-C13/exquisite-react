@@ -112,5 +112,4 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
-
 export default PlayerSubmissionForm;

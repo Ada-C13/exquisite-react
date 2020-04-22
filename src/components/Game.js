@@ -11,21 +11,15 @@ const Game = () => {
   const [gameOn, setGameOn] = useState(true);
 
   const updateSubmissions = (line) => {
-    // copy current submissions
     const newSubmissions = [];
 
     submissions.forEach( (submission) => {
       newSubmissions.push(submission);
     })
 
-    // add new line 
     newSubmissions.push(line);
 
-
-    // update submissions state
     setSubmissions(newSubmissions); 
-
-    // increase currentPlayer by 1
     setCurrentPlayer(currentPlayer + 1);
   }
 
