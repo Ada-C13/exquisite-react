@@ -5,6 +5,20 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [submissions, setSubmissions] = useState([]);
+
+  const onSubmitCallBack = (box) => {
+    // duplicate current submissions
+    const newSubmissions = [...submissions];
+    newSubmissions.push(box);
+    // update the submissins
+    setSubmissions(newSubmissions);
+    setCurrentPlayer(currentPlayer +1);
+  }
+
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -27,7 +41,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS}  onSubmitCallBack={onSubmitCallBack}/>
 
       <FinalPoem />
 
