@@ -26,7 +26,7 @@ const PlayerSubmissionForm = (props) => {
     event.preventDefault();
     props.onSubmitCallBack(submission);
 
-    if(submission.adj1!=='' && submission.noun1 !== '' && submission.adv !=='' && submission.verb !== '' && submission.adj2 !== '' && submission.noun2 !== ''){
+    if(submission.adj1!=='' || submission.noun1 !== '' || submission.adv !=='' || submission.verb !== '' || submission.adj2 !== '' || submission.noun2 !== ''){
       setSubmission({
         adj1:'',
         noun1:'',
@@ -36,8 +36,10 @@ const PlayerSubmissionForm = (props) => {
         noun2:'',
       });
     };
+  };
 
-    
+  const fieldValid =(input) => {
+    return input.match(/.+/);
   };
 
 
@@ -50,6 +52,7 @@ const PlayerSubmissionForm = (props) => {
         <div className="PlayerSubmissionForm__poem-inputs">
 
           The <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.adj1)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="adj1"
             placeholder="adjective"
@@ -57,6 +60,7 @@ const PlayerSubmissionForm = (props) => {
             value={submission.adj1}
             />
             <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.noun1)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="noun1"
             placeholder="noun"
@@ -64,6 +68,7 @@ const PlayerSubmissionForm = (props) => {
             value={submission.noun1}
             />
             <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.adv)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="adv"
             placeholder="adverb"
@@ -71,6 +76,7 @@ const PlayerSubmissionForm = (props) => {
             value={submission.adv}
             />
             <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.verb)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="verb"
             placeholder="verb"
@@ -78,6 +84,7 @@ const PlayerSubmissionForm = (props) => {
             value={submission.verb}
             /> the
             <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.adj2)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="adj2"
             placeholder="adjective"
@@ -85,6 +92,7 @@ const PlayerSubmissionForm = (props) => {
             value={submission.adj2}
             />
           <input
+            className={`PlayerSubmissionFormt__input${fieldValid(submission.noun2)? "" : "--invalid"}`}
             onChange={onInputChange}
             name="noun2"
             placeholder="noun"
