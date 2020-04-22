@@ -36,11 +36,8 @@ const Game = () => {
     setCount(count + 1)
   };
 
- 
-
   const [condition, setCondition] = useState(true);
   const onFinalPoemClick = () => {
-    console.log('onFinalPoemClick set codnition to false')
     setCondition(false);
   };
 
@@ -57,7 +54,9 @@ const Game = () => {
           {exampleFormat}
         </p>
 
-        <RecentSubmission />
+        <div>{poem.length > 0 && <RecentSubmission />}
+        </div>
+        
 
         <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addLine} count={count} />
 
