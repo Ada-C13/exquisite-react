@@ -4,6 +4,9 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+
+const allpoems = [];
+
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -13,24 +16,28 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [poems,setPoem] = useState({});
+  const [poems,setPoem] = useState(allpoems);
 
   const addPoems = (poem) => {
- 
-        setPoem({
-          ...poems, 
-          adj1:poem.adj1,
-          noun1:poem.noun1,
-        });
+    const newPoems = [...allpoems];
+    // const nextId= Math.max(...newPoems.map( eachpoem => eachpoem.id )) + 1 ; 
+
+    newPoems.push({
+      ...poem,
+      // id:poem.id,
+      adj1:poem.adj1,
+      noun1:poem.noun1,
+      adv:poem.adv,
+      verb:poem.verb,
+      adj2:poem.adj2,
+      noun2:poem.noun2,
+
+    });
     
-      console.log(poems);
+     setPoem(newPoems);
+     console.log(poems);
 
   };
-
-
-
-
-
 
   return (
     <div className="Game">
@@ -42,9 +49,6 @@ const Game = () => {
 
       <p className="Game__format-example">
         { exampleFormat }
-        <br/>
-        {poems.adj1}
-        {poems.noun1}
       </p>
 
       <RecentSubmission />
