@@ -6,11 +6,12 @@ import RecentSubmission from './RecentSubmission';
 
 // const poemLines = [];
 // let playerNum = 1
-let recent = ""
+let recent = "";
+let poemLines = [];
 
 const Game = () => {
-  const [poemList, setPoemList] = useState([])
-  const [player, setPlayer] = useState(1)
+  const [poemList, setPoemList] = useState([]);
+  const [player, setPlayer] = useState(1);
 
   // const recentCall = () => {
   //   if (player > 1){
@@ -52,7 +53,8 @@ const Game = () => {
     console.log(line)
 
     recent = (Object.values(line)).join(" ");
-    console.log(recent)
+    poemLines.push(recent);
+    console.log(poemLines);
   }
 
 
