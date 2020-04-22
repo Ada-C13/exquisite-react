@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
 
@@ -34,7 +35,7 @@ const PlayerSubmissionForm = (props) => {
       verb: '', 
       adj2: '',
       noun2: '',
-    })
+    });
 
     nextPlayer(player + 1);
   }
@@ -77,6 +78,11 @@ const PlayerSubmissionForm = (props) => {
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  onCallbackField: PropTypes.func.isRequired,
+};
 
 
 export default PlayerSubmissionForm;

@@ -33,7 +33,6 @@ const Game = () => {
   if (displayPoem === true) {
     poem = allFields;
   
-
     return (
       <div className="Game">
         <h2>Game</h2>
@@ -42,11 +41,13 @@ const Game = () => {
 
         <p>Please follow the following format for your poetry submission:</p>
 
-        <p className="Game__format-example">{ exampleFormat }</p>
+        <p className="Game__format-example">
+          { exampleFormat }
+        </p>
 
         <RecentSubmission fieldInput={ currentField }/>
 
-        <FinalPoem setAllFields={ setDisplayPoem } poemLines={ poem }/>
+        <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
 
       </div>
     );
@@ -60,13 +61,15 @@ const Game = () => {
 
       <p>Please follow the following format for your poetry submission:</p>
 
-      <p className="Game__format-example">{ exampleFormat }</p>
+      <p className="Game__format-example">
+        { exampleFormat }
+      </p>
 
       <RecentSubmission fieldInput={ currentField }/>
 
       <PlayerSubmissionForm onCallbackField={ showSubmittedField } fields={FIELDS}/>
 
-      <FinalPoem setAllFields={ setDisplayPoem } poemLines={ poem }/>
+      <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
 
     </div>
   );

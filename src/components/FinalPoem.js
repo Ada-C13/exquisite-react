@@ -1,11 +1,12 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
 
   const onDisplayPoem = (event) => {
     event.preventDefault();
-    props.setAllFields(true);
+    props.setFieldsPoem(true);
   }
 
   return (
@@ -32,5 +33,9 @@ const FinalPoem = (props) => {
     </div>
   );
 }
+FinalPoem.propTypes = {
+  poemLines: PropTypes.array,
+  setFieldsPoem: PropTypes.func
+};
 
 export default FinalPoem;
