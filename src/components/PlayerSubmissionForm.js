@@ -13,7 +13,6 @@ const PlayerSubmissionForm = (props) => {
 
   const onUserInputChange = (event) => {
     const { name, value } = event.target;
-  
     const newPoem = {
       ...poem,
     };
@@ -100,19 +99,6 @@ const PlayerSubmissionForm = (props) => {
     }
   };
 
-  //Wave 4 for optional
-  // const fields = props.fields.map((obj) =>
-  //   {if (obj.key) {
-  //     return <input
-  //     placeholder = {obj.placeholder}
-  //     type = "text"
-  //     key = {obj.key}
-  //     // value = {obj.key}
-  //     />
-  //   }else{
-  //     return obj
-  //   }}
-  // );
 
   const main = props.fields.map((obj) => {
     const userInput = poem[obj.key];
@@ -132,6 +118,7 @@ const PlayerSubmissionForm = (props) => {
       return obj;
     }
   });
+
   console.log(main);
 
   return (
