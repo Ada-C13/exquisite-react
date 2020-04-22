@@ -20,8 +20,7 @@ const Game = () => {
   const addSentences = ((sentence) => {
     
     const newSentenceList = [...sentenceList];
-
-    console.log(newSentenceList);
+    // console.log(newSentenceList);
 
     const nextId = newSentenceList.length + 1
 
@@ -29,7 +28,7 @@ const Game = () => {
       ...sentence,
       id: nextId,
     })
-    console.log(newSentenceList);
+    // console.log(newSentenceList);
     saveSentenceList(newSentenceList);
     
   })

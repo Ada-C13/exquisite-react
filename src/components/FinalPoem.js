@@ -3,9 +3,6 @@ import './FinalPoem.css';
 import PropTypes from 'prop-types' 
 
 const FinalPoem = (props) => {
-
-  console.log(props.finalClick)
-
   const finalPoem = props.sentences.map((sentence) => {
     return (
     <p>The {sentence.adjOne} {sentence.nounOne} {sentence.nounOne} {sentence.adverb} {sentence.verb} the {sentence.adjTwo} {sentence.nounTwo}.</p>
@@ -37,7 +34,6 @@ const FinalPoem = (props) => {
 
   const onFinalClick = ( (event) => {
     event.preventDefault();
-    console.log('Final poem:')
     props.onFinalClickCallBack(finalPoem)
   })
 
@@ -50,6 +46,8 @@ const FinalPoem = (props) => {
 
 FinalPoem.propTypes = {
   onFinalClickCallBack:PropTypes.func.isRequired,
+  sentences: PropTypes.array.isRequired,
+  finalClick: PropTypes.bool.isRequired,
 }
 
 export default FinalPoem;

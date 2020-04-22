@@ -24,7 +24,6 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit= ((event) => {
     event.preventDefault();
-    console.log('Submitting form')
 
     props.onFormSubmitCallBack(sentence)
 
@@ -119,6 +118,7 @@ const PlayerSubmissionForm = (props) => {
 
 PlayerSubmissionForm.propTypes = {
   onFormSubmitCallBack: PropTypes.func.isRequired,
+  sentences: PropTypes.array.isRequired,
 }
 
 
