@@ -7,9 +7,8 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
   
   // data of form submission, so that the Game component keeps track of all of the submissions.
-  const poemPieces = []
 
-  const [poemPiece, setPoemPiece] = useState(poemPieces);
+  const [poemPiece, setPoemPiece] = useState([]);
 
   // State to add up 1 to the next player. 
   const [player, setPlayer] = useState(1)
@@ -23,29 +22,16 @@ const Game = () => {
   // }).join(" ");
 
 
-
+  // CallBack func to get the info from the form. 
   const addPoemPiece= (poem)=> {
-    const newPoemPiece = [...poemPieces];
 
+    const newPoemPiece = [...poemPiece];
     console.log(poem)
 
-    newPoemPiece.push({
-      ...poem,
-      adj1: poem.adj1,
-      noun1: poem.noun1,
-      adv: poem.adv,
-      verb: poem.verb,
-      adj2: poem.adj2,
-      noun2: poem.noun2,
-    });
-
-    // const format = exampleFormat(newPoemPiece)
-    // console.log(format)
+    newPoemPiece.push(poem)
     setPlayer(player + 1)
     setPoemPiece(newPoemPiece);
   }
-
-  // console.log(poemPieces);
 
   return (
     <div className="Game">
@@ -61,9 +47,13 @@ const Game = () => {
 
       <RecentSubmission poems={poemPiece}/>
 
-      <PlayerSubmissionForm onFormSubmitCallback={addPoemPiece} fields={FIELDS} currentPlayer={player} />
+      <PlayerSubmissionForm 
+        onFormSubmitCallback={addPoemPiece} 
+        fields={FIELDS} 
+        currentPlayer={player} 
+      />
 
-      <FinalPoem />
+      <FinalPoem poems={poemPiece} />
 
     </div>
   );
