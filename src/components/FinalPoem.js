@@ -20,16 +20,18 @@ const FinalPoem = ({poem}) => {
   const onFinalPoemButtonClick = (event) => {
     event.preventDefault();
     
-    const finalPoem =  finalPoemLines.join('');
-    console.log(`This is ${finalPoem}`);
+    let finalPoem =  finalPoemLines.join('\n');
     setShowPoem(finalPoem);
 
     }
 
+    // {this.dummyDataLoop().map((item, index) => <p key={index}>{item}</p>)}
+
   return (
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
+      <section className="FinalPoem__poem FinalPoem__display-linebreak ">
         <h3>Final Poem</h3>
+        
         {showPoem}
         
       </section>
