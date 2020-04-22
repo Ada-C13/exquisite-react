@@ -7,15 +7,22 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
   const [poem, setPoem] = useState([])
   const [player, setPlayer] = useState(1)
+  const [gameOn, setGameOn] = useState(true)
 
   const onSubmitFormClickCallback = (line) => {
     const newPoem = [...poem];
-    newPoem.push(Object.values(line).join(" "));
+    const {adj1, noun1, adv, verb, adj2, noun2} = line;
+    newPoem.push(`The ${adj1} ${noun1} ${adv} ${verb} the ${adj2} ${noun2}`)
+    // newPoem.push(Object.values(line).join(" "));
     setPoem(newPoem);
     console.log(newPoem);
     const newPlayer = player + 1
     setPlayer(newPlayer);
   }
+
+  const onFinishPoem = () => {
+    setGameOn(false);
+  };
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -37,11 +44,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission lastLine={poem[poem.length - 1]}/>
 
       <PlayerSubmissionForm player={player} onClickCallback={onSubmitFormClickCallback}/>
 
-      <FinalPoem />
+      <FinalPoem isDone={!gameOn} poem={poem} onClickCallback={onFinishPoem}/>
 
     </div>
   );

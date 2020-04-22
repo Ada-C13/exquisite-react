@@ -69,7 +69,7 @@ const PlayerSubmissionForm = (props) => {
             name="adv"
             onChange={onInputChange}
             placeholder="adverb"
-            value={line.name}
+            value={line.adv}
             type="text" />
           <input
             name="verb"
