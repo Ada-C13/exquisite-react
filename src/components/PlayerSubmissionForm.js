@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const CLEARINPUTS = {
@@ -63,9 +63,6 @@ const PlayerSubmissionForm = (props) => {
         return field;
       }
   });
-
-  console.log(props)
-
   return (
     <div className="PlayerSubmissionForm">
       {/* Displaying the number of the current player. props.currentPlayer from Game.js */}
