@@ -5,7 +5,6 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 
-const allpoems = [];
 
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
@@ -16,15 +15,22 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [poems,setPoem] = useState(allpoems);
+  const [poems,setPoem] = useState([]);
+  const [playerNum, setPlayerNum] = useState(1);
 
   const addPoems = (poem) => {
-    const newPoems = [...allpoems];
-    // const nextId= Math.max(...newPoems.map( eachpoem => eachpoem.id )) + 1 ; 
+    
+    let nextId = 0;
+    if(poems.length === 0 ){
+      nextId = 1;
+    }
+    else {
+      nextId= Math.max(...poems.map( eachpoem => eachpoem.id )) + 1 ;
+    };
 
-    newPoems.push({
+    poems.push({
       ...poem,
-      // id:poem.id,
+      id:nextId,
       adj1:poem.adj1,
       noun1:poem.noun1,
       adv:poem.adv,
@@ -34,7 +40,8 @@ const Game = () => {
 
     });
     
-     setPoem(newPoems);
+     setPoem(poems);
+     setPlayerNum(nextId+1);
      console.log(poems);
 
   };
@@ -53,7 +60,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm onSubmitCallBack={addPoems}/>
+      <PlayerSubmissionForm onSubmitCallBack={addPoems} onPlayer={playerNum}/>
 
       <FinalPoem />
 

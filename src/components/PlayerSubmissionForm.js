@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
 
-  let idTrack = 0;
   const [submission,setSubmission] = useState({
     adj1:'',
     noun1:'',
@@ -44,7 +43,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm" onSubmit={onSubmit}>
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{ props.onPlayer }</h3>
 
       <form className="PlayerSubmissionForm__form" >
 
