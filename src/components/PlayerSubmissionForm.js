@@ -3,27 +3,27 @@ import "./PlayerSubmissionForm.css";
 
 const PlayerSubmissionForm = () => {
   const initialState = {
-    adjective: "",
+    adj1: "",
     noun: "",
-    adverb: "",
+    adv: "",
     verb: "",
-    adjectiveTwo: "",
-    nounTwo: "",
+    adj2: "",
+    noun2: "",
   };
-  const [formFields, setFormFields] = useState(initialState);
+  const [sentence, setSentence] = useState(initialState);
 
   const onInputChange = (event) => {
     console.log(`Changing field ${event.target.name} to ${event.target.value}`);
     const newFormField = {
-      ...formFields,
+      ...sentence,
     };
     newFormField[event.target.name] = event.target.value;
-    setFormFields(newFormField);
+    setSentence(newFormField);
   };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    setFormFields({
+    setSentence({
       ...initialState,
     });
   };
@@ -39,40 +39,40 @@ const PlayerSubmissionForm = () => {
           }
           The
           <input
-            name="adjective"
+            name="adj1"
             placeholder="adjective"
             onChange={onInputChange}
-            value={formFields.adjective}
+            value={sentence.adj1}
           />
           <input
             name="noun"
             onChange={onInputChange}
             placeholder="noun"
-            value={formFields.noun}
+            value={sentence.noun}
           />
           <input
             onChange={onInputChange}
             placeholder="adverb"
-            value={formFields.adverb}
+            value={sentence.adv}
           />
           <input
             name="adverb"
             onChange={onInputChange}
-            placeholder="verb"
-            value={formFields.verb}
+            placeholder="adverb"
+            value={sentence.verb}
           />
           the
           <input
-            name="adjectiveTwo"
+            name="adj2"
             onChange={onInputChange}
             placeholder="adjective"
-            value={formFields.adjectiveTwo}
+            value={sentence.adj2}
           />
           <input
             name="nounTwo"
             onChange={onInputChange}
             placeholder="noun"
-            value={formFields.nounTwo}
+            value={sentence.noun2}
           />
         </div>
         <div className="PlayerSubmissionForm__submit">
