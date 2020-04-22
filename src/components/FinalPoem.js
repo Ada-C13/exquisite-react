@@ -16,7 +16,6 @@ const FinalPoem = (props) => {
     </div>
   );
   } else {
-    console.log('render final')
     return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">

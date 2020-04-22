@@ -5,12 +5,15 @@ import PropTypes from 'prop-types';
 const PlayerSubmissionForm = (props) => {
 
   const[formFields, setFormFields] = useState({
+    The: 'The',
     adj1: '',
     noun1: '',
     adv: '',
     verb: '',
+    the: 'the',
     adj2: '',
     noun2: '',
+    dot: '.',
   });
 
   const onInputChange = (event) => {
@@ -35,12 +38,15 @@ const PlayerSubmissionForm = (props) => {
       props.onSubmitCallback(formFields)
       // Clear the fields
       setFormFields({
+        The: 'The',
         adj1: '',
         noun1: '',
         adv: '',
         verb: '',
+        the: 'the',
         adj2: '',    
-        noun2: '',        
+        noun2: '',
+        dot: '.',        
       })
     }
   };
@@ -60,6 +66,10 @@ const PlayerSubmissionForm = (props) => {
             // Put your form inputs here... We've put in one below as an example
           }
           {props.fields[0]} 
+          <input
+            name="the"
+            type="hidden"
+            value={props.fields[0]}/>
           <input
             name="adj1"
             placeholder={props.fields[1].placeholder}
@@ -86,6 +96,10 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.verb}/>
           {props.fields[5]} 
           <input
+            name="the"
+            type="hidden"
+            value={props.fields[5]}/>
+          <input
             name="adj2"
             placeholder={props.fields[6].placeholder}
             type="text" 
@@ -97,6 +111,10 @@ const PlayerSubmissionForm = (props) => {
             type="text" 
             onChange={onInputChange}
             value={formFields.noun2}/>
+          <input
+            name="dot"
+            type="hidden"
+            value={props.fields[8]}/>
             {props.fields[8]} 
         </div>
 
@@ -110,7 +128,8 @@ const PlayerSubmissionForm = (props) => {
 
 PlayerSubmissionForm.propTypes = {
   onSubmitCallback: PropTypes.func.isRequired,
+  fields: PropTypes.array.isRequired,
+  count: PropTypes.number.isRequired,
 }
-
 
 export default PlayerSubmissionForm;
