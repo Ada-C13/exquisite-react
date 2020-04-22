@@ -10,6 +10,8 @@ const PlayerSubmissionForm = (props) => {
     adj2: '',
     noun2: '',
   })
+
+  const [valid, setValid] = useState(false);
   
 
   // this function is tracking ON CHANGE
@@ -21,6 +23,7 @@ const PlayerSubmissionForm = (props) => {
 
     newLine[event.target.name] = event.target.value;
     setLine(newLine);
+    setValid(true);
   }
 
   // this function is tracking ON SUBMIT - only when the form is submitted
@@ -44,7 +47,7 @@ const PlayerSubmissionForm = (props) => {
       
       <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
+      <form className='PlayerSubmissionForm__form' onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
@@ -55,6 +58,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adj1}
             type="text" 
             onChange={onInputChange}
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <input
@@ -63,6 +67,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.noun1}
             type="text" 
             onChange={onInputChange}
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <input
@@ -71,6 +76,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adverb}
             type="text" 
             onChange={onInputChange} 
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <input
@@ -79,6 +85,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.verb}
             type="text" 
             onChange={onInputChange} 
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <span>the</span>
@@ -89,6 +96,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adj2}
             type="text" 
             onChange={onInputChange}
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <input
@@ -97,6 +105,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.noun2}
             type="text" 
             onChange={onInputChange}
+            className={valid ? null : `PlayerSubmissionForm__input--invalid`}
           />
 
           <span>.</span>
