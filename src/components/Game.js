@@ -13,8 +13,20 @@ const Game = () => {
     }
   }).join(" ");
 
-  const addSubmission = (submission) => {
-    console.log(submission)
+  const [submissions, setSubmissions] = useState([])
+  const [player, setPlayer] = useState(1)
+  const [revel, setRevel] = useState(false)
+
+  const onSubmission = event => {
+    console.log("Poem Submitted")
+    let poemString = `The ${event.adjective1} ${event.noun1} ${event.adverb} ${event.verb} the ${event.adjective2} ${event.noun2}`
+    setSubmissions([...submissions, poemString])
+    setPlayer(prevPlayer => prevPlayer + 1)
+  }
+
+  const revealPoem = () => {
+    console.log("reveal the poem")
+    setRevel(true)
   }
 
   return (
@@ -31,9 +43,9 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm addSubmissionCallback={addSubmission}/>
+      <PlayerSubmissionForm addSubmissionCallback={onSubmission} player={player}/>
 
-      <FinalPoem />
+      <FinalPoem addRevealPoemCallBack={revealPoem} poems={submissions} revel={revel}/>
 
     </div>
   );

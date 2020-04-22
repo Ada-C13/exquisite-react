@@ -15,7 +15,6 @@ const PlayerSubmissionForm = (props) => {
   })
 
   const onInputChange = event => {
-    console.log(`Changing field ${event.target.name} to ${event.target.value}`);
     const newFormFields = {
       ...formFields,
     }
@@ -25,7 +24,6 @@ const PlayerSubmissionForm = (props) => {
   }
 
   const onFormSubmit = event => {
-    console.log("submitting form")
     event.preventDefault();
     props.addSubmissionCallback(formFields);
 
@@ -42,7 +40,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{props.player}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
