@@ -6,12 +6,52 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+    return field.key ? field.placeholder : field;
+  }).join(" ")
+
+  const initialFormState = () => {
+    return {adj1:'', noun1: '', adv: '', verb: '', adj2: '', noun2: ''};
+  }
+
+  const [formFields, setFormFields] = useState(initialFormState);
+  const [lastSubmit, setLastSubmit] = useState();
+  const [allSubmissions, setAllSubmissions] = useState([]);
+  const [showPoem, setShowPoem] = useState(false);
+  const [showForm, setForm] = useState(true);
+  const [playerNum, setPlayerNum] = useState(1);
+
+  const onChangeHandler = (event) => {
+    setFormFields({
+      ...formFields,
+      [event.target.name]: event.target.value
+    });
+  }
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    const sentence = [
+      "The",
+      formFields.adj1,
+      formFields.noun1,
+      formFields.adv,
+      formFields.verb,
+      "the",
+      formFields.adj2,
+      formFields.noun2,
+      "."
+      ].join(" ");
+
+    setFormFields(initialFormState);
+    setLastSubmit(sentence);
+    setAllSubmissions([...allSubmissions, sentence]);
+    setPlayerNum(playerNum + 1);
+    document.getElementById("testForm").reset();
+  }
+
+  const onShowPoem = (event) => {
+    setShowPoem(true);
+    setForm(false);
+  }
 
   return (
     <div className="Game">
@@ -25,16 +65,28 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission 
+        lastSubmission={lastSubmit}
+      />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+        fields={FIELDS}
+        playerNum={playerNum}
+        formFields={formFields}
+        onChangeHandler={onChangeHandler}
+        onSubmitForm={onSubmitForm}
+        showForm={showForm}
+      />
 
-      <FinalPoem />
+      <FinalPoem 
+        allSubmissions={allSubmissions}
+        onShowPoem={onShowPoem}
+        showPoem={showPoem}
+      />
 
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",
