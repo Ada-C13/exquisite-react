@@ -8,7 +8,7 @@ const PlayerSubmissionForm = (props) => {
     adverb: '',
     verb: '',
     adj2: '',
-    noun2: ''
+    noun2: '',
   })
   
 
@@ -24,10 +24,6 @@ const PlayerSubmissionForm = (props) => {
   }
 
   // this function is tracking ON SUBMIT - only when the form is submitted
-  // on submit, we want to:
-  // prevent default
-  // send data to Game through callback function
-  // reset inputs
   const onFormSubmit = (event) => {
     event.preventDefault();
     
@@ -39,7 +35,7 @@ const PlayerSubmissionForm = (props) => {
       adverb: '',
       verb: '',
       adj2: '',
-      noun2: ''
+      noun2: '',
     })
   }
 
