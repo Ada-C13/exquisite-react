@@ -4,21 +4,16 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
 
   const prettyFormat = props.allSubmissions.map ((submission,index) =>
-      <p key={index}>{submission}</p>
-    )
+    <p key={index}>{submission}</p>
+  )
 
-  return (
-    <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-
-      </section>
-
-      { props.showPoem ? 
-        <div>
-        {prettyFormat}
-        </div>
-        :
+  const showFinalPoem = () => {
+    if (props.showPoem) {
+      return (
+        <div> {prettyFormat} </div>
+      );
+    } else {
+      return (
         <div className="FinalPoem__reveal-btn-container">
           <input 
             type="button" 
@@ -26,9 +21,20 @@ const FinalPoem = (props) => {
             className="FinalPoem__reveal-btn" 
             onClick={props.onShowPoem}/>
         </div>
-      }
+      );
+    }
+  }
+
+  return (
+    <div className="FinalPoem">
+      <section className="FinalPoem__poem">
+        <h3>Final Poem</h3>
+      </section>
+
+      {showFinalPoem()}
     </div>
   );
+  
 }
 
 export default FinalPoem;
