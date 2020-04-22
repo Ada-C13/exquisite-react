@@ -1,6 +1,7 @@
 import React from 'react';
 import './PlayerSubmissionForm.css';
 import SubmissionField from './SubmissionField';
+import PropTypes from 'prop-types';
 
 const generateFields = (fields, formFields, onChangeHandler) => {
   const inputFields = fields.map(field => 
@@ -54,6 +55,15 @@ const PlayerSubmissionForm = ({ playerNum,
   }
 
   return showForm ? subForm() : null;
-}
+};
+
+PlayerSubmissionForm.propTypes = {
+  playerNum: PropTypes.number.isRequired,
+  fields: PropTypes.array.isRequired,
+  formFields: PropTypes.object.isRequired,
+  showForm: PropTypes.bool.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
+};
 
 export default PlayerSubmissionForm;
