@@ -8,6 +8,7 @@ const Game = () => {
 
   const [currentField, setCurrentField] = useState('');
   const [allFields, setAllFields] = useState([]);
+  const [display, setDisplay] = useState(false);
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -24,30 +25,34 @@ const Game = () => {
 
     const newFieldList = [...allFields];
     newFieldList.push(newField);
+    setAllFields(newFieldList);
   }
 
-  return (
-    <div className="Game">
-      <h2>Game</h2>
+  let poem = '';
 
-      <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
+  if (display === true) {
+    poem = allFields.join('');
+  }
 
-      <p>Please follow the following format for your poetry submission:</p>
+    return (
+      <div className="Game">
+        <h2>Game</h2>
 
-      <p className="Game__format-example">
-        { exampleFormat }
-      </p>
+        <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
 
-      <RecentSubmission field={currentField}/>
+        <p>Please follow the following format for your poetry submission:</p>
 
-      <PlayerSubmissionForm onCallbackField={showSubmittedField}/>
+        <p className="Game__format-example">{ exampleFormat }</p>
 
-      <FinalPoem />
+        <RecentSubmission field={ currentField }/>
 
-    </div>
-  );
-}
+        <PlayerSubmissionForm onCallbackField={ showSubmittedField }/>
 
+        <FinalPoem setAllFields={ setDisplay } poemLines={ poem }/>
+
+      </div>
+    );
+};
 
 const FIELDS = [
   "The",
