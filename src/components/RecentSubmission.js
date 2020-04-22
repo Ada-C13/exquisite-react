@@ -1,5 +1,6 @@
 import React from 'react';
 import './RecentSubmission.css';
+import PropTypes from 'prop-types';
 
 const RecentSubmission = (props) => {
   
@@ -20,5 +21,10 @@ const RecentSubmission = (props) => {
     <div>{lastPoemLineBlock}</div>
   );
 }
+
+RecentSubmission.propTypes = {
+  player: PropTypes.number.isRequired,
+  lastPoemLineBlock: PropTypes.object
+};
 
 export default RecentSubmission;
