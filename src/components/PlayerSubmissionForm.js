@@ -53,6 +53,8 @@ const PlayerSubmissionForm = (props) => {
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
+
+          
    
         {props.fields.map((field, i) => {
           if (field.key){

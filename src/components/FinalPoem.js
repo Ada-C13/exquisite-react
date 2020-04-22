@@ -9,6 +9,27 @@ const FinalPoem = (props) => {
     event.preventDefault();
     props.setAllSentences(true);
   }
+
+  function formatSentence(sentence){
+
+    let fullSentence = '';
+    sentence = sentence.split(" ");
+    for(let i = 0; i < sentence.length; i++){
+      
+      if(i === 0){
+        fullSentence += ("The " + sentence[i]);
+
+      }else if(i === 3){
+        fullSentence += (" " +  sentence[i] + " the ");
+
+      }else{
+        fullSentence +=  (" " + sentence[i]);
+      }
+      
+    }
+    return fullSentence;
+  
+  }
   
   return (
     <div className="FinalPoem" onClick={onRevealThePoem}>
@@ -18,7 +39,7 @@ const FinalPoem = (props) => {
         {props.poemLines.map((line, i) => {
           return (
             <div key={`${i}`}> 
-              <p> {line} </p>
+              <p> {formatSentence(line)} </p>
             </div>
           );
         })} 
