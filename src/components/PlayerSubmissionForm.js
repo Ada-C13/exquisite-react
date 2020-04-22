@@ -6,10 +6,12 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
 
   // formFields useState hook
   const [formFields, setFormFields ] = useState({
+    the1: "The",
     adj1: '',
     noun1: '',
     adv: '',
     verb: '',
+    the2: 'the',
     adj2: '',
     noun2: ''
   });
@@ -37,10 +39,12 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
       // clears the fields
 
       setFormFields({
+        the1: "The",
         adj1: '',
         noun1: '',
         adv: '',
         verb: '',
+        the2: 'the',
         adj2: '',
         noun2: ''
       });
