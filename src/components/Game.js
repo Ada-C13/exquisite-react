@@ -17,8 +17,6 @@ const Game = () => {
   const createPoems = (poemsCreated) => {
     const newPoems = [...poems];
 
-    const nextId = Math.max([...poems].map((poem) => poem.id)) + 1
-
     newPoems.push({
       firstAdjective: poemsCreated.firstAdjective,
       firstNoun: poemsCreated.firstNoun,
@@ -26,7 +24,6 @@ const Game = () => {
       verb: poemsCreated.verb,
       secondAdjective: poemsCreated.secondAdjective,
       secondNoun: poemsCreated.secondNoun,
-      id: nextId
     });
 
     setPoems(newPoems);

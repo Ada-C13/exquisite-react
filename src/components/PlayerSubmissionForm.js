@@ -10,7 +10,6 @@ const PlayerSubmissionForm = (props) => {
     verb: '',
     secondAdjective: '',
     secondNoun: '',
-    id: 1
   });
 
   const onInputChange = (event) => {
@@ -35,7 +34,6 @@ const PlayerSubmissionForm = (props) => {
       verb: '',
       secondAdjective: '',
       secondNoun: '',
-      id: props.recentPoem.id + 1
     });
   };
   return (
