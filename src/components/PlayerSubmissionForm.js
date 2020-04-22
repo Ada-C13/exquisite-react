@@ -16,8 +16,8 @@ const generateFields = (fields, formFields, onChangeHandler) => {
     />
     :
     field
-  )
-  return inputFields
+  );
+  return inputFields;
 }
 
 const PlayerSubmissionForm = ({ playerNum, 
@@ -26,10 +26,12 @@ const PlayerSubmissionForm = ({ playerNum,
                                 showForm, 
                                 onChangeHandler, 
                                 onSubmitForm }) => {
+
   const testFields = generateFields(fields, formFields, onChangeHandler)
 
-  return showForm ? (
-    <div className="PlayerSubmissionForm">
+  const subForm = () => {
+    return (
+      <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{playerNum}</h3>
 
       <form id="testForm" className="PlayerSubmissionForm__form">
@@ -45,10 +47,13 @@ const PlayerSubmissionForm = ({ playerNum,
             onClick={onSubmitForm}
             className="PlayerSubmissionForm__submit-btn" />
         </div>
+
       </form>
     </div>
-  ) : null;
-}
+    );
+  }
 
+  return showForm ? subForm() : null;
+}
 
 export default PlayerSubmissionForm;
