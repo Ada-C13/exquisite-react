@@ -6,8 +6,7 @@ const FinalPoem = (props) => {
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-
+        <h3>{props.final}</h3>
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
