@@ -8,7 +8,6 @@ const Game = () => {
   const [submissionData, setSubmissionData] = useState([]);
   const [finishPoem, setFinishPoem] = useState(false);
 
-
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -17,19 +16,25 @@ const Game = () => {
     }
   }).join(" ");
 
-
   const addSubmissionData = (newData) => {
     // const submissionDataList = [...submissionData];
     // submissionDataList.push(newData);
-
     // setSubmissionData(submissionDataList);
 
     setSubmissionData([...submissionData, newData]);
   }
 
+  const formatLine = (singleLineData) => {
+    const partOne = Object.values(singleLineData).slice(0,4).join(" ");
+    const partTwo = Object.values(singleLineData).slice(4).join(" ");
+    const fullLine = `The ${partOne} the ${partTwo}.`
+
+    return fullLine;
+  }
+
   const composePoem = () => {
     const poem = submissionData.map((singleData) => {
-      return <p>{Object.values(singleData).join(" ")}</p>;
+      return <p>{formatLine(singleData)}</p>
     });
 
     return poem;
@@ -42,7 +47,7 @@ const Game = () => {
 
     return (
       <div>
-        <RecentSubmission recentlySubmitted={submissionData[submissionData.length - 1]} />
+        <RecentSubmission recentlySubmitted={submissionData[submissionData.length - 1]} formatLineCallback={formatLine}/>
 
         <PlayerSubmissionForm addSubmissionDataCallback={addSubmissionData} />
       </div>
@@ -68,7 +73,6 @@ const Game = () => {
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",

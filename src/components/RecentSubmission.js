@@ -5,10 +5,9 @@ const RecentSubmission = (props) => {
 
   const displayRecentSubmission = () =>  {
     if (props.recentlySubmitted !== undefined) {
-      return (<p>{Object.values(props.recentlySubmitted).join(" ")}</p>);
+      return (<p>{props.formatLineCallback(props.recentlySubmitted)}</p>);
     }
   }
-
 
   return (
     <div className="RecentSubmission">
