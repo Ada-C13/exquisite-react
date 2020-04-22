@@ -8,11 +8,11 @@ const Game = () => {
 
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [submissions, setSubmissions] = useState([]);
-  const [showBox, setShowBox] = useState({
-    recentSubmission: false,
-    finalPoem: false,
-    submissionForm: true,
-  });
+  // const [revealBox, setRevealBox] = useState({
+  //   recentSubmission: false,
+  //   finalPoem: false,
+  //   submissionForm: true,
+  // });
 
 
   const onSubmitCallBack = (box) => {
@@ -22,14 +22,16 @@ const Game = () => {
     // update the submissins
     setSubmissions(newSubmissions);
     setCurrentPlayer(currentPlayer +1);
+    console.log(box);
   }
-
+  
   const recentSubmission = () => {
     const recentBox = submissions[submissions.length -1]
     // submit only when it is not empty
     if(recentBox) {
+      console.log("print");
       return `The ${recentBox.adj1} ${recentBox.noun1} ${recentBox.adv} ${recentBox.verb} the ${recentBox.adj2} ${recentBox.noun2}`;
-    }
+    } 
   }
   
 
@@ -54,7 +56,7 @@ const Game = () => {
       </p>
 
       <RecentSubmission 
-      recentSubmission={recentSubmission}
+      recentSubmission={recentSubmission()}
 
       />
 
