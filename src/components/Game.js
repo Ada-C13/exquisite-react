@@ -22,7 +22,7 @@ const Game = () => {
     newPoemLines.push(poem);
 
     setPoemLines(newPoemLines);
-    setShowText(!showText);
+    setShowText(true);
   }
     
   return (
