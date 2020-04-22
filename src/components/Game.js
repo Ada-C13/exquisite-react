@@ -7,6 +7,7 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
 
   const [sentenceList, saveSentenceList] = useState([])
+  const [finalClick, setFinalClick] = useState(false)
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -32,6 +33,9 @@ const Game = () => {
     
   })
 
+  const showFinalPoem = (() => {
+    setFinalClick(true)
+  }) 
 
   return (
     <div className="Game">
@@ -44,12 +48,16 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
+      {/* {formOrPoem()} */}
       {sentenceList.length === 0 ? '' : <RecentSubmission  recentSentence={sentenceList[sentenceList.length-1]}/>}
 
       <PlayerSubmissionForm sentences={sentenceList} onFormSubmitCallBack={addSentences}/>
 
-      <FinalPoem sentences={sentenceList}/>
+      <FinalPoem 
+        sentences={sentenceList} 
+        onFinalClickCallBack={showFinalPoem}
+        finalClick={finalClick}
+        />
 
     </div>
   );
