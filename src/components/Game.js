@@ -13,20 +13,28 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [submissions, setSubmissions] = useState([])
-  const [player, setPlayer] = useState(1)
-  const [revel, setRevel] = useState(false)
+  const [submissions, setSubmissions] = useState([]);
+  const [player, setPlayer] = useState(1);
+  const [reveal, setReveal] = useState(false);
+  const [recentSub, setRecentSub] = useState({
+    submission: '',
+    show: false
+  });
 
   const onSubmission = event => {
-    console.log("Poem Submitted")
-    let poemString = `The ${event.adjective1} ${event.noun1} ${event.adverb} ${event.verb} the ${event.adjective2} ${event.noun2}`
-    setSubmissions([...submissions, poemString])
-    setPlayer(prevPlayer => prevPlayer + 1)
+    const poemString = `The ${event.adjective1} ${event.noun1} ${event.adverb} ${event.verb} the ${event.adjective2} ${event.noun2}.`
+    setSubmissions([...submissions, poemString]);
+    setPlayer(prevPlayer => prevPlayer + 1);
+
+    setRecentSub({
+      submission: poemString,
+      show: true
+    });
   }
 
   const revealPoem = () => {
-    console.log("reveal the poem")
-    setRevel(true)
+    setRecentSub({show: false});
+    setReveal(true);
   }
 
   return (
@@ -40,12 +48,18 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
+      {recentSub.show ? <RecentSubmission mostRecent={recentSub}/>  : ''}
 
-      <RecentSubmission />
+      {reveal ? '' : <PlayerSubmissionForm 
+        addSubmissionCallback={onSubmission} 
+        player={player}
+      />}
 
-      <PlayerSubmissionForm addSubmissionCallback={onSubmission} player={player}/>
-
-      <FinalPoem addRevealPoemCallBack={revealPoem} poems={submissions} revel={revel}/>
+      <FinalPoem 
+        addRevealPoemCallBack={revealPoem} 
+        poems={submissions} 
+        reveal={reveal}
+      />
 
     </div>
   );
