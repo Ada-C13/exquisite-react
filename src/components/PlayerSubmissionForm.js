@@ -21,9 +21,9 @@ const PlayerSubmissionForm = (props) => {
     setBox(newBoxField);
   }
  console.log(box);
- 
+
   const onBoxSubmit = (event) => {
-    event.preventDefualt();
+    event.preventDefault();
     console.log("submitting a poem")
     // send submisstion back to Game.js
     props.onSubmitCallBack(box);
@@ -87,7 +87,7 @@ const PlayerSubmissionForm = (props) => {
         </div>
 
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+          <input onClick={props.onSubmitCallBack} type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
       </form>
     </div>

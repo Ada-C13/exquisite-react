@@ -8,6 +8,12 @@ const Game = () => {
 
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [submissions, setSubmissions] = useState([]);
+  const [showBox, setShowBox] = useState({
+    recentSubmission: false,
+    finalPoem: false,
+    submissionForm: true,
+  });
+
 
   const onSubmitCallBack = (box) => {
     // duplicate current submissions
@@ -18,6 +24,14 @@ const Game = () => {
     setCurrentPlayer(currentPlayer +1);
   }
 
+  const recentSubmission = () => {
+    const recentBox = submissions[submissions.length -1]
+    // submit only when it is not empty
+    if(recentBox) {
+      return `The ${recentBox.adj1} ${recentBox.noun1} ${recentBox.adv} ${recentBox.verb} the ${recentBox.adj2} ${recentBox.noun2}`;
+    }
+  }
+  
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -39,9 +53,16 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission 
+      recentSubmission={recentSubmission}
 
-      <PlayerSubmissionForm fields={FIELDS}  onSubmitCallBack={onSubmitCallBack}/>
+      />
+
+      <PlayerSubmissionForm 
+      fields={FIELDS} 
+      currentPlayer={currentPlayer} 
+      onSubmitCallBack={onSubmitCallBack}
+      />
 
       <FinalPoem />
 
