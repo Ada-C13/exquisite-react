@@ -62,7 +62,7 @@ const Game = () => {
         isFinal={isFinal} 
         onFormSubmit={onFormSubmit} />
 
-      <FinalPoem />
+      <FinalPoem poem={poem}/>
 
     </div>
   );

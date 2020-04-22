@@ -69,7 +69,7 @@ const PlayerSubmissionForm = (props) => {
   // created onSubmit event for the form when user clicks submit
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(`Form submitted`);
+    console.log(`Form submitted`, formFields);
     props.onFormSubmit(formFields);
     setFormFields(emptyForm);
   }
