@@ -19,43 +19,43 @@ const PlayerSubmissionForm = () => {
           name="adj1"
           placeholder="adjective"
           type="text"
-          noChange={onInputChange}
-          value={formFields.adj1}
+          // noChange={onInputChange}
+          // value={formFields.adj1}
         />
         <input
           name="noun1"
           placeholder="noun"
           type="text"
-          noChange={onInputChange}
-          value={formFields.noun1}
+          // noChange={onInputChange}
+          // value={formFields.noun1}
         />
         <input
           name="adv"
           placeholder="adverb"
           type="text"
-          noChange={onInputChange}
-          value={formFields.adv}
+          // noChange={onInputChange}
+          // value={formFields.adv}
         />
         <input
           name="verb"
           placeholder="verb"
           type="text"
-          noChange={onInputChange}
-          value={formFields.verb}
+          // noChange={onInputChange}
+          // value={formFields.verb}
         />
         <input
           name="adj2"
           placeholder="adjective"
           type="text"
-          noChange={onInputChange}
-          value={formFields.adj2}
+          // noChange={onInputChange}
+          // value={formFields.adj2}
         />
         <input
           name="noun2"
           placeholder="noun"
           type="text"
-          noChange={onInputChange}
-          value={formFields.noun2}
+          // noChange={onInputChange}
+          // value={formFields.noun2}
         />
         </div>
 
