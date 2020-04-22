@@ -36,8 +36,23 @@ const PlayerSubmissionForm = (props) => {
         poemPiece.adj2 !== '' &&
         poemPiece.noun2 !== '' )
     {
-      // send that data back up to app. 
-      props.onFormSubmitCallback(poemPiece)
+      // Format the poem once the submit event happens. 
+      // One line compact everything before to send it to game Component. 
+      const formatPoem = [
+        "The",
+          poemPiece.adj1,
+          poemPiece.noun1,
+          poemPiece.adv,
+          poemPiece.verb,
+          "the",
+          poemPiece.adj2,
+          poemPiece.noun2,
+          "."
+      ].join(" ")
+
+      console.log(formatPoem)
+      // send that data back up to app.
+      props.onFormSubmitCallback(formatPoem)
       // reseting form with no text in the input elements after the first player submitted
       setPoemPiece(CLEARINPUTS);
     }
