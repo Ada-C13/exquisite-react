@@ -4,6 +4,7 @@ import './FinalPoem.css';
 const FinalPoem = ({poem, onSubmitCallback}) => {
 
   const [showPoem, setShowPoem ] = useState('');
+  const [showFinalPoemButton, setShowFinalPoemButton] = useState(true);
   let finalPoemLines = [];
   
   poem.forEach (poemLine => {
@@ -23,6 +24,7 @@ const FinalPoem = ({poem, onSubmitCallback}) => {
     let finalPoem =  finalPoemLines.join('\n');
     setShowPoem(finalPoem);
     onSubmitCallback(false);
+    setShowFinalPoemButton(false);
     }
 
     // {this.dummyDataLoop().map((item, index) => <p key={index}>{item}</p>)}
@@ -36,13 +38,14 @@ const FinalPoem = ({poem, onSubmitCallback}) => {
         
       </section>
 
+      {showFinalPoemButton &&
       <div className="FinalPoem__reveal-btn-container">
         <input 
         type="button" 
         onClick={onFinalPoemButtonClick}
         value="We are finished: Reveal the Poem" 
         className="FinalPoem__reveal-btn" />
-      </div>
+      </div>}
     </div>
   );
 }
