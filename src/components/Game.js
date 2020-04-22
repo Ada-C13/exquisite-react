@@ -13,7 +13,14 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [poems, setPoems] = useState([{id: 0}])
+  const [poems, setPoems] = useState([{
+    firstAdjective: '',
+    firstNoun: '',
+    adverb: '',
+    verb: '',
+    secondAdjective: '',
+    secondNoun: '',
+  }]);
   const createPoems = (poemsCreated) => {
     const newPoems = [...poems];
 
@@ -28,7 +35,7 @@ const Game = () => {
 
     setPoems(newPoems);
   };
-
+  console.log(poems)
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -41,9 +48,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recentPoem={poems[poems.length - 1]} />
 
-      <PlayerSubmissionForm  recentPoem={poems[poems.length - 1]} addPoemCallback={createPoems}  />
+      <PlayerSubmissionForm  addPoemCallback={createPoems}  />
 
       <FinalPoem />
 

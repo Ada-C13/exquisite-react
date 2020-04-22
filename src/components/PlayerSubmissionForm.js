@@ -92,6 +92,7 @@ const PlayerSubmissionForm = (props) => {
            placeholder="noun"
            type="text"
           />
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
