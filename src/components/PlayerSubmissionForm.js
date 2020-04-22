@@ -5,22 +5,26 @@ const PlayerSubmissionForm = () => {
 
   const [player, setPlayer] = useState(1)
 
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault()
     updatePlayer()
+    setPlayerSubmission(defaultValues) // resets "adjective, adverb..."
   }
 
   const updatePlayer = () => {
     setPlayer(player + 1)
   }
 
-  const [playerSubmission, setPlayerSubmission] = useState({
+  const defaultValues = {
     adjective1: "adjective",
     noun1: "noun",
     adverb1: "adverb",
     verb1: "verb",
     adjective2: "adjective",
     noun2: "noun"
-  });
+  }
+
+  const [playerSubmission, setPlayerSubmission] = useState(defaultValues);
 
   // const onEntry = (event) => {
   //   const newEntry = {
@@ -89,21 +93,24 @@ const PlayerSubmissionForm = () => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The 
-          {
+          {/* <div className="Adj1"> */}
+          { 
             // Put your form inputs here... We've put in one below as an example
-            <input name="adjective" value={playerSubmission.adjective1} onChange={onAdj1Entry}/>
+            <input className="Adj1" value={playerSubmission.adjective1} onChange={onAdj1Entry}/>
+          }
+          {/* </div> */}
+          {
+            <input className="Noun1" value={playerSubmission.noun1} onChange={onNoun1Entry}/>
           }{
-            <input name="noun" value={playerSubmission.noun1} onChange={onNoun1Entry}/>
+            <input className="Adverb1" value={playerSubmission.adverb1} onChange={onAdvb1Entry}/>
           }{
-            <input name="adverb" value={playerSubmission.adverb1} onChange={onAdvb1Entry}/>
-          }{
-            <input name="verb" value={playerSubmission.verb1} onChange={onVerb1Entry}/>
+            <input className="Verb1" value={playerSubmission.verb1} onChange={onVerb1Entry}/>
           }
           the
           {
-            <input name="adjective" value={playerSubmission.adjective2} onChange={onAdj2Entry}/>
+            <input className="Adj2" value={playerSubmission.adjective2} onChange={onAdj2Entry}/>
           }{
-            <input name="noun" value={playerSubmission.noun2} onChange={onNoun2Entry}/>
+            <input className="Noun2" value={playerSubmission.noun2} onChange={onNoun2Entry}/>
           }
 
 
