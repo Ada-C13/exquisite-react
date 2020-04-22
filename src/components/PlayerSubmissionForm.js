@@ -23,7 +23,6 @@ const PlayerSubmissionForm = (props) => {
 
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
-    // console.log("form fields", formFields);
   }
 
   const onFormSubmit = (event) => {
@@ -36,6 +35,9 @@ const PlayerSubmissionForm = (props) => {
     setPlayer(updatedPlayer);
   };
 
+  const validInput = (value) => {
+    return value === ""
+  }
 
   return (
     <div className="PlayerSubmissionForm">
@@ -48,12 +50,14 @@ const PlayerSubmissionForm = (props) => {
           {
             // Put your form inputs here... We've put in one below as an example
           }
+          The
           <input
             name="adj1"
             placeholder="adjective"
             type="text" 
             onChange={onInputChange}
             value={formFields.adj1}
+            className={validInput(formFields.adj1) ? "invalid" : "valid"}
           />
           <input 
             name="noun1"
@@ -61,6 +65,7 @@ const PlayerSubmissionForm = (props) => {
             type="text"
             onChange={onInputChange}
             value={formFields.noun1}
+            className={validInput(formFields.noun1) ? "invalid" : "valid"}
           />
           <input 
             name="adv"
@@ -68,6 +73,7 @@ const PlayerSubmissionForm = (props) => {
             type="text"
             onChange={onInputChange}
             value={formFields.adv}
+            className={validInput(formFields.adv) ? "invalid" : "valid"}
           />
            <input 
             name="verb"
@@ -75,13 +81,16 @@ const PlayerSubmissionForm = (props) => {
             type="text"
             onChange={onInputChange}
             value={formFields.verb}
+            className={validInput(formFields.verb) ? "invalid" : "valid"}
           />
+          the
           <input
             name="adj2"
             placeholder="adjective"
             type="text" 
             onChange={onInputChange}
             value={formFields.adj2}
+            className={validInput(formFields.adj2) ? "invalid" : "valid"}
           />
           <input 
             name="noun2"
@@ -89,7 +98,9 @@ const PlayerSubmissionForm = (props) => {
             type="text"
             onChange={onInputChange}
             value={formFields.noun2}
+            className={validInput(formFields.noun2) ? "invalid" : "valid"}
           />
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
