@@ -49,7 +49,7 @@ const Game = (props) => {
 
       <PlayerSubmissionForm submitPlayerLine={saveLine} playerNumber={playerNumber}/>
 
-      <FinalPoem savedLines={savedLines} finishedPoem={poemResult}/>
+      <FinalPoem savedLines={savedLines}/>
 
     </div>
   );

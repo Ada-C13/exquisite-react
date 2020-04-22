@@ -5,8 +5,6 @@ const FinalPoem = (props) => {
 
   const onPoemReveal = (event) => {
     event.preventDefault();
-
-    props.setReveal(true);
   }
 
   const FinalPoemComponents = props.savedLines.map((line, i) => {
@@ -18,7 +16,7 @@ const FinalPoem = (props) => {
   });
   
   return (
-    <div className="FinalPoem" onClick={onPoemReveal}>
+    <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
         {FinalPoemComponents}
