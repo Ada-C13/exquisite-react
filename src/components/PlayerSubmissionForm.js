@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = ({ onSubmitCallBack }) => {
+const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
 
-  // formFields hook goes here
   const [formFields, setFormFields ] = useState({
     the1: "The",
     adj1: '',
@@ -14,10 +13,29 @@ const PlayerSubmissionForm = ({ onSubmitCallBack }) => {
     the2: 'the',
     adj2: '',
     noun2: ''
-
   });
 
-  // onInputChange goes here
+  const inputs = {
+    adj1: {
+      validation: /.+/,
+    },
+    noun1: {
+      validation: /.+/,
+    },
+    adv: {
+      validation: /.+/,
+    },
+    verb: {
+      validation: /.+/,
+    },
+    adj2: {
+      validation: /.+/,
+    },
+    noun2: {
+      validation: /.+/,
+    }
+  };
+
   const onInputChange = (event) => {
     const newFormFields = {
       ...formFields,
@@ -27,17 +45,16 @@ const PlayerSubmissionForm = ({ onSubmitCallBack }) => {
     setFormFields(newFormFields);
   };
 
-  // textValidation goes here
-  // not sure what to do about textValidation
+  const fieldValid = fieldName => {
+    return inputs[fieldName].validation.test(formFields[fieldName]);
+  };
 
-  // onFormSubmit goes here
   const onFormSubmit = (event) => {
     event.preventDefault();
-
+    
     const formFieldsArray = Object.values(formFields);
 
-    if(!formFieldsArray.includes('')) {
-      console.log('Success! Form Submitted!');
+    if (!formFieldsArray.includes('')) {
 
       onSubmitCallBack(formFields);
 
@@ -50,63 +67,71 @@ const PlayerSubmissionForm = ({ onSubmitCallBack }) => {
         the2: 'the',
         adj2: '',
         noun2: ''
-
       });
     }
+
   }
+
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{currentPlayerId}</h3>
 
       <form 
-        className="PlayerSubmissionForm__form"
-        onSubmit={ onFormSubmit }>
+        className="PlayerSubmissionForm__form" 
+        onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
-        The
-        <input
-          name="adj1"
-          placeholder="adjective"
-          type="text"
-          // DRY
-          onChange={onInputChange}
-          value={formFields.adj1}
-        />
-        <input
-          name="noun1"
-          placeholder="noun"
-          type="text"
-          onChange={onInputChange}
-          value={formFields.noun1}
-        />
-        <input
-          name="adv"
-          placeholder="adverb"
-          type="text"
-          onChange={onInputChange}
-          value={formFields.adv}
-        />
-        <input
-          name="verb"
-          placeholder="verb"
-          type="text"
-          onChange={onInputChange}
-          value={formFields.verb}
-        />
-        <input
-          name="adj2"
-          placeholder="adjective"
-          type="text"
-          onChange={onInputChange}
-          value={formFields.adj2}
-        />
-        <input
-          name="noun2"
-          placeholder="noun"
-          type="text"
-          onChange={onInputChange}
-          value={formFields.noun2}
-        />
+          The
+          <input
+            name="adj1"
+            placeholder="adjective"
+            type="text"
+            onChange={onInputChange}
+            className={fieldValid("adj1") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.adj1}
+            />
+          <input
+            name="noun1"
+            placeholder="noun"
+            type="text"
+            onChange={onInputChange}
+            className={fieldValid("noun1") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.noun1}
+            />
+          <input
+            name="adv"
+            placeholder="adverb"
+            type="text"
+            onChange={onInputChange}
+            className={fieldValid("adv") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.adv}
+            />
+          <input
+            name="verb"
+            placeholder="verb"
+            type="text" 
+            onChange={onInputChange}
+            className={fieldValid("verb") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.verb}
+            />
+          the
+          <input
+            name="adj2"
+            placeholder="adjective"
+            type="text"
+            onChange={onInputChange}
+            className={fieldValid("adj2") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.adj2}
+            />
+          <input
+            name="noun2"
+            placeholder="noun"
+            type="text" 
+            onChange={onInputChange}
+            className={fieldValid("noun2") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            value={formFields.noun2}
+            />
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
@@ -117,12 +142,8 @@ const PlayerSubmissionForm = ({ onSubmitCallBack }) => {
   );
 }
 
-// PropTypes go here
-// PlayerSubmissionForm.propTypes = {
-  // onFormSubmit: PropTypes.func.isRequired,
-  // onSubmitCallBack: PropTypes.func.isRequired,
-  // formFieldsArray: PropTypes.array.isRequired
-
-// };
+PlayerSubmissionForm.propTypes = {
+  onSubmitCallBack: PropTypes.func.isRequired
+};
 
 export default PlayerSubmissionForm;

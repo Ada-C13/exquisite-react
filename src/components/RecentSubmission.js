@@ -1,13 +1,26 @@
 import React from 'react';
 import './RecentSubmission.css';
 
-const RecentSubmission = (props) => {
-  return (
+const RecentSubmission = ({ poem }) => {
+  let submission = []
+  let mostRecentSubmission = poem.slice(-1)[0];
+
+  if (mostRecentSubmission === undefined) {
+    submission.push('')
+  } else {
+    submission.push(Object.values(mostRecentSubmission).join(" ").concat('.'));
+  }
+
+ return (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>
-      <p className="RecentSubmission__submission">{  }</p>
+      <p className="RecentSubmission__submission">
+        { submission }
+        </p>
     </div>
   );
 }
+
+
 
 export default RecentSubmission;

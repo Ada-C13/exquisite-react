@@ -13,6 +13,24 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [poemLines, setPoemLines] = useState([]);
+  const [showRecentSubmission, setShowRecentSubmission] = useState(false);
+  const [showPlayerSubmissionForm, setShowPlayerSubmissionForm] = useState(true);
+
+  const addPoemLine = (poem) => {
+    const newPoemLines = [...poemLines];
+
+    newPoemLines.push(poem);
+
+    setPoemLines(newPoemLines);
+    setShowRecentSubmission(true);
+  }
+
+  const hidePlayerSubmissionForm = (value) => {
+    setShowPlayerSubmissionForm(value);
+    setShowRecentSubmission(false);
+  }
+    
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -25,11 +43,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {showRecentSubmission && <RecentSubmission poem={poemLines}/>}
 
-      <PlayerSubmissionForm />
+      {showPlayerSubmissionForm && <PlayerSubmissionForm onSubmitCallBack={addPoemLine} currentPlayerId={poemLines.length + 1}/>}
 
-      <FinalPoem />
+      <FinalPoem poem={poemLines} onSubmitCallBack={hidePlayerSubmissionForm}/>
 
     </div>
   );
