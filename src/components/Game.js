@@ -22,7 +22,7 @@ const Game = () => {
 
     setPoemLines(newPoemLines);
   }
-
+    
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -35,13 +35,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission poem={poemLines}/>
 
       <PlayerSubmissionForm onSubmitCallback={addPoemLine} currentPlayerId={poemLines.length + 1}/>
 
       <FinalPoem poem={poemLines}/>
-
-      {console.log(poemLines)}
 
     </div>
   );
