@@ -3,9 +3,10 @@ import './FinalPoem.css';
 import PropTypes from 'prop-types' 
 
 const FinalPoem = (props) => {
-  const finalPoem = props.sentences.map((sentence) => {
+
+  const finalPoem = props.sentences.map((sentence, i) => {
     return (
-    <p>The {sentence.adjOne} {sentence.nounOne} {sentence.nounOne} {sentence.adverb} {sentence.verb} the {sentence.adjTwo} {sentence.nounTwo}.</p>
+    <p key={i}>The {sentence.adjOne} {sentence.nounOne} {sentence.nounOne} {sentence.adverb} {sentence.verb} the {sentence.adjTwo} {sentence.nounTwo}.</p>
     )
   })
 
