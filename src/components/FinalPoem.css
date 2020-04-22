@@ -7,13 +7,22 @@
   flex: 0.8;
 
   padding: 1rem;
-  border: 2px black solid;
+  border: 2px rgb(0, 0, 0) solid;
   box-shadow: 5px 10px black;
   transition: 0.25s;
 }
 
 .FinalPoem__reveal-btn:hover {
   background-color: tomato;
+}
+
+.noShow{
+  display:none;
+}
+
+.show{
+  
+  background-color: rgb(7, 189, 89);
 }
 
 .FinalPoem__poem {

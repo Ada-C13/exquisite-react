@@ -26,7 +26,7 @@ const PlayerSubmissionForm = (props) => {
   
     newLine[event.target.name] = event.target.value;
     setLine(newLine);
-    console.log(line)
+    
   };
 
   const onFormSubmit = (event) => {
@@ -35,7 +35,6 @@ const PlayerSubmissionForm = (props) => {
     
     if (line.adj1 !== '' && line.noun1 !== '' && line.adv !== '' && line.verb !== '' && line.adj2 !== '' && line.noun2 !== '') {
       props.onSubmitCallback(line);  
-      console.log(line)
       setLine ({    //Clearing Fields
         the1: 'The',
         adj1: '',
@@ -47,7 +46,6 @@ const PlayerSubmissionForm = (props) => {
         noun2: '',
       }); 
     }
-    console.log(line)
   }
 
   return (

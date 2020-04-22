@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FinalPoem.css';
 
+
 const FinalPoem = (props) => {
+
+  const [show, setShow] = useState(false)
+  
+  const onButtonClick = () => {
+    setShow(true)
+
+  };
+
+  const lineComponents = props.props.map((line) => {
+    return (
+    <p>
+      {line}
+    </p>
+    );
+  });
+
+ 
 
   return (
     <div className="FinalPoem">
@@ -11,7 +29,10 @@ const FinalPoem = (props) => {
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <p className={show ? "show" : "noShow"}>
+        {lineComponents}
+        </p>
       </div>
     </div>
   );
