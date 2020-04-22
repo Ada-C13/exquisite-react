@@ -21,8 +21,9 @@ const Game = () => {
     
     const newSentenceList = [...sentenceList];
 
-    const nextId = Math.max(newSentenceList.map((sentence) => sentence.id)) + 1;
-    console.log(nextId)
+    console.log(newSentenceList);
+
+    const nextId = newSentenceList.length + 1
 
     newSentenceList.push({
       ...sentence,
@@ -49,9 +50,9 @@ const Game = () => {
         { exampleFormat }
       </p>
       {/* {formOrPoem()} */}
-      {sentenceList.length === 0 ? '' : <RecentSubmission  recentSentence={sentenceList[sentenceList.length-1]}/>}
+      {sentenceList.length !== 0 && !finalClick && <RecentSubmission  recentSentence={sentenceList[sentenceList.length-1]}/>}
 
-      <PlayerSubmissionForm sentences={sentenceList} onFormSubmitCallBack={addSentences}/>
+      {!finalClick && <PlayerSubmissionForm sentences={sentenceList} onFormSubmitCallBack={addSentences}/>}
 
       <FinalPoem 
         sentences={sentenceList} 
