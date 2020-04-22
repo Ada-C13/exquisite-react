@@ -8,8 +8,9 @@ const Game = (props) => {
 
   const [savedLines, addSavedLines] = useState([]);
   const [newLine, setNewLine] = useState('');
-  const [poemResult, setPoemResult] = useState(false);
+  // const [poemResult, setPoemResult] = useState(false);
   const [player, setPlayer] = useState(1);
+  // const [reveal, setReveal] = useState(false);
 
   const saveLine = (submittedLine) => {
     const newSavedLines = [...savedLines]

@@ -11,8 +11,6 @@ const PlayerSubmissionForm = (props) => {
     nounTwo: ''
   })
 
-  let playerNumber = 1
-
   const onInputChange = (event) => {
     console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newWordFields = {
@@ -20,18 +18,15 @@ const PlayerSubmissionForm = (props) => {
     }
     newWordFields[event.target.name] = event.target.value;
     setWordFields(newWordFields);
-    playerNumber++;
   }
 //Submit line
   const onFormSubmit = (event) => {
     event.preventDefault(); 
-    playerNumber++;
 
     if(wordFields.adjOne !== ''){
       console.log("Word Fields: " + wordFields)
 
       props.submitPlayerLine(wordFields);
-
       
       setWordFields({
         adjOne: '',
