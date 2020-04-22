@@ -1,19 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
-
-  const [player, setPlayer] = useState(1)
-
-  const onSubmit = (event) => {
-    event.preventDefault()
-    updatePlayer()
-    setPlayerSubmission(defaultValues) // resets "adjective, adverb..."
-  }
-
-  const updatePlayer = () => {
-    setPlayer(player + 1)
-  }
+const PlayerSubmissionForm = (props) => {
 
   const defaultValues = {
     adjective1: "adjective",
@@ -24,7 +13,26 @@ const PlayerSubmissionForm = () => {
     noun2: "noun"
   }
 
+  const [player, setPlayer] = useState(1)
   const [playerSubmission, setPlayerSubmission] = useState(defaultValues);
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    updatePlayer()
+    // console.log(playerSubmission)
+    //nn to take the sentence
+    const newLine = `The ${playerSubmission.adjective1} ${playerSubmission.noun1} ${playerSubmission.adverb1} ${playerSubmission.verb1} the ${playerSubmission.adjective2} ${playerSubmission.noun2}`
+    console.log(newLine)
+    // then send it to game submissionList 
+    props.onSubmitCallback(newLine)
+
+    setPlayerSubmission(defaultValues) // resets form
+  }
+
+  const updatePlayer = () => {
+    setPlayer(player + 1)
+  }
+
 
   // const onEntry = (event) => {
   //   const newEntry = {
@@ -93,16 +101,12 @@ const PlayerSubmissionForm = () => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The 
-          {/* <div className="Adj1"> */}
-          { 
-            // Put your form inputs here... We've put in one below as an example
-            <input className="Adj1" value={playerSubmission.adjective1} onChange={onAdj1Entry}/>
-          }
-          {/* </div> */}
           {
+            <input className="Adj1" value={playerSubmission.adjective1} onChange={onAdj1Entry}/>
+          }{
             <input className="Noun1" value={playerSubmission.noun1} onChange={onNoun1Entry}/>
           }{
-            <input className="Adverb1" value={playerSubmission.adverb1} onChange={onAdvb1Entry}/>
+            <input className="Advb1" value={playerSubmission.adverb1} onChange={onAdvb1Entry}/>
           }{
             <input className="Verb1" value={playerSubmission.verb1} onChange={onVerb1Entry}/>
           }
@@ -124,5 +128,8 @@ const PlayerSubmissionForm = () => {
   );
 }
 
+PlayerSubmissionForm.propTypes ={
+  onSubmitCallback: PropTypes.func.isRequired
+};
 
 export default PlayerSubmissionForm;
