@@ -45,7 +45,8 @@ const Game = () => {
           { exampleFormat }
         </p>
 
-        <RecentSubmission fieldInput={ currentField }/>
+        
+        {/* <RecentSubmission fieldInput={ currentField }/> <--- shows last submitted line by user*/}
 
         <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
 
