@@ -21,59 +21,6 @@ const PlayerSubmissionForm = (props) => {
     setPoem(newPoem);
   };
 
-  // const onAdjective1Change = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     adjective1: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
-
-  // const onNoun1Change = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     noun1: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
-
-  // const onAdverbChange = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     adverb: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
-
-  // const onVerbChange = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     verb: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
-
-  // const onAdjective2Change = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     adjective2: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
-
-  // const onNoun2Change = (event) => {
-  //   const newPoem = {
-  //     ...poem,
-  //     noun2: event.target.value,
-  //   };
-
-  //   setPoem(newPoem);
-  // };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -119,76 +66,34 @@ const PlayerSubmissionForm = (props) => {
     }
   });
 
-  console.log(main);
 
-  return (
-    <div className='PlayerSubmissionForm'>
-      <h3>Player Submission Form for Player #{props.player}</h3>
+  if (props.recentLineVisibility) {
+    return (
+      <div className='PlayerSubmissionForm'>
+        <h3>Player Submission Form for Player #{props.player}</h3>
+  
+        <form onSubmit={onFormSubmit} className='PlayerSubmissionForm__form'>
+          <div className='PlayerSubmissionForm__poem-inputs'>
+            {main}
+      
+          </div>
+  
+          <div className='PlayerSubmissionForm__submit'>
+            <input
+              type='submit'
+              value='Submit Line'
+              className='PlayerSubmissionForm__submit-btn'
+            />
+          </div>
+        </form>
+      </div>
+    );
+  }else {
+    return (
+      <div></div>
+    )
+  }
 
-      <form onSubmit={onFormSubmit} className='PlayerSubmissionForm__form'>
-        <div className='PlayerSubmissionForm__poem-inputs'>
-          {main}
-          {/* <label htmlFor='The'>The</label> */}
-
-          {/* <input
-            placeholder='adjective'
-            type='text'
-            value={poem[adjective1]}
-            onChange={onUserInputChange}
-            
-            
-          />
-
-          <input
-            placeholder='noun'
-            type='text'
-            value={poem.noun1}
-            onChange={onNoun1Change}
-          />
-
-          <input
-            placeholder='adverb'
-            type='text'
-            value={poem.adverb}
-            onChange={onAdverbChange}
-          />
-
-          <input
-            placeholder='verb'
-            type='text'
-            value={poem.verb}
-            onChange={onVerbChange}
-          />
-
-          <label htmlFor='the'>the</label>
-
-          <input
-            placeholder='adjective'
-            type='text'
-            value={poem.adjective2}
-            onChange={onAdjective2Change}
-          />
-
-          <input
-            placeholder='noun'
-            type='text'
-            value={poem.noun2}
-            onChange={onNoun2Change}
-          />
-
-          <label htmlFor='period'>.</label>*/}
-        </div>
-
-        <div className='PlayerSubmissionForm__submit'>
-          <input
-            type='submit'
-            value='Submit Line'
-            className='PlayerSubmissionForm__submit-btn'
-          />
-        </div>
-      </form>
-    </div>
-  );
 };
 
 export default PlayerSubmissionForm;

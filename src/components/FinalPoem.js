@@ -1,29 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
+  const poemLine = props.poemList.map((line, index) => {
+    return <p key={index}> {line} </p>;
+  });
 
-console.log(props.poemList)
-// props.poemList.forEach((line) => {
-//   return ( <h3> {line} </h3>)
-// })
+  const revealedPoem = (
+    <section className='FinalPoem__poem'>
+      <h3>Final Poem</h3>
+      {poemLine}
+    </section>
+  );
 
-//figure out how to render this one line at a time 
+  const revealPoemButton =  
+    <div className='FinalPoem__reveal-btn-container'>
+      <input
+        type='button'
+        value='We are finished: Reveal the Poem'
+        onClick={props.onSubmitFinalPoem}
+        className='FinalPoem__reveal-btn'
+      />
+  </div> 
+
+  const content = props.finalPoemVisibility ? revealedPoem : revealPoemButton;
 
   return (
-    <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-        {props.poemList.forEach((line) => {
-          return ( <h3> {line} </h3>)
-        })}
-      </section>
+    <div className='FinalPoem'>
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+      {content}
+
     </div>
   );
-}
+};
 
 export default FinalPoem;
