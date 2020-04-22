@@ -5,16 +5,39 @@ import PropTypes from 'prop-types';
 const PlayerSubmissionForm = (props) => {
 
   const [formFields, setFormFields] = useState({
-    theOne: 'The',
-    adjectiveOne: '',
-    nounOne: '',
-    adverbOne: '',
+    the1: 'The',
+    adj1: '',
+    noun1: '',
+    adv: '',
     verb: '',
-    theTwo: 'the',
-    adjectiveTwo: '',
-    nounTwo: '',
-    period: '.'
+    the2: 'the',
+    adj2: '',
+    noun2: '',
   });
+
+  // Dynamically load fields.
+  const loadFields = () => {
+    let gameFields = [];
+    for (let part of props.fields) {
+      if (typeof(part) === 'string') {
+        gameFields.push(part);
+      } else {
+        gameFields.push(
+          <input 
+            key={part.key}
+            name={part.key}
+            value={ formFields[`${part.key}`] } 
+            type="text" 
+            placeholder={part.placeholder} 
+            onChange={ updateField } 
+            className={`PlayerSubmissionFormt__input ${formFields[`${part.key}`] === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
+          />
+        );
+      }
+    };
+
+    return(gameFields);
+  };
 
   // Update a specific field.
   const updateField = (event) => {
@@ -31,15 +54,14 @@ const PlayerSubmissionForm = (props) => {
     
     // Reset fields.
     setFormFields({
-      theOne: 'The',
-      adjectiveOne: '',
-      nounOne: '',
-      adverbOne: '',
+      the1: 'The',
+      adj1: '',
+      noun1: '',
+      adv: '',
       verb: '',
-      theTwo: 'the',
-      adjectiveTwo: '',
-      nounTwo: '',
-      period: '.'
+      the2: 'the',
+      adj2: '',
+      noun2: '',
     });
   };
 
@@ -49,57 +71,8 @@ const PlayerSubmissionForm = (props) => {
 
       <form className="PlayerSubmissionForm__form" onSubmit={ updateLine }>
         <div className="PlayerSubmissionForm__poem-inputs">
-          The
-          <input 
-            name="adjectiveOne" 
-            value={ formFields.adjectiveOne } 
-            type="text" 
-            placeholder="adjective" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.adjectiveOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
-          />
-          <input 
-            name="nounOne" 
-            value={ formFields.nounOne } 
-            type="text" 
-            placeholder="noun" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.nounOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`} 
-          />
-          <input 
-            name="adverbOne" 
-            value={ formFields.adverbOne } 
-            type="text" 
-            placeholder="adverb" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.adverbOne === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`} 
-          />
-          <input 
-            name="verb" 
-            value={ formFields.verb } 
-            type="text" 
-            placeholder="verb" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.verb === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
-          />
-          the
-          <input 
-            name="adjectiveTwo" 
-            value={ formFields.adjectiveTwo } 
-            type="text" placeholder="adjective" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.adjectiveTwo === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
-          />
-          <input 
-            name="nounTwo" 
-            value={ formFields.nounTwo } 
-            type="text" placeholder="noun" 
-            onChange={ updateField } 
-            className={`PlayerSubmissionFormt__input ${formFields.nounTwo === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
-          />
-          .
+          { loadFields() }
         </div>
-
         <div className="PlayerSubmissionForm__submit">
           <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
@@ -110,7 +83,8 @@ const PlayerSubmissionForm = (props) => {
 
 PlayerSubmissionForm.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
-  playerNumber: PropTypes.number.isRequired
+  playerNumber: PropTypes.number.isRequired,
+  fields: PropTypes.array.isRequired
 };
 
 export default PlayerSubmissionForm;

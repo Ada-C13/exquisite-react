@@ -14,7 +14,7 @@ const Game = () => {
   // Handle submission from the form.
   const saveLine = (submittedLine) => {
     const newSavedLines = [...savedLines];
-    const newestLine = Object.values(submittedLine).join(' ');
+    const newestLine = Object.values(submittedLine).join(' ') + '.';
 
     newSavedLines.push(newestLine); // Save line to collection.
     playerNumber++; // Update player number.
@@ -53,9 +53,9 @@ const Game = () => {
       }
 
       {gameCompletion === false &&
-        <PlayerSubmissionForm onFormSubmit={ saveLine } playerNumber={ playerNumber } />
+        <PlayerSubmissionForm onFormSubmit={ saveLine } fields={ FIELDS } playerNumber={ playerNumber } />
       }
-      
+    
       <FinalPoem submittedLines={ savedLines } isGameFinished={ isGameFinished } />
     </div>
   );
