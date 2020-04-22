@@ -15,6 +15,7 @@ const Game = () => {
 
   const [poemLines, setPoemLines] = useState([]);
   const [showRecentSubmission, setShowRecentSubmission] = useState(false);
+  const [showPlayerSubmissionForm, setShowPlayerSubmissionForm] = useState(true);
 
   const addPoemLine = (poem) => {
     const newPoemLines = [...poemLines];
@@ -23,6 +24,11 @@ const Game = () => {
 
     setPoemLines(newPoemLines);
     setShowRecentSubmission(true);
+  }
+
+  const hidePlayerSubmissionForm = (value) => {
+    setShowPlayerSubmissionForm(value);
+    setShowRecentSubmission(false);
   }
     
   return (
@@ -39,9 +45,9 @@ const Game = () => {
 
       {showRecentSubmission && <RecentSubmission poem={poemLines}/>}
 
-      <PlayerSubmissionForm onSubmitCallback={addPoemLine} currentPlayerId={poemLines.length + 1}/>
+      {showPlayerSubmissionForm && <PlayerSubmissionForm onSubmitCallback={addPoemLine} currentPlayerId={poemLines.length + 1}/>}
 
-      <FinalPoem poem={poemLines}/>
+      <FinalPoem poem={poemLines} onSubmitCallback={hidePlayerSubmissionForm}/>
 
     </div>
   );

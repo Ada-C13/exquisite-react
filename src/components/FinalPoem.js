@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FinalPoem.css';
 
-const FinalPoem = ({poem}) => {
+const FinalPoem = ({poem, onSubmitCallback}) => {
 
   const [showPoem, setShowPoem ] = useState('');
   let finalPoemLines = [];
@@ -22,7 +22,7 @@ const FinalPoem = ({poem}) => {
     
     let finalPoem =  finalPoemLines.join('\n');
     setShowPoem(finalPoem);
-
+    onSubmitCallback(false);
     }
 
     // {this.dummyDataLoop().map((item, index) => <p key={index}>{item}</p>)}
