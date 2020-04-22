@@ -3,8 +3,8 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  const prettyFormat = props.allSubmissions.map (submission =>
-      <p key={submission}>{submission}</p>
+  const prettyFormat = props.allSubmissions.map ((submission,index) =>
+      <p key={index}>{submission}</p>
     )
 
   return (
