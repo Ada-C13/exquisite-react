@@ -16,31 +16,35 @@ const Game = () => {
   // state for player turn tracking and full poem tracking
   // player is initialized at 1
   // poem is initialized as an empty array; objects can get shoved in there in the callback func
-  const [player, setPlayer] = useState(1)
-  const [poems, setPoems] = useState([])
-  const [displayFullPoem, setDisplayFullPoem] = useState(false)
+  const [player, setPlayer] = useState(1);
+  const [poems, setPoems] = useState([]);
+  const [displayFullPoem, setDisplayFullPoem] = useState(false);
+  const [displayPlayerForm, setDisplayPlayerForm] = useState(true);
+  const [recent, setRecent] = useState([])
+  const [displayRecent, setdisplayRecent] = useState(true);
   
 
   //callback function - this gets passed down to PlayerSubmission Form to use when the submit line button is clicked
   const addLine = (poem) => {
 
     const newPoemList = [...poems];
-
+    const recent = []
     newPoemList.push(poem);
+    recent.push(poem);
     
     setPoems(newPoemList);
     setPlayer(player + 1);
+    setRecent(recent);
   }
 
   // toggles state to display the poem in FinalPoem
   const revealPoem = () => {
-    if (poems.length > 1) {
+    if (poems.length >= 1) {
       setDisplayFullPoem(true);
-      //toggle display recent submission
-      //toggle display playerform boxes
+      setDisplayPlayerForm(false);
+      setdisplayRecent(false);
     }
   }
-
 
   return (
     <div className="Game">
@@ -54,9 +58,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recent={recent} displayRecent={displayRecent}/>
 
-      <PlayerSubmissionForm player={player} addLineCallback={addLine} />
+      <PlayerSubmissionForm player={player} addLineCallback={addLine} displayPlayerForm={displayPlayerForm}/>
 
       <FinalPoem poems={poems} displayFullPoem={displayFullPoem} onClickCallback={revealPoem}/>
     </div>
