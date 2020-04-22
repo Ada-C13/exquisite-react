@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
   const [reveal, setReveal] = useState(false);
@@ -33,7 +34,9 @@ const FinalPoem = (props) => {
   );
 };
 
-export default FinalPoem;
+FinalPoem.propTypes = {
+  savedLines: PropTypes.array.isRequired,
+  isGameFinished: PropTypes.func.isRequired
+};
 
-//TO DO: Add "the"s to wordFields
-//TO DO: lock submission form when poem is revealed
+export default FinalPoem;

@@ -18,4 +18,8 @@ const RecentSubmission = (props) => {
   );
 }
 
+RecentSubmission.propTypes = {
+  newLine: PropTypes.string.isRequired
+};
+
 export default RecentSubmission;

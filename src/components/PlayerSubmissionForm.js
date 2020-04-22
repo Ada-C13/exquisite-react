@@ -1,5 +1,6 @@
 import React, { useState, isValidElement } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
   const [wordFields, setWordFields] = useState({
@@ -125,5 +126,9 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
+PlayerSubmissionForm.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
+  player: PropTypes.number.isRequired
+};
 
 export default PlayerSubmissionForm;

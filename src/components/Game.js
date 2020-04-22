@@ -3,6 +3,7 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
+import PropTypes from 'prop-types';
 
 const Game = (props) => {
 
@@ -53,12 +54,12 @@ const Game = (props) => {
         { exampleFormat }
       </p>
 
-      //REQ: Verify: The form to submit new lines is hidden
+      {/* //REQ: Verify: The form to submit new lines is hidden */}
       {newLine !== '' && gameCompletion === false &&
         <RecentSubmission newLine={ newLine } />
       }
 
-      //REQ: Verify: The form to submit new lines is hidden
+      {/* //REQ: Verify: The form to submit new lines is hidden */}
       {gameCompletion === false &&
       <PlayerSubmissionForm submitPlayerLine={saveLine} player={player}/>}
 
