@@ -14,7 +14,6 @@ const Game = () => {
   }).join(" ");
 
   const [poem, setPoemArray] = useState([]);
-  console.log('Poem', poem);
 
   const addLine = (line) => {
     let newPoemLine = '';
@@ -37,8 +36,11 @@ const Game = () => {
     setCount(count + 1)
   };
 
+ 
+
   const [condition, setCondition] = useState(true);
   const onFinalPoemClick = () => {
+    console.log('onFinalPoemClick set codnition to false')
     setCondition(false);
   };
 

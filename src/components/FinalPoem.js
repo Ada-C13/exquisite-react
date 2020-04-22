@@ -1,47 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FinalPoem.css';
 import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
 
-  const onButtonClick = () => {
-    console.log("props.poem", props.poem)
-    displayPoem(props.poem)
-    // onFinalClick();
-    props.onFinalPoemClick();
-  };
-
-  let finalPoem;
-  const displayPoem = (poem) => {
-    // for (let line of poem) {
-    //   finalPoem += line;
-    // };
-    finalPoem = poem;
-  };
-
   if (props.condition) {
   return (
-  <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-      <h3>Final Poem</h3>
-      <p>{finalPoem}</p>
-      </section>
     <div className="FinalPoem__reveal-btn-container" >
       <input 
         type="button" 
         value="We are finished: Reveal the Poem" 
         className="FinalPoem__reveal-btn" 
-        onClick={onButtonClick}
+        onClick={props.onFinalPoemClick}
       />
     </div>
-  </div>
   );
   } else {
+    console.log('render final')
     return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
       <h3>Final Poem</h3>
-      <p>{finalPoem}</p>
+      <div>{props.poem.map((line, key) => {
+        return (<p key={key}>{line}</p>)
+      })}
+      </div>
       </section>
     </div>
     );
@@ -49,8 +32,9 @@ const FinalPoem = (props) => {
 };
 
 FinalPoem.propTypes = {
-  poem: PropTypes.array,
+  poem: PropTypes.array.isRequired,
   onFinalPoemClick: PropTypes.func.isRequired,
+  condition: PropTypes.bool.isRequired,
 }
 
 export default FinalPoem;
