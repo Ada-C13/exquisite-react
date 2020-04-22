@@ -43,12 +43,8 @@ const Game = () => {
     
      setPoem(poems);
      setPlayerNum(nextId+1);
-     console.log(poems);
-
-     //
-     console.log("recent", poems[poems.length -1]);
      setRecent(poems[poems.length -1 ]);
-     console.log("recent obj",recentPoem);
+
 
   };
 
