@@ -39,8 +39,8 @@ const PlayerSubmissionForm = (props) => {
     })
   }
 
-  return (
-    <div className="PlayerSubmissionForm">
+  const PlayerSubmissionForm = 
+  <div className="PlayerSubmissionForm">
       
       <h3>Player Submission Form for Player #{props.player}</h3>
 
@@ -48,9 +48,6 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           <span>The</span>
           <input
             name="adj1"
@@ -111,6 +108,10 @@ const PlayerSubmissionForm = (props) => {
         </div>
       </form>
     </div>
+
+
+  return (
+    props.displayPlayerForm ? PlayerSubmissionForm : null
   );
 }
 
