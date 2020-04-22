@@ -3,6 +3,7 @@ import './RecentSubmission.css';
 
 const RecentSubmission = ({poem}) => {
 
+
   let submission = []
   let mostRecentSubmission = poem.slice(-1)[0];
 

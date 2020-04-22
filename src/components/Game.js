@@ -14,6 +14,7 @@ const Game = () => {
   }).join(" ");
 
   const [poemLines, setPoemLines] = useState([]);
+  const [showText, setShowText] = useState(false);
 
   const addPoemLine = (poem) => {
     const newPoemLines = [...poemLines];
@@ -21,6 +22,7 @@ const Game = () => {
     newPoemLines.push(poem);
 
     setPoemLines(newPoemLines);
+    setShowText(!showText);
   }
     
   return (
@@ -35,7 +37,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission poem={poemLines}/>
+      {showText && <RecentSubmission poem={poemLines}/>}
 
       <PlayerSubmissionForm onSubmitCallback={addPoemLine} currentPlayerId={poemLines.length + 1}/>
 
