@@ -18,6 +18,7 @@ const PlayerSubmissionForm = (props) => {
   // Dynamically load fields.
   const loadFields = () => {
     let gameFields = [];
+    
     for (let part of props.fields) {
       if (typeof(part) === 'string') {
         gameFields.push(part);
@@ -29,7 +30,7 @@ const PlayerSubmissionForm = (props) => {
             value={ formFields[`${part.key}`] } 
             type="text" 
             placeholder={part.placeholder} 
-            onChange={ updateField } 
+            onChange={ onUpdateField } 
             className={`PlayerSubmissionFormt__input ${formFields[`${part.key}`] === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}`}
           />
         );
@@ -40,14 +41,14 @@ const PlayerSubmissionForm = (props) => {
   };
 
   // Update a specific field.
-  const updateField = (event) => {
+  const onUpdateField = (event) => {
     const newFormFields = {...formFields};
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
   };
 
   // Submit a line.
-  const updateLine = (event) => {
+  const onSubmitLine = (event) => {
     event.preventDefault(); // Prevents form from trying to send to non-existent server.
 
     props.onFormSubmit(formFields);
@@ -69,7 +70,7 @@ const PlayerSubmissionForm = (props) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{ props.playerNumber }</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit={ updateLine }>
+      <form className="PlayerSubmissionForm__form" onSubmit={ onSubmitLine }>
         <div className="PlayerSubmissionForm__poem-inputs">
           { loadFields() }
         </div>
