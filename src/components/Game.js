@@ -6,36 +6,25 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+    return field.key ? field.placeholder : field;
+  }).join(" ")
 
   const initialFormState = () => {
-    return {
-      adj1: '',
-      noun1: '',
-      adv: '',
-      verb: '',
-      adj2: '',
-      noun2: '',
-    }
+    return {adj1:'', noun1: '', adv: '', verb: '', adj2: '', noun2: ''};
   }
 
-  const [formFields, setFormFields] = useState(initialFormState)
-  const [lastSubmit, setLastSubmit] = useState()
-  const [allSubmissions, setAllSubmissions] = useState([])
-  const [showPoem, setShowPoem] = useState(false)
-  const [showForm, setForm] = useState(true)
-  const [playerNum, setPlayerNum] = useState(1)
+  const [formFields, setFormFields] = useState(initialFormState);
+  const [lastSubmit, setLastSubmit] = useState();
+  const [allSubmissions, setAllSubmissions] = useState([]);
+  const [showPoem, setShowPoem] = useState(false);
+  const [showForm, setForm] = useState(true);
+  const [playerNum, setPlayerNum] = useState(1);
 
   const onChangeHandler = (event) => {
     setFormFields({
       ...formFields,
       [event.target.name]: event.target.value
-    })
+    });
   }
 
   const onSubmitForm = (event) => {
@@ -50,18 +39,18 @@ const Game = () => {
       formFields.adj2,
       formFields.noun2,
       "."
-      ].join(" ")
+      ].join(" ");
 
-    setFormFields(initialFormState)
+    setFormFields(initialFormState);
     setLastSubmit(sentence);
-    setAllSubmissions([...allSubmissions, sentence])
-    setPlayerNum(playerNum + 1)
-    document.getElementById("testForm").reset()
+    setAllSubmissions([...allSubmissions, sentence]);
+    setPlayerNum(playerNum + 1);
+    document.getElementById("testForm").reset();
   }
 
   const onShowPoem = (event) => {
-    setShowPoem(true)
-    setForm(false)
+    setShowPoem(true);
+    setForm(false);
   }
 
   return (
@@ -98,7 +87,6 @@ const Game = () => {
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",
