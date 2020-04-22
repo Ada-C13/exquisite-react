@@ -32,6 +32,14 @@ const Game = () => {
     }
   }).join(" ");
 
+  const lastLine = () => {
+    if (poem.length === 0 ) {
+      return "";
+    }
+
+    return poem[poem.length - 1];
+  };
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -44,7 +52,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission lastLine={poem[poem.length - 1]}/>
+      <RecentSubmission isDone={!gameOn} lastLine={lastLine()}/>
 
       <PlayerSubmissionForm player={player} onClickCallback={onSubmitFormClickCallback}/>
 

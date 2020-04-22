@@ -45,6 +45,8 @@ const PlayerSubmissionForm = (props) => {
     };
   };
 
+  
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.player}</h3>
@@ -53,38 +55,38 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="adj1"
             onChange={onInputChange}
             placeholder="adjective"
             value={line.adj1}
             type="text" />
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="noun1"
             onChange={onInputChange}
             placeholder="noun"
             value={line.noun1}
             type="text" />
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="adv"
             onChange={onInputChange}
             placeholder="adverb"
             value={line.adv}
             type="text" />
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="verb"
             onChange={onInputChange}
             placeholder="verb"
             value={line.verb}
             type="text" />
           the
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="adj2"
             onChange={onInputChange}
             placeholder="adjective"
             value={line.adj2}
             type="text" />
-          <input
+          <input className="PlayerSubmissionFormt__input--invalid"
             name="noun2"
             onChange={onInputChange}
             placeholder="noun"
