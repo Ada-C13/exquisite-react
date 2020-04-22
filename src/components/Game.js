@@ -25,10 +25,9 @@ const Game = () => {
   console.log()
 
   const [poemSubmissions, setPoemList] = useState(poems);
+  const [recentSubmission, setrtRecentSubmission] = useState("")
 
   const addPoem = (poem) => {
-    console.log(poem)
-
     const newPoemList = [...poemSubmissions];
 
     newPoemList.push({
@@ -39,8 +38,10 @@ const Game = () => {
       secondAdjective: poem.secondAdjective,
       secondNoun: poem.secondNoun,
     });
-
+    
     setPoemList(newPoemList);
+    setrtRecentSubmission("The Most Recent Submission")
+
   };
   
   return (
@@ -54,7 +55,7 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-      <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]} />
+      <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]} recentSubmission = {recentSubmission}   />
       <PlayerSubmissionForm onCallBackPoem = {addPoem}/>
   
       <FinalPoem />
