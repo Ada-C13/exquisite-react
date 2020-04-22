@@ -17,6 +17,7 @@ const Game = () => {
 
   const [poems,setPoem] = useState([]);
   const [playerNum, setPlayerNum] = useState(1);
+  const [recentPoem,setRecent] = useState("");
 
   const addPoems = (poem) => {
     
@@ -44,6 +45,11 @@ const Game = () => {
      setPlayerNum(nextId+1);
      console.log(poems);
 
+     //
+     console.log("recent", poems[poems.length -1]);
+     setRecent(poems[poems.length -1 ]);
+     console.log("recent obj",recentPoem);
+
   };
 
   return (
@@ -58,7 +64,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recentPoem ={recentPoem}/>
 
       <PlayerSubmissionForm onSubmitCallBack={addPoems} onPlayer={playerNum}/>
 
