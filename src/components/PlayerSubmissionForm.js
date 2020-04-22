@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types' 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
   const [sentence, setSentene] = useState({
     adjOne: '',
     nounOne: '',
-    adv: '',
+    adverb: '',
     verb: '',
     adjTwo: '',
     nounTwo: '',
@@ -20,11 +21,28 @@ const PlayerSubmissionForm = () => {
     setSentene(newInput)
   })
 
+
+  const onFormSubmit= ((event) => {
+    event.preventDefault();
+    console.log('Submitting form')
+
+    props.onFormSubmitCallBack(sentence)
+
+    setSentene({
+      adjOne: '',
+      nounOne: '',
+      adverb: '',
+      verb: '',
+      adjTwo: '',
+      nounTwo: '',
+    })
+  })
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {
@@ -32,7 +50,7 @@ const PlayerSubmissionForm = () => {
           }
           The
           <input
-            name = 'adjOne'
+            name='adjOne'
             placeholder="adjective"
             type="text" 
             value={sentence.adjOne}
@@ -40,7 +58,7 @@ const PlayerSubmissionForm = () => {
             />
 
           <input
-            name = 'nounOne'
+            name='nounOne'
             placeholder="noun"
             type="text" 
             value={sentence.nounOne}
@@ -48,15 +66,15 @@ const PlayerSubmissionForm = () => {
             />  
 
           <input
-            name = 'adverb'
+            name='adverb'
             placeholder="adverb"
             type="text" 
             value={sentence.adverb}
-            onChange={onInputChange}
-          />
+            onChange={onInputChange} 
+            />
 
           <input
-            name = 'verb'
+            name='verb'
             placeholder="verb"
             type="text" 
             value={sentence.verb}
@@ -64,7 +82,7 @@ const PlayerSubmissionForm = () => {
           />
           the
           <input
-            name = 'adjTwo'
+            name='adjTwo'
             placeholder="adjective"
             type="text"
             value={sentence.adjTwo}
@@ -72,7 +90,7 @@ const PlayerSubmissionForm = () => {
           />
 
           <input
-            name = 'nounTwo'
+            name='nounTwo'
             placeholder="noun"
             type="text" 
             value={sentence.nounTwo}
@@ -87,6 +105,10 @@ const PlayerSubmissionForm = () => {
       </form>
     </div>
   );
+}
+
+PlayerSubmissionForm.propTypes = {
+  onFormSubmitCallBack: PropTypes.func.isRequired,
 }
 
 

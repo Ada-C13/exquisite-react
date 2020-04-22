@@ -5,6 +5,9 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [sentenceList, saveSentenceList] = useState([])
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +15,23 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addSentences = ((sentence) => {
+    
+    const newSentenceList = [...sentenceList];
+
+    const nextId = Math.max(newSentenceList.map((sentence) => sentence.id)) + 1;
+    console.log(nextId)
+
+    newSentenceList.push({
+      ...sentence,
+      id: nextId,
+    })
+    console.log(newSentenceList);
+    saveSentenceList(newSentenceList);
+    
+  })
+
 
   return (
     <div className="Game">
@@ -27,7 +47,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onFormSubmitCallBack={addSentences}/>
 
       <FinalPoem />
 
