@@ -17,7 +17,7 @@ const FinalPoem = (props) => {
   //REQ: Manual testing step: Clicking the Reveal the Poem button reveals the section with the header "Final Poem"
   const toReveal = () => {
     setReveal(true);
-    props.isGameFinished(true);
+    props.isPoemFinished(true);
   }
 
   return (
@@ -36,7 +36,7 @@ const FinalPoem = (props) => {
 
 FinalPoem.propTypes = {
   savedLines: PropTypes.array.isRequired,
-  isGameFinished: PropTypes.func.isRequired
+  isPoemFinished: PropTypes.func.isRequired
 };
 
 export default FinalPoem;
