@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
   const [formFields, setFormFields] = useState({
     firstAdjective: '',
     firstNoun: '',
@@ -13,7 +13,6 @@ const PlayerSubmissionForm = () => {
   });
 
   const onInputChange = (event) => {
-    console.log(event.target.value)
     const newFormFields = {
       ...formFields
     }
@@ -21,11 +20,27 @@ const PlayerSubmissionForm = () => {
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
   }
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    props.addPoemCallback(formFields);
+
+    setFormFields({
+      firstAdjective: '',
+      firstNoun: '',
+      adverb: '',
+      verb: '',
+      secondAdjective: '',
+      secondNoun: '',
+      id: 1,
+    });
+  };
   return (
-    <div className="PlayerSubmissionForm">
+    <div className="PlayerSubmissionForm" >
       <h3>Player Submission Form for Player #{formFields.id}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The

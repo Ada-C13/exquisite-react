@@ -20,12 +20,12 @@ const Game = () => {
     const nextId = Math.max([...poems].map((poem) => poem.id)) + 1
 
     newPoems.push({
-      firstAdjective: '',
-      firstNoun: '',
-      adverb: '',
-      verb: '',
-      secondAdjective: '',
-      secondNound: '',
+      firstAdjective: poemsCreated.firstAdjective,
+      firstNoun: poemsCreated.firstNoun,
+      adverb: poemsCreated.adverb,
+      verb: poemsCreated.verb,
+      secondAdjective: poemsCreated.secondAdjective,
+      secondNoun: poemsCreated.secondNoun,
       id: nextId
     });
 
@@ -44,9 +44,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission addPoemCallback={createPoems} />
+      <RecentSubmission />
 
-      <PlayerSubmissionForm  />
+      <PlayerSubmissionForm addPoemCallback={createPoems}  />
 
       <FinalPoem />
 
