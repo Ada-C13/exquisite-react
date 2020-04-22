@@ -11,6 +11,7 @@ const PlayerSubmissionForm = (props) => {
     nounTwo: ''
   })
 
+  let playerNumber = 1
 
   const onInputChange = (event) => {
     console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
@@ -19,15 +20,16 @@ const PlayerSubmissionForm = (props) => {
     }
     newWordFields[event.target.name] = event.target.value;
     setWordFields(newWordFields);
+    playerNumber++;
   }
 //Submit line
   const onFormSubmit = (event) => {
     event.preventDefault(); 
-
+    playerNumber++;
 
     if(wordFields.adjOne !== ''){
       console.log("Word Fields: " + wordFields)
-      console.log("Player Submission Player Number: " + props.playerNumber)
+
       props.submitPlayerLine(wordFields);
 
       
@@ -42,13 +44,10 @@ const PlayerSubmissionForm = (props) => {
     }
   };
 
-  
-  
-
   return (
     <div className="PlayerSubmissionForm">
-      //TO DO -- playerNumber++ NOT WORKING 
-      <h3>Player Submission Form for Player #{props.playerNumber}</h3>
+
+      <h3>Player Submission Form for Player #{props.player}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 

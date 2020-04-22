@@ -3,10 +3,6 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  const onPoemReveal = (event) => {
-    event.preventDefault();
-  }
-
   const FinalPoemComponents = props.savedLines.map((line, i) => {
     return (
       <p key={i}>
@@ -14,7 +10,7 @@ const FinalPoem = (props) => {
       </p>
     );
   });
-  
+
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
