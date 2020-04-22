@@ -48,10 +48,10 @@ const Game = () => {
 
       <RecentSubmission mostRecentSubmission={listSubmissions.slice(-1)} />
 
-      {/* <PlayerSubmissionForm
+      <PlayerSubmissionForm
         playerNumber={listSubmissions.length + 1}
         onSubmitClick={onSubmitClick}
-      /> */}
+      />
 
       {/* <FinalPoem
         finalList={listSubmissions}
