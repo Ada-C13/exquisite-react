@@ -4,12 +4,12 @@ import './PlayerSubmissionForm.css';
 const PlayerSubmissionForm = (props) => {
 
   const [fieldInput, setFieldInput] = useState ({
-    adjective: '',
-    noun: '', 
-    adverb: '', 
+    adj1: '',
+    noun1: '', 
+    adv: '', 
     verb: '', 
-    adjective1: '',
-    noun1: '',
+    adj2: '',
+    noun2: '',
   });
 
   const [player, nextPlayer] = useState(1);
@@ -17,7 +17,7 @@ const PlayerSubmissionForm = (props) => {
   const onInput = (event) => {
     const newField = {
       ...fieldInput,
-    };
+    }
     newField[event.target.name]  = event.target.value;
     setFieldInput(newField);
   }
@@ -28,12 +28,12 @@ const PlayerSubmissionForm = (props) => {
     props.onCallbackField(fieldInput);
 
     setFieldInput({
-      adjective: '',
-      noun: '', 
-      adverb: '', 
+      adj1: '',
+      noun1: '', 
+      adv: '', 
       verb: '', 
-      adjective1: '',
-      noun1: '',
+      adj2: '',
+      noun2: '',
     })
 
     nextPlayer(player + 1);
@@ -59,14 +59,14 @@ const PlayerSubmissionForm = (props) => {
                   name={`${field.key}`}
                   placeholder={`${field.placeholder}`} 
                   type="text" 
-                  value={fieldInput[`${field.key}`]} 
+                  value={fieldInput[`${field.key}`]}
                   onChange={onInput} 
                   className={isEmpty(fieldInput[`${field.key}`]) ? "empty" : "filled"}
                 />
               );
-              }else{
-                return field;
-              }
+          }else{
+            return field;
+          }
           })}
         </div>
 
