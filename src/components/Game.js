@@ -3,7 +3,7 @@ import "./Game.css";
 import PlayerSubmissionForm from "./PlayerSubmissionForm";
 import FinalPoem from "./FinalPoem";
 import RecentSubmission from "./RecentSubmission";
-//Game component to have the data of my submission, so that the Game component keeps track of all of the submissions.
+
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -14,10 +14,9 @@ const Game = () => {
   }).join(" ");
 
   const [listSubmissions, setListSubmissions] = useState([]);
-  // const [isGameOver, setGameOver] = useState(false);
+  const [isGameOver, setGameOver] = useState(false);
 
   const onSubmitClick = (submission) => {
-    //give me that as string so I can push to the array?
     const { adjective, noun, adverb, verb, adjectiveTwo, nounTwo } = submission;
     const newSubmissions = [...listSubmissions];
     const sentence = `The ${adjective} ${noun} ${adverb} ${verb} the ${adjectiveTwo} ${nounTwo}`;
@@ -26,9 +25,9 @@ const Game = () => {
     console.log(listSubmissions);
   };
 
-  // const onFinalClick = () => {
-  //   setGameOver(true);
-  // };
+  const onFinalClick = () => {
+    setGameOver(true);
+  };
 
   return (
     <div className="Game">
@@ -46,18 +45,21 @@ const Game = () => {
 
       <p className="Game__format-example">{exampleFormat}</p>
 
-      <RecentSubmission mostRecentSubmission={listSubmissions.slice(-1)} />
+      <RecentSubmission
+        mostRecentSubmission={listSubmissions.slice(-1)}
+        isGameOver={isGameOver}
+      />
 
       <PlayerSubmissionForm
         playerNumber={listSubmissions.length + 1}
         onSubmitClick={onSubmitClick}
       />
 
-      {/* <FinalPoem
+      <FinalPoem
         finalList={listSubmissions}
         onFinalClick={onFinalClick}
         isGameOver={isGameOver}
-      /> */}
+      />
     </div>
   );
 };
