@@ -38,6 +38,10 @@ const PlayerSubmissionForm = (props) => {
     })
   })
 
+  const colorChange = (word) => {
+    return word !== '' ? '' : ("PlayerSubmissionFormt__input--invalid")
+  }
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.sentences.length + 1}</h3>
@@ -50,7 +54,7 @@ const PlayerSubmissionForm = (props) => {
           }
           The
           <input
-            className="PlayerSubmissionFormt__input--invalid"
+            className={colorChange(sentence.adjOne)}
             name='adjOne'
             placeholder="adjective"
             type="text" 
@@ -59,6 +63,7 @@ const PlayerSubmissionForm = (props) => {
             />
 
           <input
+            className={colorChange(sentence.nounOne)}
             name='nounOne'
             placeholder="noun"
             type="text" 
@@ -67,6 +72,7 @@ const PlayerSubmissionForm = (props) => {
             />  
 
           <input
+            className={colorChange(sentence.adverb)}
             name='adverb'
             placeholder="adverb"
             type="text" 
@@ -75,6 +81,7 @@ const PlayerSubmissionForm = (props) => {
             />
 
           <input
+            className={colorChange(sentence.verb)}
             name='verb'
             placeholder="verb"
             type="text" 
@@ -83,6 +90,7 @@ const PlayerSubmissionForm = (props) => {
           />
           the
           <input
+            className={colorChange(sentence.adjTwo)}
             name='adjTwo'
             placeholder="adjective"
             type="text"
@@ -91,6 +99,7 @@ const PlayerSubmissionForm = (props) => {
           />
 
           <input
+            className={colorChange(sentence.nounTwo)}
             name='nounTwo'
             placeholder="noun"
             type="text" 
