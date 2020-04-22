@@ -5,18 +5,22 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
-
+  
+  // data of form submission, so that the Game component keeps track of all of the submissions.
   const poemPieces = []
 
   const [poemPiece, setPoemPiece] = useState(poemPieces);
 
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+  // State to add up 1 to the next player. 
+  const [player, setPlayer] = useState(1)
+
+  // const exampleFormat = FIELDS.map((field) => {
+  //   if (field.key) {
+  //     return field.placeholder;
+  //   } else {
+  //     return field;
+  //   }
+  // }).join(" ");
 
 
 
@@ -37,7 +41,7 @@ const Game = () => {
 
     // const format = exampleFormat(newPoemPiece)
     // console.log(format)
-
+    setPlayer(player + 1)
     setPoemPiece(newPoemPiece);
   }
 
@@ -52,12 +56,12 @@ const Game = () => {
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
-        { exampleFormat }
+        {/* { exampleFormat } */}
       </p>
 
       <RecentSubmission poems={poemPiece}/>
 
-      <PlayerSubmissionForm onFormSubmitCallback={addPoemPiece} fields={FIELDS} />
+      <PlayerSubmissionForm onFormSubmitCallback={addPoemPiece} fields={FIELDS} currentPlayer={player} />
 
       <FinalPoem />
 
