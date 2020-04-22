@@ -52,10 +52,10 @@ const Game = () => {
       "."
       ].join(" ")
 
+    setFormFields(initialFormState)
     setLastSubmit(sentence);
     setAllSubmissions([...allSubmissions, sentence])
     setPlayerNum(playerNum + 1)
-    setFormFields(initialFormState)
     document.getElementById("testForm").reset()
   }
 

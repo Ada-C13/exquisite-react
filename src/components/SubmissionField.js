@@ -9,6 +9,7 @@ const SubmissionField = (props) => {
       placeholder={props.placeholder}
       type="text" 
       onChange={props.onChangeHandler}
+      onClick={props.onChangeHandler}
     />
 }
 
