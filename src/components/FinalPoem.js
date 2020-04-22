@@ -13,7 +13,7 @@ const FinalPoem = ({ isGameOver, onFinalClick }) => {
       ) : (
         <div className="FinalPoem__reveal-btn-container">
           <input
-            onClick={onFinalClick} //
+            onClick={onFinalClick} // just use a reference
             type="button"
             value="We are finished: Reveal the Poem"
             className="FinalPoem__reveal-btn"
