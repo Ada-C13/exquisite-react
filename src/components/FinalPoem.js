@@ -16,13 +16,18 @@ const FinalPoem = (props) => {
     )
   }
 
+  const poemHeader = () => {
+    return (
+      <section className="FinalPoem__poem">
+      <h3>Final Poem</h3>
+      </section>
+    )
+  }
+
   return (
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-      </section>
-
-      {props.isPoemF ? props.composePoem() : revealBtn()}
+      {props.isRevealed ? poemHeader() : null}
+      {props.isRevealed ? props.composePoem() : revealBtn()}
     </div>
   );
 }
