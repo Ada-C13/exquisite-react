@@ -5,6 +5,10 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [sentenceList, saveSentenceList] = useState([])
+  const [finalClick, setFinalClick] = useState(false)
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +16,26 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addSentences = ((sentence) => {
+    
+    const newSentenceList = [...sentenceList];
+    // console.log(newSentenceList);
+
+    const nextId = newSentenceList.length + 1
+
+    newSentenceList.push({
+      ...sentence,
+      id: nextId,
+    })
+    // console.log(newSentenceList);
+    saveSentenceList(newSentenceList);
+    
+  })
+
+  const showFinalPoem = (() => {
+    setFinalClick(true)
+  }) 
 
   return (
     <div className="Game">
@@ -24,12 +48,16 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
+      {/* {formOrPoem()} */}
+      {sentenceList.length !== 0 && !finalClick && <RecentSubmission  recentSentence={sentenceList[sentenceList.length-1]}/>}
 
-      <RecentSubmission />
+      {!finalClick && <PlayerSubmissionForm sentences={sentenceList} onFormSubmitCallBack={addSentences}/>}
 
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
+      <FinalPoem 
+        sentences={sentenceList} 
+        onFinalClickCallBack={showFinalPoem}
+        finalClick={finalClick}
+        />
 
     </div>
   );
