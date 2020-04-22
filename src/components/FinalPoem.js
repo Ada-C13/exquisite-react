@@ -18,9 +18,10 @@ const FinalPoem = (props) => {
         </div>
       </section> }
 
+      { props.gameStatus ? 
       <div className="FinalPoem__reveal-btn-container">
         <input type="button" value="We are finished: Reveal the Poem" onClick={onPoemReveal} className="FinalPoem__reveal-btn" />
-      </div> 
+      </div> : "" }
     </div>
   );
 }
