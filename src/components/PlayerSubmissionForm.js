@@ -16,9 +16,11 @@ const PlayerSubmissionForm = (props) => {
   const [player, nextPlayer] = useState(1);
 
   const onInput = (event) => {
+
     const newField = {
       ...fieldInput,
     }
+
     newField[event.target.name]  = event.target.value;
     setFieldInput(newField);
   }
@@ -65,9 +67,9 @@ const PlayerSubmissionForm = (props) => {
                   className={isEmpty(fieldInput[`${field.key}`]) ? "empty" : "filled"}
                 />
               );
-          }else{
-            return field;
-          }
+            }else{
+              return field;
+            }
           })}
         </div>
 
