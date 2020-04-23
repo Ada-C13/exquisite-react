@@ -16,7 +16,6 @@ const Game = () => {
 
 
   const [poemSubmissions, setPoemList] = useState([]);
-  const [recentSubmission, setrtRecentSubmission] = useState("")
   const [showPoem, setshowPoem] = useState(true)
 
   const callBackOnShowPoem = () => {
@@ -37,7 +36,6 @@ const Game = () => {
     });
     
     setPoemList(newPoemList);
-    setrtRecentSubmission("The Most Recent Submission") 
   };
   
   return (
@@ -51,11 +49,8 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-      { (showPoem) && poemSubmissions.length > 1 &&
-      <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]} recentSubmission = {recentSubmission}/>}
-      { (showPoem) &&
-      <PlayerSubmissionForm onCallBackPoem = {addPoem}/>}
-   
+      { (showPoem) && poemSubmissions.length > 0 && <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]}/>}
+      { (showPoem) && <PlayerSubmissionForm onCallBackPoem = {addPoem}/>}
       <FinalPoem poems = {poemSubmissions}  callBackOnShowPoem= {callBackOnShowPoem} showPoem = {showPoem}/>
 
     </div>

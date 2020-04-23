@@ -27,8 +27,8 @@ const PlayerSubmissionForm = (props) => {
     event.preventDefault();
     
     props.onCallBackPoem(formFields);
-    console.log(formFields)
     setCurrenCount(count + 1)
+
     setFormFields({
       firstAdjective: '',
       firstNoun: '',
@@ -40,12 +40,12 @@ const PlayerSubmissionForm = (props) => {
   };
 
   const inputValid = () => {
-    return formFields.firstAdjective.match(/[a-zA-Z]/) && formFields.firstAdjective !== ''
-    && formFields.firstNoun.match(/[a-zA-Z]/) && formFields.firstNoun !== ''
-    && formFields.adverb.match(/[a-zA-Z]/) && formFields.adverb !== ''
-    && formFields.verb.match(/[a-zA-Z]/) && formFields.verb !== ''
-    && formFields.secondAdjective.match(/[a-zA-Z]/) && formFields.secondAdjective !== ''
-    && formFields.secondNoun.match(/[a-zA-Z]/) && formFields.secondNoun !== ''
+    return formFields.firstAdjective.match(/[a-zA-Z]/)
+    && formFields.firstNoun.match(/[a-zA-Z]/) 
+    && formFields.adverb.match(/[a-zA-Z]/) 
+    && formFields.verb.match(/[a-zA-Z]/) 
+    && formFields.secondAdjective.match(/[a-zA-Z]/)
+    && formFields.secondNoun.match(/[a-zA-Z]/)
   }
 
   return (
