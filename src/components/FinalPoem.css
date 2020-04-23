@@ -22,8 +22,11 @@
 }
 
 .show{
-  
+  font-size: 32px;
   background-color: rgb(7, 189, 89);
+  text-align: center;
+  margin: 0px 300px;
+  border-radius: 20px;
 }
 
 .FinalPoem__poem {
