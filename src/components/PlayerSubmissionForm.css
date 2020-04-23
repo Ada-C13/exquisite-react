@@ -31,8 +31,9 @@
   background-color: tomato;
 }
 
-.PlayerSubmissionFormt__input--invalid {
-  background-color: #FFE9E9;
+.PlayerSubmissionForm__input--invalid {
+  /* background-color: #FFE9E9; */
+  background-color: #f7ada3;
 }
 
 .PlayerSubmissionForm__input--invalid::placeholder {

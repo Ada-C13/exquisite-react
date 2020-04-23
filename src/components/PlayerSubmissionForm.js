@@ -5,14 +5,16 @@ import Field from './Field.js';
 const generateSubmissionFields = (fields, onChangeCallback) => {
 
   const submissionFields = fields.map(field => field.key ? <Field
+    key={field.key}
+    id={field.key} //explicit prop for storing keys since Field component can't pass back key prop
     placeholder={field.placeholder}
     value={field.value}
-    onChangeCallback={field.onChangeCallback}  /> : <span>{field}</span> )
+    onChangeCallback={onChangeCallback}  /> : <span>{field}</span> )
 
   return submissionFields;
 }
 
-const PlayerSubmissionForm = ({ fields, onChangeCallback}) => {
+const PlayerSubmissionForm = ({ fields, onChangeCallback, onSubmitCallback}) => {
   console.log(fields);
   const submissionFields = generateSubmissionFields(fields, onChangeCallback);
 
@@ -20,7 +22,7 @@ const PlayerSubmissionForm = ({ fields, onChangeCallback}) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onSubmitCallback} >
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {submissionFields}
