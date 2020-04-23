@@ -4,12 +4,12 @@ import Field from './Field.js';
 
 const generateSubmissionFields = (fields, onChangeCallback) => {
 
-  const submissionFields = fields.map(field => field.key ? <Field
+  const submissionFields = fields.map((field, index) => field.key ? <Field
     key={field.key}
     id={field.key} //explicit prop for storing keys since Field component can't pass back key prop
     placeholder={field.placeholder}
     value={field.value}
-    onChangeCallback={onChangeCallback}  /> : <span>{field}</span> )
+    onChangeCallback={onChangeCallback}  /> : <span key={index}>{field}</span> )
 
   return submissionFields;
 }

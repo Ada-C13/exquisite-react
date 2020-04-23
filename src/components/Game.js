@@ -56,6 +56,7 @@ const Game = () => {
   const handleChange = (event) => {
     let updatedFields = {...playerSubmission};
     updatedFields[event.target.id] = event.target.value;
+    console.log(`Saving ${event.target.id} value ${event.target.value}:: ${updatedFields[event.target.id]}`)
     setPlayerSubmission(updatedFields);
   }
 
