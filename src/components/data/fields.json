@@ -1,0 +1,29 @@
+[
+  "The",
+  {
+     "key":"adj1",
+     "placeholder":"adjective"
+  },
+  {
+     "key":"noun1",
+     "placeholder":"noun"
+  },
+  {
+     "key":"adv",
+     "placeholder":"adverb"
+  },
+  {
+     "key":"verb",
+     "placeholder":"verb"
+  },
+  "the",
+  {
+     "key":"adj2",
+     "placeholder":"adjective"
+  },
+  {
+     "key":"noun2",
+     "placeholder":"noun"
+  },
+  "."
+]

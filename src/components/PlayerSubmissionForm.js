@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PlayerSubmissionForm.css';
+import Field from './Field.js';
+import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = () => {
+const generateSubmissionFields = (fields, current, onChangeCallback) => {
+  const submissionFields = fields.map((field, index) => field.key ? <Field
+    key={field.key}
+    id={field.key} //explicit prop for storing keys since Field component can't pass back key prop
+    placeholder={field.placeholder}
+    value={current[field.key]}
+    onChangeCallback={onChangeCallback}  /> : <span key={index}>{field}</span> );
+
+  return submissionFields;
+}
+
+const PlayerSubmissionForm = ({ fields, current, count, onChangeCallback, onSubmitCallback}) => {
+  const submissionFields = generateSubmissionFields(fields, current, onChangeCallback);
+
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{count}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onSubmitCallback} >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-          <input
-            placeholder="hm..."
-            type="text" />
-
+          {submissionFields}
         </div>
 
         <div className="PlayerSubmissionForm__submit">
@@ -27,5 +35,16 @@ const PlayerSubmissionForm = () => {
   );
 }
 
+PlayerSubmissionForm.propTypes = {
+  fields: PropTypes.array.isRequired,
+  current: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
+  onChangeCallback: PropTypes.func.isRequired,
+  onSubmitCallback: PropTypes.func.isRequired,
+};
+
+
 
 export default PlayerSubmissionForm;
+
+
