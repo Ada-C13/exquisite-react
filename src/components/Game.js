@@ -61,18 +61,18 @@ const Game = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const submissionString = () => {
+    const submissionToString = () => {
       let submissionString = "";
-      for (let field in playerSubmission) {
-        submissionString += `${playerSubmission[field]} `;
+      for (let field of FIELDS) {
+        field.key ? submissionString += ` ${(playerSubmission[field.key])}` : submissionString += ` ${field}`;
       }
       return submissionString;
     };
-    console.log(`Player wrote: ${submissionString()}`);
+    console.log(`Player wrote: ${submissionToString()}`);
     let updatedPoem = [...poem]; 
-    updatedPoem.push(submissionString);
+    updatedPoem.push(submissionToString());
+    setPoem(updatedPoem);
   }
-
 
   return (
     <div className="Game">
@@ -86,7 +86,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {poem.length > 0 ? <RecentSubmission poem={poem[poem.length-1]}/> : null }
+      {poem.length > 0 ? <RecentSubmission line={poem[poem.length-1].trim()}/> : null }
 
       <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
 
