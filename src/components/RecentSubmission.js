@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './RecentSubmission.css';
 
 const RecentSubmission = ({isDone, lastLine}) => {
@@ -15,4 +16,10 @@ const RecentSubmission = ({isDone, lastLine}) => {
   );
 }
 
+RecentSubmission.propTypes = {
+  isDone: PropTypes.bool.isRequired,
+  lastLine: PropTypes.string.isRequired,
+};
+
 export default RecentSubmission;
+

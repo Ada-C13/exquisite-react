@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = ({isDone, poem, onClickCallback}) => {
@@ -27,5 +28,11 @@ const FinalPoem = ({isDone, poem, onClickCallback}) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  isDone: PropTypes.bool.isRequired,
+  poem: PropTypes.array.isRequired,
+  onClickCallback: PropTypes.func.isRequired,
+};
 
 export default FinalPoem;
