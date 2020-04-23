@@ -25,6 +25,7 @@ const PlayerSubmissionForm = (props) => {
           return (
             <input
               key={field.key}
+              className={formFields[field.key] === ''? 'PlayerSubmissionFormt__input--invalid': null}
               placeholder={field.placeholder}
               name={field.key}
               value={formFields[field.key]}
@@ -36,7 +37,6 @@ const PlayerSubmissionForm = (props) => {
       })
     )
   }
-
 
   const onInputChange = (event) => {
     console.log(event.target);
@@ -81,9 +81,8 @@ const PlayerSubmissionForm = (props) => {
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{currentPlayer}</h3>
-
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
-        <div className="PlayerSubmissionForm__poem-inputs">
+        <div className="PlayerSubmissionForm__poem-inputs" >
           {fieldComponents()}
         </div>
         <div className="PlayerSubmissionForm__submit">
