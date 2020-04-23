@@ -5,13 +5,24 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
+
+  const [turnNumber, setTurnNumber] = useState(0)
+  const [submissions, setSubmissions] = useState([])
+  
+  const handleSubmit = (submit) => {
+    console.log(submit)
+    console.log(submissions)
+    // Place a players submission into state
+    setSubmission(submissions.push)
+    // Update the turn.
+    // increment the turn number
+    setTurnNumber(turnNumber + 1)
+  }
+
+  const placeholderText = () => {
+    return FIELDS[turnNumber].placeholder
+  }
+
 
   return (
     <div className="Game">
@@ -27,7 +38,11 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+        placeholderText={placeholderText()}
+        turnNumber={turnNumber}
+        handleSubmit={handleSubmit}
+      />
 
       <FinalPoem />
 
@@ -37,7 +52,6 @@ const Game = () => {
 
 
 const FIELDS = [
-  "The",
   {
     key: 'adj1',
     placeholder: 'adjective',
@@ -54,7 +68,6 @@ const FIELDS = [
     key: 'verb',
     placeholder: 'verb',
   },
-  "the",
   {
     key: 'adj2',
     placeholder: 'adjective',
@@ -62,8 +75,7 @@ const FIELDS = [
   {
     key: 'noun2',
     placeholder: 'noun',
-  },
-  ".",
+  }
 ];
 
 export default Game;

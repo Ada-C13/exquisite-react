@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = props => {
+  // Handles players submission of poetry
+  // Hands Data back to Game
+  // Props:
+  // Placeholder text
+  // Turn Number
+  // callback
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={props.handleSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
@@ -14,7 +21,8 @@ const PlayerSubmissionForm = () => {
             // Put your form inputs here... We've put in one below as an example
           }
           <input
-            placeholder="hm..."
+            placeholder={props.placeholderText}
+            turnNumber={props.turnNumber}
             type="text" />
 
         </div>
