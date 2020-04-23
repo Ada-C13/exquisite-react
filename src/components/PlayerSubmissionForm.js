@@ -19,7 +19,7 @@ const PlayerSubmissionForm = (props) => {
     const newPoem = {
       ...poem
     }
-    newPoem[event.target.name] = [event.target.value]
+    newPoem[event.target.name] = [event.target.value.toLowerCase()]
     setPoem(newPoem)
   }
   //create an event handler function for onSubmit event listener 
