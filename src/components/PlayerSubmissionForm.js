@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
-import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
 
@@ -16,28 +15,32 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
   });
 
   const inputs = {
+    // This feels repetitive - need to DRY
     adj1: {
-      validation: /.+/,
+      // This regex allows alphabetic characters only. However, 
+      // upon the actual 'submit', non-alphabetic characters pass through  my program! :(
+      validation: /[a-zA-Z]/,
     },
     noun1: {
-      validation: /.+/,
+      validation: /[a-zA-Z]/, 
     },
     adv: {
-      validation: /.+/,
+      validation: /[a-zA-Z]/,
     },
     verb: {
-      validation: /.+/,
+      validation: /[a-zA-Z]/,
     },
     adj2: {
-      validation: /.+/,
+      validation: /[a-zA-Z]/,
     },
     noun2: {
-      validation: /.+/,
+      validation: /[a-zA-Z]/,
     }
   };
 
   const onInputChange = (event) => {
     const newFormFields = {
+      // using the spread operator go grab ALL the form fields
       ...formFields,
     };
 
@@ -45,15 +48,17 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
     setFormFields(newFormFields);
   };
 
-  const fieldValid = fieldName => {
+  const validateField = fieldName => {
     return inputs[fieldName].validation.test(formFields[fieldName]);
   };
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const onFormSubmit = (e) => {
+    // prevent default behavior which is to call external api (?)
+    e.preventDefault();
     
     const formFieldsArray = Object.values(formFields);
 
+    // check if form fields are NOT empty
     if (!formFieldsArray.includes('')) {
 
       onSubmitCallBack(formFields);
@@ -86,8 +91,11 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             name="adj1"
             placeholder="adjective"
             type="text"
+            // This is repetitive - need to DRY
             onChange={onInputChange}
-            className={fieldValid("adj1") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            // This too is repetitive - need to DRY
+            // This applies the (already provided) css for pink fields
+            className={validateField("adj1") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adj1}
             />
           <input
@@ -95,7 +103,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             placeholder="noun"
             type="text"
             onChange={onInputChange}
-            className={fieldValid("noun1") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={validateField("noun1") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.noun1}
             />
           <input
@@ -103,7 +111,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             placeholder="adverb"
             type="text"
             onChange={onInputChange}
-            className={fieldValid("adv") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={validateField("adv") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adv}
             />
           <input
@@ -111,7 +119,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             placeholder="verb"
             type="text" 
             onChange={onInputChange}
-            className={fieldValid("verb") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={validateField("verb") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.verb}
             />
           the
@@ -120,7 +128,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             placeholder="adjective"
             type="text"
             onChange={onInputChange}
-            className={fieldValid("adj2") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={validateField("adj2") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adj2}
             />
           <input
@@ -128,7 +136,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             placeholder="noun"
             type="text" 
             onChange={onInputChange}
-            className={fieldValid("noun2") ? "" : "PlayerSubmissionFormt__input--invalid"}
+            className={validateField("noun2") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.noun2}
             />
           .
@@ -142,8 +150,6 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
   );
 }
 
-PlayerSubmissionForm.propTypes = {
-  onSubmitCallBack: PropTypes.func.isRequired
-};
+
 
 export default PlayerSubmissionForm;
