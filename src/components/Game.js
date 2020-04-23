@@ -5,6 +5,9 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [submissionData, setSubmissionData] = useState([]);
+  const [finishPoem, setFinishPoem] = useState(false);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +15,44 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addSubmissionData = (newData) => {
+    // const submissionDataList = [...submissionData];
+    // submissionDataList.push(newData);
+    // setSubmissionData(submissionDataList);
+
+    setSubmissionData([...submissionData, newData]);
+  }
+
+  const formatLine = (singleLineData) => {
+    const partOne = Object.values(singleLineData).slice(0,4).join(" ");
+    const partTwo = Object.values(singleLineData).slice(4).join(" ");
+    const fullLine = `The ${partOne} the ${partTwo}.`
+
+    return fullLine;
+  }
+
+  const composePoem = () => {
+    const poem = submissionData.map((singleData) => {
+      return <p>{formatLine(singleData)}</p>
+    });
+
+    return poem;
+  }
+
+  const constructPoem = () => {
+    if (finishPoem) {
+      return null;
+    }
+
+    return (
+      <div>
+        <RecentSubmission recentlySubmitted={submissionData[submissionData.length - 1]} formatLineCallback={formatLine}/>
+
+        <PlayerSubmissionForm addSubmissionDataCallback={addSubmissionData} />
+      </div>
+    );
+  }
 
   return (
     <div className="Game">
@@ -22,19 +63,16 @@ const Game = () => {
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
-        { exampleFormat }
+        {exampleFormat}
       </p>
 
-      <RecentSubmission />
+      {constructPoem()}
 
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
+      <FinalPoem composePoem={composePoem} composeFn={() => setFinishPoem(true)} isRevealed={finishPoem} />
 
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",
