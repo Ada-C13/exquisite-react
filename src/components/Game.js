@@ -8,11 +8,7 @@ const Game = () => {
 
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [submissions, setSubmissions] = useState([]);
-  // const [revealBox, setRevealBox] = useState({
-  //   recentSubmission: false,
-  //   finalPoem: false,
-  //   submissionForm: true,
-  // });
+  const [revealBox, setRevealBox] = useState(true)
 
 
   const onSubmitCallBack = (box) => {
@@ -32,6 +28,10 @@ const Game = () => {
       console.log("print");
       return `The ${recentBox.adj1} ${recentBox.noun1} ${recentBox.adv} ${recentBox.verb} the ${recentBox.adj2} ${recentBox.noun2}`;
     } 
+  }
+  const onFinalPoem = (event) => {
+    setRevealBox(false); // after the final line, then the box should dissapear
+    console.log("submitting final poem");
   }
   
 
@@ -66,7 +66,9 @@ const Game = () => {
       onSubmitCallBack={onSubmitCallBack}
       />
 
-      <FinalPoem />
+      <FinalPoem onFinalPoem={onFinalPoem} 
+      submissions={submissions} 
+      revealBox={revealBox} />
 
     </div>
   );

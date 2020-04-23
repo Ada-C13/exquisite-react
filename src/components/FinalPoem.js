@@ -2,8 +2,9 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-
   
+  
+ console.log(props.submissions);
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
@@ -12,7 +13,10 @@ const FinalPoem = (props) => {
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input type="button" 
+        value="We are finished: Reveal the Poem" 
+        className="FinalPoem__reveal-btn"
+        onClick={props.onFinalPoem} />
       </div>
     </div>
   );

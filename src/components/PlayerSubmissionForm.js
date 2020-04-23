@@ -44,6 +44,7 @@ const PlayerSubmissionForm = (props) => {
 
       <form onSubmit={onBoxSubmit} className="PlayerSubmissionForm__form">
         <div className="PlayerSubmissionForm__poem-inputs">
+          <p>The</p>
           <input
             name={props.fields[1].key}
             onChange={onInputChange}
@@ -51,7 +52,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder={props.fields[1].placeholder}
             type="text"
           />
-
+          
           <input
             name={props.fields[2].key}
             onChange={onInputChange}
@@ -75,7 +76,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder={props.fields[4].placeholder}
             type="text"
           />
-
+          <p>the</p>
           <input
             name={props.fields[6].key}
             onChange={onInputChange}
@@ -90,6 +91,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder={props.fields[7].placeholder}
             type="text"
           />
+          <p>.</p>
         </div>
 
         <div className="PlayerSubmissionForm__submit">
