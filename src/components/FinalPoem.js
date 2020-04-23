@@ -4,13 +4,13 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
 
   const result = props.poems.map((poem, i) =>{
-  const {firstAdjective, firstNoun, adverb, verb, secondAdjective, secondNoun} = poem
+  const {firstAdjective, firstNoun, adverb, verb, secondAdjective, secondNoun} = poem;
    return <p key ={i}> The {firstAdjective} {firstNoun} {adverb} {verb} the {secondAdjective} {secondNoun} .</p>
   })
 
   const onButtonClick = () =>{
-    props.callBackOnShowPoem()
-  }
+    props.callBackOnShowPoem();
+  };
 
   return (
     <div className="FinalPoem">

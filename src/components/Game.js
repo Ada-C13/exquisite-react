@@ -5,6 +5,9 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [poemSubmissions, setPoemList] = useState([]);
+  const [showPoem, setshowPoem] = useState(true);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -13,15 +16,9 @@ const Game = () => {
     }
   }).join(" ");
 
-
-
-  const [poemSubmissions, setPoemList] = useState([]);
-  const [showPoem, setshowPoem] = useState(true)
-
   const callBackOnShowPoem = () => {
-    setshowPoem(false)
-  }
-
+    setshowPoem(false);
+  };
 
   const addPoem = (poem) => {
     const newPoemList = [...poemSubmissions];
