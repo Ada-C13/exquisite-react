@@ -4,6 +4,7 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+
 const Game = () => {
   
   // data of form submission, so that the Game component keeps track of all of the submissions.
@@ -112,5 +113,6 @@ const FIELDS = [
   },
   ".",
 ];
+
 
 export default Game;

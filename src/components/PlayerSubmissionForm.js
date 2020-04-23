@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const CLEARINPUTS = {
   adj1:'',
@@ -15,7 +16,7 @@ const PlayerSubmissionForm = (props) => {
   // State to handle the pieces of poems.
   // CLEARINPUTS = use constant to set the input to empty strings.
   const [poemPiece, setPoemPiece] = useState(CLEARINPUTS);
-
+  console.log(props);
   const onChange =(event) => {
     const newPoem = {
       ...poemPiece
@@ -108,6 +109,13 @@ const PlayerSubmissionForm = (props) => {
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  currentPlayer: PropTypes.number.isRequired,
+  fields: PropTypes.array.isRequired,
+  onFormSubmitCallback: PropTypes.func.isRequired,
+  playing: PropTypes.bool.isRequired,
+};
 
 
 export default PlayerSubmissionForm;

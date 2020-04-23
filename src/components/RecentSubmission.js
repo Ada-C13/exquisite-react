@@ -1,5 +1,6 @@
 import React from 'react';
 import './RecentSubmission.css';
+import PropTypes from 'prop-types';
 
 const RecentSubmission = (props) => {
 
@@ -31,5 +32,11 @@ const RecentSubmission = (props) => {
     )
   );
 }
+
+RecentSubmission.propTypes = {
+  poems: PropTypes.array.isRequired,
+  playing: PropTypes.bool.isRequired,
+};
+
 
 export default RecentSubmission;

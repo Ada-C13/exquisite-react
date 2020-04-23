@@ -1,5 +1,6 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
 
@@ -37,5 +38,11 @@ const FinalPoem = (props) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  poems: PropTypes.array.isRequired,
+  playing: PropTypes.bool.isRequired,
+  onGameOverCallback: PropTypes.func.isRequired
+};
 
 export default FinalPoem;
