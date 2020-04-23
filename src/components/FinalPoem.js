@@ -8,7 +8,7 @@ const FinalPoem = ({status, poem, onButtonClickCallback}) => {
     <div className="FinalPoem">
       { status ? <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        {poem.map((line, index) => <p key="index">{line}</p>)}
+        {poem.map((line, index) => <p key={index}>{line}</p>)}
       </section> : null }
       
       <div className="FinalPoem__reveal-btn-container">
