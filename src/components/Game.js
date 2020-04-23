@@ -5,6 +5,9 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [poemSubmissions, setPoemList] = useState([]);
+  const [showPoem, setshowPoem] = useState(true);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -13,6 +16,25 @@ const Game = () => {
     }
   }).join(" ");
 
+  const callBackOnShowPoem = () => {
+    setshowPoem(false);
+  };
+
+  const addPoem = (poem) => {
+    const newPoemList = [...poemSubmissions];
+
+    newPoemList.push({
+      firstAdjective: poem.firstAdjective,
+      firstNoun: poem.firstNoun,
+      adverb: poem.adverb,
+      verb: poem.verb,
+      secondAdjective: poem.secondAdjective,
+      secondNoun: poem.secondNoun,
+    });
+    
+    setPoemList(newPoemList);
+  };
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -24,12 +46,9 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
-      <RecentSubmission />
-
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
+      { (showPoem) && poemSubmissions.length > 0 && <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]}/>}
+      { (showPoem) && <PlayerSubmissionForm onCallBackPoem = {addPoem}/>}
+      <FinalPoem poems = {poemSubmissions}  callBackOnShowPoem= {callBackOnShowPoem} showPoem = {showPoem}/>
 
     </div>
   );
