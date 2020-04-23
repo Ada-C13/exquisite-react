@@ -47,6 +47,7 @@ const submissionFormat = () => {
 const Game = () => {
   const [playerSubmission, setPlayerSubmission] = useState(submissionFormat());
   const [poem, setPoem] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const exampleFormat = FIELDS.map((field) => {
     return field.key ? field.placeholder : field
@@ -54,7 +55,6 @@ const Game = () => {
 
   const handleChange = (event) => {
     let updatedFields = {...playerSubmission};
-    console.log(`Changing ${event.target.id} to ${event.target.value}`);
     updatedFields[event.target.id] = event.target.value;
     setPlayerSubmission(updatedFields);
   }
@@ -66,12 +66,16 @@ const Game = () => {
       for (let field of FIELDS) {
         field.key ? submissionString += ` ${(playerSubmission[field.key])}` : submissionString += ` ${field}`;
       }
-      return submissionString;
+      return submissionString.trim();
     };
-    console.log(`Player wrote: ${submissionToString()}`);
     let updatedPoem = [...poem]; 
     updatedPoem.push(submissionToString());
     setPoem(updatedPoem);
+  }
+
+  const handleReveal = (event) => {
+    console.log("done!");
+    setSubmitted(true);
   }
 
   return (
@@ -90,7 +94,7 @@ const Game = () => {
 
       <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
 
-      <FinalPoem />
+      <FinalPoem status={submitted} poem={poem} onButtonClickCallback={handleReveal} />
 
     </div>
   );
