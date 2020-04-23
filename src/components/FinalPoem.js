@@ -4,9 +4,11 @@ import './FinalPoem.css';
 const FinalPoem = ({finalPoemSubmitted, isFinalPoemVisible, showFinalPoem}) => {
   
 
-  const finalPoemDisplayed = finalPoemSubmitted.map((sentence) => {
+  const finalPoemDisplayed = finalPoemSubmitted.map((sentence , i) => {
     return (
-      <p>{sentence}</p>
+      <p key={i}>
+        {sentence}
+      </p>
     )
   })
   //conditional rendering depending on whether the final poem is showing or not

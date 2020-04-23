@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
   //set state for current player number
@@ -16,10 +17,12 @@ const PlayerSubmissionForm = (props) => {
 
   const fieldComponents = () => {
     return (
-      props.fields.map(field => {
+      props.fields.map((field , i )=> {
         if (typeof field === 'string') {
           return (
-            <div>{field}</div>
+            <div key={i}>
+              {field}
+            </div>
           )
         } else {
           return (
@@ -39,7 +42,6 @@ const PlayerSubmissionForm = (props) => {
   }
 
   const onInputChange = (event) => {
-    console.log(event.target);
     const newFormField = {
       ...formFields
     }
@@ -74,7 +76,6 @@ const PlayerSubmissionForm = (props) => {
     })
 
     //reset Player
-    console.log(currentPlayer)
     setCurrentPlayer(currentPlayer + 1);
   } 
 
@@ -93,5 +94,7 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
+PlayerSubmissionForm.propTypes = {
+}
 
 export default PlayerSubmissionForm;
