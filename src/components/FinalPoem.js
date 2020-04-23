@@ -3,6 +3,7 @@ import './FinalPoem.css';
 
 const FinalPoem = ({poem, onSubmitCallBack}) => {
 
+  // hooks/state organized here
   const [showPoem, setShowPoem ] = useState('');
   const [showFinalPoemButton, setShowFinalPoemButton] = useState(true);
   let finalPoemLines = [];
@@ -11,8 +12,9 @@ const FinalPoem = ({poem, onSubmitCallBack}) => {
     finalPoemLines.push(Object.values(poemLine).join(" ").concat('.'));
   });
   
-  const onFinalPoemButtonClick = (event) => {
-    event.preventDefault();
+  const onFinalPoemButtonClick = (e) => {
+    // prevent default behavior
+    e.preventDefault();
     
     let finalPoem =  finalPoemLines.join('\n');
     setShowPoem(finalPoem);
