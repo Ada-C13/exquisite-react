@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-  
+  //set state for current player number
+  const[currentPlayer, setCurrentPlayer] = useState(1);
+  // set state for the form input
   const[formFields, setFormFields] = useState({
     adj1: '',
     noun1: '',
@@ -56,10 +58,12 @@ const PlayerSubmissionForm = (props) => {
         sentence_array.push(formFields[field.key]);
       }
     });
+
     // Put all the words together in a sentence.
     let sentence = sentence_array.join(' ')
     props.onSubmitCallback(sentence);
-    // reset state
+
+    // reset state of the form
     setFormFields({
       adj1: '',
       noun1: '',
@@ -69,12 +73,14 @@ const PlayerSubmissionForm = (props) => {
       noun2: '',
     })
 
-
+    //reset Player
+    console.log(currentPlayer)
+    setCurrentPlayer(currentPlayer + 1);
   } 
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{currentPlayer}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
         <div className="PlayerSubmissionForm__poem-inputs">
