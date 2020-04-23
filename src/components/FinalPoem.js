@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const FinalPoem = (props) => {
   const arrayOfStrings = props.submissions.map((input) =>{
     return (
-      <p>The {input.adjective1} {input.noun1} {input.adverb} {input.verb} the {input.adjective2} {input.noun2}</p>
+      <p>The {input.adjective1} {input.noun1} {input.adverb} {input.verb} the {input.adjective2} {input.noun2} .</p>
     )
   })
 

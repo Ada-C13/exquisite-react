@@ -9,7 +9,7 @@ const RecentSubmission = (props) => {
       ${input.adverb} 
       ${input.verb} the
       ${input.adjective2} 
-      ${input.noun2}`
+      ${input.noun2} .`
     )
   })
   
