@@ -40,7 +40,7 @@ const submissionFormat = () => {
   for (let field of FIELDS) {
     if (field.key) submissionKeys[field.key] = "";
   }
-  console.log(JSON.stringify(submissionKeys))
+  console.log(`Generated keys: ${submissionKeys}`)
   return submissionKeys;
 }
 
@@ -55,9 +55,11 @@ const Game = () => {
 
   const handleChange = (event) => {
     let updatedFields = {...playerSubmission};
+    console.log(`Previous value: ${playerSubmission[event.target.id]}, new: ${event.target.value}`)
     updatedFields[event.target.id] = event.target.value;
     console.log(`Saving ${event.target.id} value ${event.target.value}:: ${updatedFields[event.target.id]}`)
     setPlayerSubmission(updatedFields);
+    console.log(`updated: ${updatedFields}`)
   }
 
   const handleSubmit = (event) => {
@@ -93,7 +95,7 @@ const Game = () => {
 
       {poem.length > 0 ? <RecentSubmission line={poem[poem.length-1].trim()}/> : null }
 
-      <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
+      <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
 
       <FinalPoem status={submitted} poem={poem} onButtonClickCallback={handleReveal} />
 
