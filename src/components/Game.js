@@ -15,14 +15,15 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [submissions, setSubmissionList] = useState(submissionsList)
+
   const addSubmission = (newSubmission) => {
-    const newSubmissionList = [...submissionsList];
+
+    const newSubmissionList = [...submissions];
 
     newSubmissionList.push(newSubmission)
-    console.log("the new submission (in game)")
-    console.log(newSubmission)
-    console.log("the new submission list (in game)")
-    console.log(newSubmissionList)
+    setSubmissionList(newSubmissionList)
+
   }
 
 
@@ -41,7 +42,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addSubmission}/>
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addSubmission} playerNumber={submissions.length+1}/>
 
       <FinalPoem />
 
