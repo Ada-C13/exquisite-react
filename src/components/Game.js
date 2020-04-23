@@ -5,6 +5,25 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [poem, setPoem] = useState([])
+  const [player, setPlayer] = useState(1)
+  const [gameOn, setGameOn] = useState(true)
+
+  const onSubmitFormClickCallback = (line) => {
+    const newPoem = [...poem];
+    const {adj1, noun1, adv, verb, adj2, noun2} = line;
+    newPoem.push(`The ${adj1} ${noun1} ${adv} ${verb} the ${adj2} ${noun2}.`)
+    // newPoem.push(Object.values(line).join(" "));
+    setPoem(newPoem);
+    console.log(newPoem);
+    const newPlayer = player + 1
+    setPlayer(newPlayer);
+  }
+
+  const onFinishPoem = () => {
+    setGameOn(false);
+  };
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +31,14 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const lastLine = () => {
+    if (poem.length === 0 ) {
+      return "";
+    }
+
+    return poem[poem.length - 1];
+  };
 
   return (
     <div className="Game">
@@ -25,11 +52,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission isDone={!gameOn} lastLine={lastLine()}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm isDone={!gameOn} player={player} onClickCallback={onSubmitFormClickCallback}/>
 
-      <FinalPoem />
+      <FinalPoem isDone={!gameOn} poem={poem} onClickCallback={onFinishPoem}/>
 
     </div>
   );
@@ -67,3 +94,5 @@ const FIELDS = [
 ];
 
 export default Game;
+
+
