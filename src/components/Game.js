@@ -9,6 +9,7 @@ const Game = () => {
   // data of form submission, so that the Game component keeps track of all of the submissions.
 
   const [poemPiece, setPoemPiece] = useState([]);
+  const [playing, setPlaying] = useState(true);
 
   // State to add up 1 to the next player. 
   const [player, setPlayer] = useState(1)
@@ -33,6 +34,10 @@ const Game = () => {
     setPoemPiece(newPoemPiece);
   }
 
+  const gameOver =()=> {
+    setPlaying(false);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -44,18 +49,24 @@ const Game = () => {
       <p className="Game__format-example">
         {/* { exampleFormat } */}
       </p>
-
+      {/*   // playing={playing} */}
       <RecentSubmission 
         poems={poemPiece}
+        {...{playing}}
       />
 
       <PlayerSubmissionForm 
         onFormSubmitCallback={addPoemPiece} 
         fields={FIELDS} 
-        currentPlayer={player} 
+        currentPlayer={player}
+        {...{playing}}
       />
 
-      <FinalPoem poems={poemPiece} />
+      <FinalPoem 
+        poems={poemPiece}
+        onGameOverCallback={gameOver}
+        {...{playing}}
+       />
 
     </div>
   );
