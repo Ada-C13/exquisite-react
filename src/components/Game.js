@@ -16,6 +16,8 @@ const Game = () => {
   const [revealSubmission, setRevealSubmission] = useState(false)
   const [revealFinalPoem, setRevealFinalPoem] = useState(false)
   const [poems, setPoems] = useState([]);
+
+
   const createPoems = (poemsCreated) => {
     const newPoems = [...poems];
 
@@ -48,7 +50,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      { !revealFinalPoem && revealSubmission? <RecentSubmission recentPoem={poems[poems.length - 1]}/> : ""}
+      { !revealFinalPoem && revealSubmission? <RecentSubmission recentPoem={poems[poems.length - 1] }/> : ""}
 
       {revealFinalPoem? "" : <PlayerSubmissionForm  addPoemCallback={createPoems}  />}
 

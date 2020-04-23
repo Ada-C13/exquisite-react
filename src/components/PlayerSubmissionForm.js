@@ -17,9 +17,18 @@ const PlayerSubmissionForm = (props) => {
     const newFormFields = {
       ...formFields
     }
+    
 
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
+  }
+
+  const isValid = (name) => {
+    if (formFields[name].match(/[a-zA-Z]+ |[^\W-9+)]/)) {
+      return true
+    } else {
+      return false
+    }
   }
 
   const onFormSubmit = (event) => {
@@ -51,6 +60,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.firstAdjective}
            placeholder="adjective"
            type="text"
+           className= {isValid("firstAdjective")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
 
           <input
@@ -59,6 +69,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.firstNoun}
            placeholder="noun"
            type="text"
+           className= {isValid("firstNoun")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
 
           <input
@@ -67,6 +78,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.adverb}
            placeholder="adverb"
            type="text"
+           className= {isValid("adverb")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
 
           <input
@@ -75,6 +87,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.verb}
            placeholder="verb"
            type="text"
+           className= {isValid("verb")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
 
           the
@@ -84,6 +97,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.secondAdjective}
            placeholder="adjective"
            type="text"
+           className= {isValid("secondAdjective")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
 
           <input
@@ -92,6 +106,7 @@ const PlayerSubmissionForm = (props) => {
            value={formFields.secondNoun}
            placeholder="noun"
            type="text"
+           className= {isValid("secondNoun")? "PlayerSubmissionFormt__input--valid" : "PlayerSubmissionFormt__input--invalid"}
           />
           .
         </div>
