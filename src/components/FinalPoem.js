@@ -30,7 +30,7 @@ const FinalPoem = (props) => {
       </section>
 
       <div className={show ? "noshow" : "FinalPoem__reveal-btn-container"}>
-        <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className={show ? "noshow" : "FinalPoem__reveal-btn"} />
+        <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className={show ? "noShow" : "FinalPoem__reveal-btn"} />
         
       </div>
       <p className={show ? "show" : "noShow"}>
