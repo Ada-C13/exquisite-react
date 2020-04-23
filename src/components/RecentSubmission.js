@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const RecentSubmission = (props) => {
 
-  const showingLastPoemePiece =() => {
+  const showingLastPoemePiece = () => {
     // 
     const lastPoemIdx = props.poems.length - 1
     return (
@@ -13,7 +13,7 @@ const RecentSubmission = (props) => {
   };
 
 
-  const shouldDisplay =() => {
+  const shouldDisplay = () => {
     if (props.poems.length === 0) {
       return false;
     } else {
@@ -23,12 +23,12 @@ const RecentSubmission = (props) => {
 
   return (
     shouldDisplay() && (
-    <div className="RecentSubmission">
-      {/* See only the most recent submission of poetry in the section */}
-      <h3>The Most Recent Submission</h3>
-      { showingLastPoemePiece() }
-      <p className="RecentSubmission__submission">{ }</p>
-    </div>
+      <div className="RecentSubmission">
+        {/* See only the most recent submission of poetry in the section */}
+        <h3>The Most Recent Submission</h3>
+        {showingLastPoemePiece()}
+        <p className="RecentSubmission__submission">{}</p>
+      </div>
     )
   );
 }

@@ -6,7 +6,7 @@ import RecentSubmission from './RecentSubmission';
 
 
 const Game = () => {
-  
+
   // data of form submission, so that the Game component keeps track of all of the submissions.
 
   const [poemPiece, setPoemPiece] = useState([]);
@@ -24,7 +24,7 @@ const Game = () => {
   }).join(" ");
 
   // Function to start over the game! Anytime
-  const resetGame =()=> {
+  const resetGame = () => {
     setPoemPiece([]);
     setPlaying(true);
     setPlayer(1);
@@ -33,7 +33,7 @@ const Game = () => {
 
 
   // CallBack func to get the info from the form. 
-  const addPoemPiece= (poem)=> {
+  const addPoemPiece = (poem) => {
 
     const newPoemPiece = [...poemPiece];
     console.log(poem)
@@ -43,7 +43,7 @@ const Game = () => {
     setPoemPiece(newPoemPiece);
   }
 
-  const gameOver =()=> {
+  const gameOver = () => {
     setPlaying(false);
   }
 
@@ -59,26 +59,26 @@ const Game = () => {
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
-        { exampleFormat }
+        {exampleFormat}
       </p>
       {/*   // playing={playing} */}
-      <RecentSubmission 
+      <RecentSubmission
         poems={poemPiece}
-        {...{playing}}
+        {...{ playing }}
       />
 
-      <PlayerSubmissionForm 
-        onFormSubmitCallback={addPoemPiece} 
-        fields={FIELDS} 
+      <PlayerSubmissionForm
+        onFormSubmitCallback={addPoemPiece}
+        fields={FIELDS}
         currentPlayer={player}
-        {...{playing}}
+        {...{ playing }}
       />
 
-      <FinalPoem 
+      <FinalPoem
         poems={poemPiece}
         onGameOverCallback={gameOver}
-        {...{playing}}
-       />
+        {...{ playing }}
+      />
     </div>
   );
 }

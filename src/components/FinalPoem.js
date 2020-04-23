@@ -16,15 +16,15 @@ const FinalPoem = (props) => {
 
   return (
     <div className="FinalPoem">
-      { 
-      props.playing || (
-        <section className="FinalPoem__poem">
-          <h3>Final Poem</h3>
-          {/* See all of the submissions of poetry lines in the section named "Final Poem". */}
-          {showingPoemLines}
-        </section>
+      {
+        props.playing || (
+          <section className="FinalPoem__poem">
+            <h3>Final Poem</h3>
+            {/* See all of the submissions of poetry lines in the section named "Final Poem". */}
+            {showingPoemLines}
+          </section>
         )
-      } 
+      }
       {
         props.playing && (
           <div className="FinalPoem__reveal-btn-container">
@@ -34,7 +34,7 @@ const FinalPoem = (props) => {
           </div>
         )
       }
-      
+
     </div>
   );
 }
