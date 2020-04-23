@@ -2,18 +2,19 @@ import React from 'react';
 import './Field.css';
 import PropTypes from 'prop-types';
 
-const Field = (props) => {
+const Field = ({id, placeholder, value, onChangeCallback}) => {
   return (
-    <input className={`PlayerSubmissionForm__input${props.value.length > 0 ? "" : "--invalid"}`}
-      id={props.id}
-      placeholder={props.placeholder}
+    <input className={`PlayerSubmissionForm__input${value.length > 0 ? "" : "--invalid"}`}
+      id={id}
+      placeholder={placeholder}
       type="text"
-      value={props.value}
-      onChange={props.onChangeCallback} />
+      value={value}
+      onChange={onChangeCallback} />
   );
 }
 
 Field.propTypes = {
+  id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChangeCallback: PropTypes.func.isRequired,

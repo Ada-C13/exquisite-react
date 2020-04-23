@@ -55,11 +55,8 @@ const Game = () => {
 
   const handleChange = (event) => {
     let updatedFields = {...playerSubmission};
-    console.log(`Previous value: ${playerSubmission[event.target.id]}, new: ${event.target.value}`)
     updatedFields[event.target.id] = event.target.value;
-    console.log(`Saving ${event.target.id} value ${event.target.value}:: ${updatedFields[event.target.id]}`)
     setPlayerSubmission(updatedFields);
-    console.log(`updated: ${updatedFields}`)
   }
 
   const handleSubmit = (event) => {
@@ -77,7 +74,6 @@ const Game = () => {
   }
 
   const handleReveal = (event) => {
-    console.log("done!");
     setSubmitted(true);
   }
 
@@ -102,7 +98,6 @@ const Game = () => {
     </div>
   );
 }
-
 
 
 export default Game;

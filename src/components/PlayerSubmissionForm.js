@@ -1,6 +1,7 @@
 import React from 'react';
 import './PlayerSubmissionForm.css';
 import Field from './Field.js';
+import PropTypes from 'prop-types';
 
 const generateSubmissionFields = (fields, current, onChangeCallback) => {
   const submissionFields = fields.map((field, index) => field.key ? <Field
@@ -34,6 +35,13 @@ const PlayerSubmissionForm = ({ fields, current, onChangeCallback, onSubmitCallb
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  fields: PropTypes.array.isRequired,
+  current: PropTypes.object.isRequired,
+  onChangeCallback: PropTypes.func.isRequired,
+  onSubmitCallback: PropTypes.func.isRequired,
+};
 
 
 
