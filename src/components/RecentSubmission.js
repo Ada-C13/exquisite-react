@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./RecentSubmission.css";
 
 const RecentSubmission = (props) => {
@@ -16,5 +17,9 @@ const RecentSubmission = (props) => {
   };
   return <div>{showRecentSubmission()}</div>;
 };
+  RecentSubmission.propTypes = {
+  recentSubmission: PropTypes.string,
+  revealBox: PropTypes.bool.isRequired,
+}
 
 export default RecentSubmission;
