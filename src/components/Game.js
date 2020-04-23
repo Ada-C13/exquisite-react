@@ -4,15 +4,6 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
-const poems = [{
-  firstAdjective: '',
-  firstNoun: '',
-  adverb: '',
-  verb: '',
-  secondAdjective:'',
-  secondNoun: '',
-}]
-
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -22,10 +13,16 @@ const Game = () => {
     }
   }).join(" ");
 
-  console.log()
 
-  const [poemSubmissions, setPoemList] = useState(poems);
+
+  const [poemSubmissions, setPoemList] = useState([]);
   const [recentSubmission, setrtRecentSubmission] = useState("")
+  const [showPoem, setshowPoem] = useState(true)
+
+  const callBackOnShowPoem = () => {
+    setshowPoem(false)
+  }
+
 
   const addPoem = (poem) => {
     const newPoemList = [...poemSubmissions];
@@ -40,8 +37,7 @@ const Game = () => {
     });
     
     setPoemList(newPoemList);
-    setrtRecentSubmission("The Most Recent Submission")
-
+    setrtRecentSubmission("The Most Recent Submission") 
   };
   
   return (
@@ -55,10 +51,12 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-      <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]} recentSubmission = {recentSubmission}   />
-      <PlayerSubmissionForm onCallBackPoem = {addPoem}/>
-  
-      <FinalPoem />
+      { (showPoem) && poemSubmissions.length > 1 &&
+      <RecentSubmission poem = {poemSubmissions[poemSubmissions.length-1]} recentSubmission = {recentSubmission}/>}
+      { (showPoem) &&
+      <PlayerSubmissionForm onCallBackPoem = {addPoem}/>}
+   
+      <FinalPoem poems = {poemSubmissions}  callBackOnShowPoem= {callBackOnShowPoem} showPoem = {showPoem}/>
 
     </div>
   );

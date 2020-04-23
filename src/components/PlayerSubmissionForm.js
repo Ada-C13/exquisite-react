@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-  const [count, setCurrenCount] = useState(1);
+  
+  const [count, setCurrenCount] = useState(1); 
   const [formFields, setFormFields] = useState({
     firstAdjective: '',
     firstNoun: '',
@@ -13,8 +14,6 @@ const PlayerSubmissionForm = (props) => {
   });
 
   const onInputChange = (event) => {
-    // console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
-    
     const newFormFields = {
       ...formFields,
     }
@@ -41,12 +40,12 @@ const PlayerSubmissionForm = (props) => {
   };
 
   const inputValid = () => {
-    return (formFields.firstAdjective.match(/[a-zA-Z]/) && formFields.firstAdjective !== ''
+    return formFields.firstAdjective.match(/[a-zA-Z]/) && formFields.firstAdjective !== ''
     && formFields.firstNoun.match(/[a-zA-Z]/) && formFields.firstNoun !== ''
     && formFields.adverb.match(/[a-zA-Z]/) && formFields.adverb !== ''
     && formFields.verb.match(/[a-zA-Z]/) && formFields.verb !== ''
     && formFields.secondAdjective.match(/[a-zA-Z]/) && formFields.secondAdjective !== ''
-    && formFields.secondNoun.match(/[a-zA-Z]/) && formFields.secondNoun !== '')
+    && formFields.secondNoun.match(/[a-zA-Z]/) && formFields.secondNoun !== ''
   }
 
   return (
