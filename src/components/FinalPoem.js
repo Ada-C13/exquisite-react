@@ -9,7 +9,7 @@ const FinalPoem = ({finalPoemSubmitted, isFinalPoemVisible, showFinalPoem}) => {
       <p>{sentence}</p>
     )
   })
-
+  //conditional rendering depending on whether the final poem is showing or not
   return (
     <div className="FinalPoem">
       {isFinalPoemVisible && (

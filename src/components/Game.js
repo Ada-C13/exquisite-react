@@ -18,8 +18,8 @@ const Game = (props) => {
   const [isFinalPoemVisible, setIsFinalPoemVisible] = useState(false);
 
   const onSubmit = (sentence) => {
-    // Store it in an all sentence array - located where? 
-    // Store it in most recent submission var as a string
+    // Store it in an all sentence array 
+    // Store it in most recent submission 
     setFinalPoem([...finalPoem, sentence]);
     setMostRecent(sentence);
   }
@@ -30,7 +30,8 @@ const Game = (props) => {
   }
 
   // conditional rendering 
-  // hide recent submission if there is none
+  // hide recent submission if there is no recent submitted or final poem is showing 
+  // hide player submission form if final poem is showing 
   return (
     <div className="Game">
       <div className="Game">
