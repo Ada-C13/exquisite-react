@@ -39,27 +39,31 @@ const PlayerSubmissionForm = (props) => {
 			adj2: "",
 			noun2: "",
 		});
-	};
+  };
+  
+  const makeMePink = (value) =>{
+    return (value === "" ? "PlayerSubmissionFormt__input--invalid" : "PlayerSubmissionFormt__input--valid" )
+  }
 
 	return (
-		<div className="PlayerSubmissionForm" onSubmit={onFormSubmit}>
+		!props.gameon&& ( <div className="PlayerSubmissionForm" onSubmit={onFormSubmit}>
 			<h3>Player Submission Form for Player #{props.player}</h3>
 
 			<form className="PlayerSubmissionForm__form">
 				<div className="PlayerSubmissionForm__poem-inputs">			
 					<p>The</p>
-					<input placeholder="adjective" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.adj1)} placeholder="adjective" type="text" onChange={onInputChange}
           value={formFields.adj1} name={"adj1"}/>
-					<input placeholder="noun" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.noun1)} placeholder="noun" type="text" onChange={onInputChange}
           value={formFields.noun1} name={"noun1"}/>
-					<input placeholder="adverb" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.adv)} placeholder="adverb" type="text" onChange={onInputChange}
           value={formFields.adv} name={"adv"}/>
-					<input placeholder="verb" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.verb)} placeholder="verb" type="text" onChange={onInputChange}
           value={formFields.verb} name={"verb"}/>
 					<p>the</p>
-					<input placeholder="adjective" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.adj2)} placeholder="adjective" type="text" onChange={onInputChange}
           value={formFields.adj2} name={"adj2"}/>
-					<input placeholder="noun" type="text" onChange={onInputChange}
+					<input className={makeMePink(formFields.noun2)} placeholder="noun" type="text" onChange={onInputChange}
           value={formFields.noun2} name={"noun2"}/>
 					<p>.</p>
 				</div>
@@ -72,7 +76,7 @@ const PlayerSubmissionForm = (props) => {
 					/>
 				</div>
 			</form>
-		</div>
+		</div>)
 	);
 };
 

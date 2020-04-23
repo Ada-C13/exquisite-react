@@ -23,9 +23,15 @@ const Game = () => {
   }
 
   const [poemList, setPoemList] = useState([]);
+  const [gameon, setGameOn]= useState(false)
 
+  // const endGame = () => {(gameon? setGameOn(true) : setGameOn(false))}
   console.log(`this comes from game`, poemList[poemList.length-1]);
 
+
+  const onPoemSubmit = () => {
+    setGameOn(true)
+  };
 
   const addPoem = (poem) => {
 
@@ -54,6 +60,9 @@ const Game = () => {
     
     
   }
+   
+
+  const poems =  poemList.map((poem) => `${poem.the1} ${poem.adj1} ${poem.noun1} ${poem.adv} ${poem.verb} ${poem.the2} ${poem.adj2} ${poem.noun2}${poem.dot}`);
   
   console.log(`this comes from game`, poemList[poemList.length-1]);
 
@@ -66,15 +75,15 @@ const Game = () => {
 
       <p>Please follow the following format for your poetry submission:</p>
 
-      <p className="Game__format-example">
+       <p className="Game__format-example">
         { inputFormat }
       </p>
 
-      <RecentSubmission poem={poemList[poemList.length-1]}/>
+      <RecentSubmission gameon={gameon} poem={poemList[poemList.length-1]}/>
 
-      <PlayerSubmissionForm addPoemCallback={addPoem} player={player} fields={FIELDS}/>
+      <PlayerSubmissionForm gameon={gameon} addPoemCallback={addPoem} player={player} fields={FIELDS}/>
 
-      <FinalPoem />
+      <FinalPoem poems={poems} gameon={gameon} onPoemSubmit={onPoemSubmit}/>
 
     </div>
   );

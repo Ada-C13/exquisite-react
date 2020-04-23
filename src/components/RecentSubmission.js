@@ -3,7 +3,7 @@ import './RecentSubmission.css';
 
 
 const RecentSubmission = (props) => {
-  if (!props.poem){
+  if (!props.poem || props.gameon ){
     return ''
   }else {
   return (
