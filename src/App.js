@@ -2,7 +2,10 @@ import React from 'react';
 import './App.css';
 import Game from './components/Game.js';
 
+//Create a callback function for onSubmitCallback
+
 const App = () => {
+  
   return (
     <div className="App">
       <header className="App__header">
