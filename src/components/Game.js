@@ -5,7 +5,7 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const FIELDS = [
-  // "The",
+  "The",
   {
     key: 'adj1',
     placeholder: 'adjective',
@@ -22,7 +22,7 @@ const FIELDS = [
     key: 'verb',
     placeholder: 'verb',
   },
-  // "the",
+  "the",
   {
     key: 'adj2',
     placeholder: 'adjective',
@@ -31,21 +31,22 @@ const FIELDS = [
     key: 'noun2',
     placeholder: 'noun',
   },
-  // ".",
+  ".",
 ];
 
 
 const submissionFormat = () => {
   const submissionKeys = {};
   for (let field of FIELDS) {
-    if (field.key) submissionKeys[field.key] = "test";
+    if (field.key) submissionKeys[field.key] = "";
   }
+  console.log(JSON.stringify(submissionKeys))
   return submissionKeys;
 }
 
 const Game = () => {
   const [playerSubmission, setPlayerSubmission] = useState(submissionFormat());
-  const [poem, setPoem] = useState({});
+  const [poem, setPoem] = useState([]);
 
   const exampleFormat = FIELDS.map((field) => {
     return field.key ? field.placeholder : field
@@ -57,6 +58,21 @@ const Game = () => {
     updatedFields[event.target.id] = event.target.value;
     setPlayerSubmission(updatedFields);
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const submissionString = () => {
+      let submissionString = "";
+      for (let field in playerSubmission) {
+        submissionString += `${playerSubmission[field]} `;
+      }
+      return submissionString;
+    };
+    console.log(`Player wrote: ${submissionString()}`);
+    let updatedPoem = [...poem]; 
+    updatedPoem.push(submissionString);
+  }
+
 
   return (
     <div className="Game">
@@ -70,9 +86,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {poem.length > 0 ? <RecentSubmission poem={poem[poem.length-1]}/> : null }
 
-      <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange}/>
+      <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
 
       <FinalPoem />
 
