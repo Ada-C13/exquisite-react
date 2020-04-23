@@ -4,6 +4,8 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+const submissionsList = []
+
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -12,6 +14,18 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addSubmission = (newSubmission) => {
+    const newSubmissionList = [...submissionsList];
+
+    newSubmissionList.push(newSubmission)
+    console.log("the new submission (in game)")
+    console.log(newSubmission)
+    console.log("the new submission list (in game)")
+    console.log(newSubmissionList)
+  }
+
+
 
   return (
     <div className="Game">
@@ -27,7 +41,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={addSubmission}/>
 
       <FinalPoem />
 
