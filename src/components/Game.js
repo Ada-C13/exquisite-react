@@ -12,6 +12,7 @@ const Game = (props) => {
       return field;
     }
   }).join(" ");
+
   const [mostRecent, setMostRecent] = useState('');
   const [finalPoem, setFinalPoem] = useState([]);
 
@@ -34,7 +35,7 @@ const Game = (props) => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission mostRecentSubmitted={mostRecent}/>
 
       <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={onSubmit}/>
 

@@ -48,15 +48,16 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    let sentence = '';
+    let sentence_array = [];
     props.fields.forEach(field => {
       if (typeof field === 'string') {
-        sentence += field;
+        sentence_array.push(field);
       } else {
-        sentence += formFields[field.key]
+        sentence_array.push(formFields[field.key]);
       }
     });
     // Put all the words together in a sentence.
+    let sentence = sentence_array.join(' ')
     props.onSubmitCallback(sentence);
     // reset state
     setFormFields({
