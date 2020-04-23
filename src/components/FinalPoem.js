@@ -1,19 +1,17 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from "prop-types";
 
 const FinalPoem = (props) => {
   
   const result = props.finalPoem.map((poem, i) => {
     const {firstAdjective, firstNoun, adverb, verb, secondAdjective, secondNoun} = poem;
-      return <p key = {i}> The {firstAdjective} {firstNoun} {adverb} {verb} the {secondAdjective} {secondNoun} .</p>
+    return <p key = {i}> The {firstAdjective} {firstNoun} {adverb} {verb} the {secondAdjective} {secondNoun} .</p>
   })
     
   const onFinalSubmit = () => {
     props.onClickCallback()
   }
-
-  
-  
   return (
     <div className="FinalPoem">
       {props.revealFinalPoem? <section className="FinalPoem__poem">
@@ -28,4 +26,18 @@ const FinalPoem = (props) => {
   );
 }
 
+FinalPoem.propTypes = {
+  finalPoem: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstAdjective: PropTypes.string.isRequired,
+      firstNoun: PropTypes.string.isRequired,
+      adverb: PropTypes.string.isRequired,
+      verb: PropTypes.string.isRequired,
+      secondAdjective: PropTypes.string.isRequired,
+      secondNoun: PropTypes.string.isRequired,
+    })
+  ),
+  revealFinalPoem: PropTypes.bool.isRequired,
+  onClickCallback: PropTypes.func.isRequired,
+};
 export default FinalPoem;

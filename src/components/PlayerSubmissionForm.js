@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from "prop-types";
 
 const PlayerSubmissionForm = (props) => {
   const [count, setCount] = useState(1)
@@ -103,5 +104,8 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
+PlayerSubmissionForm.propTypes = {
+  addPoemCallback: PropTypes.func.isRequired,
+};
 
 export default PlayerSubmissionForm;
