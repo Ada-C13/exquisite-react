@@ -3,6 +3,7 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
+import propTypes from 'prop-types';
 
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
@@ -21,7 +22,6 @@ const Game = () => {
   const addPoem = (poem) => {
     let newPoemsList = [...poemList];
 
-    //could pass in a string
     newPoemsList.push(poem);
 
     setPlayer(player + 1);
@@ -29,22 +29,14 @@ const Game = () => {
     setPoemList(newPoemsList);
   };
 
-  const changeVisibilityFinalPoem = () => {
+  const onSubmitFinalPoem = (event) => {
+    event.preventDefault();
     if (finalPoemVisibility === false) {
       setFinalPoemVisibility(true);
     }
-  };
-
-  const changeVisibilityRecentLine = () => {
     if (recentLineVisibility === true) {
       setRecentLineVisibility(false);
     }
-  };
-
-  const onSubmitFinalPoem = (event) => {
-    event.preventDefault();
-    changeVisibilityFinalPoem();
-    changeVisibilityRecentLine();
   };
 
   const poemListString = poemList.map((obj) => {
@@ -86,6 +78,16 @@ const Game = () => {
       />
     </div>
   );
+};
+
+Game.propTypes = {
+  addPoem: propTypes.func.isRequired,
+  onSubmitFinalPoem: propTypes.func.isRequired,
+  poemListString: propTypes.arrayOf(propTypes.string.isRequired),
+  poemList: propTypes.arrayOf(propTypes.object),
+  player: propTypes.number,
+  finalPoemVisibility: propTypes.bool,
+  recentLineVisibility: propTypes.bool,
 };
 
 const FIELDS = [

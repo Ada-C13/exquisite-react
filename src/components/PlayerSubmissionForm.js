@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import propTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
   const [poem, setPoem] = useState({
@@ -20,7 +21,6 @@ const PlayerSubmissionForm = (props) => {
     newPoem[name] = value;
     setPoem(newPoem);
   };
-
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +46,6 @@ const PlayerSubmissionForm = (props) => {
     }
   };
 
-
   const main = props.fields.map((obj) => {
     const userInput = poem[obj.key];
 
@@ -66,18 +65,14 @@ const PlayerSubmissionForm = (props) => {
     }
   });
 
-
   if (props.recentLineVisibility) {
     return (
       <div className='PlayerSubmissionForm'>
         <h3>Player Submission Form for Player #{props.player}</h3>
-  
+
         <form onSubmit={onFormSubmit} className='PlayerSubmissionForm__form'>
-          <div className='PlayerSubmissionForm__poem-inputs'>
-            {main}
-      
-          </div>
-  
+          <div className='PlayerSubmissionForm__poem-inputs'>{main}</div>
+
           <div className='PlayerSubmissionForm__submit'>
             <input
               type='submit'
@@ -88,12 +83,15 @@ const PlayerSubmissionForm = (props) => {
         </form>
       </div>
     );
-  }else {
-    return (
-      <div></div>
-    )
+  } else {
+    return <div>{null}</div>;
   }
+};
 
+PlayerSubmissionForm.propTypes = {
+  onUserInputChange: propTypes.func.isRequired,
+  onFormSubmit: propTypes.func.isRequired,
+  poem: propTypes.object,
 };
 
 export default PlayerSubmissionForm;
