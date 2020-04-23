@@ -9,9 +9,17 @@ import RecentSubmission from './RecentSubmission';
 let recent = "";
 let poemLines = [];
 
+
+
 const Game = () => {
   const [poemList, setPoemList] = useState([]);
   const [player, setPlayer] = useState(1);
+
+  const [show, setShow] = useState(true)
+  
+  const componentDissapear = () => {
+    setShow(false)
+  };
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -48,11 +56,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission line={recent}/>
+      <RecentSubmission line={recent} className={`${show ? "RecentSubmission" : "noShow"}`}/>
 
-      <PlayerSubmissionForm onSubmitCallback={addLine} player={player} fields={FIELDS}/>
+      <PlayerSubmissionForm onSubmitCallback={addLine} player={player} fields={FIELDS} className={`${show ? "PlayerSubmissionForm" : "noShow"}`}/>
 
-      <FinalPoem props={poemLines}/>
+      <FinalPoem props={poemLines} componentDissapear={componentDissapear}/>
 
     </div>
   );

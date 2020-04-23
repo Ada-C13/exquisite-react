@@ -49,7 +49,7 @@ const PlayerSubmissionForm = (props) => {
   }
 
   return (
-    <div className="PlayerSubmissionForm">
+    <div className="props.className">
       <h3>Player Submission Form for Player #{props.player}</h3>
 
       <form className="PlayerSubmissionForm__form" 

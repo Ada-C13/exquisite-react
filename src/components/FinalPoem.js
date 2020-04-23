@@ -9,6 +9,7 @@ const FinalPoem = (props) => {
   const onButtonClick = () => {
     setShow(true)
 
+    props.componentDissapear()
   };
 
   const lineComponents = props.props.map((line) => {
@@ -28,12 +29,13 @@ const FinalPoem = (props) => {
 
       </section>
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-        <p className={show ? "show" : "noShow"}>
-        {lineComponents}
-        </p>
+      <div className={show ? "noshow" : "FinalPoem__reveal-btn-container"}>
+        <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className={show ? "noshow" : "FinalPoem__reveal-btn"} />
+        
       </div>
+      <p className={show ? "show" : "noShow"}>
+      {lineComponents}
+      </p>
     </div>
   );
 }
