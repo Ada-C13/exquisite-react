@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import "./FinalPoem.css";
 
 const FinalPoem = ({ isGameOver, onFinalClick, finalList }) => {
+  const poem = finalList.map((line) => {
+    return <p>{line}</p>;
+  });
   return (
     <div className="FinalPoem">
       {isGameOver ? (
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
-          <h4>{finalList}</h4>
+          <h4>{poem}</h4>
         </section>
       ) : (
         <div className="FinalPoem__reveal-btn-container">

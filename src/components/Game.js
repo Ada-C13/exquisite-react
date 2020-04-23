@@ -45,15 +45,19 @@ const Game = () => {
 
       <p className="Game__format-example">{exampleFormat}</p>
 
-      <RecentSubmission
-        mostRecentSubmission={listSubmissions.slice(-1)}
-        isGameOver={isGameOver}
-      />
+      {!isGameOver && (
+        <>
+          <RecentSubmission
+            mostRecentSubmission={listSubmissions.slice(-1)}
+            isGameOver={isGameOver}
+          />
 
-      <PlayerSubmissionForm
-        playerNumber={listSubmissions.length + 1}
-        onSubmitClick={onSubmitClick}
-      />
+          <PlayerSubmissionForm
+            playerNumber={listSubmissions.length + 1}
+            onSubmitClick={onSubmitClick}
+          />
+        </>
+      )}
 
       <FinalPoem
         finalList={listSubmissions}

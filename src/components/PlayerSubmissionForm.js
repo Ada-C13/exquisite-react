@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Input from "./Input";
 import "./PlayerSubmissionForm.css";
 
 const PlayerSubmissionForm = ({ playerNumber, onSubmitClick }) => {
@@ -43,42 +44,43 @@ const PlayerSubmissionForm = ({ playerNumber, onSubmitClick }) => {
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
         <div className="PlayerSubmissionForm__poem-inputs">
-          <input
+          <Input
             placeholder="adjective"
             name="adjective"
             type="text"
             onChange={onInputChange}
             value={formFields.adjective}
           />
-          <input
+          <Input
+            className="x"
             placeholder="noun"
             name="noun"
             type="text"
             onChange={onInputChange}
             value={formFields.noun}
           />
-          <input
+          <Input
             placeholder="adverb"
             name="adverb"
             type="text"
             onChange={onInputChange}
             value={formFields.adverb}
           />
-          <input
+          <Input
             placeholder="verb"
             name="verb"
             type="text"
             onChange={onInputChange}
             value={formFields.verb}
           />
-          <input
+          <Input
             placeholder="adjective"
             name="adjectiveTwo"
             type="text"
             onChange={onInputChange}
             value={formFields.adjectiveTwo}
           />
-          <input
+          <Input
             placeholder="noun"
             name="nounTwo"
             type="text"
