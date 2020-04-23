@@ -4,7 +4,7 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
-const Game = () => {
+const Game = (props) => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +12,15 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+  const [mostRecent, setMostRecent] = useState('');
+  const [finalPoem, setFinalPoem] = useState([]);
+
+  const onSubmit = (sentence) => {
+    // Store it in an all sentence array - located where? 
+    // Store it in most recent submission var as a string
+    setFinalPoem([...finalPoem, sentence]);
+    setMostRecent(sentence);
+  }
 
   return (
     <div className="Game">
@@ -27,7 +36,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={onSubmit}/>
 
       <FinalPoem />
 
