@@ -14,13 +14,13 @@ const generateSubmissionFields = (fields, current, onChangeCallback) => {
   return submissionFields;
 }
 
-const PlayerSubmissionForm = ({ fields, current, onChangeCallback, onSubmitCallback}) => {
+const PlayerSubmissionForm = ({ fields, current, count, onChangeCallback, onSubmitCallback}) => {
   console.log(fields);
   const submissionFields = generateSubmissionFields(fields, current, onChangeCallback);
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{count}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onSubmitCallback} >
 
@@ -39,6 +39,7 @@ const PlayerSubmissionForm = ({ fields, current, onChangeCallback, onSubmitCallb
 PlayerSubmissionForm.propTypes = {
   fields: PropTypes.array.isRequired,
   current: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
   onChangeCallback: PropTypes.func.isRequired,
   onSubmitCallback: PropTypes.func.isRequired,
 };

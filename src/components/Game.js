@@ -22,6 +22,8 @@ const Game = () => {
   const [poem, setPoem] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
+  let subBool = false;
+
   //pretty-print the format of a poem sentence
   const exampleFormat = FIELDS.map((field) => {
     return field.key ? field.placeholder : field
@@ -37,6 +39,7 @@ const Game = () => {
   //callback function to store user's submitted poem sentence
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     const submissionToString = () => {
       let submissionString = "";
       for (let field of FIELDS) {
@@ -44,6 +47,7 @@ const Game = () => {
       }
       return submissionString.trim();
     };
+
     let updatedPoem = [...poem]; 
     updatedPoem.push(submissionToString());
     setPoem(updatedPoem);
@@ -51,6 +55,7 @@ const Game = () => {
 
   const handleReveal = (event) => {
     setSubmitted(true);
+    subBool = true;
   }
 
   return (
@@ -65,11 +70,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {poem.length > 0 ? <RecentSubmission line={poem[poem.length-1].trim()}/> : null }
-
-      <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/>
-
-      <FinalPoem status={submitted} poem={poem} onButtonClickCallback={handleReveal} />
+      {poem.length > 0 && !submitted ? <RecentSubmission line={poem[poem.length-1]}/> : null }
+      { submitted ? null : <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} count={poem.length+1} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/> }
+      <FinalPoem status={submitted} poem={poem} onButtonClickCallback={handleReveal} />  
 
     </div>
   );
