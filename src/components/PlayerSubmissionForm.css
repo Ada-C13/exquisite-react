@@ -28,7 +28,7 @@
 }
 
 .PlayerSubmissionForm__submit-btn:hover {
-  background-color: tomato;
+  background-color: rgb(54, 236, 197);
 }
 
 .PlayerSubmissionFormt__input--invalid {
@@ -37,4 +37,12 @@
 
 .PlayerSubmissionForm__input--invalid::placeholder {
   color: black;
+}
+
+.empty {
+  background-color: lightpink;
+}
+
+h3 {
+  text-align: center;  
 }

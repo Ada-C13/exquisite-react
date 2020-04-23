@@ -4,7 +4,17 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+
 const Game = () => {
+
+  // data of form submission, so that the Game component keeps track of all of the submissions.
+
+  const [poems, setPoemPieces] = useState([]);
+  // SetPlaying false when the game is over. 
+  const [playing, setPlaying] = useState(true);
+  // State to add up 1 to the next player. 
+  const [player, setPlayer] = useState(1)
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -13,24 +23,63 @@ const Game = () => {
     }
   }).join(" ");
 
+  // Function to start over the game! Anytime
+  const resetGame = () => {
+    setPoemPieces([]);
+    setPlaying(true);
+    setPlayer(1);
+  }
+
+
+  // CallBack func to get the info from the form. 
+  const addPoemPiece = (poem) => {
+
+    const newPoemPiece = [...poems];
+    console.log(poem)
+
+    newPoemPiece.push(poem)
+    setPlayer(player + 1)
+    setPoemPieces(newPoemPiece);
+  }
+
+  const gameOver = () => {
+    setPlaying(false);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
+      <div className="btn">
+        <input onClick={resetGame} type="reset" value="Start Over" className="PlayerSubmissionForm__submit-btn" />
+      </div>
 
       <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
 
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
-        { exampleFormat }
+        {exampleFormat}
       </p>
+     
+      <RecentSubmission
+        // Spread operator here === playing={playing}
+        {...{ poems }}
+        {...{ playing }}
+      />
 
-      <RecentSubmission />
+      <PlayerSubmissionForm
+        onFormSubmitCallback={addPoemPiece}
+        fields={FIELDS}
+        currentPlayer={player}
+        {...{ playing }}
+      />
 
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
-
+      <FinalPoem
+         {...{ poems }}
+        onGameOverCallback={gameOver}
+        // Spread operator here === playing={playing}
+        {...{ playing }}
+      />
     </div>
   );
 }
@@ -65,5 +114,6 @@ const FIELDS = [
   },
   ".",
 ];
+
 
 export default Game;
