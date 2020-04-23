@@ -48,9 +48,9 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-      {recentSub.show ? <RecentSubmission mostRecent={recentSub}/>  : ''}
+      {recentSub.show && <RecentSubmission mostRecent={recentSub}/> }
 
-      {reveal ? '' : <PlayerSubmissionForm 
+      {!reveal && <PlayerSubmissionForm 
         addSubmissionCallback={onSubmission} 
         player={player}
       />}
@@ -64,7 +64,6 @@ const Game = () => {
     </div>
   );
 }
-
 
 const FIELDS = [
   "The",
