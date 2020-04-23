@@ -4,18 +4,58 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+const FIELDS = [
+  // "The",
+  {
+    key: 'adj1',
+    placeholder: 'adjective',
+  },
+  {
+    key: 'noun1',
+    placeholder: 'noun',
+  },
+  {
+    key: 'adv',
+    placeholder: 'adverb',
+  },
+  {
+    key: 'verb',
+    placeholder: 'verb',
+  },
+  // "the",
+  {
+    key: 'adj2',
+    placeholder: 'adjective',
+  },
+  {
+    key: 'noun2',
+    placeholder: 'noun',
+  },
+  // ".",
+];
+
+
+const submissionFormat = () => {
+  const submissionKeys = {};
+  for (let field of FIELDS) {
+    if (field.key) submissionKeys[field.key] = "test";
+  }
+  return submissionKeys;
+}
+
 const Game = () => {
+  const [playerSubmission, setPlayerSubmission] = useState(submissionFormat());
+  const [poem, setPoem] = useState({});
+
   const exampleFormat = FIELDS.map((field) => {
-    // return field.key ? field.placeholder : field
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
+    return field.key ? field.placeholder : field
   }).join(" ");
 
-  const handleChange = () => {
-
+  const handleChange = (event) => {
+    let updatedFields = {...playerSubmission};
+    console.log(`Changing ${event.target.id} to ${event.target.value}`);
+    updatedFields[event.target.id] = event.target.value;
+    setPlayerSubmission(updatedFields);
   }
 
   return (
@@ -41,34 +81,5 @@ const Game = () => {
 }
 
 
-const FIELDS = [
-  "The",
-  {
-    key: 'adj1',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun1',
-    placeholder: 'noun',
-  },
-  {
-    key: 'adv',
-    placeholder: 'adverb',
-  },
-  {
-    key: 'verb',
-    placeholder: 'verb',
-  },
-  "the",
-  {
-    key: 'adj2',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun2',
-    placeholder: 'noun',
-  },
-  ".",
-];
 
 export default Game;

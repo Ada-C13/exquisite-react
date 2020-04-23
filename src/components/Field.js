@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const Field = (props) => {
   return (
-    <input className="field"
+    <input className={`PlayerSubmissionForm__input${props.isValid ? "" : "--invalid"}`}
+            id={props.id}
             placeholder={props.placeholder}
             type="text"
             value={props.value}
