@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
+  // I did not do this project in the Waves as recommended. The instructions did not totally make sense to me. 
+  // I got a solid 3 hours of tutoring while working on this project. React can get confusing - fast. 
+  // I referenced this link often. 
   // https://codesandbox.io/s/serene-fire-no8p7?file=/src/components/SignupForm.js
   const [formFields, setFormFields ] = useState({
     the1: "The",
@@ -86,6 +89,9 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
         onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
+        {/* There's a lot of repeition in the form. Not sure if that's just how forms work, 
+        or if this can be refactored. If time were not an issue, I would look into this further.
+        The example forms in lecture etc. seem to have this repeition as well.  */}
           The
           <input
             name="adj1"
@@ -94,7 +100,9 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
             // This is repetitive - need to DRY
             onChange={onInputChange}
             // This too is repetitive - need to DRY
-            // This applies the (already provided) css for pink fields
+            // This applies the (already provided) css for pink fields. Not sure why the 't' is 
+            // after "PlayerSubmissionFormt". Why is that 't' there? I looked at the css to verify as the 
+            // css was provided. 
             className={validateField("adj1") ? "" : "PlayerSubmissionFormt__input--invalid"}
             value={formFields.adj1}
             />
