@@ -13,6 +13,31 @@ const Game = () => {
     }
   }).join(" ");
 
+  // Game.js keeps track of state
+  // all the hooks/useState organized here
+  const [poemLines, setPoemLines] = useState([]);
+  const [showRecentSubmission, setShowRecentSubmission] = useState(false);
+  const [showPlayerSubmissionForm, setShowPlayerSubmissionForm] = useState(true);
+
+  // use this example
+  // const addStudent = (student) => {
+  // Duplicate the student list.
+  // const newStudentList = [...students];
+  const addPoemLine = (poem) => {
+    const newPoemLines = [...poemLines];
+
+    newPoemLines.push(poem);
+
+    setPoemLines(newPoemLines);
+    setShowRecentSubmission(true);
+  }
+
+  const hidePlayerSubmissionForm = (value) => {
+    setShowPlayerSubmissionForm(value);
+    setShowRecentSubmission(false);
+  }
+
+    
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -25,11 +50,12 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {/* figured out how to write the next two lines with && by looking at classmates' code */}
+      {showRecentSubmission && <RecentSubmission poem={poemLines}/>}
+      {/* define currentPlayerId here - got idea from Chris' video where he did student_id */}
+      {showPlayerSubmissionForm && <PlayerSubmissionForm onSubmitCallBack={addPoemLine} currentPlayerId={poemLines.length + 1}/>}
 
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
+      <FinalPoem poem={poemLines} onSubmitCallBack={hidePlayerSubmissionForm}/>
 
     </div>
   );
