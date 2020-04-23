@@ -11,13 +11,6 @@ const FinalPoem = ({poem, onSubmitCallback}) => {
     finalPoemLines.push(Object.values(poemLine).join(" ").concat('.'));
   });
 
-  
-
-  // poem = array of objects
-  // for each element in the array
-  // go and concatenate the object values and store this as a string in an array
-  // will have an array of all the poem lines
-
   const onFinalPoemButtonClick = (event) => {
     event.preventDefault();
     
@@ -26,8 +19,6 @@ const FinalPoem = ({poem, onSubmitCallback}) => {
     onSubmitCallback(false);
     setShowFinalPoemButton(false);
     }
-
-    // {this.dummyDataLoop().map((item, index) => <p key={index}>{item}</p>)}
 
   return (
     <div className="FinalPoem">
