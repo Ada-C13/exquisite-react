@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
   const [fields, setFields] /* destructuring array - first element is fields, second element is setFields */ = useState(
     { 
       adj1: "",
@@ -15,13 +15,25 @@ const PlayerSubmissionForm = () => {
   const onInputChange = event => {
     const { name, value } = event.target;
 
-      const newFields = {
-        ...fields,
-        [name]: value // [name] get value of name and use it as the key | value is the variable above
-        // line 46 is equivalent to: newFields[name] = value
-      };
+    const newFields = {
+      ...fields,
+      [name]: value // [name] get value of name and use it as the key | value is the variable above
+      // line 46 is equivalent to: newFields[name] = value
+    };
   
     setFields(newFields);
+  };
+
+  const onFormSubmit = (event) => {
+    // prevent browser from trying to submit form
+    event.preventDefault();
+
+    props.addLineCallback(fields);
+
+    // ... we need to add the line to the list
+    setFields({
+      ...fields,
+    });
   };
 
 
@@ -29,7 +41,7 @@ const PlayerSubmissionForm = () => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           The
@@ -84,7 +96,11 @@ const PlayerSubmissionForm = () => {
         </div>
 
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+          <input 
+            type="submit" 
+            value="Submit Line" 
+            className="PlayerSubmissionForm__submit-btn" 
+          />
         </div>
       </form>
     </div>
