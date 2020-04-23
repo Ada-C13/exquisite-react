@@ -14,13 +14,13 @@ const Game = () => {
   // State to add up 1 to the next player. 
   const [player, setPlayer] = useState(1)
 
-  // const exampleFormat = FIELDS.map((field) => {
-  //   if (field.key) {
-  //     return field.placeholder;
-  //   } else {
-  //     return field;
-  //   }
-  // }).join(" ");
+  const exampleFormat = FIELDS.map((field) => {
+    if (field.key) {
+      return field.placeholder;
+    } else {
+      return field;
+    }
+  }).join(" ");
 
 
   // CallBack func to get the info from the form. 
@@ -47,7 +47,7 @@ const Game = () => {
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
-        {/* { exampleFormat } */}
+        { exampleFormat }
       </p>
       {/*   // playing={playing} */}
       <RecentSubmission 
