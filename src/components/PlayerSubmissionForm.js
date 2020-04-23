@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PlayerSubmissionForm.css';
 import Field from './Field.js';
 
