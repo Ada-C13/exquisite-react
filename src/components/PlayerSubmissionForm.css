@@ -25,6 +25,7 @@
   border: 2px black solid;
   box-shadow: 5px 10px black;
   transition: 0.25s;
+  background-color: cadetblue;
 }
 
 .PlayerSubmissionForm__submit-btn:hover {
@@ -37,4 +38,8 @@
 
 .PlayerSubmissionForm__input--invalid::placeholder {
   color: black;
+}
+
+input.empty {
+  background-color: #FFE9E9;
 }

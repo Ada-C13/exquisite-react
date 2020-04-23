@@ -5,6 +5,12 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [currentField, setCurrentField] = useState('');
+  const [allFields, setAllFields] = useState([]);
+  const [displayPoem, setDisplayPoem] = useState(false);
+
+  // Provided code
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +18,44 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  // Gets field input and renders all the fields together
+  const showSubmittedField = (fieldInput) => {
+    
+    const newField = Object.values(fieldInput).join(' ');
+    setCurrentField(newField);
+
+    const newFieldList = [...allFields];
+    newFieldList.push(newField);
+    setAllFields(newFieldList);
+  };
+
+  // Array to hold field input
+  let poem = [];
+
+  if (displayPoem === true) {
+    poem = allFields;
+  
+    return (
+      <div className="Game">
+        <h2>Game</h2>
+
+        <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
+
+        <p>Please follow the following format for your poetry submission:</p>
+
+        <p className="Game__format-example">
+          { exampleFormat }
+        </p>
+
+        
+        {/* <RecentSubmission fieldInput={ currentField }/> <--- shows last submitted line by user*/}
+
+        <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
+
+      </div>
+    );
+  }
 
   return (
     <div className="Game">
@@ -25,17 +69,16 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission fieldInput={ currentField }/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onCallbackField={ showSubmittedField } fields={ FIELDS }/>
 
-      <FinalPoem />
+      <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
 
     </div>
   );
 }
-
-
+// Part for making this dynamic later use
 const FIELDS = [
   "The",
   {
