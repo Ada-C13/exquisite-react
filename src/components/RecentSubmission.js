@@ -5,9 +5,11 @@ const RecentSubmission = ({ poem }) => {
   let submission = [];
   const recentSubmission = poem.slice(-1)[0];
 
+  //recentSubmission will be undefined
   if (recentSubmission === undefined) {
     submission.push(" ");
   } else {
+    // push to submission object values of the poem and spliting
     submission.push(Object.values(recentSubmission).join(" ").concat("."));
   }
 

@@ -5,8 +5,12 @@ import FinalPoem from "./FinalPoem";
 import RecentSubmission from "./RecentSubmission";
 
 const Game = () => {
+  // keep track of current sentence
   const [currentSentence, nextSentence] = useState([]);
+  // holds subs or all sentences
   const [submissions, setSubmissions] = useState(false);
+
+  //reveal poem
   const [showPoem, changeShowPoem] = useState(true);
 
   const exampleFormat = FIELDS.map((field) => {
@@ -17,6 +21,7 @@ const Game = () => {
     }
   }).join(" ");
 
+  // used hold a list of sentence that make the final poem
   const showRecentSubmission = (sentence) => {
     const newSentenceList = [...currentSentence];
 
@@ -46,7 +51,7 @@ const Game = () => {
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">{exampleFormat}</p>
-
+      {/* keeps all subs an recent sub together */}
       {submissions && <RecentSubmission poem={currentSentence} />}
 
       {showPoem && (

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./FinalPoem.css";
 
 const FinalPoem = ({ poem, onSubmitCallBack }) => {
-  // hooks/state organized here
-  const [showPoem, setShowPoem] = useState("");
+  // hooks/state organized here // used another help in this section
+  const [revealPoem, setRevealPoem] = useState("");
   const [showFinalPoemButton, setShowFinalPoemButton] = useState(true);
   let finalPoemSentence = [];
 
@@ -15,8 +15,9 @@ const FinalPoem = ({ poem, onSubmitCallBack }) => {
     // prevent default behavior
     event.preventDefault();
 
+    // creates final poem
     let finalPoem = finalPoemSentence.join("\n");
-    setShowPoem(finalPoem);
+    setRevealPoem(finalPoem);
     onSubmitCallBack(false);
     setShowFinalPoemButton(false);
   };
@@ -26,7 +27,7 @@ const FinalPoem = ({ poem, onSubmitCallBack }) => {
       <section className="FinalPoem__poem FinalPoem__display-linebreak ">
         <h3>Final Poem</h3>
 
-        {showPoem}
+        {revealPoem}
       </section>
 
       {showFinalPoemButton && (
