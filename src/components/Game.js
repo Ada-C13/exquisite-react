@@ -13,6 +13,32 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [player, setPlayer] = useState(1);  
+  const [submissionsList, setsubmissionsList] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+
+
+  const onPlayerSubmissionCallback = (playerSubmission) => {
+    // make a copy of submissionsList
+    const newSubmissions = [...submissionsList];
+
+    // create sentence structure
+    const sentence = "The " + playerSubmission.adjective1 + " " + playerSubmission.noun1 + " " + playerSubmission.adverb + " " + playerSubmission.verb + " the " + playerSubmission.adjective2 + " " + playerSubmission.noun2 + ".";
+
+    newSubmissions.push(sentence); 
+    // update state of submissionsList to new list
+    setsubmissionsList(newSubmissions);  
+    // increment player
+    setPlayer(player + 1);
+  }
+
+  const onFinalPoemCallback = (bool) => {
+    setSubmitted(bool);
+  }
+
+  // on reset
+  // setPlayer(1)
+    
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -25,21 +51,26 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <section className={submitted ? 'hide' : 'show'}>
+        {
+          submissionsList.length > 0 ? 
+          <RecentSubmission recentSubmission={submissionsList[submissionsList.length - 1]}/> :
+            null
+        }
+        
+        <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} fields={FIELDS} />
+      </section>
 
-      <PlayerSubmissionForm />
-
-      <FinalPoem />
+      <FinalPoem submissions={submissionsList} submitted={submitted} onFinalPoemCallback={onFinalPoemCallback}/>
 
     </div>
   );
 }
 
-
 const FIELDS = [
   "The",
   {
-    key: 'adj1',
+    key: 'adjective1',
     placeholder: 'adjective',
   },
   {
@@ -47,7 +78,7 @@ const FIELDS = [
     placeholder: 'noun',
   },
   {
-    key: 'adv',
+    key: 'adverb',
     placeholder: 'adverb',
   },
   {
@@ -56,7 +87,7 @@ const FIELDS = [
   },
   "the",
   {
-    key: 'adj2',
+    key: 'adjective2',
     placeholder: 'adjective',
   },
   {
