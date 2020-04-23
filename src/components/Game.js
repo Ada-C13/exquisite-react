@@ -71,7 +71,7 @@ const Game = () => {
 
       {poem.length > 0 && !isRevealed ? <RecentSubmission line={poem[poem.length-1]}/> : null }
       { isRevealed ? null : <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} count={poem.length+1} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/> }
-      <FinalPoem status={isRevealed} poem={poem} onButtonClickCallback={handleReveal} />  
+      <FinalPoem isRevealed={isRevealed} poem={poem} onButtonClickCallback={handleReveal} />  
 
     </div>
   );
