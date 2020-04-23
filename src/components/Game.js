@@ -5,13 +5,39 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
+
+  const [turnNumber, setTurnNumber] = useState(0)
+  const [submissions, setSubmissions] = useState([])
+  const [finalPoem, setFinalPoem] = useState([])
+  
+  const handleSubmit = (submit) => {
+    setSubmissions([...submissions, submit])
+    if (turnNumber === FIELDS.length) {
+     setFinalPoem([...finalPoem, submissions])
+     setTurnNumber(turnNumber === 0)
     } else {
-      return field;
+      setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
+    }; 
+  };
+
+  const handleClickAllSetences = () => {
+    if (finalPoem.length > 0) {
+      return finalPoem
     }
-  }).join(" ");
+    return <div />
+  }
+
+  const placeholderText = () => {
+    return FIELDS[turnNumber].placeholder
+  };
+
+  const renderRecentSubmissions = () => {
+    if (submissions.length > 0) {
+      return (<RecentSubmission submission={submissions[submissions.length - 1]} />)
+    }
+    return <div />
+  };
+
 
   return (
     <div className="Game">
@@ -21,15 +47,20 @@ const Game = () => {
 
       <p>Please follow the following format for your poetry submission:</p>
 
-      <p className="Game__format-example">
-        { exampleFormat }
-      </p>
+      <p className="sentenceStructure">"The adjective noun adverb verb the adjective noun."</p>
 
-      <RecentSubmission />
+      {renderRecentSubmissions()}
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+        placeholderText={placeholderText()}
+        turnNumber={turnNumber}
+        handleSubmit={handleSubmit}
+      />
 
-      <FinalPoem />
+      <FinalPoem 
+        finalPoem={finalPoem}
+        handleFullPoem={handleClickAllSetences()} 
+      />
 
     </div>
   );
@@ -37,7 +68,6 @@ const Game = () => {
 
 
 const FIELDS = [
-  "The",
   {
     key: 'adj1',
     placeholder: 'adjective',
@@ -54,7 +84,6 @@ const FIELDS = [
     key: 'verb',
     placeholder: 'verb',
   },
-  "the",
   {
     key: 'adj2',
     placeholder: 'adjective',
@@ -62,8 +91,7 @@ const FIELDS = [
   {
     key: 'noun2',
     placeholder: 'noun',
-  },
-  ".",
+  }
 ];
 
 export default Game;
