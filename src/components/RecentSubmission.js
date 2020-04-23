@@ -23,6 +23,7 @@ const RecentSubmission = (props) => {
   return (
     shouldDisplay() && (
     <div className="RecentSubmission">
+      {/* See only the most recent submission of poetry in the section */}
       <h3>The Most Recent Submission</h3>
       { showingLastPoemePiece() }
       <p className="RecentSubmission__submission">{ }</p>
