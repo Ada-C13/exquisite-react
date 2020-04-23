@@ -13,9 +13,8 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [submittedLines, setSubmittedLines] = useState([])
-  const [fullPoem, setFullPoem] = useState(false)
-  const [showForm, setShowForm] = useState(true)
+  const [submittedLines, setSubmittedLines] = useState([]);
+  const [fullPoem, setFullPoem] = useState(false);
 
   const addSubmittedLine = (line) => {
     const newSubmittedLines = [...submittedLines]

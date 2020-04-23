@@ -11,80 +11,70 @@ const PlayerSubmissionForm = (props) => {
     verb1: "verb",
     adjective2: "adjective",
     noun2: "noun"
-  }
+  };
 
-  const [player, setPlayer] = useState(1)
+  const [player, setPlayer] = useState(1);
   const [playerSubmission, setPlayerSubmission] = useState(defaultValues);
 
   const onSubmit = (event) => {
-    event.preventDefault()
-    updatePlayer()
-    const newLine = `The ${playerSubmission.adjective1} ${playerSubmission.noun1} ${playerSubmission.adverb1} ${playerSubmission.verb1} the ${playerSubmission.adjective2} ${playerSubmission.noun2}`
-    props.onSubmitCallback(newLine) //sends to Game
-    setPlayerSubmission(defaultValues) // resets form
-  }
+    event.preventDefault();
+    updatePlayer();
+    const newLine = `The ${playerSubmission.adjective1} ${playerSubmission.noun1} ${playerSubmission.adverb1} ${playerSubmission.verb1} the ${playerSubmission.adjective2} ${playerSubmission.noun2}`;
+    props.onSubmitCallback(newLine); 
+    setPlayerSubmission(defaultValues); 
+  };
 
   const updatePlayer = () => {
-    setPlayer(player + 1)
-  }
+    setPlayer(player + 1);
+  };
 
-
-  // const onEntry = (event) => {
-  //   const newEntry = {
-  //     ...playerSubmission, 
-
-  //   }
-
-  //   setPlayerSubmission(newEntry)
-  //   // console.log(event.target.value)
-  // }
 
   const onAdj1Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       adjective1: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
   const onNoun1Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       noun1: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
   const onAdvb1Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       adverb1: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
   const onVerb1Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       verb1: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
   const onAdj2Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       adjective2: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
   const onNoun2Entry = (event) => {
     const newEntry = {
       ...playerSubmission, 
       noun2: event.target.value
-    }
-    setPlayerSubmission(newEntry)
+    };
+    setPlayerSubmission(newEntry);
   };
 
 
@@ -97,22 +87,32 @@ const PlayerSubmissionForm = (props) => {
         <div className="PlayerSubmissionForm__poem-inputs">
           The 
           {
-            <input className="Adj1" value={playerSubmission.adjective1} onChange={onAdj1Entry}/>
+            <input className="pink"
+            value={playerSubmission.adjective1} 
+            onChange={onAdj1Entry}/>
           }{
-            <input className="Noun1" value={playerSubmission.noun1} onChange={onNoun1Entry}/>
+            <input className="pink" 
+            value={playerSubmission.noun1} 
+            onChange={onNoun1Entry}/>
           }{
-            <input className="Advb1" value={playerSubmission.adverb1} onChange={onAdvb1Entry}/>
+            <input className="pink" 
+            value={playerSubmission.adverb1} 
+            onChange={onAdvb1Entry}/>
           }{
-            <input className="Verb1" value={playerSubmission.verb1} onChange={onVerb1Entry}/>
+            <input className="pink" 
+            value={playerSubmission.verb1} 
+            onChange={onVerb1Entry}/>
           }
           the
           {
-            <input className="Adj2" value={playerSubmission.adjective2} onChange={onAdj2Entry}/>
+            <input className="pink" 
+            value={playerSubmission.adjective2} 
+            onChange={onAdj2Entry}/>
           }{
-            <input className="Noun2" value={playerSubmission.noun2} onChange={onNoun2Entry}/>
+            <input className="pink" 
+            value={playerSubmission.noun2} 
+            onChange={onNoun2Entry}/>
           }
-
-
         </div>
 
         <div className="PlayerSubmissionForm__submit">

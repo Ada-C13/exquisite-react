@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
-// show/hide components and buttons
-// https://www.chrisblakely.dev/how-to-show-hide-elements-in-react-using-hooks
 
-
-const FinalPoem = ({onSubmitCallback, submittedLines,}) => {
+const FinalPoem = ({onSubmitCallback, submittedLines}) => {
 
   const [fullPoem, setFullPoem ] = useState('');
-  const [showButton, setShowButton] = useState(true)
+  const [showButton, setShowButton] = useState(true);
 
   const onFinalSubmit = (event) => {
     event.preventDefault();
