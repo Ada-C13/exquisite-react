@@ -13,11 +13,7 @@ const Game = () => {
     }
   }).join(" ");
 
-  const [recentSubmission, setRececentSubmission] = useState('')
-  const [sentenceStart, setSentenceStart] = useState('')
-  const [sentenceMid, setSentenceMid] = useState('')
-  const [sentenceEnd, setSentenceEnd] = useState('')
-  const [final, setFinal] = useState('')
+  const [revealSubmission, setRevealSubmission] = useState(false)
   const [poems, setPoems] = useState([{
     firstAdjective: '',
     firstNoun: '',
@@ -38,12 +34,8 @@ const Game = () => {
       secondNoun: poemsCreated.secondNoun,
     });
 
+    setRevealSubmission(true);
     setPoems(newPoems);
-    setRececentSubmission('The Most Recent Submission');
-    setSentenceStart('The')
-    setSentenceMid('the')
-    setSentenceEnd('.')
-    setFinal('Final Poem')
   };
   
   
@@ -58,8 +50,8 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
-      <RecentSubmission submission={recentSubmission} start={sentenceStart} mid={sentenceMid} end={sentenceEnd} recentPoem={poems[poems.length - 1]} final={final} />
+      
+      {revealSubmission? <RecentSubmission recentPoem={poems[poems.length - 1]} /> : ""}
 
       <PlayerSubmissionForm  addPoemCallback={createPoems}  />
 
