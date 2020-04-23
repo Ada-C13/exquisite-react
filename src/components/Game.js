@@ -5,6 +5,28 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [player, setPlayer] = useState(1);
+  const [linesSubmitted, setlinesSubmitted] = useState([]);  //array of objects that represent lines of poem
+  const [revealStatus, setRevealStatus] = useState(false);
+  
+  const submitLine = (newLine) => {
+    const allLines = [...linesSubmitted];
+    allLines.push(newLine);
+    setlinesSubmitted(allLines);
+    setPlayer(player + 1);
+  };
+
+  const revealPoem = () => {
+    setRevealStatus(true);
+  };
+
+  const resetGame = () => {
+    setRevealStatus(false);
+    setlinesSubmitted([]);
+    setPlayer(1);
+  }
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +34,7 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
 
   return (
     <div className="Game">
@@ -25,12 +48,24 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {!revealStatus && linesSubmitted.length > 0 && 
+      <RecentSubmission mostRecentLine={linesSubmitted[linesSubmitted.length - 1]} />}
 
-      <PlayerSubmissionForm />
+      {!revealStatus && 
+      <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
 
-      <FinalPoem />
-
+      <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
+      
+      {revealStatus &&
+      <div className='FinalPoem__reveal-btn-container'>
+        <input 
+          type='button' 
+          value='Play Again' 
+          title='Click button to play again'
+          className='PlayerSubmissionForm__submit-btn'
+          onClick={resetGame}
+        />
+      </div>}
     </div>
   );
 }

@@ -38,3 +38,7 @@
 .PlayerSubmissionForm__input--invalid::placeholder {
   color: black;
 }
+
+.PlayerSubmissionForm__poem-inputs--empty {
+  background-color: #e6c7c2;
+}
