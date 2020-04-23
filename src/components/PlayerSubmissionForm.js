@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 const PlayerSubmissionForm = (props) => {
   const [line, setLine] = useState({
@@ -55,7 +56,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adj1}
             type="text" 
             onChange={onInputChange}
-            className={line.adj1 == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.adj1 === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <input
@@ -64,7 +65,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.noun1}
             type="text" 
             onChange={onInputChange}
-            className={line.noun1 == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.noun1 === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <input
@@ -73,7 +74,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adverb}
             type="text" 
             onChange={onInputChange} 
-            className={line.adverb == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.adverb === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <input
@@ -82,7 +83,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.verb}
             type="text" 
             onChange={onInputChange} 
-            className={line.verb == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.verb === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <span>the</span>
@@ -93,7 +94,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.adj2}
             type="text" 
             onChange={onInputChange}
-            className={line.adj2 == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.adj2 === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <input
@@ -102,7 +103,7 @@ const PlayerSubmissionForm = (props) => {
             value={line.noun2}
             type="text" 
             onChange={onInputChange}
-            className={line.noun2 == '' ? `PlayerSubmissionForm__input--invalid` : null}
+            className={line.noun2 === '' ? `PlayerSubmissionForm__input--invalid` : null}
           />
 
           <span>.</span>
@@ -120,6 +121,12 @@ const PlayerSubmissionForm = (props) => {
   return (
     props.displayPlayerForm && PlayerSubmissionForm
   );
+}
+
+PlayerSubmissionForm.propTypes = {
+  player: PropTypes.number,
+  addLineCallback: PropTypes.func,
+  displayPlayerForm: PropTypes.bool
 }
 
 

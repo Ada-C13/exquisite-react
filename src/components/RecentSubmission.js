@@ -1,5 +1,7 @@
 import React from 'react';
 import './RecentSubmission.css';
+import PropTypes from 'prop-types';
+
 
 const RecentSubmission = (props) => {
 
@@ -18,6 +20,11 @@ const RecentSubmission = (props) => {
     <p className="RecentSubmission__submission">{ mostRecent }</p>
   </div>
   );
+}
+
+RecentSubmission.propTypes = {
+  recent: PropTypes.array,
+  displayRecent: PropTypes.bool
 }
 
 export default RecentSubmission;

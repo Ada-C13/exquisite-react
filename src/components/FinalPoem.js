@@ -1,5 +1,6 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
 
@@ -41,6 +42,12 @@ const FinalPoem = (props) => {
   return (
     props.displayFullPoem ? displayPoem : revealButton
   );
+}
+
+FinalPoem.propTypes = {
+  poems: PropTypes.array,
+  displayFullPoem: PropTypes.bool,
+  onClickCallback: PropTypes.func
 }
 
 export default FinalPoem;
