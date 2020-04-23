@@ -6,12 +6,17 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
+    // return field.key ? field.placeholder : field
     if (field.key) {
       return field.placeholder;
     } else {
       return field;
     }
   }).join(" ");
+
+  const handleChange = () => {
+
+  }
 
   return (
     <div className="Game">
@@ -27,7 +32,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} onChangeCallback={handleChange}/>
 
       <FinalPoem />
 

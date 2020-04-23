@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Field.css';
+import PropTypes from 'prop-types';
 
 const Field = (props) => {
   return (
@@ -13,7 +14,7 @@ const Field = (props) => {
 
 Field.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.value,
+  value: PropTypes.string,
   onChangeCallback: PropTypes.func.isRequired,
 };
 

@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import Field from './Field.js';
 
-const PlayerSubmissionForm = () => {
+const generateSubmissionFields = (fields, onChangeCallback) => {
+
+  const submissionFields = fields.map(field => field.key ? <Field
+    placeholder={field.placeholder}
+    value={field.value}
+    onChangeCallback={field.onChangeCallback}  /> : <span>{field}</span> )
+
+  return submissionFields;
+}
+
+const PlayerSubmissionForm = ({ fields, onChangeCallback}) => {
+  console.log(fields);
+  const submissionFields = generateSubmissionFields(fields, onChangeCallback);
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
@@ -9,14 +23,7 @@ const PlayerSubmissionForm = () => {
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-          <input
-            placeholder="hm..."
-            type="text" />
-
+          {submissionFields}
         </div>
 
         <div className="PlayerSubmissionForm__submit">
@@ -28,4 +35,7 @@ const PlayerSubmissionForm = () => {
 }
 
 
+
 export default PlayerSubmissionForm;
+
+
