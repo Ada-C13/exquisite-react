@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = (props) => {
+const PlayerSubmissionForm = props => {
 
   const [formFields, setFormFields] = useState(
     {
@@ -15,7 +15,7 @@ const PlayerSubmissionForm = (props) => {
     }
   );
 
-  const inputValid = (field) => {
+  const inputValid = field => {
     if (field !== "") {
       return true;
     } else {
@@ -23,21 +23,30 @@ const PlayerSubmissionForm = (props) => {
     }
   }
 
-  const onInputChange = (event) => {
+  const onInputChange = event => {
+    const { name, value } = event.target;
     const newFormFields = {
       ...formFields,
+      [name]: value
     };
-    newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
-    //send data back up to Game
+    // validate that player filled in all fields, alert if not
+    for (const value of Object.values(formFields)) {
+      if (value === "") {
+        alert("To submit your line, please fill in all fields.");
+        return;
+      }
+    }
+
+    // send current state formFields data back up to Game
     props.onSubmitCallback(formFields);
     
-    // clears all fields for next player's input
+    // clear fields for next player input
     setFormFields({
       adj1: "",
       noun1: "",
@@ -121,8 +130,7 @@ const PlayerSubmissionForm = (props) => {
             type="submit"
             value="Submit Line"
             className="PlayerSubmissionForm__submit-btn"
-            // why onClick instead of onSubmit if type of input is submit?
-            onClick={handleSubmit}
+            onSubmit={handleSubmit}
           />
         </div>
       </form>
@@ -130,9 +138,9 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
-
 PlayerSubmissionForm.propTypes = {
   onSubmitCallback: PropTypes.func.isRequired,
+  player: PropTypes.number.isRequired
 };
 
 export default PlayerSubmissionForm;

@@ -1,7 +1,8 @@
 import React from 'react';
 import './RecentSubmission.css';
+import PropTypes from 'prop-types';
 
-const RecentSubmission = ( {lastPoem} ) => {
+const RecentSubmission = ({ lastPoem }) => {
   return (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>
@@ -11,5 +12,9 @@ const RecentSubmission = ( {lastPoem} ) => {
     </div>
   );
 }
+
+RecentSubmission.propTypes = {
+  lastPoem: PropTypes.object.isRequired,
+};
 
 export default RecentSubmission;

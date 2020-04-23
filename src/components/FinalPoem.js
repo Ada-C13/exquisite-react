@@ -1,9 +1,10 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
-const FinalPoem = ({ poemList, onSubmitCallback, finalReveal }) => {
+const FinalPoem = ({ poemList, onSubmitCallback, poemRevealed }) => {
   
-  const showWholePoem = poemList => {
+  const revealFullPoem = poemList => {
     return poemList.map((item, index) => {
       return (
           <p key={index}>
@@ -18,16 +19,17 @@ const FinalPoem = ({ poemList, onSubmitCallback, finalReveal }) => {
   }
   
   return (
-    // show section if final submit button has been clicked, else show submit button instead
+    // show section if final submit button has been clicked
+    // else show reveal button instead
     <div className="FinalPoem">
-      { finalReveal &&
+      { poemRevealed &&
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
-            {showWholePoem(poemList)}
+            {revealFullPoem(poemList)}
         </section>
       }
 
-      { !finalReveal && 
+      { !poemRevealed && 
         <div className="FinalPoem__reveal-btn-container">
           <input
             type="button"
@@ -40,5 +42,20 @@ const FinalPoem = ({ poemList, onSubmitCallback, finalReveal }) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  onSubmitCallback: PropTypes.func.isRequired,
+  poemRevealed: PropTypes.bool.isRequired,
+  poemList: PropTypes.arrayOf(
+    PropTypes.shape({
+      adj1: PropTypes.string.isRequired,
+      noun1: PropTypes.string.isRequired,
+      adv: PropTypes.string.isRequired,
+      verb: PropTypes.string.isRequired,
+      adj2: PropTypes.string.isRequired,
+      noun2: PropTypes.string.isRequired
+    })
+  )
+};
 
 export default FinalPoem;

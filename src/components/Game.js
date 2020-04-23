@@ -6,10 +6,10 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
 
-  // start player count at 1, poemList as empty array, and finalReveal bool as false
+  // start player count at 1, poemList as empty array, poemRevealed bool as false
   const [player, setPlayer] = useState(1);
   const [poemList, setPoemList] = useState([]);
-  const [finalReveal, setFinalReveal] = useState(false);
+  const [poemRevealed, setPoemRevealed] = useState(false);
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -27,7 +27,7 @@ const Game = () => {
   }
 
   const onFinalSubmit = () => {
-    setFinalReveal(true);
+    setPoemRevealed(true);
   }
 
   return (
@@ -44,13 +44,13 @@ const Game = () => {
 
       <br></br>
 
-      { poemList.length > 0 && !finalReveal &&
+      { poemList.length > 0 && !poemRevealed &&
          <RecentSubmission lastPoem={poemList[poemList.length-1]}/>
       }
 
-      {!finalReveal ? <PlayerSubmissionForm player={player} onSubmitCallback={addPoem}/> : ""}
+      { !poemRevealed ? <PlayerSubmissionForm player={player} onSubmitCallback={addPoem}/> : ""}
 
-      <FinalPoem poemList={poemList} onSubmitCallback={onFinalSubmit} finalReveal={finalReveal}/>
+      <FinalPoem poemList={poemList} onSubmitCallback={onFinalSubmit} poemRevealed={poemRevealed}/>
 
     </div>
   );
