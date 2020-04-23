@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from "prop-types"
 
 const PlayerSubmissionForm = (props) => {
   
@@ -109,6 +110,10 @@ const PlayerSubmissionForm = (props) => {
     </div>
   );
 }
+
+PlayerSubmissionForm.propTypes = {
+  onCallBackPoem: PropTypes.func.isRequired,
+};
 
 
 export default PlayerSubmissionForm;
