@@ -9,9 +9,9 @@ const Game = () => {
 
   // data of form submission, so that the Game component keeps track of all of the submissions.
 
-  const [poemPiece, setPoemPiece] = useState([]);
+  const [poems, setPoemPieces] = useState([]);
+  // SetPlaying false when the game is over. 
   const [playing, setPlaying] = useState(true);
-
   // State to add up 1 to the next player. 
   const [player, setPlayer] = useState(1)
 
@@ -25,22 +25,21 @@ const Game = () => {
 
   // Function to start over the game! Anytime
   const resetGame = () => {
-    setPoemPiece([]);
+    setPoemPieces([]);
     setPlaying(true);
     setPlayer(1);
-    console.log("resetig")
   }
 
 
   // CallBack func to get the info from the form. 
   const addPoemPiece = (poem) => {
 
-    const newPoemPiece = [...poemPiece];
+    const newPoemPiece = [...poems];
     console.log(poem)
 
     newPoemPiece.push(poem)
     setPlayer(player + 1)
-    setPoemPiece(newPoemPiece);
+    setPoemPieces(newPoemPiece);
   }
 
   const gameOver = () => {
@@ -61,9 +60,10 @@ const Game = () => {
       <p className="Game__format-example">
         {exampleFormat}
       </p>
-      {/*   // playing={playing} */}
+     
       <RecentSubmission
-        poems={poemPiece}
+        // Spread operator here === playing={playing}
+        {...{ poems }}
         {...{ playing }}
       />
 
@@ -75,8 +75,9 @@ const Game = () => {
       />
 
       <FinalPoem
-        poems={poemPiece}
+         {...{ poems }}
         onGameOverCallback={gameOver}
+        // Spread operator here === playing={playing}
         {...{ playing }}
       />
     </div>

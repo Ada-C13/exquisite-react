@@ -13,10 +13,13 @@ const FinalPoem = (props) => {
     )
   });
 
+  // It shows each part depends on playing state. 
 
   return (
     <div className="FinalPoem">
       {
+        // props.playing || === !props.playing 
+        // It shows final poem if playing is false. 
         props.playing || (
           <section className="FinalPoem__poem">
             <h3>Final Poem</h3>
@@ -26,6 +29,8 @@ const FinalPoem = (props) => {
         )
       }
       {
+         // It shows the button if playing is true.
+         // Means the game is not over.  
         props.playing && (
           <div className="FinalPoem__reveal-btn-container">
             {/* A button to click to finalize the poem and reveal the entire final poem, 
