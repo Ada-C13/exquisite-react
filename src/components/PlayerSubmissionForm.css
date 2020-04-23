@@ -1,17 +1,24 @@
 .PlayerSubmissionForm {
   line-height: 3rem;
+  
 }
 
 .PlayerSubmissionForm__form {
-  margin: 2rem auto 3rem auto;
+  margin: 2rem auto 3rem auto;  
 }
 
 .PlayerSubmissionForm__poem-inputs {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
 }
 
+.PlayerSubmissionForm__poem-inputs input {
+
+  width: 150px;
+  height: 50px;
+}
 .PlayerSubmissionForm__submit {
   display: flex;
   justify-content: center;
@@ -33,6 +40,10 @@
 
 .PlayerSubmissionFormt__input--invalid {
   background-color: #FFE9E9;
+}
+
+.PlayerSubmissionFormt__input--valid {
+  background-color: white;
 }
 
 .PlayerSubmissionForm__input--invalid::placeholder {
