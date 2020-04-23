@@ -144,7 +144,8 @@ const PlayerSubmissionForm = ({onSubmitCallback, currentPlayerId}) => {
 }
 
 PlayerSubmissionForm.propTypes = {
-  onSubmitCallback: PropTypes.func.isRequired
+  onSubmitCallback: PropTypes.func.isRequired,
+  currentPlayerId: PropTypes.number.isRequired
 };
 
 export default PlayerSubmissionForm;

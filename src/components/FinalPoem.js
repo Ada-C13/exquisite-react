@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = ({poem, onSubmitCallback}) => {
 
   const [showPoem, setShowPoem ] = useState('');
   const [showFinalPoemButton, setShowFinalPoemButton] = useState(true);
+  
   let finalPoemLines = [];
   
   poem.forEach (poemLine => {
@@ -40,5 +42,10 @@ const FinalPoem = ({poem, onSubmitCallback}) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  onSubmitCallback: PropTypes.func.isRequired,
+  poem: PropTypes.array.isRequired
+};
 
 export default FinalPoem;
