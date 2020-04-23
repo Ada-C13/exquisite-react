@@ -5,12 +5,12 @@ import './PlayerSubmissionForm.css';
 const PlayerSubmissionForm = (props) => {
 
   const defaultValues = {
-    adjective1: "adjective",
-    noun1: "noun",
-    adverb1: "adverb",
-    verb1: "verb",
-    adjective2: "adjective",
-    noun2: "noun"
+    adjective1: "",
+    noun1: "",
+    adverb1: "",
+    verb1: "",
+    adjective2: "",
+    noun2: ""
   };
 
   const [player, setPlayer] = useState(1);
@@ -28,6 +28,26 @@ const PlayerSubmissionForm = (props) => {
     setPlayer(player + 1);
   };
 
+  const inputs = {
+  adj1: {
+    validation: /.+/
+  },
+  noun1: {
+    validation: /.+/
+  },
+  advb1: {
+    validation: /.+/
+  },
+  verb1: {
+    validation: /.+/
+  },
+  adj2: {
+    validation: /.+/
+  },
+  noun2: {
+    validation: /.+/
+  }
+};
 
   const onAdj1Entry = (event) => {
     const newEntry = {
@@ -78,6 +98,10 @@ const PlayerSubmissionForm = (props) => {
   };
 
 
+  const fieldValid = fieldName => {
+    return inputs[fieldName].validation.test(playerSubmission[fieldName]);
+  };
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{player}</h3>
@@ -87,36 +111,43 @@ const PlayerSubmissionForm = (props) => {
         <div className="PlayerSubmissionForm__poem-inputs">
           The 
           {
-            <input className="pink"
+            <input
+            className={playerSubmission.adjective1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.adjective1} 
-            onChange={onAdj1Entry}/>
+            onChange={onAdj1Entry}
+            placeholder="adjective"/>
           }{
-            <input className="pink" 
+            <input className={playerSubmission.noun1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.noun1} 
-            onChange={onNoun1Entry}/>
+            onChange={onNoun1Entry}
+            placeholder="noun"/>
           }{
-            <input className="pink" 
+            <input className={playerSubmission.adverb1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.adverb1} 
-            onChange={onAdvb1Entry}/>
+            onChange={onAdvb1Entry}
+            placeholder="adverb"/>
           }{
-            <input className="pink" 
+            <input className={playerSubmission.verb1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.verb1} 
-            onChange={onVerb1Entry}/>
+            onChange={onVerb1Entry}
+            placeholder="verb"/>
           }
           the
           {
-            <input className="pink" 
+            <input className={playerSubmission.adjective2 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.adjective2} 
-            onChange={onAdj2Entry}/>
+            onChange={onAdj2Entry}
+            placeholder="adjective"/>
           }{
-            <input className="pink" 
+            <input className={playerSubmission.noun2 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
             value={playerSubmission.noun2} 
-            onChange={onNoun2Entry}/>
+            onChange={onNoun2Entry}
+            placeholder="noun"/>
           }
         </div>
 
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Lineeeeeee" className="PlayerSubmissionForm__submit-btn" onClick={onSubmit}/>
+          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" onClick={onSubmit}/>
         </div>
       </form>
     </div>
