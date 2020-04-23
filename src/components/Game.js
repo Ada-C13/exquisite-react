@@ -58,7 +58,7 @@ const Game = () => {
 
       <RecentSubmission line={recent} className={`${show ? "RecentSubmission" : "noShow"}`}/>
 
-      <PlayerSubmissionForm onSubmitCallback={addLine} player={player} fields={FIELDS} className={`${show ? "PlayerSubmissionForm" : "noShow"}`}/>
+      <PlayerSubmissionForm onSubmitCallback={addLine} player={player} fields={FIELDS} className={`${show ? "PlayerSubmission_form" : "noShow"}`}/>
 
       <FinalPoem props={poemLines} componentDissapear={componentDissapear}/>
 

@@ -49,10 +49,10 @@ const PlayerSubmissionForm = (props) => {
   }
 
   return (
-    <div className="props.className">
+    <div className={(props.className=="noShow") ? "noShow" : "PlayerSubmissionForm"}>
       <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form className="PlayerSubmissionForm__form" 
+      <form className={props.className} 
             onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
