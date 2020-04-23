@@ -12,17 +12,26 @@ const FinalPoem = (props) => {
     )
   });
 
+
   return (
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-    
-      </section>
-        {/* See all of the submissions of poetry lines in the section named "Final Poem". */}
-        {showingPoemLines}
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+      { 
+      props.playing || (
+        <section className="FinalPoem__poem">
+          <h3>Final Poem</h3>
+          {/* See all of the submissions of poetry lines in the section named "Final Poem". */}
+          {showingPoemLines}
+        </section>
+        )
+      } 
+      {
+        props.playing && (
+          <div className="FinalPoem__reveal-btn-container">
+            <input onClick={props.onGameOverCallback} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+          </div>
+        )
+      }
+      
     </div>
   );
 }
