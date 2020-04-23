@@ -33,7 +33,7 @@ const Game = () => {
     mostRecentSubmissionSentence = "The " + mostRecentSubmission.adj1 + " " + mostRecentSubmission.noun1 + " " + mostRecentSubmission.adv + " " + mostRecentSubmission.verb + " the " + mostRecentSubmission.adj2 + " " + mostRecentSubmission.noun2 + "."
   }
 
-
+  const [gameOver, setGameOver] = useState(false)
 
   return (
     <div className="Game">
@@ -47,20 +47,21 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission 
+      {gameOver || submissions.length === 0 ? "" : <RecentSubmission 
         mostRecentSubmission={mostRecentSubmissionSentence}
-      />
+      />}
 
 
-      <PlayerSubmissionForm 
+      {gameOver ? "" : <PlayerSubmissionForm 
         fields={FIELDS} 
         onSubmitCallback={addSubmission} 
         playerNumber={submissions.length+1}
-      />
+      />}
 
       <FinalPoem 
         submissions={submissions}
         format={exampleFormat}
+        setGameOverCallback={setGameOver}
       />
 
     </div>

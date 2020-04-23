@@ -33,7 +33,7 @@ const PlayerSubmissionForm = (props) => {
 
   const onInputChange = (event) => {
     console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
-    // Duplicate formFields into new object
+
     const newSubmissionFields = {
       ...submission,
     }
@@ -53,10 +53,6 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-
           <p>{props.fields[0]}</p>
           
           <input
@@ -64,28 +60,33 @@ const PlayerSubmissionForm = (props) => {
             value={submission.adj1}
             name="adj1"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.adj1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}
+          />
 
             <input
             placeholder={props.fields[2].placeholder}
             value={submission.noun1}
             name="noun1"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.noun1 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}/>
 
             <input
             placeholder={props.fields[3].placeholder}
             value={submission.adv}
             name="adv"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.adv !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}/>
 
             <input
             placeholder={props.fields[4].placeholder}
             value={submission.verb}
             name="verb"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.verb !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}/>
 
             <p>{props.fields[5]}</p>
 
@@ -94,14 +95,16 @@ const PlayerSubmissionForm = (props) => {
             value={submission.adj2}
             name="adj2"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.adj2 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}/>
 
             <input
             placeholder={props.fields[7].placeholder}
             value={submission.noun2}
             name="noun2"
             type="text"
-            onChange={onInputChange}/>
+            onChange={onInputChange}
+            className={ submission.noun2 !== "" ? "valid" : "PlayerSubmissionFormt__input--invalid"}/>
 
         </div>
 
