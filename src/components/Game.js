@@ -52,7 +52,7 @@ const Game = () => {
 
       {/* figured out how to write the next two lines with && by looking at classmates' code */}
       {showRecentSubmission && <RecentSubmission poem={poemLines}/>}
-      {/* define currentPlayerId here */}
+      {/* define currentPlayerId here - got idea from Chris' video where he did student_id */}
       {showPlayerSubmissionForm && <PlayerSubmissionForm onSubmitCallBack={addPoemLine} currentPlayerId={poemLines.length + 1}/>}
 
       <FinalPoem poem={poemLines} onSubmitCallBack={hidePlayerSubmissionForm}/>

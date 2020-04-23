@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
-
+  // https://codesandbox.io/s/serene-fire-no8p7?file=/src/components/SignupForm.js
   const [formFields, setFormFields ] = useState({
     the1: "The",
     adj1: '',
@@ -18,7 +18,7 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
     // This feels repetitive - need to DRY
     adj1: {
       // This regex allows alphabetic characters only. However, 
-      // upon the actual 'submit', non-alphabetic characters pass through  my program! :(
+      // upon the actual 'submit', non-alphabetic characters pass through my program! :(
       validation: /[a-zA-Z]/,
     },
     noun1: {
@@ -40,14 +40,14 @@ const PlayerSubmissionForm = ({onSubmitCallBack, currentPlayerId}) => {
 
   const onInputChange = (event) => {
     const newFormFields = {
-      // using the spread operator go grab ALL the form fields
+      // using the spread operator to grab ALL the form fields
       ...formFields,
     };
 
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
   };
-
+  // https://codesandbox.io/s/serene-fire-no8p7?file=/src/components/SignupForm.js
   const validateField = fieldName => {
     return inputs[fieldName].validation.test(formFields[fieldName]);
   };
