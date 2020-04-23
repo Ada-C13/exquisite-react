@@ -51,11 +51,11 @@ const Game = () => {
     let updatedPoem = [...poem]; 
     updatedPoem.push(submissionToString());
     setPoem(updatedPoem);
+    setPlayerSubmission(submissionFormat());
   }
 
   const handleReveal = (event) => {
     setSubmitted(true);
-    subBool = true;
   }
 
   return (
