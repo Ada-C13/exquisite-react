@@ -10,7 +10,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-}
+  }
+
+.boxColor {
+  color: pink;
+  }
 
 .PlayerSubmissionForm__submit {
   display: flex;
@@ -33,6 +37,10 @@
 
 .PlayerSubmissionFormt__input--invalid {
   background-color: #FFE9E9;
+}
+
+.valid {
+  background-color: white;
 }
 
 .PlayerSubmissionForm__input--invalid::placeholder {

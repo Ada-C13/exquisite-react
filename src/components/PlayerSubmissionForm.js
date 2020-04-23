@@ -3,6 +3,7 @@ import './PlayerSubmissionForm.css';
 import PropTypes from 'prop-types';
 
 
+
 const PlayerSubmissionForm = (props) => {
 
   const [line, setLine] = useState({
@@ -48,6 +49,11 @@ const PlayerSubmissionForm = (props) => {
     }
   }
 
+  const boxColor = (name) => {
+    return (name === "") ? "PlayerSubmissionFormt__input--invalid" : "valid";
+  };
+ 
+
   return (
     <div className={(props.className=="noShow") ? "noShow" : "PlayerSubmissionForm"}>
       <h3>Player Submission Form for Player #{props.player}</h3>
@@ -59,24 +65,28 @@ const PlayerSubmissionForm = (props) => {
 
           <p>The </p>
           <input
+            className={boxColor(line.adj1)}
             placeholder="adjective"
             type="text" 
             name='adj1'
             value={line.adj1}
             onChange={onInputChange}/>
           <input
+            className={boxColor(line.noun1)}
             placeholder="noun"
             type="text" 
             name='noun1'
             value={line.noun1}
             onChange={onInputChange}/>
           <input
+            className={boxColor(line.adv)}
             placeholder="adverb"
             type="text" 
             name='adv'
             value={line.adv}
             onChange={onInputChange}/>
           <input
+            className={boxColor(line.verb)}
             placeholder="verb"
             type="text" 
             name='verb'
@@ -84,12 +94,14 @@ const PlayerSubmissionForm = (props) => {
             onChange={onInputChange}/>
           <p> the </p>
           <input
+            className={boxColor(line.adj2)}
             placeholder="adjective"
             type="text" 
             name='adj2'
             value={line.adj2}
             onChange={onInputChange}/>
           <input
+            className={boxColor(line.noun2)}
             placeholder="noun"
             type="text" 
             name='noun2'
