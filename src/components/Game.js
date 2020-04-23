@@ -4,7 +4,7 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
-const Game = (props) => {
+const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;

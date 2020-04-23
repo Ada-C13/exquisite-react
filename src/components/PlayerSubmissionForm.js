@@ -95,7 +95,8 @@ const PlayerSubmissionForm = (props) => {
 }
 
 PlayerSubmissionForm.propTypes = {
-
+  fields: PropTypes.array.isRequired,
+  onSubmitCallback: PropTypes.func.isRequired
 }
 
 export default PlayerSubmissionForm;
