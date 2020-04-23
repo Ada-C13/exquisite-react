@@ -15,7 +15,6 @@ const generateSubmissionFields = (fields, current, onChangeCallback) => {
 }
 
 const PlayerSubmissionForm = ({ fields, current, count, onChangeCallback, onSubmitCallback}) => {
-  console.log(fields);
   const submissionFields = generateSubmissionFields(fields, current, onChangeCallback);
 
   return (

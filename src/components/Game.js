@@ -20,9 +20,7 @@ const submissionFormat = () => {
 const Game = () => {
   const [playerSubmission, setPlayerSubmission] = useState(submissionFormat());
   const [poem, setPoem] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-
-  let subBool = false;
+  const [isRevealed, setIsRevealed] = useState(false);
 
   //pretty-print the format of a poem sentence
   const exampleFormat = FIELDS.map((field) => {
@@ -55,7 +53,7 @@ const Game = () => {
   }
 
   const handleReveal = (event) => {
-    setSubmitted(true);
+    setIsRevealed(true);
   }
 
   return (
@@ -70,9 +68,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {poem.length > 0 && !submitted ? <RecentSubmission line={poem[poem.length-1]}/> : null }
-      { submitted ? null : <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} count={poem.length+1} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/> }
-      <FinalPoem status={submitted} poem={poem} onButtonClickCallback={handleReveal} />  
+      {poem.length > 0 && !isRevealed ? <RecentSubmission line={poem[poem.length-1]}/> : null }
+      { isRevealed ? null : <PlayerSubmissionForm fields={FIELDS} current={playerSubmission} count={poem.length+1} onChangeCallback={handleChange} onSubmitCallback={handleSubmit}/> }
+      <FinalPoem status={isRevealed} poem={poem} onButtonClickCallback={handleReveal} />  
 
     </div>
   );
