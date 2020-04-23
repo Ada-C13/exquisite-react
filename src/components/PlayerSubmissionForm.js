@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const DefaultFieldState = 
@@ -111,5 +112,8 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
+PlayerSubmissionForm.propTypes = {
+  addSubmissionDataCallback: PropTypes.func.isRequired,
+};
 
 export default PlayerSubmissionForm;

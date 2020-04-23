@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './RecentSubmission.css';
 
 const RecentSubmission = (props) => {
@@ -17,5 +18,10 @@ const RecentSubmission = (props) => {
     </div>
   );
 }
+
+RecentSubmission.propTypes = {
+  recentlySubmitted: PropTypes.func.isRequired,
+  formatLineCallback: PropTypes.func.isRequired,
+};
 
 export default RecentSubmission;

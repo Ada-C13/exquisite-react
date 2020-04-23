@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
@@ -30,6 +31,12 @@ const FinalPoem = (props) => {
       {props.isRevealed ? props.composePoem() : revealBtn()}
     </div>
   );
+}
+
+FinalPoem.propTypes = {
+  composeFn: PropTypes.func.isRequired,
+  isRevealed: PropTypes.bool.isRequired,
+  composePoem: PropTypes.func.isRequired,
 }
 
 export default FinalPoem;
