@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = (props) => {
+const PlayerSubmissionForm = ({isDone, player, onClickCallback}) => {
   const [line, setLine] = useState({
     adj1: '',
     noun1: '',
@@ -33,7 +33,7 @@ const PlayerSubmissionForm = (props) => {
       adj2 !== '' &&
       noun2 !== ''
     ) {
-      props.onClickCallback(line);
+      onClickCallback(line);
       console.log(line);
 
       setLine({
@@ -52,8 +52,9 @@ const PlayerSubmissionForm = (props) => {
   }
 
   return (
-    <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.player}</h3>
+    !isDone && (
+      <div className="PlayerSubmissionForm">
+      <h3>Player Submission Form for Player #{player}</h3>
 
       <form className="PlayerSubmissionForm__form" >
 
@@ -102,7 +103,7 @@ const PlayerSubmissionForm = (props) => {
             placeholder="noun"
             value={noun2}
             type="text" />
-
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
@@ -115,6 +116,8 @@ const PlayerSubmissionForm = (props) => {
         </div>
       </form>
     </div>
+    )
+    
   );
 }
 

@@ -54,7 +54,7 @@ const Game = () => {
 
       <RecentSubmission isDone={!gameOn} lastLine={lastLine()}/>
 
-      <PlayerSubmissionForm player={player} onClickCallback={onSubmitFormClickCallback}/>
+      <PlayerSubmissionForm isDone={!gameOn} player={player} onClickCallback={onSubmitFormClickCallback}/>
 
       <FinalPoem isDone={!gameOn} poem={poem} onClickCallback={onFinishPoem}/>
 
@@ -94,3 +94,5 @@ const FIELDS = [
 ];
 
 export default Game;
+
+// proptypes
