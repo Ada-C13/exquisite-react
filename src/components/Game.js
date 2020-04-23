@@ -3,44 +3,17 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
+import poemFormat from './data/fields.json';
 
-const FIELDS = [
-  "The",
-  {
-    key: 'adj1',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun1',
-    placeholder: 'noun',
-  },
-  {
-    key: 'adv',
-    placeholder: 'adverb',
-  },
-  {
-    key: 'verb',
-    placeholder: 'verb',
-  },
-  "the",
-  {
-    key: 'adj2',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun2',
-    placeholder: 'noun',
-  },
-  ".",
-];
+const FIELDS = poemFormat;
 
-
+//Establish the format of user data that gets stored
+//We are only tracking poem fields that take user input
 const submissionFormat = () => {
   const submissionKeys = {};
   for (let field of FIELDS) {
     if (field.key) submissionKeys[field.key] = "";
   }
-  console.log(`Generated keys: ${submissionKeys}`)
   return submissionKeys;
 }
 
@@ -49,16 +22,19 @@ const Game = () => {
   const [poem, setPoem] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
+  //pretty-print the format of a poem sentence
   const exampleFormat = FIELDS.map((field) => {
     return field.key ? field.placeholder : field
   }).join(" ");
 
+  //callback function to handle changes on text input fields
   const handleChange = (event) => {
     let updatedFields = {...playerSubmission};
     updatedFields[event.target.id] = event.target.value;
     setPlayerSubmission(updatedFields);
   }
 
+  //callback function to store user's submitted poem sentence
   const handleSubmit = (event) => {
     event.preventDefault();
     const submissionToString = () => {
