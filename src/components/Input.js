@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Input({ className, value, ...otherProps }) {
+const Input = ({ value, ...otherProps }) => {
   //destructiring, spreading what is left
   return (
     <input
@@ -11,4 +11,6 @@ export default function Input({ className, value, ...otherProps }) {
       {...otherProps}
     />
   );
-}
+};
+
+export default Input;
