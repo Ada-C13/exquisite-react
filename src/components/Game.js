@@ -39,7 +39,7 @@ const Game = (props) => {
 
       <PlayerSubmissionForm fields={FIELDS} onSubmitCallback={onSubmit}/>
 
-      <FinalPoem />
+      <FinalPoem finalPoemSubmitted={finalPoem}/>
 
     </div>
   );
