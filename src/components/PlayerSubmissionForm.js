@@ -19,7 +19,7 @@ const PlayerSubmissionForm = (props) => {
     }
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
-  }
+  };
 
   const onSubmitForm = (event) => {
     if (!inputValid()) return;
@@ -46,7 +46,7 @@ const PlayerSubmissionForm = (props) => {
     && formFields.verb.match(/[a-zA-Z]/) 
     && formFields.secondAdjective.match(/[a-zA-Z]/)
     && formFields.secondNoun.match(/[a-zA-Z]/)
-  }
+  };
 
   return (
     <div className="PlayerSubmissionForm" onSubmit = {onSubmitForm}>
