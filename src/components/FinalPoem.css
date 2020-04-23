@@ -8,6 +8,7 @@
 
   padding: 1rem;
   border: 2px black solid;
+  border: dashed;
   box-shadow: 5px 10px black;
   transition: 0.25s;
 }
@@ -17,5 +18,5 @@
 }
 
 .FinalPoem__poem {
-  border-bottom: 2px gray dashed;
+  border-bottom: 2px gray;
 }

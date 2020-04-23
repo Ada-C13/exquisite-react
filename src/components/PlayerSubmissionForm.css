@@ -4,7 +4,7 @@
 
 .PlayerSubmissionForm__form {
   margin: 2rem auto 3rem auto;
-}
+}s
 
 .PlayerSubmissionForm__poem-inputs {
   display: flex;
@@ -23,16 +23,17 @@
 
   padding: 0.5rem;
   border: 2px black solid;
+  border-style: dashed;
   box-shadow: 5px 10px black;
   transition: 0.25s;
 }
 
 .PlayerSubmissionForm__submit-btn:hover {
-  background-color: tomato;
+  background-color: rgb(116, 254, 212);
 }
 
 .PlayerSubmissionFormt__input--invalid {
-  background-color: #FFE9E9;
+  background-color: rgb(254, 124, 124);
 }
 
 .PlayerSubmissionForm__input--invalid::placeholder {
