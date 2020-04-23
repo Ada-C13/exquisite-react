@@ -16,15 +16,16 @@ const PlayerSubmissionForm = (props) => {
   const [player, nextPlayer] = useState(1);
 
   const onInput = (event) => {
-
+    // Get all field inputs
     const newField = {
       ...fieldInput,
-    }
+    };
 
     newField[event.target.name]  = event.target.value;
     setFieldInput(newField);
-  }
+  };
 
+  // Gets and sends field's input to Game.js and resets current input
   const onSubmitField= (event) => {
     event.preventDefault();
 
@@ -39,12 +40,13 @@ const PlayerSubmissionForm = (props) => {
       noun2: '',
     });
 
+    // Move to next player
     nextPlayer(player + 1);
-  }
+  };
 
   const isEmpty = (name) => {
     return name === '';
-  }
+  };
 
   return (
     <div className="PlayerSubmissionForm" onSubmit={ onSubmitField }>
@@ -69,7 +71,7 @@ const PlayerSubmissionForm = (props) => {
               );
             }else{
               return field;
-            }
+            };
           })}
         </div>
 

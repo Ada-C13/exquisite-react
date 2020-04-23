@@ -7,22 +7,22 @@ const FinalPoem = (props) => {
   const onDisplayPoem = (event) => {
     event.preventDefault();
     props.setFieldsPoem(true);
-  }
-
+  };
+  // Display message format like demo
   function formatFields(fieldInput){
     let fullPoem = '';
     fieldInput = fieldInput.split(" ");
   
-    for(let i =0; i < fieldInput.length; i++){
+    for(let i = 0; i < fieldInput.length; i++){
       if(i === 0){
         fullPoem += ("The " + fieldInput[i]);
       }else if(i === 3){
         fullPoem += (" " + fieldInput[i] + " the "); 
       }else{
-        fullPoem += (" " + fieldInput[i]);
-      }
-    }
-    return fullPoem;
+        fullPoem += (" " + fieldInput[i] );
+      };
+    };
+    return (fullPoem + ".");
   }
 
   return (

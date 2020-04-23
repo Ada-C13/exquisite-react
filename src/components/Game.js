@@ -10,6 +10,7 @@ const Game = () => {
   const [allFields, setAllFields] = useState([]);
   const [displayPoem, setDisplayPoem] = useState(false);
 
+  // Provided code
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -18,6 +19,7 @@ const Game = () => {
     }
   }).join(" ");
 
+  // Gets field input and renders all the fields together
   const showSubmittedField = (fieldInput) => {
     
     const newField = Object.values(fieldInput).join(' ');
@@ -26,8 +28,9 @@ const Game = () => {
     const newFieldList = [...allFields];
     newFieldList.push(newField);
     setAllFields(newFieldList);
-  }
+  };
 
+  // Array to hold field input
   let poem = [];
 
   if (displayPoem === true) {
@@ -68,14 +71,14 @@ const Game = () => {
 
       <RecentSubmission fieldInput={ currentField }/>
 
-      <PlayerSubmissionForm onCallbackField={ showSubmittedField } fields={FIELDS}/>
+      <PlayerSubmissionForm onCallbackField={ showSubmittedField } fields={ FIELDS }/>
 
       <FinalPoem setFieldsPoem={ setDisplayPoem } poemLines={ poem }/>
 
     </div>
   );
 }
-
+// Part for making this dynamic later use
 const FIELDS = [
   "The",
   {
