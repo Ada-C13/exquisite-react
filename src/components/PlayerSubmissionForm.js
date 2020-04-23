@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./PlayerSubmissionForm.css";
 
 const PlayerSubmissionForm = (props) => {
@@ -130,7 +130,7 @@ const PlayerSubmissionForm = (props) => {
   return <div>{showForm()}</div>;
 };
 
-  PlayerSubmissionForm.propTypes = {
+PlayerSubmissionForm.propTypes = {
   currentPlayer: PropTypes.number.isRequired,
   fields: PropTypes.array.isRequired,
   onSubmitCallBack: PropTypes.func.isRequired,

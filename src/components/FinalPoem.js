@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./FinalPoem.css";
 
 const FinalPoem = (props) => {
@@ -35,11 +35,12 @@ const FinalPoem = (props) => {
       </section>
       {showFinalPoem()}
     </div>
-  )};
-  FinalPoem.propTypes = {
+  );
+};
+FinalPoem.propTypes = {
   onFinalPoem: PropTypes.func.isRequired,
-  onSubmissions:PropTypes.arrayOf(PropTypes.objects),
+  onSubmissions: PropTypes.arrayOf(PropTypes.objects),
   revealBox: PropTypes.bool.isRequired,
-  }
+};
 
 export default FinalPoem;
