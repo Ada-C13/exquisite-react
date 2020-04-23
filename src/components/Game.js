@@ -5,6 +5,30 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [submissions, setSubmissions] = useState([]);
+  const [gameOn, setGameOn] = useState(true);
+
+  const updateSubmissions = (line) => {
+    const newSubmissions = [];
+
+    submissions.forEach( (submission) => {
+      newSubmissions.push(submission);
+    })
+
+    newSubmissions.push(line);
+
+    setSubmissions(newSubmissions); 
+    setCurrentPlayer(currentPlayer + 1);
+  }
+
+  const updateGameStatus = (bool) =>{
+    if(bool === false){
+      setGameOn(!gameOn);
+    }
+  }
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -25,11 +49,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      { gameOn && submissions.length >=1 ? <RecentSubmission mostRecentSub={submissions[submissions.length - 1]}/> : ""}
 
-      <PlayerSubmissionForm />
+      {gameOn ? <PlayerSubmissionForm currentPlayer={currentPlayer} onSubmitCallback={updateSubmissions}/> : ""}
 
-      <FinalPoem />
+      <FinalPoem allSubmissions={submissions} onPoemFinishCallback={updateGameStatus} gameStatus={gameOn} />
 
     </div>
   );

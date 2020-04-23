@@ -10,6 +10,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  line-height: 32px;
+}
+
+.PlayerSubmissionForm__poem-inputs-unfilled {
+  background-color: rgb(255, 233, 233);
+}
+
+.PlayerSubmissionForm__poem-inputs-filled {
+  background-color: white;
 }
 
 .PlayerSubmissionForm__submit {
