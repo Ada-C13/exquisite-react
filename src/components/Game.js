@@ -5,6 +5,11 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [player, setPlayer]   = useState(1);
+  const [isFinal, setIsFinal] = useState(false);
+  const [poem, setPoem]       = useState([]);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -13,28 +18,56 @@ const Game = () => {
     }
   }).join(" ");
 
+  const formToPoem = (form) => {
+    return FIELDS.map((field) => {
+      if (field.key) {
+        return form[field.key];
+      } else {
+        return field;
+      }
+    }).join(" ");
+  }
+
+  const onFormSubmit = (formFields) => {
+    setPoem([...poem, formToPoem(formFields)]);
+    setPlayer(player + 1);
+  }
+
+  const onFinalClick = () => {
+    setIsFinal(true);
+  }
+
   return (
+
     <div className="Game">
       <h2>Game</h2>
 
       <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
-
       <p>Please follow the following format for your poetry submission:</p>
 
       <p className="Game__format-example">
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission
+        poem={poem}
+        isFinal={isFinal}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+        player={player} 
+        isFinal={isFinal} 
+        onFormSubmit={onFormSubmit} />
 
-      <FinalPoem />
+      <FinalPoem
+        poem={poem}
+        isFinal={isFinal}
+        onFinalClick={onFinalClick}/>
 
     </div>
-  );
-}
 
+  );
+
+}
 
 const FIELDS = [
   "The",
