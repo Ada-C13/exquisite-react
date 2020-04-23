@@ -11,12 +11,23 @@ const RecentSubmission = (props) => {
     )
   };
 
+
+  const shouldDisplay =() => {
+    if (props.poems.length === 0) {
+      return false;
+    } else {
+      return props.playing;
+    }
+  }
+
   return (
+    shouldDisplay() && (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>
       { showingLastPoemePiece() }
       <p className="RecentSubmission__submission">{ }</p>
     </div>
+    )
   );
 }
 
