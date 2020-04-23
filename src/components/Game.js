@@ -4,6 +4,7 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+
 const Game = () => {
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -12,6 +13,27 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const [submissions, setSubmissionList] = useState([])
+
+  const addSubmission = (newSubmission) => {
+
+    const newSubmissionList = [...submissions];
+
+    newSubmissionList.push(newSubmission)
+    setSubmissionList(newSubmissionList)
+    console.log(newSubmissionList)
+
+  };
+
+  let mostRecentSubmissionSentence = ""
+
+  if (submissions.length > 0){
+    let mostRecentSubmission = submissions[submissions.length-1]
+    mostRecentSubmissionSentence = "The " + mostRecentSubmission.adj1 + " " + mostRecentSubmission.noun1 + " " + mostRecentSubmission.adv + " " + mostRecentSubmission.verb + " the " + mostRecentSubmission.adj2 + " " + mostRecentSubmission.noun2 + "."
+  }
+
+  const [gameOver, setGameOver] = useState(false)
 
   return (
     <div className="Game">
@@ -25,11 +47,22 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {gameOver || submissions.length === 0 ? "" : <RecentSubmission 
+        mostRecentSubmission={mostRecentSubmissionSentence}
+      />}
 
-      <PlayerSubmissionForm />
 
-      <FinalPoem />
+      {gameOver ? "" : <PlayerSubmissionForm 
+        fields={FIELDS} 
+        onSubmitCallback={addSubmission} 
+        playerNumber={submissions.length+1}
+      />}
+
+      <FinalPoem 
+        submissions={submissions}
+        format={exampleFormat}
+        setGameOverCallback={setGameOver}
+      />
 
     </div>
   );
