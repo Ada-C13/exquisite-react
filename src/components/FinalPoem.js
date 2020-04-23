@@ -27,6 +27,8 @@ const FinalPoem = (props) => {
       {
         props.playing && (
           <div className="FinalPoem__reveal-btn-container">
+            {/* A button to click to finalize the poem and reveal the entire final poem, 
+            it does not show the previous lines until the poem is finished. */}
             <input onClick={props.onGameOverCallback} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
           </div>
         )
