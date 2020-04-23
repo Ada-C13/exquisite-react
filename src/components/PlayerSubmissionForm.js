@@ -20,7 +20,6 @@ const PlayerSubmissionForm = (props) => {
     newBoxField[event.target.name] = event.target.value;
     setBox(newBoxField);
   };
-  console.log(box);
 
   const onBoxSubmit = (event) => {
     event.preventDefault();
@@ -37,73 +36,97 @@ const PlayerSubmissionForm = (props) => {
       noun2: "",
     });
   };
+  // hide the submission form
+  const showForm = () => {
+    if (props.revealBox) {
+      return (
+        <div className="PlayerSubmissionForm">
+          <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
+          <form onSubmit={onBoxSubmit} className="PlayerSubmissionForm__form">
+            <div className="PlayerSubmissionForm__poem-inputs">
+              <p>The</p>
+              <input
+                className={
+                  box.adj1 ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[1].key}
+                onChange={onInputChange}
+                value={box.adj1}
+                placeholder={props.fields[1].placeholder}
+                type="text"
+              />
 
-  return (
-    <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
+              <input
+                className={
+                  box.noun1 ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[2].key}
+                onChange={onInputChange}
+                value={box.noun1}
+                placeholder={props.fields[2].placeholder}
+                type="text"
+              />
 
-      <form onSubmit={onBoxSubmit} className="PlayerSubmissionForm__form">
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <p>The</p>
-          <input
-            name={props.fields[1].key}
-            onChange={onInputChange}
-            value={box.adj1}
-            placeholder={props.fields[1].placeholder}
-            type="text"
-          />
-          
-          <input
-            name={props.fields[2].key}
-            onChange={onInputChange}
-            value={box.noun1}
-            placeholder={props.fields[2].placeholder}
-            type="text"
-          />
+              <input
+                className={
+                  box.adv ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[3].key}
+                onChange={onInputChange}
+                value={box.adv}
+                placeholder={props.fields[3].placeholder}
+                type="text"
+              />
 
-          <input
-            name={props.fields[3].key}
-            onChange={onInputChange}
-            value={box.adv}
-            placeholder={props.fields[3].placeholder}
-            type="text"
-          />
+              <input
+                className={
+                  box.verb ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[4].key}
+                onChange={onInputChange}
+                value={box.verb}
+                placeholder={props.fields[4].placeholder}
+                type="text"
+              />
+              <p>the</p>
 
-          <input
-            name={props.fields[4].key}
-            onChange={onInputChange}
-            value={box.verb}
-            placeholder={props.fields[4].placeholder}
-            type="text"
-          />
-          <p>the</p>
-          <input
-            name={props.fields[6].key}
-            onChange={onInputChange}
-            value={box.adj2}
-            placeholder={props.fields[6].placeholder}
-            type="text"
-          />
-          <input
-            name={props.fields[7].key}
-            onChange={onInputChange}
-            value={box.noun2}
-            placeholder={props.fields[7].placeholder}
-            type="text"
-          />
-          <p>.</p>
+              <input
+                className={
+                  box.adj2 ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[6].key}
+                onChange={onInputChange}
+                value={box.adj2}
+                placeholder={props.fields[6].placeholder}
+                type="text"
+              />
+              <input
+                className={
+                  box.noun2 ? null : "PlayerSubmissionFormt__input--invalid"
+                }
+                name={props.fields[7].key}
+                onChange={onInputChange}
+                value={box.noun2}
+                placeholder={props.fields[7].placeholder}
+                type="text"
+              />
+              <p>.</p>
+            </div>
+
+            <div className="PlayerSubmissionForm__submit">
+              <input
+                type="submit"
+                value="Submit Line"
+                className="PlayerSubmissionForm__submit-btn"
+              />
+            </div>
+          </form>
         </div>
+      );
+    }
+  };
 
-        <div className="PlayerSubmissionForm__submit">
-          <input
-            type="submit"
-            value="Submit Line"
-            className="PlayerSubmissionForm__submit-btn"
-          />
-        </div>
-      </form>
-    </div>
-  );
+  return <div>{showForm()}</div>;
 };
 
 export default PlayerSubmissionForm;
