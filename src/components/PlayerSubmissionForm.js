@@ -4,17 +4,19 @@ import PropTypes from "prop-types";
 
 const PlayerSubmissionForm = (props) => {
   const initialState = {
+    the1: "The ",
     adj1: "",
     noun1: "",
     adv: "",
     verb: "",
+    the2: "the ",
     adj2: "",
     noun2: "",
   };
   const [sentence, setSentence] = useState(initialState);
 
   const onInputChange = (event) => {
-    console.log(`Changing field ${event.target.name} to ${event.target.value}`);
+    // console.log(`Changing field ${event.target.name} to ${event.target.value}`);
     const setNewSentence = {
       ...sentence,
     };
@@ -22,22 +24,19 @@ const PlayerSubmissionForm = (props) => {
     setSentence(setNewSentence);
   };
 
-  const [player, nextPlayer] = useState(1);
-
   const onSentenceSubmit = (event) => {
     event.preventDefault();
     props.callbackSentenceForm(sentence);
     setSentence({
       ...initialState,
     });
-    nextPlayer(player + 1);
   };
 
   return (
-    <div className="PlayerSubmissionForm" onSubmit={onSentenceSubmit}>
+    <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.player}</h3>
 
-      <form className="PlayerSubmissionForm__form">
+      <form className="PlayerSubmissionForm__form" onSubmit={onSentenceSubmit}>
         <div className="PlayerSubmissionForm__poem-inputs">
           {
             // Put your form inputs here... We've put in one below as an example
