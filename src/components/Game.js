@@ -13,6 +13,31 @@ const Game = () => {
     }
   }).join(" ");
 
+  const [revealSubmission, setRevealSubmission] = useState(false)
+  const [revealFinalPoem, setRevealFinalPoem] = useState(false)
+  const [poems, setPoems] = useState([]);
+
+
+  const createPoems = (poemsCreated) => {
+    const newPoems = [...poems];
+
+    newPoems.push({
+      firstAdjective: poemsCreated.firstAdjective,
+      firstNoun: poemsCreated.firstNoun,
+      adverb: poemsCreated.adverb,
+      verb: poemsCreated.verb,
+      secondAdjective: poemsCreated.secondAdjective,
+      secondNoun: poemsCreated.secondNoun,
+    });
+
+    setRevealSubmission(true);
+    setPoems(newPoems);
+  };
+
+  const onFinalPoemClick = () => {
+    setRevealFinalPoem(true)
+  }
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -25,11 +50,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      { !revealFinalPoem && revealSubmission? <RecentSubmission recentPoem={poems[poems.length - 1] }/> : ""}
 
-      <PlayerSubmissionForm />
+      {revealFinalPoem? "" : <PlayerSubmissionForm  addPoemCallback={createPoems}  />}
 
-      <FinalPoem />
+      <FinalPoem revealFinalPoem={revealFinalPoem} finalPoem={poems} onClickCallback={onFinalPoemClick} />
 
     </div>
   );
