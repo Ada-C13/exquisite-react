@@ -1,5 +1,6 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = ({finalPoemSubmitted, isFinalPoemVisible, showFinalPoem}) => {
   
@@ -34,5 +35,14 @@ const FinalPoem = ({finalPoemSubmitted, isFinalPoemVisible, showFinalPoem}) => {
     </div>
   );
 }
+
+
+FinalPoem.propTypes = {
+  finalPoemSubmitted: PropTypes.array.isRequired,
+  isFinalPoemVisible: PropTypes.bool.isRequired,
+  showFinalPoem: PropTypes.func.isRequired,
+}
+
+
 
 export default FinalPoem;

@@ -95,6 +95,7 @@ const PlayerSubmissionForm = (props) => {
 }
 
 PlayerSubmissionForm.propTypes = {
+
 }
 
 export default PlayerSubmissionForm;
