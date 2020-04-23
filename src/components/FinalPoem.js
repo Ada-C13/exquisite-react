@@ -6,37 +6,35 @@ import './FinalPoem.css';
 // https://www.chrisblakely.dev/how-to-show-hide-elements-in-react-using-hooks
 
 
-const FinalPoem = ({poem, onSubmitCallback, submittedLines}) => {
+const FinalPoem = ({onSubmitCallback, submittedLines,}) => {
 
-  const [showPoem, setShowPoem ] = useState('');
+  const [fullPoem, setFullPoem ] = useState('');
+  const [showButton, setShowButton] = useState(true)
 
   const onFinalSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     let finalPoemLines = submittedLines.join(' \n');
-    setShowPoem(finalPoemLines);
-
+    setFullPoem(finalPoemLines);
+    onSubmitCallback(true);
+    setShowButton(false);
   }
-
-
-
-
 
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem FinalPoem__display-linebreak">
         <h3>Final Poem</h3>
-          {showPoem}
+          {fullPoem}
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={onFinalSubmit}/>
+        {showButton && <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={onFinalSubmit}/>}
       </div>
     </div>
   );
 }
 
 FinalPoem.propTypes = {
-  // onFinalSubmit: PropTypes.func.isRequired
+  onSubmitCallback: PropTypes.func.isRequired,
   submittedLines: PropTypes.array.isRequired
 }
 

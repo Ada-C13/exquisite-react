@@ -14,16 +14,17 @@ const Game = () => {
   }).join(" ");
 
   const [submittedLines, setSubmittedLines] = useState([])
-  // const [showPoem, setShowPoem] = useState(false)
+  const [fullPoem, setFullPoem] = useState(false)
+  const [showForm, setShowForm] = useState(true)
 
   const addSubmittedLine = (line) => {
     const newSubmittedLines = [...submittedLines]
-    newSubmittedLines.push(line)
-    setSubmittedLines(newSubmittedLines)
+    newSubmittedLines.push(line);
+    setSubmittedLines(newSubmittedLines);
   }
   
   const onDisplayFinalPoem = () => {
-    
+    setFullPoem(true);
   }
 
 
@@ -38,12 +39,11 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
+      { submittedLines.length > 0 && !fullPoem && <RecentSubmission recentLine={submittedLines[submittedLines.length - 1]}/> }
 
-      <RecentSubmission recentLine={submittedLines[submittedLines.length - 1]}/>
+      { !fullPoem ?  <PlayerSubmissionForm onSubmitCallback={addSubmittedLine}/> : ""}
 
-      <PlayerSubmissionForm onSubmitCallback={addSubmittedLine}/>
-
-      <FinalPoem onSubmitCallback={onDisplayFinalPoem}  submittedLines={submittedLines}/>
+      <FinalPoem onSubmitCallback={onDisplayFinalPoem}  submittedLines={submittedLines} showPoem={fullPoem}/>
 
     </div>
   );
