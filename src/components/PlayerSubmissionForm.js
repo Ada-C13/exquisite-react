@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
 
-  // created an emptyForm constant
   const emptyForm = {
     adj1:  '',
     noun1: '',
@@ -13,70 +13,24 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   };
 
-  // created the hook for formFields
   const [formFields, setFormFields] = useState(emptyForm);
 
-  // created onChange events for each
-  // field event.target.value calling event
-  const onAdj1Change = (event) => {
-    console.log(`Adj1 Field updated ${ event.target.value }`);
+  const onFieldChange = (event) => {
+    console.log(`${event.target.name} Field updated ${ event.target.value }`);
     setFormFields({
       ...formFields,
-      adj1: event.target.value,
-    });
-  };
-
-  const onNoun1Change = (event) => {
-    console.log(`Noun1 Field updated ${ event.target.value }`);
-    setFormFields({
-      ...formFields,
-      noun1: event.target.value,
-    });
-  };
-
-  const onAdvChange = (event) => {
-    console.log(`Adv Field updated ${ event.target.value }`);
-    setFormFields({
-      ...formFields,
-      adv: event.target.value,
-    });
-  };
-
-  const onVerbChange = (event) => {
-    console.log(`Verb Field updated ${ event.target.value }`);
-    setFormFields({
-      ...formFields,
-      verb: event.target.value,
-    });
-  };
-
-  const onAdj2Change = (event) => {
-    console.log(`Adj2 Field updated ${ event.target.value }`);
-    setFormFields({
-      ...formFields,
-      adj2: event.target.value,
-    });
-  };
-
-  const onNoun2Change = (event) => {
-    console.log(`Noun2 Field updated ${ event.target.value }`);
-    setFormFields({
-      ...formFields,
-      noun2: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
   const inputClass = (input) => {
-
     if (input === ""){
       return "PlayerSubmissionFormt__input--invalid";
     } else {
       return "PlayerSubmissionFormt__input--valid";
     }
-
   }
 
-  // created onSubmit event for the form when user clicks submit
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(`Form submitted`, formFields);
@@ -98,13 +52,12 @@ const PlayerSubmissionForm = (props) => {
         <h3>Player Submission Form for Player # {props.player}</h3>
         <form className="PlayerSubmissionForm__form" onSubmit={onSubmit}>
 
-          {/* hard coded text input with events */}
           <div className="PlayerSubmissionForm__poem-inputs">
             <p>The &nbsp;
             <input
               name="adj1"
               className={inputClass(formFields.adj1)}
-              onChange={onAdj1Change}
+              onChange={onFieldChange}
               value={formFields.adj1}
               placeholder="adjective"
               type="text" />
@@ -113,7 +66,7 @@ const PlayerSubmissionForm = (props) => {
             <input
               name="noun1"
               className={inputClass(formFields.noun1)}
-              onChange={onNoun1Change}
+              onChange={onFieldChange}
               value={formFields.noun1}
               placeholder="noun"
               type="text" />
@@ -122,7 +75,7 @@ const PlayerSubmissionForm = (props) => {
             <input
               name="adv"
               className={inputClass(formFields.adv)}
-              onChange={onAdvChange}
+              onChange={onFieldChange}
               value={formFields.adv}
               placeholder="adverb"
               type="text" />
@@ -131,7 +84,7 @@ const PlayerSubmissionForm = (props) => {
             <input
               name="verb"
               className={inputClass(formFields.verb)}
-              onChange={onVerbChange}
+              onChange={onFieldChange}
               value={formFields.verb}
               placeholder="verb"
               type="text" />
@@ -142,7 +95,7 @@ const PlayerSubmissionForm = (props) => {
             <input
               name="adj2"
               className={inputClass(formFields.adj2)}
-              onChange={onAdj2Change}
+              onChange={onFieldChange}
               value={formFields.adj2}
               placeholder="adjective"
               type="text" />
@@ -151,13 +104,12 @@ const PlayerSubmissionForm = (props) => {
             <input
               name="noun2"
               className={inputClass(formFields.noun2)}
-              onChange={onNoun2Change}
+              onChange={onFieldChange}
               value={formFields.noun2}
               placeholder="noun"
               type="text" />
             </p>
 
-            {/* The adjective noun adverb verb the adjective noun. */}
           </div>
 
           <div className="PlayerSubmissionForm__submit">
@@ -169,5 +121,11 @@ const PlayerSubmissionForm = (props) => {
     );
   }
 }
+
+PlayerSubmissionForm.propTypes = {
+  player: PropTypes.number.isRequired,
+  isFinal: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default PlayerSubmissionForm;

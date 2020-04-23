@@ -6,7 +6,6 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
 
-  // created the hooks for player and poem
   const [player, setPlayer]   = useState(1);
   const [isFinal, setIsFinal] = useState(false);
   const [poem, setPoem]       = useState([]);
@@ -19,26 +18,18 @@ const Game = () => {
     }
   }).join(" ");
 
-  // created formToPoem to transform an array of fields into a poem
   const formToPoem = (form) => {
-    return (
-      `The
-      ${form.adj1}
-      ${form.noun1}
-      ${form.adv}
-      ${form.verb}
-      the
-      ${form.adj2}
-      ${form.noun2}`
-    );
+    return FIELDS.map((field) => {
+      if (field.key) {
+        return form[field.key];
+      } else {
+        return field;
+      }
+    }).join(" ");
   }
 
-  // created onFormSubmit callback function to formSubmit
   const onFormSubmit = (formFields) => {
-    console.log(`Form submitted`, formFields, poem, player)
-    const updatedPoem = Array.from(poem);
-    updatedPoem.push(formToPoem(formFields));
-    setPoem(updatedPoem);
+    setPoem([...poem, formToPoem(formFields)]);
     setPlayer(player + 1);
   }
 
@@ -62,7 +53,6 @@ const Game = () => {
         poem={poem}
         isFinal={isFinal}/>
 
-      {/* pass parameters to PlayerSubmissionForm component*/}
       <PlayerSubmissionForm 
         player={player} 
         isFinal={isFinal} 

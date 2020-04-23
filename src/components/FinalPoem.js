@@ -1,17 +1,14 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 import { render } from '@testing-library/react';
 
 const FinalPoem = (props) => {
 
   const recitePoem = (poem) => {
-    const renderedPoem = [];
-    poem.forEach((line, index) => {
-      renderedPoem.push(
-        <p key={index}>{line}</p>
-      )
+    return poem.map((line, index) => {
+      return <p key={index}>{line}</p>
     });
-    return renderedPoem;
   }
 
   if (props.isFinal){
@@ -40,5 +37,11 @@ const FinalPoem = (props) => {
     );
   }
 }
+
+FinalPoem.propTypes = {
+  poem: PropTypes.array.isRequired,
+  isFinal: PropTypes.bool.isRequired,
+  onFinalClick: PropTypes.func.isRequired,
+};
 
 export default FinalPoem;
