@@ -120,14 +120,10 @@ const PlayerSubmissionForm = (props) => {
 
 PlayerSubmissionForm.propTypes = {
   onSubmitCallback: PropTypes.func.isRequired,
+  player: PropTypes.number,
+  className: PropTypes.string,
 };
 export default PlayerSubmissionForm;
 
 
- // const baseInput = props.fields.forEach((field) => {
-  //   return (
-  //     <input
-  //       placeholder={field.placeholder}
-  //       type={field.key} />
-  //   )
-  // });
+ 

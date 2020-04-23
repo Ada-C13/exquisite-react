@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 
 const FinalPoem = (props) => {
@@ -39,5 +40,10 @@ const FinalPoem = (props) => {
     </div>
   );
 }
+
+FinalPoem.propTypes = {
+  props: PropTypes.array,
+  componentDissapear: PropTypes.func.isRequired,
+};
 
 export default FinalPoem;
