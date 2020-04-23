@@ -9,20 +9,26 @@ const PlayerSubmissionForm = props => {
   // Turn Number
   // callback
 
+  const [value, setValue] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.handleSubmit(value);
+    setValue('')
+  }
+
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{props.turnNumber + 1}</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit={props.handleSubmit}>
+      <form className="PlayerSubmissionForm__form" onSubmit={handleSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           <input
             placeholder={props.placeholderText}
-            turnNumber={props.turnNumber}
+            value={value}
+            onChange={e => setValue(e.target.value)}
             type="text" />
 
         </div>

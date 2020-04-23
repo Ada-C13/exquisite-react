@@ -10,13 +10,8 @@ const Game = () => {
   const [submissions, setSubmissions] = useState([])
   
   const handleSubmit = (submit) => {
-    console.log(submit)
-    console.log(submissions)
-    // Place a players submission into state
-    setSubmission(submissions.push)
-    // Update the turn.
-    // increment the turn number
-    setTurnNumber(turnNumber + 1)
+    setSubmissions([...submissions, submit])
+    setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
   }
 
   const placeholderText = () => {
@@ -31,10 +26,6 @@ const Game = () => {
       <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
 
       <p>Please follow the following format for your poetry submission:</p>
-
-      <p className="Game__format-example">
-        { exampleFormat }
-      </p>
 
       <RecentSubmission />
 
