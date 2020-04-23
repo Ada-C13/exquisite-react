@@ -28,7 +28,7 @@ const PlayerSubmissionForm = (props) => {
     // prevent browser from trying to submit form
     event.preventDefault();
 
-    props.addLineCallback(fields);
+    props.addPoemCallback(fields);
 
     // ... we need to add the line to the list
     setFields({

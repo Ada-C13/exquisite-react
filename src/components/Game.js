@@ -5,6 +5,10 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [poemList, setPoemList] = useState([]);
+  const [player, setPlayer] = useState(1);
+
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +16,16 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  // callback function to add students to the list
+  const addPoem = (poem) => {
+    // Duplicate the poem.
+    const newPoemList = [...poemList];
+    setPoemList(newPoemList);
+    newPoemList.push(poem);
+        setPlayer(player + 1);
+
+    };
 
   return (
     <div className="Game">
@@ -27,7 +41,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm addPoemCallback={addPoem} />
 
       <FinalPoem />
 
