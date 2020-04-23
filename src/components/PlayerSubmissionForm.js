@@ -59,7 +59,7 @@ const PlayerSubmissionForm = (props) => {
   };
 
   // Getting the fields from the parent (Game) Props.field object.
-  const generateFormComponents = props.fields.map((field, i) => {
+  const generateFormComponents = props.fields.map((field, i) => { 
     // Initialize the place holder value to empty string. 
     const valueHolder = poemPiece[field.key];
       if (field.key){
@@ -71,30 +71,40 @@ const PlayerSubmissionForm = (props) => {
             placeholder= {field.placeholder} 
             value={valueHolder}
             onChange={onChange}
-            // className={isEmpty(sentence[`${field.key}`]) ? "empty" : "filled"}
+            // Form text inputs to be light pink when they are empty. 
+            // A visual way of seeing that it's invalid when it's blank.
+            className={valueHolder === "" ? "empty" : "filled"}
           />
         );
       } else {
         return field;
       }
   });
+  
+  //  {/* Displaying the number of the current player. props.currentPlayer from Game.js */}
   return (
     <div className="PlayerSubmissionForm">
-      {/* Displaying the number of the current player. props.currentPlayer from Game.js */}
-      <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
-
-      <form 
-        // Invoking onFormSubmit function. When the player submit the piece of their poem. 
-        onSubmit={onFormSubmit}
-        className="PlayerSubmissionForm__form" > 
-        <div className="PlayerSubmissionForm__poem-inputs">
-          {/* Invoking the function to generate dynamicly the Input form. */}
-         {generateFormComponents}
+      {/* Hide the Player Submission Form after the final poem has been revealed. */}
+      { 
+        props.playing &&
+        (
+        <div className="submition-encapsulation">
+          <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
+          <form
+            // Invoking onFormSubmit function. When the player submit the piece of their poem. 
+            onSubmit={onFormSubmit}
+            className="PlayerSubmissionForm__form" > 
+            <div className="PlayerSubmissionForm__poem-inputs">
+              {/* Invoking the function to generate dynamicly the Input form. */}
+            {generateFormComponents}
+            </div>
+            <div className="PlayerSubmissionForm__submit">
+              <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+            </div>
+          </form>
         </div>
-        <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
-        </div>
-      </form>
+        )
+      }
     </div>
   );
 }
