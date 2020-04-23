@@ -19,13 +19,8 @@ const PlayerSubmissionForm = (props) => {
   const onSubmit = (event) => {
     event.preventDefault()
     updatePlayer()
-    // console.log(playerSubmission)
-    //nn to take the sentence
     const newLine = `The ${playerSubmission.adjective1} ${playerSubmission.noun1} ${playerSubmission.adverb1} ${playerSubmission.verb1} the ${playerSubmission.adjective2} ${playerSubmission.noun2}`
-    console.log(newLine)
-    // then send it to game submissionList 
-    props.onSubmitCallback(newLine)
-
+    props.onSubmitCallback(newLine) //sends to Game
     setPlayerSubmission(defaultValues) // resets form
   }
 
@@ -128,7 +123,7 @@ const PlayerSubmissionForm = (props) => {
   );
 }
 
-PlayerSubmissionForm.propTypes ={
+PlayerSubmissionForm.propTypes = {
   onSubmitCallback: PropTypes.func.isRequired
 };
 

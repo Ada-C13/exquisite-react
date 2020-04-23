@@ -14,6 +14,7 @@ const Game = () => {
   }).join(" ");
 
   const [submittedLines, setSubmittedLines] = useState([])
+  // const [showPoem, setShowPoem] = useState(false)
 
   const addSubmittedLine = (line) => {
     const newSubmittedLines = [...submittedLines]
@@ -21,6 +22,9 @@ const Game = () => {
     setSubmittedLines(newSubmittedLines)
   }
   
+  const onDisplayFinalPoem = () => {
+    
+  }
 
 
   return (
@@ -39,7 +43,7 @@ const Game = () => {
 
       <PlayerSubmissionForm onSubmitCallback={addSubmittedLine}/>
 
-      <FinalPoem />
+      <FinalPoem onSubmitCallback={onDisplayFinalPoem}  submittedLines={submittedLines}/>
 
     </div>
   );
