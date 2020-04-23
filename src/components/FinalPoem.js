@@ -12,7 +12,6 @@ const FinalPoem = (props) => {
   const onButtonClick = () =>{
     props.onClickCallback()
   }
-
   return (
     <div className="FinalPoem">
       {props.showComponent && <section className="FinalPoem__poem">
