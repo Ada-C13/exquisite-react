@@ -3,7 +3,7 @@
 }
 
 .PlayerSubmissionForm__form {
-  margin: 2rem auto 3rem auto;
+  margin: 2rem auto 1rem auto;
 }
 
 .PlayerSubmissionForm__poem-inputs {
@@ -18,17 +18,46 @@
 }
 
 .PlayerSubmissionForm__submit-btn {
-  flex: 0.5;
+  flex: 0.3;
   margin: 2rem;
-
   padding: 0.5rem;
-  border: 2px black solid;
-  box-shadow: 5px 10px black;
   transition: 0.25s;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fff;
+  color: #aaafe2;
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
 }
 
 .PlayerSubmissionForm__submit-btn:hover {
-  background-color: tomato;
+  color: #6772e5;
+}
+
+.PlayerSubmissionForm__submit-btn--invalid {
+  border: red 3px solid;
+  flex: 0.3;
+  margin: 2rem 0 0 0;
+  padding: 0.5rem;
+  transition: 0.25s;
+  cursor: not-allowed;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fff;
+  color: #aaafe2;
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+
+.PlayerSubmissionForm__submit-btn--invalid {
+  color: red;
+}
+
+.PlayerSubmissionFormt__input--valid {
+  background-color: rgb(224, 248, 221);
 }
 
 .PlayerSubmissionFormt__input--invalid {
@@ -37,4 +66,15 @@
 
 .PlayerSubmissionForm__input--invalid::placeholder {
   color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.PlayerSubmissionForm__p--invalid-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
 }
