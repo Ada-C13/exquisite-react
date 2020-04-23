@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import './FinalPoem.css';
 import PropTypes from 'prop-types';
 
-
 const FinalPoem = (props) => {
-
   const [show, setShow] = useState(false)
   
   const onButtonClick = () => {
@@ -21,18 +19,14 @@ const FinalPoem = (props) => {
     );
   });
 
- 
-
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
       </section>
 
       <div className={show ? "noshow" : "FinalPoem__reveal-btn-container"}>
         <input type="button" onClick={onButtonClick} value="We are finished: Reveal the Poem" className={show ? "noShow" : "FinalPoem__reveal-btn"} />
-        
       </div>
       <p className={show ? "show" : "noShow"}>
       {lineComponents}

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 import PropTypes from 'prop-types';
 
-
-
 const PlayerSubmissionForm = (props) => {
 
   const [line, setLine] = useState({
@@ -15,7 +13,6 @@ const PlayerSubmissionForm = (props) => {
     the2: 'the',
     adj2: '',
     noun2: '',
-    
   });
 
   const onInputChange = (event) => {
@@ -27,7 +24,6 @@ const PlayerSubmissionForm = (props) => {
   
     newLine[event.target.name] = event.target.value;
     setLine(newLine);
-    
   };
 
   const onFormSubmit = (event) => {
@@ -53,7 +49,6 @@ const PlayerSubmissionForm = (props) => {
     return (name === "") ? "PlayerSubmissionFormt__input--invalid" : "valid";
   };
  
-
   return (
     <div className={(props.className=="noShow") ? "noShow" : "PlayerSubmissionForm"}>
       <h3>Player Submission Form for Player #{props.player}</h3>

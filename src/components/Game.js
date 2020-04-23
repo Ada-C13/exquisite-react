@@ -3,14 +3,9 @@ import './Game.css';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
-import PropTypes from 'prop-types';
 
-// const poemLines = [];
-// let playerNum = 1
 let recent = "";
 let poemLines = [];
-
-
 
 const Game = () => {
   const [poemList, setPoemList] = useState([]);
@@ -41,9 +36,7 @@ const Game = () => {
 
     recent = (Object.values(line)).join(" ");
     poemLines.push(recent);
-    console.log(poemLines);
   }
-
 
   return (
     <div className="Game">
