@@ -12,6 +12,19 @@
   justify-content: space-around;
 }
 
+.PlayerSubmissionForm__poem-inputs div {
+  display: flex;
+  align-content: center;
+}
+
+.PlayerSubmissionForm__poem-inputs label {
+  display: none;
+}
+
+.PlayerSubmissionForm__input-invalid {
+  background-color: lightpink;
+}
+
 .PlayerSubmissionForm__submit {
   display: flex;
   justify-content: center;
