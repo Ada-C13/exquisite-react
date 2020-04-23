@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = props => {
-  // Handles players submission of poetry
-  // Hands Data back to Game
-  // Props:
-  // Placeholder text
-  // Turn Number
-  // callback
 
   const [value, setValue] = useState('');
 

@@ -8,15 +8,42 @@ const Game = () => {
 
   const [turnNumber, setTurnNumber] = useState(0)
   const [submissions, setSubmissions] = useState([])
+  const [finalPoem, setFinalPoem] = useState([])
   
   const handleSubmit = (submit) => {
     setSubmissions([...submissions, submit])
-    setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
+    if (turnNumber === FIELDS.length) {
+     setFinalPoem([...finalPoem, submissions])
+     setTurnNumber(turnNumber === 0)
+    } else {
+      setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
+    }; 
+  };
+
+  const handleClickLastSentence = () => {
+    if (finalPoem.length > 0) {
+      return finalPoem[finalPoem.length - 1]
+    }
+    return <div />
+  };
+
+  const handleClickAllSetences = () => {
+    if (finalPoem.length > 0) {
+      return finalPoem
+    }
+    return <div />
   }
 
   const placeholderText = () => {
     return FIELDS[turnNumber].placeholder
-  }
+  };
+
+  const renderRecentSubmissions = () => {
+    if (submissions.length > 0) {
+      return (<RecentSubmission submission={submissions[submissions.length - 1]} />)
+    }
+    return <div />
+  };
 
 
   return (
@@ -27,7 +54,9 @@ const Game = () => {
 
       <p>Please follow the following format for your poetry submission:</p>
 
-      <RecentSubmission />
+      <p className="sentenceStructure">"The adjective noun adverb verb the adjective noun."</p>
+
+      {renderRecentSubmissions()}
 
       <PlayerSubmissionForm 
         placeholderText={placeholderText()}
@@ -35,7 +64,10 @@ const Game = () => {
         handleSubmit={handleSubmit}
       />
 
-      <FinalPoem />
+      <FinalPoem 
+        finalPoem={finalPoem}
+        handleLastSentence={handleClickLastSentence}
+        handleFullPoem={handleClickAllSetences} />
 
     </div>
   );
