@@ -20,13 +20,6 @@ const Game = () => {
     }; 
   };
 
-  const handleClickLastSentence = () => {
-    if (finalPoem.length > 0) {
-      return finalPoem[finalPoem.length - 1]
-    }
-    return <div />
-  };
-
   const handleClickAllSetences = () => {
     if (finalPoem.length > 0) {
       return finalPoem
@@ -66,8 +59,8 @@ const Game = () => {
 
       <FinalPoem 
         finalPoem={finalPoem}
-        handleLastSentence={handleClickLastSentence}
-        handleFullPoem={handleClickAllSetences} />
+        handleFullPoem={handleClickAllSetences()} 
+      />
 
     </div>
   );
