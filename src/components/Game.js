@@ -5,6 +5,12 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  // start player count at 1, poemList as empty array, poemRevealed bool as false
+  const [player, setPlayer] = useState(1);
+  const [poemList, setPoemList] = useState([]);
+  const [poemRevealed, setPoemRevealed] = useState(false);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +18,17 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addPoem = poem => {
+    const newPoemList = [...poemList];
+    newPoemList.push(poem);
+    setPoemList(newPoemList);
+    setPlayer(player + 1);
+  }
+
+  const onFinalSubmit = () => {
+    setPoemRevealed(true);
+  }
 
   return (
     <div className="Game">
@@ -25,11 +42,15 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <br></br>
 
-      <PlayerSubmissionForm />
+      { poemList.length > 0 && !poemRevealed &&
+         <RecentSubmission lastPoem={poemList[poemList.length-1]}/>
+      }
 
-      <FinalPoem />
+      { !poemRevealed ? <PlayerSubmissionForm player={player} onSubmitCallback={addPoem}/> : ""}
+
+      <FinalPoem poemList={poemList} onSubmitCallback={onFinalSubmit} poemRevealed={poemRevealed}/>
 
     </div>
   );
