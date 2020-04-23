@@ -4,7 +4,19 @@ import PlayerSubmissionForm from './PlayerSubmissionForm';
 import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
+let recent = "";
+let poemLines = [];
+
 const Game = () => {
+  const [poemList, setPoemList] = useState([]);
+  const [player, setPlayer] = useState(1);
+
+  const [show, setShow] = useState(true)
+  
+  const componentDissapear = () => {
+    setShow(false)
+  };
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +24,19 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const addLine = (line) => {
+    const newPoemList = [...poemList];
+    newPoemList.push({ ...line
+    });
+
+    setPoemList(newPoemList);
+    
+    setPlayer(player + 1)
+
+    recent = (Object.values(line)).join(" ");
+    poemLines.push(recent);
+  }
 
   return (
     <div className="Game">
@@ -25,11 +50,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission line={recent} className={`${show ? "RecentSubmission" : "noShow"}`}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onSubmitCallback={addLine} player={player} className={`${show ? "PlayerSubmission_form" : "noShow"}`}/>
 
-      <FinalPoem />
+      <FinalPoem props={poemLines} componentDissapear={componentDissapear}/>
 
     </div>
   );
