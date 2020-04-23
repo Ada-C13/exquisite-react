@@ -9,7 +9,7 @@ const FIELDS = poemFormat;
 
 //Establish the format of user data that gets stored
 //We are only tracking poem fields that take user input
-const submissionFormat = () => {
+const submissionTemplate = () => {
   const submissionKeys = {};
   for (let field of FIELDS) {
     if (field.key) submissionKeys[field.key] = "";
@@ -18,7 +18,7 @@ const submissionFormat = () => {
 }
 
 const Game = () => {
-  const [playerSubmission, setPlayerSubmission] = useState(submissionFormat());
+  const [playerSubmission, setPlayerSubmission] = useState(submissionTemplate());
   const [poem, setPoem] = useState([]);
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -38,7 +38,8 @@ const Game = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    const submissionToString = () => {
+    //returns the user's inputs in string format
+    const submittedLine = () => {
       let submissionString = "";
       for (let field of FIELDS) {
         field.key ? submissionString += ` ${(playerSubmission[field.key])}` : submissionString += ` ${field}`;
@@ -47,9 +48,9 @@ const Game = () => {
     };
 
     let updatedPoem = [...poem]; 
-    updatedPoem.push(submissionToString());
+    updatedPoem.push(submittedLine());
     setPoem(updatedPoem);
-    setPlayerSubmission(submissionFormat());
+    setPlayerSubmission(submissionTemplate());
   }
 
   const handleReveal = (event) => {
