@@ -7,7 +7,7 @@ const RecentSubmission = (props) => {
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3> 
       <p className="RecentSubmission__submission">{ props.recentSubmission }</p> 
-      {/* // ? generate sentence here, not in Game ? */}
+      {/* // ? refactor generate sentence here, not in Game ? */}
     </div>
   );
 }
