@@ -19,12 +19,14 @@ const Game = () => {
 
   // callback function to add students to the list
   const addPoem = (poem) => {
-    // Duplicate the poem.
-    const newPoemList = [...poemList];
-    setPoemList(newPoemList);
-    newPoemList.push(poem);
-        setPlayer(player + 1);
+    const newPoemList = [...poemList]; // copy PoemList
+    
 
+    const newLine = "The " + poem.adj1 + " " + poem.noun1 + " " + poem.adv + " " + poem.verb + " the " + poem.adj2 + " " + poem.noun2 + ".";
+
+    newPoemList.push(newLine);
+    setPoemList(newPoemList); 
+    setPlayer(player + 1);
     };
 
   return (
@@ -39,9 +41,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recentSubmission={poemList[poemList.length - 1]} />
 
-      <PlayerSubmissionForm addPoemCallback={addPoem} />
+      <PlayerSubmissionForm onSubmit={addPoem} />
 
       <FinalPoem />
 
@@ -62,7 +64,7 @@ const FIELDS = [
   },
   {
     key: 'adv',
-    placeholder: 'adverb',
+    placeholder: 'adv',
   },
   {
     key: 'verb',
