@@ -3,6 +3,7 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = props => {
 
+
   const [value, setValue] = useState('');
 
   const handleSubmit = (event) => {

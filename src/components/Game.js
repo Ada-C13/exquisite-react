@@ -8,24 +8,19 @@ const Game = () => {
 
   const [turnNumber, setTurnNumber] = useState(0)
   const [submissions, setSubmissions] = useState([])
-  const [finalPoem, setFinalPoem] = useState([])
+  const [sentences, setSentences] = useState([])
   
   const handleSubmit = (submit) => {
-    setSubmissions([...submissions, submit])
-    if (turnNumber === FIELDS.length) {
-     setFinalPoem([...finalPoem, submissions])
-     setTurnNumber(turnNumber === 0)
-    } else {
-      setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
-    }; 
+    setSubmissions(submissions => submissions.concat(submit))
+    setTurnNumber(turnNumber >= FIELDS.length - 1 ? 0 : (turnNumber + 1))
   };
 
-  const handleClickAllSetences = () => {
-    if (finalPoem.length > 0) {
-      return finalPoem
+  const checkSubmissionsArrayLength = () => {
+    if (submissions.length === 6) {
+      setSentences([...sentences, submissions])
+      setSubmissions([])
     }
-    return <div />
-  }
+  };
 
   const placeholderText = () => {
     return FIELDS[turnNumber].placeholder
@@ -50,6 +45,7 @@ const Game = () => {
       <p className="sentenceStructure">"The adjective noun adverb verb the adjective noun."</p>
 
       {renderRecentSubmissions()}
+      {checkSubmissionsArrayLength()}
 
       <PlayerSubmissionForm 
         placeholderText={placeholderText()}
@@ -58,8 +54,7 @@ const Game = () => {
       />
 
       <FinalPoem 
-        finalPoem={finalPoem}
-        handleFullPoem={handleClickAllSetences()} 
+        sentences={sentences}   
       />
 
     </div>
