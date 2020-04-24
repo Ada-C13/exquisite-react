@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = props => {
-
-  console.log(props.sentences)
+  const [seePoem, setSeePoem] = useState(false)
 
   const finalPoem = props.sentences.map((sentence, i) => {
     return <p key={i}>
@@ -11,25 +10,23 @@ const FinalPoem = props => {
     </p>
   });
 
-  const finalPoemButton =
-    <div className="FinalPoem__reveal-btn-container">
-      <input onClick={props.showPoemCallback} type="button" value="We are finished: Reveal the Full Poem" className="FinalPoem__reveal-btn"/>
-    </div>
-
-  const finalPoemContent = finalPoem === true ? <p>{ finalPoem }</p> : <p></p>;
-  const conditionalButton = props.poemfinalPoem === false ? <p>{ finalPoemButton }</p> : <p></p>
-
+  const toSee = () => {
+    setSeePoem(true);
+  }
 
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        {finalPoemContent}
+        {seePoem == true ? finalPoem : '' }
       </section>
-      {conditionalButton}
+
+      <div className="FinalPoem__reveal-btn-container" >
+        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={toSee}/>
+      </div>
     </div>
   );
-  };
 
+}
 
 export default FinalPoem;

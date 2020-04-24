@@ -6,9 +6,9 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
 
-  const [turnNumber, setTurnNumber] = useState(0)
-  const [submissions, setSubmissions] = useState([])
-  const [sentences, setSentences] = useState([])
+  const [turnNumber, setTurnNumber] = useState(0);
+  const [submissions, setSubmissions] = useState([]);
+  const [sentences, setSentences] = useState([]);
   
   const handleSubmit = (submit) => {
     setSubmissions(submissions => submissions.concat(submit))
@@ -33,7 +33,6 @@ const Game = () => {
     return <div />
   };
 
-
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -54,7 +53,7 @@ const Game = () => {
       />
 
       <FinalPoem 
-        sentences={sentences}   
+        sentences={sentences}  
       />
 
     </div>
