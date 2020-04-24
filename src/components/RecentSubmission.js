@@ -6,7 +6,7 @@ const RecentSubmission = ({ poem }) => {
   const recentSubmission = poem.slice(-1)[0];
 
   //recentSubmission will be undefined
-  if (recentSubmission === undefined) {
+  if (recentSubmission === null) {
     submission.push(" ");
   } else {
     // push to submission object values of the poem and spliting
