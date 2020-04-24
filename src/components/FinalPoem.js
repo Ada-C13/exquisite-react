@@ -27,6 +27,7 @@ const FinalPoem = (props) => {
   );
 }
 
+// TODO Need to add propTypes
 
 // User Stories
 // *DONE* As players who have submitted one or more lines, I want to see all of the submissions of poetry lines in the section named "Final Poem".

@@ -122,5 +122,7 @@ const PlayerSubmissionForm = (props) => {
 // Hints
 // Don't be shy about making all of the pieces of props or state that you've determined you need!
 
+// TODO Need to add propTypes
+
 
 export default PlayerSubmissionForm;

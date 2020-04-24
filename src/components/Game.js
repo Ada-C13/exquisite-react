@@ -23,7 +23,6 @@ const Game = () => {
   const addPoem = (poem) => {
     const newPoemList = [...poemList]; // copy PoemList
     
-
     const newLine = "The " + poem.adj1 + " " + poem.noun1 + " " + poem.adv + " " + poem.verb + " the " + poem.adj2 + " " + poem.noun2 + ".";
 
     newPoemList.push(newLine);
@@ -89,5 +88,7 @@ const FIELDS = [
   },
   ".",
 ];
+
+// TODO Need to add propTypes
 
 export default Game;
