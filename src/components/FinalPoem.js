@@ -17,4 +17,9 @@ const FinalPoem = (props) => {
   );
 }
 
+
+// User Stories
+// As players who have submitted one or more lines, I want to see all of the submissions of poetry lines in the section named "Final Poem".
+// As a player, I want to see each submission in the final poem section on a different line or paragraph, so that it looks more like a structured poem.
+
 export default FinalPoem;
