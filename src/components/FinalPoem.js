@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
+
+     let increment = 0;
+    let finalPoem = props.poemList.map(sentence => {
+      increment += 1
+      return (<p key={increment}>{sentence}</p>) 
+    });
+  
+
 
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
+          {finalPoem}
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
