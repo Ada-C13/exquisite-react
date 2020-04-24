@@ -30,9 +30,14 @@ const PlayerSubmissionForm = (props) => {
 
     props.addPoemCallback(fields);
 
-    // ... we need to add the line to the list
+    // reset fields
     setFields({
-      ...fields,
+      adj1: "",
+      noun1: "",
+      adverb: "",
+      verb: "",
+      adj2: "",
+      noun2: ""
     });
   };
 
@@ -108,7 +113,7 @@ const PlayerSubmissionForm = (props) => {
 }
 
 // User Stories
-// TODO As a player, I want to be able to fill out the six text input fields that mimic the poetry format and press a submit button, so that I fill out the line of poetry.
+// *DONE* As a player, I want to be able to fill out the six text input fields that mimic the poetry format and press a submit button, so that I fill out the line of poetry.
 // *DONE* As a player, I want to be able to see placeholder text in each text input that describes what kind of word I should fill in.
 // TODO As a player, I want the Game component to have the data of my submission, so that the Game component keeps track of all of the submissions.
 // TODO As a player who is going after the first player, I want to be able to have a cleared, reset form with no text in the input elements after the first player submitted, so that I can enter in my own submission easily.
