@@ -47,7 +47,12 @@ const Game = () => {
       </p>
 
       {/* TODO add conditional logic to display only if finished poem is not true and player > 1 */}
-      <RecentSubmission recentSubmission={poemList[poemList.length - 1]} />
+
+      {
+        player > 1 ? 
+        <RecentSubmission recentSubmission={poemList[poemList.length - 1]} /> :
+        null
+      }
     
       {/* TODO add conditional logic to display only if finished poem is not true and player > 1 */}
       <PlayerSubmissionForm player={player} onSubmit={addPoem} />
@@ -90,5 +95,20 @@ const FIELDS = [
 ];
 
 // TODO Need to add propTypes
+
+
+// User Stories
+// *DONE* As a player, I want to see only the most recent submission of poetry in the section "The Most Recent Submission" (RecentSubmission component), so that I can be inspired, just like the Dadaists were when they invented the original Exquisite Corpse game.
+// TODO As a player, I only want to see the "The Most Recent Submission" section if there has already been at least one submission.
+// TODO As players playing this game, we want a button to click to finalize our poem and reveal the entire final poem, so that we don't see the previous lines until we are finished.
+// TODO As players playing this game, we want to hide the Player Submission Form after the final poem has been revealed, so that we don't add any more lines after the game is over.
+// TODO As a player, I want the form text inputs to be light pink when they are blank, so I have a visual way of seeing that it's invalid when it's blank.
+
+// Hints
+// Remember, you can have conditionals outside of JSX code
+// You'll probably want to make a variable with the JSX code or empty string you want, and then use {} (curly brackets) to put it inside of other JSX
+// You can actually also do one-line ternaries in JSX...
+// Don't be afraid of using conditionals, and making more props if needed!
+
 
 export default Game;
