@@ -43,7 +43,7 @@ const Game = () => {
 
       <RecentSubmission recentSubmission={poemList[poemList.length - 1]} />
 
-      <PlayerSubmissionForm onSubmit={addPoem} />
+      <PlayerSubmissionForm player={player} onSubmit={addPoem} />
 
       <FinalPoem />
 
