@@ -32,9 +32,13 @@
 }
 
 .PlayerSubmissionFormt__input--invalid {
-  background-color: #FFE9E9;
+  background-color: #ffe9e9;
 }
 
 .PlayerSubmissionForm__input--invalid::placeholder {
   color: black;
+}
+
+.InputColor {
+  color: pink;
 }
