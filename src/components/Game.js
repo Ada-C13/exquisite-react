@@ -13,6 +13,38 @@ const Game = () => {
     }
   }).join(" ");
 
+  // state for player, recent line, fullPoem, displays for all components
+  const [player, setPlayer] = useState(1);
+  const [poems, setPoems] = useState([]);
+  const [displayFullPoem, setDisplayFullPoem] = useState(false);
+  const [displayPlayerForm, setDisplayPlayerForm] = useState(true);
+  const [recent, setRecent] = useState([])
+  const [displayRecent, setDisplayRecent] = useState(false);
+  
+
+  //callback function - this gets passed down to PlayerSubmission Form to use when the submit line button is clicked
+  const addLine = (poem) => {
+
+    const newPoemList = [...poems];
+    const recent = []
+    newPoemList.push(poem);
+    recent.push(poem);
+    
+    setPoems(newPoemList);
+    setPlayer(player + 1);
+    setDisplayRecent(true);
+    setRecent(recent);
+  }
+
+  // toggles display states onClick of READY button
+  const revealPoem = () => {
+    if (poems.length >= 1) {
+      setDisplayFullPoem(true);
+      setDisplayPlayerForm(false);
+      setDisplayRecent(false);
+    }
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -25,12 +57,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recent={recent} displayRecent={displayRecent}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm player={player} addLineCallback={addLine} displayPlayerForm={displayPlayerForm}/>
 
-      <FinalPoem />
-
+      <FinalPoem poems={poems} displayFullPoem={displayFullPoem} onClickCallback={revealPoem}/>
     </div>
   );
 }

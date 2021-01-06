@@ -1,22 +1,113 @@
 import React, { useState } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
-const PlayerSubmissionForm = () => {
-  return (
-    <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+const PlayerSubmissionForm = (props) => {
+  const [line, setLine] = useState({
+    adj1: '',
+    noun1: '',
+    adverb: '',
+    verb: '',
+    adj2: '',
+    noun2: '',
+  })
+  
 
-      <form className="PlayerSubmissionForm__form" >
+  // this function is tracking ON CHANGE
+  const onInputChange = (event) => {
+    
+    const newLine = {
+      ...line
+    }
+
+    newLine[event.target.name] = event.target.value;
+    setLine(newLine);
+  }
+
+  // this function is tracking ON SUBMIT - only when the form is submitted
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    
+    props.addLineCallback(line);
+
+    setLine({
+      adj1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adj2: '',
+      noun2: '',
+    })
+  }
+
+  const PlayerSubmissionForm = 
+  <div className="PlayerSubmissionForm">
+      
+      <h3>Player Submission Form for Player #{props.player}</h3>
+
+      <form className='PlayerSubmissionForm__form' onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
+          <span>The</span>
           <input
-            placeholder="hm..."
-            type="text" />
+            name="adj1"
+            placeholder="adjective..."
+            value={line.adj1}
+            type="text" 
+            onChange={onInputChange}
+            className={line.adj1 === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
 
+          <input
+            name='noun1'
+            placeholder="noun..."
+            value={line.noun1}
+            type="text" 
+            onChange={onInputChange}
+            className={line.noun1 === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
+
+          <input
+            name='adverb'
+            placeholder="adverb..."
+            value={line.adverb}
+            type="text" 
+            onChange={onInputChange} 
+            className={line.adverb === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
+
+          <input
+            name='verb'
+            placeholder="verb..."
+            value={line.verb}
+            type="text" 
+            onChange={onInputChange} 
+            className={line.verb === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
+
+          <span>the</span>
+
+          <input
+            name='adj2'
+            placeholder="adjective..."
+            value={line.adj2}
+            type="text" 
+            onChange={onInputChange}
+            className={line.adj2 === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
+
+          <input
+            name='noun2'
+            placeholder="noun..."
+            value={line.noun2}
+            type="text" 
+            onChange={onInputChange}
+            className={line.noun2 === '' ? `PlayerSubmissionForm__input--invalid` : null}
+          />
+
+          <span>.</span>
+  
         </div>
 
         <div className="PlayerSubmissionForm__submit">
@@ -24,7 +115,18 @@ const PlayerSubmissionForm = () => {
         </div>
       </form>
     </div>
+
+  // design pattern in React - if the props returns true, then the form renders
+  // the toggle switches in the onClickCallback in FinalPoem
+  return (
+    props.displayPlayerForm && PlayerSubmissionForm
   );
+}
+
+PlayerSubmissionForm.propTypes = {
+  player: PropTypes.number,
+  addLineCallback: PropTypes.func,
+  displayPlayerForm: PropTypes.bool
 }
 
 
